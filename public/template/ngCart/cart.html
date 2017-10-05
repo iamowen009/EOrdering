@@ -1,0 +1,87 @@
+
+<div class="alert alert-warning" role="alert" ng-show="ngCart.getTotalItems() === 0">
+    Your cart is empty
+</div>
+
+<div class="table-responsive col-lg-12" ng-show="ngCart.getTotalItems() > 0">
+    <div class="invoice-block">
+        <table class="table table-hover text-right">
+            <thead class="thead-default">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">รหัสสินค้า</th>
+                    <th class="text-center">สินค้า</th>
+                    <th class="text-center">จำนวน</th>
+                    <th class="text-center">หน่วย</th>
+                    <th class="text-center">ราคาหน่วย</th>
+                    <th class="text-center">ราคารวม</th>
+                    <th class="text-center">ลบ</th>
+                </tr>
+            </thead>
+            <tfoot>
+            <!--<tr ng-show="ngCart.getTax()">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Tax ({{ ngCart.getTaxRate() }}%):</td>
+                <td>{{ ngCart.getTax() | number:2 }}</td>
+            </tr>
+            <tr ng-show="ngCart.getShipping()">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Shipping:</td>
+                <td>{{ ngCart.getShipping() | number:2 }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td>{{ ngCart.totalCost() | number:2 }}</td>
+            </tr>-->
+            </tfoot>
+            <tbody>
+            <tr ng-repeat="item in ngCart.getCart().items track by $index">
+                <td class="text-center">{{$index+1}}</td>
+                <td></td>
+                <td class="text-center">{{ item.getName() }}</td>
+                <td class="text-right"><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
+                          ng-click="item.setQuantity(-1, true)"></span>
+                          <input class="form-control width-50" value="{{ item.getQuantity() | number }}" type="text">
+                    
+                    <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
+                <td></td>
+                <td>{{ item.getPrice() | number:2}}</td>
+                <td>{{ item.getTotal() | number:2 }}</td>
+                <td><span ng-click="ngCart.removeItemById(item.getId())" class="fa fa-trash fa-2x"></span></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="text-right clearfix">
+        <div class="pull-right">
+            <!--<p>
+                Sub - Total amount: <strong><span>$5,700.00</span></strong>
+            </p>
+            <p>
+                VAT: <strong><span>$57.00</span></strong>
+            </p>-->
+            <p class="page-invoice-amount">
+                <strong>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT): <span class="total_price">{{ ngCart.totalCost() | number:2 }}</span> บาท</strong>
+            </p>
+            <br>
+        </div>
+    </div>
+
+</div>
+<style>
+    .ngCart.cart span[ng-click] {
+        cursor: pointer;
+    }
+    .ngCart.cart .glyphicon.disabled {
+        color:#aaa;
+    }
+</style>
