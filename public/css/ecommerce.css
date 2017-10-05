@@ -441,3 +441,30 @@
 .e-paginate > div >
 */
 /* Paginate */
+.panel-contact .panel-heading>h3{
+  padding:0;
+  margin:0;
+}
+.panel-contact .panel-body{
+  padding:10px 0 0 0;
+}
+
+.panel-contact .panel-body .col-md-6 .panel-address{
+  border:1px solid #ddd;
+  border-radius:2px;
+  min-height: 250px;
+  padding:20px;
+}
+.panel-contact .panel-body h4:first-child{
+  margin:0;
+}
+.panel-contact .panel-body h4{
+  margin-top:24px;
+  margin-bottom: 0;
+}
+.padding-left-0{
+  padding-left:0 !important;
+}
+.padding-right-0{
+  padding-right:0 !important;
+}

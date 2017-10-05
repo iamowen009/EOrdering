@@ -2,30 +2,42 @@
 
 @section('content')
 <div class="content">
-		
+
 	<div class="row ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="panel">
-            <div class="panel-heading text-center" style="background-color:#000e85;color:#fff">ติดต่อเรา </div>
-              
+			<div class="panel panel-contact">
+            <div class="panel-heading" style="background-color:#000e85;color:#fff"><h3>ติดต่อ TOA</h3> </div>
+
               <!--<div class="panel-heading text-center">ติดต่อเรา</div>-->
-              <div class="panel-body">
-              		
-                  <h3>Address</h3>
-                  <p>บริษัท ทีโอเอ เพ้นท์ (ประเทศไทย) จำกัด (มหาชน) <br>สำนักงาน และศูนย์อุตสาหกรรม ทีโอเอ บางนา-ตราด 31/2 หมู่ 3 <br>ถนนบางนา-ตราด ตำบลบางเสาธง อ.บางเสาธง จ.สมุทรปราการ 10570 </p>
-                  
-                  <h3>Call Center</h3>
-                  <h5>BUSINESS LINE</h5>
-                  <p>(สายธุรกิจ) 02-335-5555</p>
+              <div class="panel-body ">
+								<div class="row">
+										<div class="col-md-6 padding-left-0">
+											<div class="panel-address">
+													<h4>บริษัท ทีโอเอ เพ้นท์ (ประเทศไทย) จำกัด (มหาชน)</h4>
+													<p>สำนักงาน และศูนย์อุตสาหกรรม ทีโอเอ บางนา-ตราด 31/2 หมู่ 3 <br>ถนนบางนา-ตราด ตำบลบางเสาธง อ.บางเสาธง จ.สมุทรปราการ 10570</p>
 
-                  <h5>CALL CENTER </h5>
-                  <p>(สายตรงบริการลูกค้าสัมพันธ์) 02-335-5777</p>
+													<h4>CALL CENTER </h4>
+													<p>(สายตรงบริการลูกค้าสัมพันธ์) 02-335-5777</p>
 
-                  <h5>AUTOTINT SERVICE CENTER</h5>
-                  <p>(ฝ่ายบริการเครื่องผสมสีอัตโนมัติ) 02-335-5666</p>
+													<h4>AUTOTINT SERVICE CENTER</h4>
+													<p>(ฝ่ายบริการเครื่องผสมสีอัตโนมัติ) 02-335-5666</p>
 
-                  <h3>E-mail</h3>
-                  <p>contact@toagroup.com</p>
+											</div>
+										</div>
+
+										<div class="col-md-6 padding-right-0">
+											<div class="panel-address">
+													<h4>Sale Manager</h4>
+													<p>02-335-5777</p>
+
+													<h4>Sale</h4>
+													<p>02-335-5666</p>
+
+													<h4>AR</h4>
+													<p>02-335-2222</p>
+											</div>
+										</div>
+								</div>
               </div>
             </div>
          </div>
