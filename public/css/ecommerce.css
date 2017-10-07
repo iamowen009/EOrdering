@@ -468,3 +468,6 @@
 .padding-right-0{
   padding-right:0 !important;
 }
+.wizard > .actions {
+    width:100% !important;
+}

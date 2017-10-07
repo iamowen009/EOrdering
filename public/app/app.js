@@ -35,11 +35,13 @@ app.run(function(Orders,Auth,Customers) {
               if( currentIndex == 0){
                 var btnPrint = $("<a>").attr({"href":"#","ng-click":"btnPrint"}).addClass("btn-print btn btn-primary").text("Print");
                 var btnClear = $("<a>").attr({"href":"#","ng-click":"removeAll()"}).addClass("btn-clear btn btn-primary").text("ลบรายการสินค้าทั้งหมด");
-                var printeBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn').append(btnPrint);
-                var cleareBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn').append(btnClear);
+                var printeBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnPrint);
+                var cleareBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnClear);
+                var ul        = $("<ul>").addClass('pull-left').append(printeBtn).append(cleareBtn);
 
-                $(document).find(".actions ul").prepend(printeBtn)
-                $(document).find(".actions ul").prepend(cleareBtn)
+                $(document).find(".actions").prepend(ul)
+                $(document).find('.actions ul[role="menu"]').addClass('pull-right');
+                //$(document).find(".actions ul").prepend(cleareBtn)
               }else{
                 $('.li-btn').hide();
               }
@@ -138,7 +140,7 @@ app.run(function(Orders,Auth,Customers) {
                                     //swal.close();
 
                                     swal({
-                                        title: "ยืนยัน?",
+                                        title: "",
                                         text: "ระบบดำเนินการสร้างใบสั่งซื้อเรียบร้อยแล้ว ท่านต้องการ?",
                                         //type: "warning",
                                         showCancelButton: true,
@@ -178,7 +180,7 @@ app.run(function(Orders,Auth,Customers) {
                 });
             }
         });
-        
+
 
 })
 
