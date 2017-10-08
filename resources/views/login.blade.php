@@ -15,11 +15,11 @@
     <link href="<?= asset('css/custom.min.css') ?>" rel="stylesheet">
     <link href="<?= asset('./css/ecommerce.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/custom.css') ?>" rel="stylesheet">
-    
+
     <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-    
+
     <link href="<?= asset('node_modules/sweetalert/lib/sweet-alert.css') ?>" rel="stylesheet">
-    
+
 </head>
 
 <body ng-app="app" ng-controller="AppController">
@@ -33,10 +33,10 @@
               <span class="navbar-toggler-icon"></span>
           </button>
         </nav>
-        
+
         <p class="text-center" ng-show="loading_config"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
         <header>
-             
+
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -89,15 +89,15 @@
                         <div ng-bind-html="loginDescription"></div>
                       </div>
                 </div>
-                
+
             </div>
             <div class="col-sm-4">
                 <div class="panel panel-default">
                       <div class="panel-body" style="min-height:305px;">
-                        
+
                         <form class="form-horizontal form-label-left input_mask" ng-submit="dologin()">
                             <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
-                        
+
                           <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                             <input class="form-control has-feedback-left" id="username" placeholder="Username" type="text" ng-model="loginData.username" style="margin-top:6px;">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true" style="padding-top:6px;"></span>
@@ -107,13 +107,13 @@
                             <input type="password" class="form-control" id="password" placeholder="Password" type="text" ng-model="loginData.password" style="margin-top:6px;">
                             <span class="fa fa-eye form-control-feedback right" aria-hidden="true" style="padding-top:6px;" ></span>
                           </div>
-                            
+
                           <div class="clearfix"></div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                             <div class="col-md-9 col-sm-9 col-xs-12"></div>
                           </div>
-                          
+
                           <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <a href="/forgot-password" class="pull-right link-blue link-underlined">ลืมรหัสผ่าน?</a>
@@ -124,7 +124,7 @@
                                     </label>
                                 </div>
                             </div>
-                          </div>  
+                          </div>
                           <div class="clearfix"></div>
                           <div class="ln_solid"></div>
 
@@ -157,12 +157,15 @@
         @endverbatim
     </div>
 
-    
 
-    
+
+
+    <script type="text/javascript">
+      var _base = "{{ url('/') }}";
+    </script>
 
     <!-- Bootstrap core JavaScript -->
-    
+
     <script src="<?= asset('js/jquery.min.js') ?>"></script>
     <script src="<?= asset('js/popper.min.js') ?>"></script>
     <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
@@ -174,11 +177,11 @@
     <script src="<?= asset('node_modules/sweetalert/lib/sweet-alert.min.js') ?>"></script>
 
     <script src="<?= asset('node_modules/ngCart/dist/ngCart.js') ?>"></script>
-    
+
     <script src="<?= asset('node_modules/underscore/underscore-min.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-bootstrap-multiselect/dist/angularjs-dropdown-multiselect.js') ?>"></script>
     <script src="<?= asset('vendors/jquery-steps/build/jquery.steps.min.js') ?>"></script>
-    
+
     <script src="<?= asset('app/app.js') ?>"></script>
     <script src="<?= asset('app/services.js') ?>"></script>
     <script src="<?= asset('app/controllers/appController.js') ?>"></script>
@@ -189,13 +192,13 @@
 
     <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js') ?>"></script>
-    
+
     <script type="text/javascript" src="<?= asset('node_modules/angular-recaptcha/release/angular-recaptcha.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-utils-pagination/dirPagination.js') ?>"></script>
-    
+
     <script src="<?= asset('app/controllers/loginController.js') ?>"></script>
-    
-    
+
+
 
 </body>
 

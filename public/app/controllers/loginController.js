@@ -1,9 +1,21 @@
 "use strict";
 app.controller('LoginController',
-    function ($scope, $http, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService) {
-        
+    function ($scope, $http, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService,Customers) {
+
+        console.log('Customers');
+        console.log( Auth.username() );
+        if( Auth.username()  !== null){
+          console.log('login true');
+
+          if(Auth.userTypeDesc()=='Multi'){
+              window.location= _base + '/customer';
+          }else{
+              window.location= _base + '/home/'+Customers.customerId();
+          }
+          
+        }
         var vm = this;
-        
+
         $scope.loginData = {};
         $scope.slideshows1 = '';
         $scope.slideshows2 = '';
@@ -61,7 +73,7 @@ app.controller('LoginController',
         function fetchSlideshow(){
             Config.fetchAll().then(function (response) {
                 if(response.data.result=='SUCCESS'){
-                    
+
                     $scope.slideshows1 = response.data.data.configList[0].partImgLogin+"/"+response.data.data.configList[0].imageLogin1;
                     $scope.slideshows2 = response.data.data.configList[0].partImgLogin+"/"+response.data.data.configList[0].imageLogin2;
                     $scope.slideshows3 = response.data.data.configList[0].partImgLogin+"/"+response.data.data.configList[0].imageLogin3;
@@ -70,7 +82,7 @@ app.controller('LoginController',
         }*/
 
         fetchAll();
-        
+
 
         function fetchAll(){
             Config.fetchAll().then(function (response) {
@@ -104,7 +116,7 @@ app.controller('LoginController',
             $scope.dataList = [];
             //$('#divProcess').show();
 
-            
+
             $scope.loading = true;
             Auth.login($scope.loginData.username,$scope.loginData.password).then(function (response) {
                 $scope.loading = false;
@@ -139,7 +151,7 @@ app.controller('LoginController',
         /*    AppService.post(API_URL+'Login', { userName: userName, password: password })
                 .then(
                 function (result) {
-                    
+
                     if(result.result=='SUCCESS'){
                         result = result.data;
                         if(result.data.userInfo.isSuperAmin==1){

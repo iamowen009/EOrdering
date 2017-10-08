@@ -77,10 +77,12 @@ app.controller('ProductCheckoutController',
                         $scope.requests[key]['reqDate'] = split_date[2]+'/'+split_date[1]+'/'+split_date[0];
 
                     }
-                    $scope.ships = response.data.data.shipToList;
-
+                    $scope.ships      = response.data.data.shipToList;
                     $scope.transports = response.data.data.transportList;
-                    $scope.carts = response.data.data.cartProductList;
+                    $scope.carts      = response.data.data.cartProductList;
+                    $scope.ddlTransport = $scope.transports[0];
+                    $scope.ddlShipTo = $scope.ships[0];
+                    $scope.shipaddress = $scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName;
                 }
                 $scope.loading = false;
             });

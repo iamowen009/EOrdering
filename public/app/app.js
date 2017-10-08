@@ -140,8 +140,8 @@ app.run(function(Orders,Auth,Customers) {
                                     //swal.close();
 
                                     swal({
-                                        title: "",
-                                        text: "ระบบดำเนินการสร้างใบสั่งซื้อเรียบร้อยแล้ว ท่านต้องการ?",
+                                        title: "ระบบดำเนินการสร้างใบสั่งซื้อ เลขที่ " + order.documentNumber + " เรียบร้อยแล้ว ท่านต้องการ",
+                                        //text: "ระบบดำเนินการสร้างใบสั่งซื้อเรียบร้อยแล้ว ท่านต้องการ?",
                                         //type: "warning",
                                         showCancelButton: true,
                                         //confirmButtonColor: '#DD6B55',

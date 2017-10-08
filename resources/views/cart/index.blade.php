@@ -158,7 +158,7 @@ select.form-control{
                                 <div class="form-group col-md-6" ng-if="customer.isReceive === true">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนส่งโดย :</label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="checkbox-inline"><input type="checkbox" checked="checked"  ng-model="ddlShipTo.shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
+                                    <label class="checkbox-inline"><input type="checkbox"  ng-model="ddlShipTo.shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
                                   </div>
 
                                 </div>
@@ -176,7 +176,7 @@ select.form-control{
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่ต้องการ* :</label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                    <select required
+                                    <select
                                         name="date_id" id="date_id"
                                         class="form-control"
                                         ng-model="ddlDate"
@@ -187,7 +187,7 @@ select.form-control{
 
 
                                   </div>
-                                  <div class="col-md-3 col-sm-3 col-xs-12"><span ng-show="formcart.date_id.$error.required"><font color="red" size="2px">Required Field</font></span></div>
+                                  <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.date_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
 
                                 </div>
                               </div>
@@ -201,19 +201,21 @@ select.form-control{
 
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง* :</label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select required
+                                    <select
                                         name="ship_id" id="ship_id"
                                         class="form-control"
                                         ng-model="ddlShipTo"
                                         ng-change="changeShip(ddlShipTo.shipId)"
 
                                         ng-options="i.shipName for i in ships track by i.shipId">
+                                        <!--
                                         <option value=''>Select</option>
+                                        -->
                                       </select>
 
 
                                   </div>
-                                  <div class="col-md-3 col-sm-3 col-xs-12"><span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span></div>
+                                  <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
 
 
 
@@ -239,18 +241,18 @@ select.form-control{
                                 <div class="form-group col-md-6">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง* :  </label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select required
+                                    <select
                                         name="trans_id" id="trans_id"
                                         class="form-control"
                                         ng-model="ddlTransport"
                                         ng-change="i.transportId=ddlTransport.transportId"
                                         ng-options="i.transportZoneDesc for i in transports track by i.transportId">
-                                        <option value=''>Select</option>
+
                                       </select>
 
 
                                   </div>
-                                  <div class="col-md-3 col-sm-3 col-xs-12"><span ng-show="formcart.trans_id.$error.required"><font color="red" size="2px">Required Field</font></span></div>
+                                  <div class="col-md-3 col-sm-3 col-xs-12"><!-- <span ng-show="formcart.trans_id.$error.required"><font color="red" size="2px">Required Field</font></span> --></div>
                                 </div>
                               </div>
 
