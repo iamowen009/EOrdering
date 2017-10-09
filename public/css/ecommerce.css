@@ -471,3 +471,29 @@
 .wizard > .actions {
     width:100% !important;
 }
+.tab-order > li{
+  margin-right:10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active a.active {
+    color: #495057;
+
+}
+.nav-tabs.tab-order > li > a {
+    background-color: rgb(255, 204, 102);
+    color:#fff !important;
+}
+.nav-tabs.tab-order > li > a.active,
+.nav-tabs.tab-order > li.active > a.active{
+    color:#fff !important;
+    background-color: rgb(204, 204, 204);
+}
+.table>thead>th,
+.table > thead > tr > th{
+  vertical-align: middle !important;
+}
+.order-precess ul{
+  list-style: none;
+}

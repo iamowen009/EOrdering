@@ -3,7 +3,7 @@ angular.module('app')
 
 .service('Auth', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
-    
+
     var username = '';
     var isAuthenticated = false;
     var role = '';
@@ -88,7 +88,7 @@ angular.module('app')
     var imgHome1 = '';
     var imgHome2 = '';
     var imgHome3 = '';
-    
+
 
 	return {
 		/**
@@ -108,7 +108,7 @@ angular.module('app')
         	return deferred.promise;
 		},
         setPath:function(partImgLogin,partImgHome,partImgProduct,partImgPromotion,partImgDocument,partImgActivity,partFileProduct,partFilePromotion,partFileDocument){
-            
+
             partImgProduct = partImgProduct;
             partImgPromotion = partImgPromotion;
             partImgDocument = partImgDocument;
@@ -391,7 +391,7 @@ angular.module('app')
 {
 	return {
 		items: [],
-		
+
 
 		/**
 		* Fetch all products
@@ -469,7 +469,7 @@ angular.module('app')
 
             return deferred.promise;
         },
-        
+
         addCart: function (cartList,promotionList){
             // TODO: remove the use of futures
             var deferred = $q.defer();
@@ -483,7 +483,7 @@ angular.module('app')
 
             return deferred.promise;
         },
-        
+
         updateCart: function (cartList,promotionList){
             // TODO: remove the use of futures
             var deferred = $q.defer();
@@ -555,7 +555,7 @@ angular.module('app')
 
             return deferred.promise;
         },
-        
+
         removeFav: function (favoriteInfo){
             // TODO: remove the use of futures
             var deferred = $q.defer();
@@ -643,6 +643,62 @@ angular.module('app')
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while fetching all products');
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+}])
+
+.service('OrderPrecess', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        /**
+        * Fetch all products
+        */
+        fetchAll: function (customerId,start,end)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderPrecess?customerId='+ customerId
+                              + '&startDocumentDate=' + start
+                              + '&endDocumentDate=' + end;
+
+            $http.get( url).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching all order proecess');
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+}])
+
+.service('OrderInfo', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        /**
+        * Fetch all products
+        */
+        fetchAll: function (customerId,start,end)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderInfo?customerId='+customerId
+                              + '&startDocumentDate=' + start
+                              + '&endDocumentDate=' + end;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching all order info');
             });
 
             return deferred.promise;

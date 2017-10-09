@@ -27,59 +27,57 @@
 
 @section('content')
 <div class="content">
-		
+
 	<div class="row " ng-controller="OrderController">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
 				<div class="panel-heading text-center" style="background-color:#000e85;color:#fff">สถานะคำสั่งซื้อ </div>
               <div class="panel-body">
               	<br>
-					
-				
+
+
             	<form class="form-inline">
-                  <div class="form-group col-md-4">
-                  	<div class="col-md-3">
+                  <div class="form-group col-md-3">
+                  	<div class="col-md-2 col-xs-2">
                     <label>วันที่ : &nbsp;</label>
                     </div>
-                    <div class="col-md-9">
                         <div class="dropdown input-group dropdown-start-parent">
-						    <a  id="dropdownStart" role="button" data-toggle="dropdown" data-target=".dropdown-start-parent"
-						       href="#">
-						        <div class="input-group date">
-						            <input type="text" class="form-control" data-ng-model="dateRangeStart">
-						            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-						        </div>
-						    </a>
-						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-						        <datetimepicker data-ng-model="dateRangeStart"
-						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
-						                        data-on-set-time="startDateOnSetTime()"
-						                        data-before-render="startDateBeforeRender($dates)"></datetimepicker>
-						    </ul>
-						</div>
-					</div>
+          						    <a  id="dropdownStart" role="button" data-toggle="dropdown" data-target=".dropdown-start-parent"
+          						       href="#">
+          						        <div class="input-group date">
+          						            <input type="text" class="form-control" data-ng-model="dateRangeStart">
+          						            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          						        </div>
+          						    </a>
+          						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          						        <datetimepicker data-ng-model="dateRangeStart"
+          						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
+          						                        data-on-set-time="startDateOnSetTime()"
+          						                        data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+          						    </ul>
+          						</div>
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-3">
                   	<div class="col-md-3">
-                    <label>ถึงวันที่ : &nbsp;</label>
+                      <label>ถึงวันที่ : &nbsp;</label>
                     </div>
                     <div class="col-md-9">
                         <div class="dropdown input-group dropdown-end-parent">
-						    <a  id="dropdownEnd" role="button" data-toggle="dropdown" data-target=".dropdown-end-parent"
-						       href="#">
-						        <div class="input-group date">
-						            <input type="text" class="form-control" data-ng-model="dateRangeEnd">
-						            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-						        </div>
-						    </a>
-						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-						        <datetimepicker data-ng-model="dateRangeEnd"
-						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
-						                        data-on-set-time="endDateOnSetTime()"
-						                        data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
-						    </ul>
-						</div>
-					</div>
+            						    <a  id="dropdownEnd" role="button" data-toggle="dropdown" data-target=".dropdown-end-parent"
+            						       href="#">
+            						        <div class="input-group date">
+            						            <input type="text" class="form-control" data-ng-model="dateRangeEnd">
+            						            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            						        </div>
+            						    </a>
+            						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            						        <datetimepicker data-ng-model="dateRangeEnd"
+            						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
+            						                        data-on-set-time="endDateOnSetTime()"
+            						                        data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+            						    </ul>
+            						</div>
+            					</div>
                   </div>
 
                 </form>
@@ -88,82 +86,25 @@
 					<div class="col-md-12">
 						<div class="cui-ecommerce--product--info">
 	                        <div class="nav-tabs-horizontal">
-	                            <ul class="nav nav-tabs" role="tablist">
-	                                <li class="nav-item active" style="background-color:rgb(26,198,4);">
-	                                    <a class="nav-link active" style="color:#fff;" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
+	                            <ul class="nav nav-tabs tab-order" role="tablist">
+	                                <li class="nav-item active">
+	                                    <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
 	                                </li>
-	                                <li class="nav-item" style="background-color:rgb(254,194,84);color:#fff;">
-	                                    <a class="nav-link" style="color:#fff;" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">ประวัติการสั่งซื้อ<br/>(History Process)</a>
+	                                <li class="nav-item">
+	                                    <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">ประวัติการสั่งซื้อ<br/>(History Process)</a>
 	                                </li>
 	                            </ul>
 	                            <div class="tab-content padding-vertical-20">
 	                                <div class="tab-pane active" id="tab1" role="tabpanel">
-	                                    
-	                                    <div class="dd" id="nestable1">
-				                            <ol class="dd-list">
-				                                
-				                                <li class="dd-item" data-id="2">
-				                                    <div class="dd-handle">2560</div>
-				                                    <ol class="dd-list">
-				                                        <li class="dd-item" data-id="3"><div class="dd-handle">มกราคม</div></li>
-				                                        <li class="dd-item" data-id="4"><div class="dd-handle">กุมภาพันธ์</div></li>
-				                                        <li class="dd-item" data-id="5">
-				                                            <div class="dd-handle">มีนาคม</div>
-				                                            <ol class="dd-list">
-				                                                <!--<li class="dd-item" data-id="6"><div class="dd-handle">06/03/2560 09:00</div></li>
-				                                                <li class="dd-item" data-id="7"><div class="dd-handle">06/03/2560 09:00</div></li>
-				                                                <li class="dd-item" data-id="8"><div class="dd-handle">06/03/2560 09:00</div></li>-->
-				                                                <li class="dd-item" data-id="6">
-				                                                	<table class="table table-striped"> 
-																		<thead>
-																			<tr class="info">
-																				<th>วันที่-เวลา</th>
-																				<th>ผู้ดำเนินการ</th>
-																				<th>เลขที่ใบสั่งซื้อ</th>
-																				<th>เลขที่เอกสารอ้างอิง</th>
-																				<th>จำนวนเงินสุทธิ <br/>(ไม่รวม VAT)</th>
-																				<th width="5%">สถานะสั่งซื้อ</th>
-																				<th width="5%">Order/Bill Tracking</th>
-																			</tr></thead>
-																		<tbody>
-																			<tr>
-																				<td>06/03/2560 09:00</td>
-																				<td>it_ornanong</td>
-																				<td><a data-toggle="modal" data-target="#invoiceModal">W00200100</a></td>
-																				<td>012001001</td>
-																				<td>9,800</td>
-																				<td><a data-toggle="modal" data-target="#orderDetailModal"><i class="fa fa-file"></a></td>
-																				<td><a data-toggle="modal" data-target="#orderModal"><i class="fa fa-newspaper-o"></a></td>
-																			</tr>
-																			<tr>
-																				<td>07/03/2560 09:00</td>
-																				<td>it_ornanong</td>
-																				<td><a data-toggle="modal" data-target="#invoiceModal">W00200102</a></td>
-																				<td>012001002</td>
-																				<td>20,000</td>
-																				<td><a data-toggle="modal" data-target="#orderDetailModal"><i class="fa fa-file"></a></td>
-																				<td><a data-toggle="modal" data-target="#orderModal"><i class="fa fa-newspaper-o"></a></td>
-																			</tr>
-																		</tbody>
-				                                                	</table>
-				                                                </li>
-				                                            </ol>
-				                                        </li>
-				                                        <li class="dd-item" data-id="9"><div class="dd-handle">เมษายน</div></li>
-				                                    </ol>
-				                                </li>
-				                                <li class="dd-item" data-id="11">
-				                                    <div class="dd-handle">2559</div>
-				                                </li>
-				                                
-				                            </ol>
-				                        </div>
 
+	                                    <div class="dd" id="nestable1">
+                                        @include('order.inc-order-process')
+				                              </div>
 	                                </div>
 	                                <div class="tab-pane" id="tab2" role="tabpanel">
 	                                    <div class="dd" id="nestable1">
 				                            <ol class="dd-list">
-				                                
+
 				                                <li class="dd-item" data-id="2">
 				                                    <div class="dd-handle">2560</div>
 				                                    <ol class="dd-list">
@@ -176,7 +117,7 @@
 				                                                <li class="dd-item" data-id="7"><div class="dd-handle">06/03/2560 09:00</div></li>
 				                                                <li class="dd-item" data-id="8"><div class="dd-handle">06/03/2560 09:00</div></li>-->
 				                                                <li class="dd-item" data-id="6">
-				                                                	<table class="table table-striped"> 
+				                                                	<table class="table table-striped">
 																		<thead>
 																			<tr class="info">
 																				<th>วันที่-เวลา</th>
@@ -214,7 +155,6 @@
 				                                <li class="dd-item" data-id="11">
 				                                    <div class="dd-handle">2559</div>
 				                                </li>
-				                                
 				                            </ol>
 				                            <p style="color:red;">จำนวนเงินทั้งหมดสุทธิหลังหักส่วนลดทั้งหมด รวมค่าบริการคลังและรวม VAT</p>
 				                        </div>
@@ -224,7 +164,7 @@
 	                    </div>
 					</div>
                 </div>
-                
+
              </div>
             </div>
 		</div>
@@ -247,12 +187,12 @@
       </div>
       <div class="modal-body">
         <!--<div class="bg-gray">
-             
+
         </div>-->
         <div class="x_panel">
                           <div class="x_title">
                             <h4 class="ng-binding">11016791 ร้านทรัพย์เพิ่มพูนค้าวัสดุ</h4>
-                           
+
                             <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
@@ -307,12 +247,12 @@
                                 <label for="pwd" class="col-md-5 text-right">เลขที่ PO :</label>
                                 <label class="col-md-7 text-left ng-binding"></label>
                               </div>
-                            </form> 
+                            </form>
                           </div>
                         </div>
-        
+
         <br/>
-        
+
         <h6>รายละเอียดสินค้าที่สั่งซื้อ</h6>
 
         <ngcart-cart></ngcart-cart>
@@ -342,28 +282,28 @@
              <h4>เจริญสิทธิภัณฑ์ฮาร์ดแวร์</h4>
              <br>
              <form class="form-horizontal">
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">ที่อยู่ :</label>
                 <label>ถ.กิ่งแก้ว เขตลาดกระบัง</label>
               </div>
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">เบอร์โทรศัพท์ :</label>
                 <label>089-9999999</label>
               </div>
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">บริษัทขนส่ง :</label>
                 <label>กิจทองขนส่ง</label>
               </div>
-              
-            </form> 
+
+            </form>
         </div>
-        
+
         <br/>
-        
-        <table class="table table-borderd"> 
+
+        <table class="table table-borderd">
 			<thead>
 				<tr class="info">
 					<th>รายการสินค้า</th>
@@ -424,28 +364,28 @@
              <h4>เจริญสิทธิภัณฑ์ฮาร์ดแวร์</h4>
              <br>
              <form class="form-horizontal">
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">ที่อยู่ :</label>
                 <label>ถ.กิ่งแก้ว เขตลาดกระบัง</label>
               </div>
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">เบอร์โทรศัพท์ :</label>
                 <label>089-9999999</label>
               </div>
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">บริษัทขนส่ง :</label>
                 <label>กิจทองขนส่ง</label>
               </div>
-              
-            </form> 
+
+            </form>
         </div>
-        
+
         <br/>
-        
-        <table class="table table-borderd"> 
+
+        <table class="table table-borderd">
 			<thead>
 				<tr class="info">
 					<th>รายการสินค้า</th>
@@ -510,28 +450,28 @@
              <h4>เจริญสิทธิภัณฑ์ฮาร์ดแวร์</h4>
              <br>
              <form class="form-inline">
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">ที่อยู่ :</label>
                 <label>ถ.กิ่งแก้ว เขตลาดกระบัง</label>
               </div>
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">เบอร์โทรศัพท์ :</label>
                 <label>089-9999999</label>
               </div>
-              
+
               <div class="form-group col-md-12">
                 <label for="pwd">บริษัทขนส่ง :</label>
                 <label>กิจทองขนส่ง</label>
               </div>
-              
-            </form> 
+
+            </form>
         </div>
-        
+
         <br/>
-        
-        <table class="table table-borderd"> 
+
+        <table class="table table-borderd">
 			<thead>
 				<tr class="info">
 					<th>เลขที่บิล</th>
@@ -540,7 +480,7 @@
 					<th>จำนวนออกบิล</th>
 					<th>หน่วย</th>
 					<th>จำนวนเงินสุทธิ <br/>(รวม VAT)</th>
-					
+
 				</tr></thead>
 			<tbody>
 				<tr>
@@ -550,9 +490,9 @@
 					<td>5</td>
 					<td>4</td>
 					<td>1,644</td>
-					
+
 				</tr>
-				
+
 			</tbody>
     	</table>
       </div>
