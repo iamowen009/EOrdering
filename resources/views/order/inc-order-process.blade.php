@@ -7,10 +7,10 @@
             <li class="title-year"  ng-repeat="y in ordersYear">
               <a href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-@{{y}}"><i class="fa fa-plus"></i></a> <strong>@{{y}}</strong>
               <ul class="bar-month" >
-                <li id="collapse-@{{y}}" ng-repeat="month in ordersYearMonth " >
-                  <a href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-@{{month}}"><i class="fa fa-plus"></i></a> @{{ txtmonth(month) }}
+                <li id="collapse-@{{y}}" ng-repeat="m in ordersYearMonth | orderBy:'-m'">
+                  @{{ txtmonth(m) }} - @{{ m}} - @{{ y }}
                     <ul class="bar-list">
-                      <li id="collapse-@{{month}}">
+                      <li>
                           <table class="table table-striped">
         											<thead>
         													<tr class="info">
@@ -24,7 +24,7 @@
         													</tr>
                               </thead>
         											<tbody>
-        													<tr ng-repeat="list in ordersList | orderBy:docDate" ng-if="list.month == month">
+        													<tr ng-repeat="list in ordersList | orderBy:docDate" ng-if="list.month === m">
         															<td>@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
         															<td>@{{ list.docName}}</td>
         															<td><a data-toggle="modal" data-target="#invoiceModal">@{{ list.docNumber }}</a></td>

@@ -8,11 +8,9 @@
     width: 1000px!important;
     margin: 0 auto;
 }
-.nav-tabs > li.active{
-	background-color:rgb(193,193,193) !important;
-}
+
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
-	background-color:rgb(193,193,193);
+	background-color:blue !important;
 	border:none;
 }
 .modal-dialog-invoice {
@@ -21,6 +19,23 @@
     margin: 10px;
     width: 1000px;
 	margin: 30px auto;
+}
+a.nav-link.tab2:hover,
+a.nav-link.tab1:hover,
+a.nav-link.tab2:active,
+a.nav-link.tab1:active{
+  background: #868e96 !important;
+}
+
+a.nav-link.tab2 {
+    background: orange;
+}
+a.nav-link.tab1 {
+    background: blue;
+}
+.datelbl{
+  float: left;
+  padding-top: 5px;
 }
 </style>
 @stop
@@ -37,10 +52,8 @@
 
 
             	<form class="form-inline">
-                  <div class="form-group col-md-3">
-                  	<div class="col-md-2 col-xs-2">
-                    <label>วันที่ : &nbsp;</label>
-                    </div>
+                  <div class="form-group col-md-4">
+                  	<label class="datelbl">วันที่ : &nbsp;</label>
                         <div class="dropdown input-group dropdown-start-parent">
           						    <a  id="dropdownStart" role="button" data-toggle="dropdown" data-target=".dropdown-start-parent"
           						       href="#">
@@ -57,10 +70,8 @@
           						    </ul>
           						</div>
                   </div>
-                  <div class="form-group col-md-3">
-                  	<div class="col-md-3">
-                      <label>ถึงวันที่ : &nbsp;</label>
-                    </div>
+                  <div class="form-group col-md-4">
+                      <label class="datelbl">ถึงวันที่ : &nbsp;</label>
                     <div class="col-md-9">
                         <div class="dropdown input-group dropdown-end-parent">
             						    <a  id="dropdownEnd" role="button" data-toggle="dropdown" data-target=".dropdown-end-parent"
@@ -88,10 +99,10 @@
 	                        <div class="nav-tabs-horizontal">
 	                            <ul class="nav nav-tabs tab-order" role="tablist">
 	                                <li class="nav-item active">
-	                                    <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
+	                                    <a class="nav-link tab1" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
 	                                </li>
 	                                <li class="nav-item">
-	                                    <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">ประวัติการสั่งซื้อ<br/>(History Process)</a>
+	                                    <a class="nav-link tab2" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">ประวัติการสั่งซื้อ<br/>(History Process)</a>
 	                                </li>
 	                            </ul>
 	                            <div class="tab-content padding-vertical-20">

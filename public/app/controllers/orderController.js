@@ -37,7 +37,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
                 console.log('month year : ' +  month + ' year is ' + year );
                 //console.log( $scope.ordersYear.indexOf(year) );
                 if ($scope.ordersYearMonth.indexOf(month) === -1)
-                $scope.ordersYearMonth.push( {month );
+                $scope.ordersYearMonth.push( month );
 
                 if ($scope.ordersYear.indexOf(year) === -1)
                 $scope.ordersYear.push( year );

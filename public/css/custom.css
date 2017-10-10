@@ -325,16 +325,11 @@ h2 small, h3 .small{
  * Card component
  */
 .card {
-    background: #667db6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-   /* background-color: #F7F7F7;*/
-    /* just in case there no content*/
+    background: #b2d4dd;
+  /*  background: -webkit-linear-gradient(to top, #667db6, #0082c8, #0082c8, #667db6);  
+    background: linear-gradient(to top, #667db6, #0082c8, #0082c8, #667db6);*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
-  /*  margin-top: 50px;*/
-    /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
@@ -443,6 +438,10 @@ h2 small, h3 .small{
 
 .titlestore{
     color: #0000ff;
+    margin: 0px;
+}
+hr{
+    margin-bottom: 0px !important;
 }
 ul.dropdown-menu.show {
     margin-left: -40px;
@@ -465,4 +464,46 @@ ul.dropdown-menu.show {
     -webkit-line-clamp: 3;
     line-height: 2;
    /* max-height: X*N; */
+}
+.cui-wizard > .content > .body {
+    background: aliceblue !important;
+}
+
+.x_content {
+    background: #ffffcb !important;
+}
+button.cancel {
+    margin-right:30px;
+}
+.sweet-alert p {
+    margin-bottom: 20px !important;
+}
+.showSweetAlert {
+    width: 500px !important;
+    padding: 30px !important;
+}
+.remarkpd{
+    padding: 15px 0px;
+}
+a:hover, a:focus {
+    text-decoration: none !important;
+    outline: none !important; 
+}
+li.nav-item:hover {
+    background: #b4d8fc;
+    padding: 1px;
+    border-radius: 5px;
+}
+button.dropdown-toggle.ng-binding.btn.btn-default {
+    width: 230px;
+    text-align: right;
+}
+.pdprice{
+    padding-top: 7px;
+}
+button.confirm {
+    background: #3184be !important;
+}
+.sweet-alert button.cancel {
+    background-color: orange !important;
 }

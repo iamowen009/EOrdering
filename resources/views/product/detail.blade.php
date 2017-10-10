@@ -125,7 +125,7 @@ select.form-control{
 
                 				<div class="form-group" ng-show="productSelect.productId">
 			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคา(บาท)</label>
-			                        <div class="col-md-9 col-sm-9 col-xs-12">
+			                        <div class="pdprice col-md-9 col-sm-9 col-xs-12">
 			                         	<font color="red"><strong>{{productSelect.productPrice | number:2 }}</strong></font>
 			                        </div>
 			                      </div>
@@ -195,7 +195,7 @@ select.form-control{
 
 							  <div class="form-group" ng-show="productSelect.productId">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคารวม(บาท)</label>
-		                        <div class="col-md-9 col-sm-9 col-xs-12">
+		                        <div class="pdprice col-md-9 col-sm-9 col-xs-12">
 		                         	<font color="#00BFFF"><strong>{{+productSelect.productPrice * +cartProductQty | number:2}}</strong></font>
 		                        </div>
 		                      </div>
@@ -242,7 +242,7 @@ select.form-control{
 		                    </div>-->
 
 		                    <div class="cui-ecommerce--product--controls">
-		                        <button type="button" class="btn btn-icon btn-default btn-sm margin-right-15" ng-click="toHistory(btf.marketingCode)">
+		                        <button type="button" class="btn btn-icon btn-primary btn-sm margin-right-15" ng-click="toHistory(btf.marketingCode)">
 		                            <i class="icmn-cart5 margin-right-5"></i>
 		                            ย้อนกลับ
 		                        </button>
@@ -257,7 +257,7 @@ select.form-control{
 		                           	<i>Add to Cart</i>
 		                        </button>
 
-		                        <button type="button" class="btn btn-icon btn-default btn-sm margin-right-15" ng-click="toHome()">
+		                        <button type="button" class="btn btn-icon btn-primary btn-sm margin-right-15" ng-click="toHome()">
 		                            <i class="icmn-cart5 margin-right-5"></i>
 		                            กลับสู่หน้าหลัก
 		                        </button>
@@ -321,7 +321,7 @@ select.form-control{
 		                    </div>
 		                </div>
 
-		                <div class="col-lg-12">
+		                <div class="col-lg-12 remarkpd">
 							<font color="red">หมายเหตุ: บริษัทสงวนสิทธิ์ในการเปลี่ยนแปลงรายการใดโดยมิต้องแจ้งให้ทราบล่วงหน้า ตลอดจนความผิดพลาดที่เกิดจากการพิมพ์</font>
 		                </div>
 		            </div>

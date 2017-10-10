@@ -10,6 +10,7 @@ select.form-control{
 .img-product{
   height: 50px;
   width: 50px;
+  margin: 0px 40px 0px -40px;
 }
 .wizard > .actions {
     text-align: center;
@@ -173,7 +174,7 @@ select.form-control{
                                   </div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่ต้องการ* :</label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่ต้องการ :</label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
 
                                     <select
@@ -199,7 +200,7 @@ select.form-control{
                                 </div>
                                 <div class="form-group col-md-6" ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
 
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง* :</label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select
                                         name="ship_id" id="ship_id"
@@ -239,7 +240,7 @@ select.form-control{
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง* :  </label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง :  </label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select
                                         name="trans_id" id="trans_id"

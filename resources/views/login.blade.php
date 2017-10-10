@@ -23,87 +23,83 @@
 </head>
 
 <body ng-app="app" ng-controller="AppController">
-
     <div ng-controller="LoginController">
         @verbatim
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-toa fixed-top">
-          <a class="navbar-brand" href="#"><img src="<?= asset('images/logo-TOA.png') ?>" style="width:40%;"></a>
+        <div class="row">
+          <a class="navbar-brand" href="#"><img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
+        </div>
         </nav>
 
         <p class="text-center" ng-show="loading_config"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
         <header>
 
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('{{slideshows1}}')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <!--<h3>First Slide</h3>
-                            <p>This is a description for the first slide.</p>-->
-                        </div>
-                    </div>
-                    <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('{{slideshows2}}')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <!--<h3>Second Slide</h3>
-                            <p>This is a description for the second slide.</p>-->
-                        </div>
-                    </div>
-                    <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('{{slideshows3}}')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <!--<h3>Third Slide</h3>
-                            <p>This is a description for the third slide.</p>-->
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+
         </header>
-
-
-         <!-- Page Content -->
-      <div class="content">
-        <div class="row" >
-            <div class="col-sm-8">
-                <div class="panel panel-default">
-                      <div class="panel-heading text-center">รายละเอียดเพิ่มเติม</div>
-                      <div class="panel-body">
-                        <br/>
-                        <div ng-bind-html="loginDescription"></div>
-                      </div>
-                </div>
+        <div class="section2">
+        <div class="row">
+            <div class="col-md-8">
+                <section>
+                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <!-- Slide One - Set the background image for this slide in the line below -->
+                                <div class="carousel-item active" style="background-image: url('{{slideshows1}}')">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <!--<h3>First Slide</h3>
+                                        <p>This is a description for the first slide.</p>-->
+                                    </div>
+                                </div>
+                                <!-- Slide Two - Set the background image for this slide in the line below -->
+                                <div class="carousel-item" style="background-image: url('{{slideshows2}}')">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <!--<h3>Second Slide</h3>
+                                        <p>This is a description for the second slide.</p>-->
+                                    </div>
+                                </div>
+                                <!-- Slide Three - Set the background image for this slide in the line below -->
+                                <div class="carousel-item" style="background-image: url('{{slideshows3}}')">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <!--<h3>Third Slide</h3>
+                                        <p>This is a description for the third slide.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+            </section>
 
             </div>
-            <div class="col-sm-4">
-                <div class="panel panel-default">
-                      <div class="panel-body" style="min-height:305px;">
+            <div class="col-md-4">
 
-                        <form class="form-horizontal form-label-left input_mask" ng-submit="dologin()">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="../images/iconlogin.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-horizontal form-label-left input_mask" ng-submit="dologin()">
                             <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
 
-                          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                          <div class="col-md-12 form-group has-feedback">
                             <input class="form-control has-feedback-left" id="username" placeholder="Username" type="text" ng-model="loginData.username" style="margin-top:6px;">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true" style="padding-top:6px;"></span>
                           </div>
 
-                          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                          <div class="col-md-12 form-group has-feedback">
                             <input type="password" class="form-control" id="password" placeholder="Password" type="text" ng-model="loginData.password" style="margin-top:6px;">
                             <span class="fa fa-eye form-control-feedback right" aria-hidden="true" style="padding-top:6px;" ></span>
                           </div>
@@ -141,14 +137,38 @@
 
                           <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                              <button type="submit" class="btn btn-sm btn-primary" >Login</button>
+                              <button style="background: #169bd4;border-radius: 5px;min-width: 100%;" type="submit" class="btn btn-sm btn-primary" >Login</button>
                             </div>
                           </div>
 
                         </form>
 
+        </div><!-- /card-container -->
+
+
+
+
+
+            </div>
+
+        </div><!--row-->
+        </div><!--section2-->
+
+         <!-- Page Content -->
+      <div class="content">
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                      <div class="panel-heading text-center">รายละเอียดเพิ่มเติม</div>
+                      <div class="panel-body">
+                        <br/>
+                        <div ng-bind-html="loginDescription"></div>
                       </div>
                 </div>
+
+            </div>
+            <div class="col-sm-4">
+                <!--Login-->
             </div>
         </div>
         <!-- /.row -->
@@ -160,12 +180,12 @@
 
 
 
-    <script type="text/javascript">
-      var _base = "{{ url('/') }}";
-    </script>
 
     <!-- Bootstrap core JavaScript -->
 
+    <script type="text/javascript">
+        var _base = '{{ url('/') }}';
+    </script>
     <script src="<?= asset('js/jquery.min.js') ?>"></script>
     <script src="<?= asset('js/popper.min.js') ?>"></script>
     <script src="<?= asset('js/bootstrap.min.js') ?>"></script>

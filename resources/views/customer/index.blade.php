@@ -41,7 +41,7 @@
 				                      <div class="panel-body text-center storename .h-100" ng-click="toHome(customer.customerId)">
 				                        <br/>
 										<label>{{ customer.customerCode }}</label>
-										<p style="font-size:1.1em;"><a style="cursor: pointer;">{{ customer.customerName }}</a></p>
+										<p style="font-size:1em;"><a style="cursor: pointer;">{{ customer.customerName }}</a></p>
 				                      </div>
 				                      @endverbatim
 				                    </div>

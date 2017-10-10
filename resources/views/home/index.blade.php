@@ -17,7 +17,7 @@ select.form-control{
 		<div class="row " ng-controller="HomeController">
 			<div class="col-md-2 col-sm-2 col-xs-12">
 				<div>
-                  <div class="panel-heading text-center" style="background-color:#4700ff;color:#fff">รายการสินค้า </div>
+                  <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
                   <div class="category-home">
                     
                     <ul class="list-unstyled user_data" style="font-size:0.95em">
@@ -95,13 +95,13 @@ select.form-control{
 							 <div class="clearfix"></div>
 		                     <div class="form-group">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">กลุ่มผลิตภัณฑ์</label>
-		                        <div class="col-md-2 col-sm-2 col-xs-9">
-		                        	<div ng-dropdown-multiselect="" options="marketings" selected-model="marketingmodel" checkboxes="true" ></div>
+		                        <div class="col-md-3 col-sm-3 col-xs-9">
+		                        	<div class="selectgroup" ng-dropdown-multiselect="" options="marketings" selected-model="marketingmodel" checkboxes="true" ></div>
 		                         	<!--<select class="form-control" > extra-settings="example4settings" 
 		                         		<option ng-repeat="marketing in marketings" value="{{ marketing.marketingCodes}}"> {{ marketing.marketingDesc }}</option>
 		                         	</select>-->
 		                        </div>
-		                        <div class="col-md-7 col-sm-7 col-xs-3"><input type="button" class="btn btn-info" value="refresh" ng-click="update()"></div>
+		                        <div class="col-md-6 col-sm-6 col-xs-3"><input type="button" class="btn btn-info" value="refresh" ng-click="update()"></div>
 		                      </div>
 
 		                      <div class="form-group" ng-show="marketingmodel.length>0">
@@ -127,8 +127,8 @@ select.form-control{
 								        <!--<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionHdId)" style="width:70%;">-->
 								    </span>
 								    <div class="media-body" ng-click="toPromotionList(promotion.promotionHdId)">
-								        <h6 class="media-heading">{{ promotion.promotionName }}</h6>
-								        <div ng-bind-html="promotion.promotionDesc"></div>
+								        <h4 class="media-heading">{{ promotion.promotionName }}</h4>
+								        <!-- <div ng-bind-html="promotion.promotionDesc"></div> -->
 								    </div>
 								</div>
 						</div>

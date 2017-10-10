@@ -482,7 +482,7 @@
 
 }
 .nav-tabs.tab-order > li > a {
-    background-color: rgb(255, 204, 102);
+ /*   background-color: rgb(255, 204, 102);*/
     color:#fff !important;
 }
 .nav-tabs.tab-order > li > a.active,

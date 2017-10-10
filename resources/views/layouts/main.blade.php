@@ -290,9 +290,9 @@
                 </div>
             </div>
             <div class="modal-footer text-center">
-                <button class="col-md-3 btn btn-default" type="button" ng-click="removeAll()">ลบทั้งหมด</button>
-                <button class="col-md-3 btn btn-default" type="button" ng-click="toShop()">เลือกซื้อต่อ</button>
-                <button class=" col-md-3 btn btn-default" type="button" ng-click="order()">สั่งซื้อ</button>
+                <button class="col-md-3 btn btn-danger" type="button" ng-click="removeAll()">ลบทั้งหมด</button>
+                <button class="col-md-3 btn btn-primary" type="button" ng-click="toShop()">เลือกซื้อต่อ</button>
+                <button class=" col-md-3 btn btn-success" type="button" ng-click="order()">สั่งซื้อ</button>
             </div>
         </script>
         @endverbatim
