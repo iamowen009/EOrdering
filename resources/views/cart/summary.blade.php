@@ -170,7 +170,7 @@ select.form-control{
                                 <br>
                             </div>
 
-                    </section>
+                  
                 </div>
 
                 <div class="col-md-12 text-center">

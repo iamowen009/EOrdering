@@ -1,0 +1,35 @@
+#nestable1 a{color:#00BFFF !important;}
+.modal-lg {
+    width: 1000px!important;
+    margin: 0 auto;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	background-color:blue !important;
+	border:none;
+}
+.modal-dialog-invoice {
+    position: relative;
+    width: auto;
+    margin: 10px;
+    width: 1000px;
+	margin: 30px auto;
+}
+a.nav-link.tab2:hover,
+a.nav-link.tab1:hover,
+a.nav-link.tab2:active,
+a.nav-link.tab1:active{
+  background: #868e96 !important;
+}
+
+a.nav-link.tab2 {
+    background: orange;
+}
+a.nav-link.tab1 {
+    background: blue;
+}
+.datelbl{
+  float: left;
+  padding-top: 5px;
+}
+.total_price{color:#00BFFF;}

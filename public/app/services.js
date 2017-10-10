@@ -707,3 +707,55 @@ angular.module('app')
     }
 
 }])
+
+.service('OrderPrecessInfo', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        /**
+        * Fetch all products
+        */
+        fetchOne: function (saleOrderNumber)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderPrecessInfo?saleOrderNumber='+saleOrderNumber;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured  Order Precess Info ');
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+}])
+
+.service('OrderProcessTracking', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        /**
+        * Fetch all products
+        */
+        fetchOne: function (saleOrderNumber)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderProcessTracking?saleOrderNumber='+saleOrderNumber;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured  Order Precess tracking ');
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+}])

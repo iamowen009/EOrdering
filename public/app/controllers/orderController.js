@@ -1,6 +1,6 @@
 "use strict";
 app.controller('OrderController',
-function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInfo) {
+function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInfo,OrderPrecessInfo,OrderProcessTracking) {
         /* Bindable functions
 		 -----------------------------------------------*/
 		$scope.endDateBeforeRender = endDateBeforeRender;
@@ -8,6 +8,8 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		$scope.startDateBeforeRender = startDateBeforeRender;
 		$scope.startDateOnSetTime = startDateOnSetTime;
     $scope.orders = {};
+		$scope.inv = {};
+		//$scope.detail = {};
     $scope.ordersYear = [];
     $scope.ordersYearMonth = [];
     $scope.ordersList = [];
@@ -67,6 +69,44 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
       }
     }
 
+		$scope.OrderInfo = function(orderId){
+				Orders.fetchOne(orderId).then(function (response) {
+            if(response.data.result=='SUCCESS'){
+								var head = response.data.data.order,
+										detail = response.data.data.orderDetailList;
+										$scope.inv = head;
+										$scope.detail = detail;
+										$scope.totalAmount=0;
+										for(var key in $scope.detail){
+                        $scope.totalAmount += $scope.detail[key]['totalAmount'];
+                        $scope.totalQty += $scope.detail[key]['qty'];
+
+
+                    }
+								$('#invoiceModal').modal('show');
+						}else{
+						}
+				});
+		}
+
+		$scope.tracking = function(orderId){
+			OrderProcessTracking.fetchOne(orderId).then(function (response) {
+				if(response.data.result=='SUCCESS'){
+						$('#invoiceModal').modal('show');
+				}else{
+				}
+		});
+		}
+
+		$scope.shipto = function(key){
+				var arr = {
+					'02' : 'ส่งโดยบริษัทขนส่ง',
+					'03' : 'ส่งโดยบริษัทขนส่ง',
+					'08' : 'ส่งโดย TOA  No charge',
+				};
+				return arr[key] ? arr[key] : 'รับสินค้าเอง';
+		}
+
 
 
     $scope.txtmonth = function(monthYear){
@@ -105,7 +145,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		    var activeDate = moment($scope.dateRangeEnd);
 
 		    $dates.filter(function (date) {
-		      return date.localDateValue() >= activeDate.valueOf()
+		      return date.localDateValue() >= activeDate.valueOf().format('YYYY-MM-DD HH:mm:ss').replace(' ','T')
 		    }).forEach(function (date) {
 		      date.selectable = false;
 		    })
@@ -124,7 +164,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
         console.log('dateRangeStart true');
         //console.log(activeDate)
 		    $dates.filter(function (date) {
-		      return date.localDateValue() <= activeDate.valueOf()
+		      return date.localDateValue() <= activeDate.valueOf().format('YYYY-MM-DD HH:mm:ss').replace(' ','T')
 		    }).forEach(function (date) {
           console.log('date selectable false');
 		      date.selectable = false;
