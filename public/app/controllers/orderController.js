@@ -92,10 +92,16 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		$scope.tracking = function(orderId){
 			OrderProcessTracking.fetchOne(orderId).then(function (response) {
 				if(response.data.result=='SUCCESS'){
+            var len = 0;
 						$scope.orderProcessHeaderList = response.data.data.orderProcessHeaderList;
 						$scope.orderProcessOrderItemList = response.data.data.orderProcessOrderItemList;
 						$scope.orderProcessShipmentList = response.data.data.orderProcessShipmentList;
-						$('#orderModal').modal('show');
+            len = parseInt( $scope.orderProcessHeaderList.length ) + parseInt( $scope.orderProcessOrderItemList.length ) + parseInt( $scope.orderProcessShipmentList.length );
+            if( len > 0 ){
+						    $('#orderModal').modal('show');
+            }else{
+                swal('สินค้ายังอยู่ในสถานะรอจัดส่ง');
+            }
 				}else{
 				}
 		});
