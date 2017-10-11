@@ -263,6 +263,20 @@ angular.module('app')
             });
 
             return deferred.promise;
+        },
+        fetchHistory: function (orderId)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderHistory';
+
+            $http.get( url , { params: {orderId: orderId}}).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching order history');
+            });
+
+            return deferred.promise;
         }
 
     }

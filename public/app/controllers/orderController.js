@@ -12,8 +12,10 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		//$scope.detail = {};
     $scope.ordersYear = [];
     $scope.ordersYearMonth = [];
+    $scope.ordersYm = [];
     $scope.ordersList = [];
     var arr = [];
+    var Ym = [];
 
     fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
 
@@ -36,10 +38,22 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 
                 var month = moment($scope.orders[k].docDate).format('YYYY-MM');
                 var year = moment($scope.orders[k].docDate).format('YYYY');
-                console.log('month year : ' +  month + ' year is ' + year );
-                //console.log( $scope.ordersYear.indexOf(year) );
+                //console.log('month year : ' +  month + ' year is ' + year );
+								Ym = {
+									'year' : year,
+									'month' : month
+								};
+								//console.log( Ym.month + ' | ' + checkArr( $scope.ordersYm ,month));
+								//console.log($scope.ordersYm);
+								if(checkArr( $scope.ordersYm ,month) == 0){
+									$scope.ordersYm.push(Ym);
+									//console.log('push ym ');
+								}
+								//console.log( $scope.ordersYear.indexOf(year) );
                 if ($scope.ordersYearMonth.indexOf(month) === -1)
                 $scope.ordersYearMonth.push( month );
+                $scope.ordersYearMonth.sort();
+
 
                 if ($scope.ordersYear.indexOf(year) === -1)
                 $scope.ordersYear.push( year );
@@ -60,6 +74,8 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
                 console.log('scope orders year month');
                 console.log($scope.ordersYearMonth);
                 console.log($scope.ordersYear);
+                console.log('$scope.ordersYm');
+                console.log($scope.ordersYm);
                 console.log('$scope.ordersList');
                 console.log($scope.ordersList);
                 //console.log(arr);
@@ -68,6 +84,17 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
         });
       }
     }
+
+		function checkArr(arr,val){
+			var x = 0;
+			if(arr.length){
+					for( var k in arr ){
+						if(arr[k].month == val )
+							x = 1;
+					}
+			}
+			return x;
+		}
 
 		$scope.OrderInfo = function(orderId){
 				Orders.fetchOne(orderId).then(function (response) {
@@ -106,6 +133,32 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 				}
 		});
 		}
+
+		$scope.ordersStatus = function(orderId){
+			OrderProcessTracking.fetchOne(orderId).then(function (response) {
+				if(response.data.result=='SUCCESS'){
+						var len = 0;
+						$scope.orderProcessHeaderList = response.data.data.orderProcessHeaderList;
+						$scope.orderProcessOrderItemList = response.data.data.orderProcessOrderItemList;
+						$scope.orderProcessShipmentList = response.data.data.orderProcessShipmentList;
+						len = parseInt( $scope.orderProcessHeaderList.length ) + parseInt( $scope.orderProcessOrderItemList.length ) + parseInt( $scope.orderProcessShipmentList.length );
+						if( len > 0 ){
+								$('#orderDetailModal').modal('show');
+						}else{
+								swal('สินค้ายังอยู่ในสถานะรอจัดส่ง');
+						}
+				}else{
+				}
+			});		}
+			$scope.ordersHistory = function(orderId){
+				ordersHistory.fetchHistory(orderId).then(function (response) {
+					if(response.data.result=='SUCCESS'){
+
+					}else{
+
+					}
+				});
+			}
 
 		$scope.shipto = function(key){
 				var arr = {
