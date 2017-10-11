@@ -92,7 +92,10 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		$scope.tracking = function(orderId){
 			OrderProcessTracking.fetchOne(orderId).then(function (response) {
 				if(response.data.result=='SUCCESS'){
-						$('#invoiceModal').modal('show');
+						$scope.orderProcessHeaderList = response.data.data.orderProcessHeaderList;
+						$scope.orderProcessOrderItemList = response.data.data.orderProcessOrderItemList;
+						$scope.orderProcessShipmentList = response.data.data.orderProcessShipmentList;
+						$('#orderModal').modal('show');
 				}else{
 				}
 		});

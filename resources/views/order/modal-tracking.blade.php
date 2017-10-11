@@ -4,8 +4,12 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header info">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Order/Bill Tracking</h4>
+        <div class="col-sm-1">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+      	</div>
+        <div class="col-sm-11 text-center">
+        	<h4 class="modal-title">Order/Bill Tracking</h4>
+        </div>
       </div>
       <div class="modal-body">
         <div>

@@ -36,7 +36,7 @@
                                           </div>
                                         </div>
                                       </td>
-        															<td class="text-center"><a data-toggle="modal" class="text-success" data-target="#orderModal"><i class="fa fa-newspaper-o"></a></td>
+        															<td class="text-center"><a href="javascript:void(0)" class="text-success" ng-click="tracking( list.orderId )"><i class="fa fa-newspaper-o"></a></td>
         													</tr>
         											</tbody>
                           </table>
