@@ -73,7 +73,7 @@
 		                        <label class="col-md-1 col-sm-1 col-xs-12">กรองจาก </label>
 		                        <div class="col-md-10 col-sm-10 col-xs-12">
 
-		                        	<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getFilter(marketingCode,m.marketingCode).length>0">{{m.marketingDesc}}</span>
+		                        	<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getFilter(marketingCode,m.marketingCode).length>0">{{m.marketingDesc}} <a ng-if="m.marketingCode != marketingCode[0]" ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;" href=""><i class="fa fa-times"></i></a></span>
 
 									<span style="margin-right:5px;" class="label label-info" ng-repeat="b in brandsFilter" ng-show="getFilter(brandCode,b.brandCode).length>0">{{b.brandDesc}}</span>
 

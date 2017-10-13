@@ -19,7 +19,7 @@
     <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
 
     <link href="<?= asset('node_modules/sweetalert/lib/sweet-alert.css') ?>" rel="stylesheet">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body ng-app="app" ng-controller="AppController">
@@ -125,14 +125,7 @@
                           <div class="ln_solid"></div>
 
                          <div ng-show="logintime>=3">
-                          <div
-                            vc-recaptcha
-                            theme="'light'"
-                            key="model.key"
-                            on-create="setWidgetId(widgetId)"
-                            on-success="setResponse(response)"
-                            on-expire="cbExpiration()"
-                            ></div>
+                          <div class="g-recaptcha" data-sitekey="6LeZTjQUAAAAAJvXr2P_Acir9D5T8YwcBQTcCQyh"></div>
                           </div>
 
                           <div class="form-group">

@@ -199,7 +199,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		}
 
 		function endDateOnSetTime () {
-		  $scope.$broadcast('end-date-changed');
+		  //$scope.$broadcast('end-date-changed');
 		}
 
 		function startDateBeforeRender ($dates) {
@@ -228,7 +228,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 		    $dates.filter(function (date) {
 		      return date.localDateValue() <= activeDate.valueOf().format('YYYY-MM-DD HH:mm:ss').replace(' ','T')
 		    }).forEach(function (date) {
-          console.log('date selectable false');
+          console.log( 'date selectable false' );
 		      date.selectable = false;
 		    })
 		  }else{
