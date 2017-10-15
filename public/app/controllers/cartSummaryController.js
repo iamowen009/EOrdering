@@ -1,11 +1,14 @@
 "use strict";
 app.controller('CartSummaryController',
-    function ($scope, $http,Customers,Carts,Orders) {
-        
+    function ($scope, $http,Customers,Carts,Orders,Config,Products) {
+
        $scope.orderId = [window.location.href.split('/').pop()];
        $scope.loading = true;
        fetchOrder($scope.orderId);
-       
+       $scope.partImgProduct = Config.partImgProduct();
+       $scope.shipaddress = '-';
+       console.log('$scope.partImgProduct' + $scope.partImgProduct );
+
 
        function fetchOrder(orderId) {
             Orders.fetchOne(orderId).then(function (response) {
@@ -33,6 +36,24 @@ app.controller('CartSummaryController',
                 $scope.loading = false;
             });
        }
+       $scope.imgProduct = function(productId){
+          // return productInfo(productId);
+       }
+
+       function productInfo(productId){
+         var imgProduct = '';
+         /*
+         Products.fatchInfo(productId).then(function(response){
+           if(response.data.result=='SUCCESS'){
+               imgProduct = response.data.data.btfCode;
+           }
+
+           $scope.loading = false;
+         });
+         */
+         return imgProduct;
+       }
+
 
        function prepareOrder(customerId){
           Orders.fetchAll(customerId).then(function (response) {
@@ -42,7 +63,7 @@ app.controller('CartSummaryController',
 
                     $scope.ship = getFilter($scope.ships,$scope.order.shipId);
                     $scope.shipaddress = $scope.ship[0].address+' '+$scope.ship[0].street+' '+$scope.ship[0].subdistrict+' '+$scope.ship[0].districtName+' '+$scope.ship[0].cityName;
-                  
+
                 }
                 $scope.loading = false;
             });
@@ -50,7 +71,7 @@ app.controller('CartSummaryController',
        var getFilter = function(results, valueStartsWith){
             return _.filter(results, function(d){ return d['shipId'] == valueStartsWith; })
         }
-       
-       
+
+
 
  })

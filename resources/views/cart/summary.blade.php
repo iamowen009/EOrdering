@@ -141,7 +141,10 @@ select.form-control{
                                 <tbody>
                                 <tr ng-repeat="item in carts track by $index">
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
+                                    <td class="text-center">
+                                        <img class="img-product" src="{{partImgProduct + '/' + item.btf }}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+                                        {{item.productCode}}
+                                    </td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
                                     <td class="text-right">{{ item.qty | number }}
                                     </td>
@@ -170,7 +173,7 @@ select.form-control{
                                 <br>
                             </div>
 
-                  
+
                 </div>
 
                 <div class="col-md-12 text-center">

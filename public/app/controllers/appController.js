@@ -230,11 +230,14 @@ app.controller('AppController',
         }
         console.log(Auth.userTypeDesc());
         $scope.toHome = function(){
+          /*
             if(Auth.userTypeDesc()=='Multi'){
                 window.location= _base + '/customer';
             }else{
                 window.location= _base + '/home/'+Customers.customerId();
             }
+            */
+            window.location= _base + '/home/'+Customers.customerId();
         }
 
         $scope.logout = function(){
