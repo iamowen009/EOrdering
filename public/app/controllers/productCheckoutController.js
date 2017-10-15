@@ -39,7 +39,7 @@ app.controller('ProductCheckoutController',
        $scope.ships={};
        $scope.transports={};
        $scope.carts = {};
-       $scope.pay = {'name':'CASH'};
+       //$scope.pay = {'name':'CASH','name':'CREDIT'};
        $scope.partImgProduct = Config.partImgProduct();
        $scope.shipaddress = '-';
        console.log('$scope.partImgProduct' + $scope.partImgProduct );
@@ -63,6 +63,11 @@ app.controller('ProductCheckoutController',
             });
        }
 
+       $scope.paidType = function(showPaid){
+          console.log('showPaid : ' + showPaid );
+           $scope.paid = showPaid;
+       }
+
        function prepareOrder(customerId){
          console.log('prepareOrder');
        		Orders.fetchAll(customerId).then(function (response) {
@@ -70,6 +75,7 @@ app.controller('ProductCheckoutController',
                 if(response.data.result=='SUCCESS'){
                     $scope.customer = response.data.data.customerInfo;
                     $scope.requests = response.data.data.requestDateList;
+
                     for(var key in $scope.requests){
 
                         var list_date = $scope.requests[key]['reqDate'].split('T');
@@ -146,8 +152,11 @@ app.controller('ProductCheckoutController',
 
         }
         $scope.removeQty = function(field){
+
             $scope.editing = $scope.carts.indexOf(field);
             $scope.newField = angular.copy(field);
+            console.log('new qty ' + $scope.newField['qty']);
+          if( $scope.newField['qty'] > 1 ){
             $scope.newField['qty']-=1;
             $scope.carts[$scope.editing] = $scope.newField;
             $scope.loadingcart = true;
@@ -166,6 +175,7 @@ app.controller('ProductCheckoutController',
 
                     console.log(response);
             });
-        }
+          }
+      }
 
  })

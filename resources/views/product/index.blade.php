@@ -1,19 +1,7 @@
 @extends('layouts.main')
 
 @section('head')
-<style>
-
-.menu-body{
-	height:300px;
-	overflow:auto;
-}
-.cui-ecommerce--catalog--item--img {
-    height: 220px !important;
-}
-.cui-ecommerce--catalog--item--img a img {
-    max-height: 220px; */
-}
-</style>
+<link rel="stylesheet" href="{{ asset('css/product.css') }}" />
 @stop
 
 @section('content')
@@ -97,45 +85,11 @@
 							        <div ng-bind-html="promotion.promotionDesc"></div>
 							    </div>
 							</div>
-
-				            <!--<div class="media col-lg-6 col-md-6">
-							    <span class="media-left">
-							        <img src="http://placehold.it/250x150" alt="...">
-							    </span>
-							    <div class="media-body">
-							        <h6 class="media-heading">สุดค้มมากมาก</h6>
-							        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.
-							    </div>
-							</div>-->
-
 						</div>
 						<br/>
 						</div>
 
                       <div class="panel-body">
-
-
-                        <!--<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
-						<form class="form-horizontal form-label-left">
-	                        <div class="form-group">
-		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สีทาอาคาร</label>
-		                        <div class="col-md-9 col-sm-9 col-xs-12">
-		                         พบสินค้าจำนวน 1551 รายการ
-		                        </div>
-		                      </div>
-
-							 <div class="clearfix"></div>
-		                     <div class="form-group">
-		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">กรองจาก </label>
-		                        <div class="col-md-9 col-sm-9 col-xs-12">
-
-		                        </div>
-		                      </div>
-                         </form>
-
-
-                         <div class="clearfix"></div>
-                         <br/>-->
 						<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
                          <div class="cui-ecommerce--catalog">
 			                <div class="row">
@@ -149,33 +103,16 @@
 			                                    <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked"><!-- --></i>
 			                                    <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
 			                                </div>
+																			<span class="favorite-icon"><i class="fa fa-star"></i></span>
 			                                <a href="javascript: void(0);">
-			                                    <img src="{{partImgProduct}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+			                                    <img src="{{partImgProduct}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" class="img-responsive img-product">
 			                                </a>
 			                            </div>
-			                            <div class="text-center">
-											<h6 class="ng-binding">{{product.btfWebDescTh}}</h6>
-											<br>
-			                            	<span class="price ng-binding">{{product.productPrice}}</span>
+			                            <div class="text-center product-desc">
+																			<h5 class="ng-binding">{{product.btfWebDescTh}}</h5>
+																			<br>
+			                            		<span class="price ng-binding">{{product.productPrice}}</span>
 			                            </div>
-
-			                            <!--<div class="cui-ecommerce--catalog--item--title">
-			                                <a href="javascript: void(0);">Elliot Glasses</a>
-			                                <div class="cui-ecommerce--catalog--item--price">
-			                                    $678.00
-			                                    <div class="cui-ecommerce--catalog--item--price--old">
-			                                        $754.00
-			                                    </div>
-			                                </div>
-			                            </div>
-			                            <div class="cui-ecommerce--catalog--item--descr">
-			                                <div class="cui-ecommerce--catalog--item--descr--sizes">
-			                                    <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Size S">S</span>
-			                                    <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Size M">M</span>
-			                                    <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Size XL">XL</span>
-			                                </div>
-			                                Including Lenses
-			                            </div>-->
 			                        </div>
 			                    </div>
 

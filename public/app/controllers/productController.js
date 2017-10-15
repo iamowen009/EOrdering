@@ -330,9 +330,13 @@ app.controller('ProductDetailController',
             Carts.addCart(cartList,promotionList).then(function (response) {
                 $scope.loading = false;
                 if(response.data.result=='SUCCESS'){
-
-                        swal('เพิ่มสินค้าเรียบร้อยแล้ว');
+                      swal({
+                        title:'',
+                        text:'เพิ่มสินค้าเรียบร้อยแล้ว'},
+                      function(){
                         location.reload();
+                      });
+
                     }else{
                         swal('เพิ่มสินค้าไม่สำเร็จ');
                     }
@@ -420,6 +424,7 @@ app.controller('ProductDetailController',
             $scope.cartProductQty+=1;
         }
         $scope.removeQty = function(){
+            if( $scope.cartProductQty > 1)
             $scope.cartProductQty-=1;
         }
 

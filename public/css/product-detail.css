@@ -1,0 +1,49 @@
+select.form-control{
+	height:auto !important;
+}
+.cui-ecommerce--product--controls .btn {
+    padding: 4px 40px !important;
+		font-weight: bold;
+}
+
+.cui-ecommerce--catalog--item--img a .img {
+    min-height: 250px;
+    max-height: 250px;
+    max-width: 100%;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+.cui-ecommerce--catalog--item--img a img {
+    min-height: 150px;
+    max-width: 100%;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.colorpicker-element .input-group-addon i {
+    display: inline-block;
+    cursor: pointer;
+    height: 16px;
+    vertical-align: text-top;
+    width: 16px;
+}
+.input-group-addon{
+	background-color:#fff;
+	border-right:none;
+	font-weight: bold;
+}
+.colorpicker-element .input-group-addon i {
+    height: 20px;
+    width: 30px;
+}
+.input-group-addon img{
+	width:30px;
+	height:20px;
+}
+.cui-ecommerce--catalog--item--img a img {
+	min-height: 100px;
+}
+button.dropdown-toggle.ng-binding.btn.btn-default {
+    width: 100%;
+    text-align: left;
+}

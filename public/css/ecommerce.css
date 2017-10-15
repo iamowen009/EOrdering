@@ -388,7 +388,36 @@
 .btn{
   height: 34px !important;
 }
-/* Paginate */
+.product-desc{
+  z-index: 9;
+  padding-top:5px;
+  position: relative;
+  height:60px;
+  overflow: hidden;
+}
+/* Start product show
+=========================================================================================== */
+
+.favorite-icon{
+  font-size: 24px;
+  text-align: right;
+  position: absolute;
+  float: right;
+  top:0;
+  right:10px;
+  cursor: pointer;
+  color: #e4e4e1;
+	z-index: 9;
+}
+.favorite-icon:hover i.fa{
+  color: #e8bc02;
+	font-size: 26px;
+
+}
+
+/* Paginate
+=========================================================================================== */
+
 .e-paginate > div > ul{
   float:right;
 }
