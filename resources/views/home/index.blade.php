@@ -120,7 +120,7 @@ select.form-control{
 						<div class="row" >
 					            <div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions">
 								    <span class="media-left">
-								    	<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;">
+								    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;">
 								        <!--<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionHdId)" style="width:70%;">-->
 								    </span>
 								    <div class="media-body" ng-click="toPromotionList(promotion.promotionHdId)">

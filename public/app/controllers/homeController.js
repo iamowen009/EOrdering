@@ -1,6 +1,4 @@
 "use strict";
-
-
 app.controller('HomeController',
     function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService) {
         //retrieve customers listing from API
