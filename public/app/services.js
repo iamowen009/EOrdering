@@ -303,6 +303,20 @@ angular.module('app')
             });
 
             return deferred.promise;
+        },
+        validate: function (promotionId,cartList)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'PromotionValidate';
+
+            $http.get( url , { params: {promotionId: promotionId,cartList:cartList}}).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while validate promotion');
+            });
+
+            return deferred.promise;
         }
 
 	}
@@ -699,6 +713,33 @@ angular.module('app')
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while fetching all order info');
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+}])
+
+
+.service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        /**
+        * Fetch all separations
+        */
+        fetchAll: function (customerId)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'Separations?customerId='+customerId;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching all separations');
             });
 
             return deferred.promise;
