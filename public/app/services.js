@@ -310,7 +310,7 @@ angular.module('app')
             var deferred = $q.defer();
             var url = API_URL + 'PromotionValidate';
 
-            $http.get( url , { params: {promotionId: promotionId,cartList:cartList}}).then(function (data) {
+            $http.post( url , {promotionId: promotionId,cartList:cartList}).then(function (data) {
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while validate promotion');
