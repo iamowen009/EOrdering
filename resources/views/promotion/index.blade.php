@@ -51,17 +51,6 @@
 	.cui-ecommerce--catalog--item--img a img {
 		min-height: 100px;
 	}
-	/* Hide HTML5 Up and Down arrows. */
-
-	input[type="number"]::-webkit-outer-spin-button,
-	input[type="number"]::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-
-	input[type="number"] {
-		-moz-appearance: textfield;
-	}
 </style>
 @stop @section('content')
 <div class="content">
@@ -99,7 +88,7 @@
 										<label>วันที่โปรโมชั่น : &nbsp;</label>
 									</div>
 									<div class="col-md-8">
-										{{promotionHD[0].validFrom | date:'dd/MM/yyyy' }} - {{promotionHD[0].validTo | date:'dd/MM/yyyy' }}
+										{{promotionHD[0].validFrom | date:'dd-MM-yyyy' }} - {{promotionHD[0].validTo | date:'dd-MM-yyyy' }}
 									</div>
 								</div>
 							</div>
@@ -121,8 +110,8 @@
 								<label>Promotion</label>
 							</div>
 							<div class="col-md-1">
-								<label class="form-control text-center" ng-show="!promotionHD[0].promotionSetEdit">{{promotionHD[0].promotionSetTotal}}</label>
-								<input class="form-control text-center" type="number" ng-model="promotionHD[0].promotionSetTotal" ng-show="promotionHD[0].promotionSetEdit" ng-change="minSetTotal()">
+								<label class="form-control text-center" ng-show="!promotionHD[0].promotionSetEdit">{{promotionHD[0].promotionSetValue}}</label>
+								<input class="form-control text-center" type="number" ng-model="promotionHD[0].promotionSetValue" ng-show="promotionHD[0].promotionSetEdit">
 							</div>
 							<div class="col-md-1">
 								<label>Set</label>
@@ -148,7 +137,7 @@
 														<th style="text-align : center;">สินค้า</th>
 														<th style="text-align : center;">ขนาด</th>
 														<th style="width:22%;text-align : center;">สี</th>
-														<th style="width:27%;text-align : center;">จำนวน</th>
+														<th style="width:22%;text-align : center;">จำนวน</th>
 														<th ng-hide="promotionHD[0].isPromotionSet"></th>
 													</tr>
 												</thead>
@@ -167,7 +156,7 @@
 															</select>
 														</td>
 														<td>
-															<label ng-hide="p.colorEdit">{{ p.colorCode }} {{p.colorNameTh}}</label>
+															<label ng-hide="p.colorEdit">{{ p.colorCode }}</label>
 															<div class="form-group" ng-show="p.colorEdit">
 																<div class="dropdown color-element">
 																	<button style="width:100px;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
@@ -192,7 +181,7 @@
 																		<i class="fa fa-minus"></i>
 																	</button>
 																</span>
-																<input class="form-control text-center" type="number" ng-model="p.salesqty" ng-readonly="!p.qtyEdit">
+																<input class="form-control text-center" type="text" ng-model="p.salesqty" ng-readonly="!p.qtyEdit">
 																<span class="input-group-btn">
 																	<button type="button" class="btn btn-default" ng-click="addQty(p.listNo)">
 																		<i class="fa fa-plus"></i>
@@ -294,7 +283,6 @@
 												<tbody>
 													<tr ng-repeat="f in freeGoods">
 														<td>
-															<img class="img" src="{{f.partImgProduct}}/{{f.btf}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px">
 															<label ng-hide="f.btfFreegoodsEdit">{{ f.btfDesc }}</label>
 															<select class="form-control" ng-model="f.btfCode" ng-show="p.btfEdit" ng-change="findSizeFreegoods(f.freeGoodsId,f.btfCode,f.listNo)">
 																<option ng-repeat="s in btfFreegoodsList[f.listNo]" value="{{ s.btfCode}}">{{ s.btfDesc }}</option>
@@ -326,7 +314,7 @@
 															</div>
 														</td>
 														<td>
-															<input class="form-control text-center" type="text" ng-model="f.freeGoodsQty_Rt" ng-readonly="true">
+															<input class="form-control text-center" type="text" ng-model="f.freeGoodsQty" ng-readonly="true">
 														</td>
 														<td>
 															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProductFreegoods(f.freeGoodsId,f.listNo)" ng-show="isCallFreegoods"></i>
@@ -357,21 +345,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr ng-repeat="f in freeGoods_Sel" ng-show="f.selected">
-														<td>
-															<img class="img" src="{{f.partImgProduct}}/{{f.btf}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px"> {{f.productNoSelected}}
-														</td>
-														<td>
-															<span ng-bind-html="f.productNameSelected"></span>
-														</td>
-														<td>{{f.freeQty}}</td>
-														<td>{{f.unitSelected}}</td>
-														<!--<td>{{f.priceSelected}}</td>
-														<td>{{f.totalPrice}}</td>-->
-														<td>
-															<i class="fa fa-trash fa-2x" ng-click="deletedFreegoods(f.freeGoodsId,f.listNo)"></i>
-														</td>
-													</tr>
+
 												</tbody>
 											</table>
 										</ul>
