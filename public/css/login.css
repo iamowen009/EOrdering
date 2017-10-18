@@ -22,3 +22,9 @@
   position: relative;
   z-index: 0;
 }
+
+.login-description h3,
+.login-description strong,
+.login-description span{
+  color:#1e79c0;
+}

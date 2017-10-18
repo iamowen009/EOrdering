@@ -242,6 +242,7 @@ app.controller('AppController',
 
         $scope.logout = function(){
           Auth.logout();
+          window.location.href = _base;
          }
 
         $scope.animationsEnabled = true;

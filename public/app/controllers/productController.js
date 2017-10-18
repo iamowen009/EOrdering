@@ -238,6 +238,7 @@ app.controller('ProductDetailController',
         $scope.productId = {};
         $scope.cartProductQty = 1;
         $scope.productSelect = {};
+        $scope.userId = Auth.userTypeDesc()=='Multi' ? Customers.customerId() : Auth.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
         $scope.btfId = window.location.href.split('/').pop();
@@ -312,8 +313,10 @@ app.controller('ProductDetailController',
         $scope.logout = function(){
             Config.logout();
         }
-
+console.log('userid ' + $scope.userId );
+console.log( Auth.userInfo() );
         $scope.addCart = function(){
+
 
             for(var key in $scope.product){
                 if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']==$scope.cartColor){
@@ -321,7 +324,7 @@ app.controller('ProductDetailController',
                 }
             }
             var cartList = [{
-                customerId: Customers.customerId(),
+                customerId: $scope.userId,//Customers.customerId(),
                 productId: $scope.productId,
                 qty: $scope.cartProductQty,
                 userName: Auth.username()

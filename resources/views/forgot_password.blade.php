@@ -47,7 +47,9 @@
                       <div class="panel-body">
                         <h4>ลืมรหัสผ่าน</h4>
                         <p>กรุณาระบุอีเมลล์ที่ท่านระบุไว้ แล้วระบบจะส่งรายละเอียดการรีเซ็ตรหัสผ่านให้ทางอีเมลล์ของท่าน</p>
+                        <!--
                         <form class="form-horizontal form-label-left input_mask" methos="POST" action="/forgotconf-password">
+                        -->
                             <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
 
                             <div class="form-group col-md-6">
@@ -63,12 +65,13 @@
 
                           <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                              <button type="submit" class="btn btn-sm btn-primary" >ส่งข้อมูล</button>
+                              <button type="submit" class="btn btn-sm btn-primary" ng-click="sending()">ส่งข้อมูล</button>
                               <button type="button" class="btn btn-sm btn-info" ng-click="toLogin()">ย้อนกลับ</button>
                             </div>
                           </div>
-
+                      <!--
                         </form>
+                      -->
 
                       </div>
                 </div>

@@ -156,8 +156,12 @@
                 <div class="panel panel-default">
                       <div class="panel-heading text-center">รายละเอียดเพิ่มเติม</div>
                       <div class="panel-body">
-                        <br/>
-                        <div ng-bind-html="loginDescription"></div>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <div ng-bind-html="loginDescription" class="login-description"></div>
+                          </div>
+                        </div>
+
                       </div>
                 </div>
 

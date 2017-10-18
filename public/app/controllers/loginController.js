@@ -1,6 +1,6 @@
 "use strict";
 app.controller('LoginController',
-    function ($scope, $http, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService,Customers) {
+    function ($scope, $http, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService,Customers,sharedService) {
 
         console.log('Customers');
         console.log( Auth.username() );
@@ -15,7 +15,8 @@ app.controller('LoginController',
 
         }
         var vm = this;
-
+        $scope.customerId = '';
+        $scope.customers = {};
         $scope.loginData = {};
         $scope.slideshows1 = '';
         $scope.slideshows2 = '';
@@ -115,6 +116,26 @@ app.controller('LoginController',
         }
 
 console.log('$scope.logintime ' + $scope.logintime);
+
+  var res = {};
+  function SearchCustomers(userId,UserName) {
+      Customers.fetchAll(1).then(function (response) {
+          if(response.data.result=='SUCCESS'){
+              $scope.customers = response.data.data.customerList;
+              console.log(UserName);
+              var res = getResult($scope.customers,'customerName','customerCode',UserName);
+              sharedService.passData( res[0].customerId );
+              console.log( res[0].customerId );
+              window.localStorage.setItem('customerId',customerId);
+          }
+      });
+  }
+
+  function getResult(results,keyToFilter,keyToFilter2, valueStartsWith){
+      //return _.filter(results, function(d){ return d[keyToFilter].startsWith(valueStartsWith); })
+      return _.filter(results, function(d){ return d[keyToFilter].indexOf(valueStartsWith)!=-1 || d[keyToFilter2].indexOf(valueStartsWith)!=-1; })
+
+  }
         $scope.dologin = function () {
             $scope.dataList = [];
             //$('#divProcess').show();
@@ -133,12 +154,15 @@ console.log('$scope.logintime ' + $scope.logintime);
                         }
                         if(response.data.data.userInfo.userTypeDesc=='Multi'){
                             //sales
-                            Auth.storeUserCredentials('sales',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc);
-                            window.location = "./customer";
+                            Auth.storeUserCredentials('sales',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc,0);
+                            window.location = _base + "/customer";
                         }else{
+
                             //store
-                            Auth.storeUserCredentials('store',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc);
-                            window.location = "./home/1";
+
+                            SearchCustomers(response.data.data.userInfo.userId, response.data.data.userInfo.userName);
+                            Auth.storeUserCredentials('store',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc );
+                            window.location = _base +"/home/1";
                         }
                     }else{
                         $scope.logintime+=1;
