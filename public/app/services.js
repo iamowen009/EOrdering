@@ -38,6 +38,7 @@ angular.module('app')
         },
         customerId : function(){
           // single user query on customer id;
+          // Test by Owen
         },
         isAuthorized: function(){
             console.log('isAuthenticated',isAuthenticated);
