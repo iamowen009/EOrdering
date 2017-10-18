@@ -36,6 +36,9 @@ angular.module('app')
             window.localStorage.setItem('tokenId',tokenId);
             window.localStorage.setItem('userTypeDesc',userTypeDesc);
         },
+        customerId : function(){
+          // single user query on customer id;
+        },
         isAuthorized: function(){
             console.log('isAuthenticated',isAuthenticated);
             return window.localStorage.getItem('isAuthenticated');
