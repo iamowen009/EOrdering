@@ -20,21 +20,17 @@
                     <div class="row">
 		                <div class="col-lg-4">
 		                    <div class="cui-ecommerce--catalog--item">
-													<!--
-														<span class="favorite-icon"><i class="fa fa-star"></i></span>
-													-->
 		                        <div class="cui-ecommerce--catalog--item--img">
 		                            <div class="cui-ecommerce--catalog--item--status">
 		                                <span class="cui-ecommerce--catalog--item--status--title">New</span>
 		                            </div>
-																<!--
+
 		                            <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected" ng-show="productSelect.productId">
 		                            	<i class="fa fa-star-o" aria-hidden="true" style="text-shadow: 1px 1px 1px;font-size: 1.5em;cursor:pointer;" ng-click="addFav(btfId)" ng-show="productSelect.isFavorite==false"></i>
 		                                <i class="fa fa-star" aria-hidden="true" style="color:#e6e600;text-shadow: 1px 1px 1px;font-size: 1.5em;cursor:pointer;" ng-click="removeFav(productSelect.productId)" ng-show="productSelect.isFavorite==true"></i>
 
 		                            </div>
 																<span class="favorite-icon"><i class="fa fa-star"></i></span>
-															-->
 		                            <a href="javascript: void(0);">
 		                                <img class="img" src="{{partImgProduct}}/{{btf.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
 		                            </a>

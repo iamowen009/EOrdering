@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content">
-
+		
 	<div class="row ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
@@ -12,25 +12,25 @@
               	<br>
 				<div class="row">
 					<div class="col-md-6">
-						<div class="media">
-							<div class="media-left">
+						<div class="media"> 
+							<div class="media-left"> 
 								<a href="https://toagroup.com/news-and-events/list">
-									<img src="<?php echo asset('images/icon-news-toa.jpg'); ?>">
+									<img src="http://placehold.it/350x200">
 								</a>
-							</div>
+							</div> 
 							<div class="media-right text-center" style="vertical-align: middle"> <p><a href="https://toagroup.com/news-and-events/list">ข่าวสารและกิจกรรม <br>(www.toagroup.com)</a></p> </div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="media">
-							<div class="media-left">
-								<img src="<?php echo asset('images/icon-news-eor.jpg'); ?>">
-							</div>
-							<div class="media-right text-center" style="vertical-align: middle"> <p>ข่าวสารและกิจกรรม <br>(E-ordering)</p> </div>
-						</div>
+						</div> 
+					</div>	
+					<div class="col-md-6">	
+						<div class="media"> 
+							<div class="media-left"> 
+								<img src="http://placehold.it/350x200">
+							</div> 
+							<div class="media-right text-center" style="vertical-align: middle"> <p>ข่าวสารและกิจกรรม <br>(E-ordering)</p> </div> 
+						</div>	
 					</div>
 				</div>
-
+				
 
               </div>
             </div>
