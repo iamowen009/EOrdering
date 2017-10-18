@@ -138,7 +138,7 @@ console.log('$scope.logintime ' + $scope.logintime);
                         }else{
                             //store
                             Auth.storeUserCredentials('store',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc);
-                            window.location = "./home/1";
+                            //window.location = "./home/1";
                         }
                     }else{
                         $scope.logintime+=1;

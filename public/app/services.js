@@ -35,10 +35,28 @@ angular.module('app')
             window.localStorage.setItem('userId',userId);
             window.localStorage.setItem('tokenId',tokenId);
             window.localStorage.setItem('userTypeDesc',userTypeDesc);
+            var customers = {};
+            var deferred = $q.defer();
+            var url = API_URL + 'Customer?userId='+1;
+
+              $http.get( url ).then(function (response) {
+                if(response.data.result=='SUCCESS'){
+                    customers = response.data.data.customerList;
+                    customers = getResult(customers,'customerName','customerCode',username);
+                    window.localStorage.setItem('customerId',customers[0].customerId);
+                    console.log('customers = ' + customers[0].customerId);
+                }
+            },function (error){
+                  deferred.reject('An error occured while fetching all products');
+            });
+            function getResult(results,keyToFilter,keyToFilter2, valueStartsWith){
+                  return _.filter(results, function(d){ return d[keyToFilter].indexOf(valueStartsWith)!=-1 || d[keyToFilter2].indexOf(valueStartsWith)!=-1; })
+            }
+
+
         },
         customerId : function(){
-          // single user query on customer id;
-          // Test by Owen
+          return  window.localStorage.getItem('customerId');
         },
         isAuthorized: function(){
             console.log('isAuthenticated',isAuthenticated);
@@ -66,7 +84,7 @@ angular.module('app')
             //window.localStorage.removeItem('role');
             //window.localStorage.removeItem('name');
             window.localStorage.clear();
-            window.location = "./";
+            window.location = _base;//"./";
         }
 
 

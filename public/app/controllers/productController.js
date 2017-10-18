@@ -238,13 +238,14 @@ app.controller('ProductDetailController',
         $scope.productId = {};
         $scope.cartProductQty = 1;
         $scope.productSelect = {};
+        $scope.usersId = Auth.userTypeDesc() == 'multi' ? Auth.customerId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
         $scope.btfId = window.location.href.split('/').pop();
         // fetch
         fetchOneProduct($scope.btfId);
-        fetchAllPromotions(Customers.customerId(), [], [], []);
-        fetchAllProducts(Customers.customerId(), [], [], [],true);
+        fetchAllPromotions($scope.usersId, [], [], []);
+        fetchAllProducts($scope.usersId, [], [], [],true);
 
         function fetchOneProduct(btf){
             Products.fetchOne(btf).then(function (response) {
@@ -321,7 +322,7 @@ app.controller('ProductDetailController',
                 }
             }
             var cartList = [{
-                customerId: Customers.customerId(),
+                customerId: $scope.usersId,
                 productId: $scope.productId,
                 qty: $scope.cartProductQty,
                 userName: Auth.username()
@@ -369,7 +370,7 @@ app.controller('ProductDetailController',
         $scope.addFav = function(btfCode){
 
             var favoriteInfo = {
-                customerId: Customers.customerId(),
+                customerId: $scope.usersId,
                 btfCode: btfCode,
                 userName: Auth.username()
             };
