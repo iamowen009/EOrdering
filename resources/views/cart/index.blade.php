@@ -168,8 +168,9 @@ select.form-control{
                                 <div class="form-group col-md-6">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">การชำระเงิน :</label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="radio-inline"><input type="radio" name="optradio" ng-model="pay.name" value="CASH">เงินสด</label>
-                                    <label class="radio-inline"><input type="radio" name="optradio" ng-model="pay.name" value="CREDIT">เครดิต</label>
+                                    <label class="radio-inline"><input type="radio" ng-click="paidType('CASH')" name="optradio" ng-model="pay.name" value="CASH">เงินสด</label>
+                                    <label class="radio-inline" ng-if="paid !== 'CASH'"  ><input type="radio" ng-click="paidType('CREDIT')"  name="optradio" ng-model="pay.name" value="CREDIT">เครดิต</label>
+                                    {{ showPaid }}
 
                                   </div>
                                 </div>
@@ -182,7 +183,7 @@ select.form-control{
                                         class="form-control"
                                         ng-model="ddlDate"
                                         ng-change="i.id=ddlDate.id"
-                                        ng-options="i.reqDate for i in requests track by i.id">
+                                        ng-options="i.reqDate for i in requests track by i.id | date:'dd/mm/yy'">
                                         <option value=''>Select</option>
                                       </select>
 

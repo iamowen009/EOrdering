@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="content">
+<div class="content" ng-controller="homeContactController">
 
-	<div class="row ">
+	<div class="row " >
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-contact">
             <div class="panel-heading" style="background-color:#000e85;color:#fff"><h3>ติดต่อ TOA</h3> </div>
@@ -28,10 +28,10 @@
 										<div class="col-md-6 padding-right-0">
 											<div class="panel-address">
 													<h4>Sale Manager</h4>
-													<p>02-335-5777</p>
+													<p>@{{ customer.telNo }}</p>
 
 													<h4>Sale</h4>
-													<p>02-335-5666</p>
+													<p>@{{ customer.telNo }}</p>
 
 													<h4>AR</h4>
 													<p>02-335-2222</p>
@@ -43,4 +43,7 @@
          </div>
 	</div>
 </div>
+@stop
+@section('footer')
+    <script src="<?= asset('app/controllers/customerController.js') ?>"></script>
 @stop

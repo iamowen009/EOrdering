@@ -1,0 +1,15 @@
+.menu-body{
+	height:300px;
+	overflow:auto;
+}
+.cui-ecommerce--catalog--item--img {
+    height: 220px !important;
+		display: inline-block;
+		padding: 10px 30px;
+}
+.cui-ecommerce--catalog--item--img a{
+		display: inline-block;
+}
+.cui-ecommerce--catalog--item--img a img {
+		margin:auto;
+}

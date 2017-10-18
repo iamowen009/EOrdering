@@ -12,7 +12,7 @@ app.controller('LoginController',
           }else{
               window.location= _base + '/home/'+Customers.customerId();
           }
-          
+
         }
         var vm = this;
 
@@ -100,6 +100,9 @@ app.controller('LoginController',
                     Config.setHomeImage(response.data.data.configList[0].imgHomeA1,
                         response.data.data.configList[0].imgHomeA2,
                         response.data.data.configList[0].imgHomeA3);
+                    $scope.slide1 = response.data.data.configList[0].partImgHome +'/' + response.data.data.configList[0].imgHomeA1;
+                    $scope.slide2 = response.data.data.configList[0].partImgHome +'/' + response.data.data.configList[0].imgHomeA2;
+                    $scope.slide3 = response.data.data.configList[0].partImgHome +'/' + response.data.data.configList[0].imgHomeA3;
                     fetchSlideshow();
                 }
             });
@@ -111,7 +114,7 @@ app.controller('LoginController',
             $scope.loading_config = false;
         }
 
-
+console.log('$scope.logintime ' + $scope.logintime);
         $scope.dologin = function () {
             $scope.dataList = [];
             //$('#divProcess').show();
@@ -139,7 +142,7 @@ app.controller('LoginController',
                         }
                     }else{
                         $scope.logintime+=1;
-                        console.log($scope.logintime);
+                        console.log('$scope.logintime ' + $scope.logintime);
                         swal('รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ Username หรือ Password');
                         //AppService.alertWarning('รหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบ Username หรือ Password');
                     }

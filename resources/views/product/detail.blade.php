@@ -1,53 +1,7 @@
 @extends('layouts.main')
 
 @section('head')
-<style>
-select.form-control{
-	height:auto !important;
-}
-.cui-ecommerce--product--controls .btn {
-    padding: 4px 40px !important;
-		font-weight: bold;
-}
-
-.cui-ecommerce--catalog--item--img a .img {
-    min-height: 250px;
-    max-height: 250px;
-    max-width: 100%;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-}
-.cui-ecommerce--catalog--item--img a img {
-    min-height: 150px;
-    max-width: 100%;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-}
-
-.colorpicker-element .input-group-addon i {
-    display: inline-block;
-    cursor: pointer;
-    height: 16px;
-    vertical-align: text-top;
-    width: 16px;
-}
-.input-group-addon{
-	background-color:#fff;
-	border-right:none;
-	font-weight: bold;
-}
-.colorpicker-element .input-group-addon i {
-    height: 20px;
-    width: 30px;
-}
-.input-group-addon img{
-	width:30px;
-	height:20px;
-}
-.cui-ecommerce--catalog--item--img a img {
-	min-height: 100px;
-}
-</style>
+<link rel="stylesheet" href="{{ asset('css/product-detail.css') }}" />
 @stop
 
 @section('content')
@@ -66,41 +20,26 @@ select.form-control{
                     <div class="row">
 		                <div class="col-lg-4">
 		                    <div class="cui-ecommerce--catalog--item">
+													<!--
+														<span class="favorite-icon"><i class="fa fa-star"></i></span>
+													-->
 		                        <div class="cui-ecommerce--catalog--item--img">
 		                            <div class="cui-ecommerce--catalog--item--status">
 		                                <span class="cui-ecommerce--catalog--item--status--title">New</span>
 		                            </div>
-
+																<!--
 		                            <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected" ng-show="productSelect.productId">
 		                            	<i class="fa fa-star-o" aria-hidden="true" style="text-shadow: 1px 1px 1px;font-size: 1.5em;cursor:pointer;" ng-click="addFav(btfId)" ng-show="productSelect.isFavorite==false"></i>
 		                                <i class="fa fa-star" aria-hidden="true" style="color:#e6e600;text-shadow: 1px 1px 1px;font-size: 1.5em;cursor:pointer;" ng-click="removeFav(productSelect.productId)" ng-show="productSelect.isFavorite==true"></i>
 
 		                            </div>
+																<span class="favorite-icon"><i class="fa fa-star"></i></span>
+															-->
 		                            <a href="javascript: void(0);">
 		                                <img class="img" src="{{partImgProduct}}/{{btf.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
 		                            </a>
 		                        </div>
 		                    </div>
-		                    <!--<div class="cui-ecommerce--product--photos clearfix">
-		                        <div class="cui-ecommerce--product--photos-item cui-ecommerce--product--photos-item__active">
-		                            <img src="../assets/common/img/temp/ecommerce/001.jpg">
-		                        </div>
-		                        <div class="cui-ecommerce--product--photos-item">
-		                            <img src="../assets/common/img/temp/ecommerce/002.jpg">
-		                        </div>
-		                        <div class="cui-ecommerce--product--photos-item">
-		                            <img src="../assets/common/img/temp/ecommerce/003.jpg">
-		                        </div>
-		                        <div class="cui-ecommerce--product--photos-item">
-		                            <img src="../assets/common/img/temp/ecommerce/004.jpg">
-		                        </div>
-		                        <div class="cui-ecommerce--product--photos-item">
-		                            <img src="../assets/common/img/temp/ecommerce/002.jpg">
-		                        </div>
-		                        <div class="cui-ecommerce--product--photos-item">
-		                            <img src="../assets/common/img/temp/ecommerce/003.jpg">
-		                        </div>
-		                    </div>-->
 		                </div>
 		                <div class="col-lg-8">
 		                    <div class="cui-ecommerce--product--sku">
@@ -116,10 +55,6 @@ select.form-control{
 		                    </div>
 		                    <h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}</h4>
 		                    <div class="cui-ecommerce--product--price">
-		                        <!--ราคา (บาท) {{product[0].productPrice}}
-		                        <div class="cui-ecommerce--product--price-before">
-		                            {{product[0].productPrice}}
-		                        </div>-->
 		                    </div>
 		                    <form action="/cart/add" name="add_to_cart" method="post" class="form-horizontal form-label-left" accept-charset="UTF-8">
 
@@ -131,8 +66,8 @@ select.form-control{
 			                      </div>
 
 		                    <div class="form-group">
-		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนาด</label>
-		                        <div class="col-md-9 col-sm-9 col-xs-12">
+		                        <label class="control-label col-md-3 col-sm-3 col-xs-6">ขนาด</label>
+		                        <div class="col-md-4 col-sm-4 col-xs-6">
 		                         	<select class="form-control" ng-model="cartSize" ng-change="getProduct()">
 		                         		<option ng-repeat="p in sizes" value="{{ p.sizeCode}}" >{{ p.sizeName }}</option>
 		                         	</select>
@@ -141,11 +76,11 @@ select.form-control{
 
 		                      <div class="form-group">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี</label>
-		                        <div class="col-md-9 col-sm-9 col-xs-12" >
+		                        <div class="col-md-4 col-sm-4 col-xs-6" >
 															<div class="dropdown color-element">
 															  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 																	<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
-																	<img class="frame-color" ng-show="cartrgbColor==''" src="<?php echo asset('/images/none-color.png') ?>">
+																	<span class="frame-color" ng-show="cartrgbColor==''" style="background-color: #fff;"></span>
 																	{{ productSelect.colorCode}}
 
 															  </button>
@@ -153,23 +88,11 @@ select.form-control{
 															    <li ng-repeat="p in colors">
 																		<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
 																		<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
-																		<img  ng-show="p.cartrgbColor==''" class="frame-color" src="<?php echo asset('/images/none-color.png') ?>">
+																		<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
 															      {{ p.colorCode}}</a>
 															    </li>
 															  </ul>
 															</div>
-															<!--
-		                        	<div class="input-group demo2 colorpicker-element">
-		                        		<span class="input-group-addon" ng-show="cartrgbColor!=''"><i style="background-color: rgb({{cartrgbColor}});"></i></span>
-		                        		<span class="input-group-addon" ng-show="cartrgbColor==''"><img src="/images/none-color.png"></span>
-			                          <select class="form-control" ng-model="cartColor" ng-change="getProduct()">
-		                         				<option ng-repeat="p in colors" value="{{ p.colorCode}}">{{ p.colorCode}}</option>
-		                         		</select>
-
-			                        </div>
-														-->
-
-
 		                        </div>
 		                      </div>
 
@@ -199,58 +122,14 @@ select.form-control{
 		                         	<font color="#00BFFF"><strong>{{+productSelect.productPrice * +cartProductQty | number:2}}</strong></font>
 		                        </div>
 		                      </div>
-
-								<!--<ngcart-addtocart id="{{product[0].productId}}" quantity="1" quantity-max="9" name="{{product[0].productNameTh}}" price="{{product[0].productPrice}}" template-url="/template/ngCart/addtocart_total.html" data="product">Add to Cart</ngcart-addtocart>-->
-
 		                      <div>
 
-
-		                    <!--<div class="cui-ecommerce--product--descr">
-		                        <p>A chair is a piece of furniture with a raised surface, commonly used to seat a single person.
-		                            Chairs are supported most often by four legs and have a back; however, a chair can have three
-		                            legs or can have a different shape.</p>
-		                    </div>
-		                    <div class="row">
-		                        <div class="col-lg-6">
-		                            <div class="cui-ecommerce--product--option_title">
-		                                Color
-		                            </div>
-		                            <div class="cui-ecommerce--product--option">
-		                                <select class="select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
-		                                    <optgroup label="Group 1">
-		                                        <option selected="">Option 1</option>
-		                                        <option>Option 2</option>
-		                                    </optgroup>
-		                                    <optgroup label="Group 2">
-		                                        <option selected="">Option 3</option>
-		                                        <option>Option 4</option>
-		                                        <option>Option 5</option>
-		                                    </optgroup>
-		                                </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 76px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u5vw-container"><span class="select2-selection__rendered" id="select2-u5vw-container" title="Option 3">Option 3</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-		                            </div>
-		                            <div class="cui-ecommerce--product--option_title">
-		                                Available Size
-		                            </div>
-		                            <div class="cui-ecommerce--product--option">
-		                                <div class="cui-ecommerce--catalog--item--descr--sizes">
-		                                    <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Size S">S</span>
-		                                    <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Size M">M</span>
-		                                    <span data-toggle="tooltip" data-placement="right" title="" data-original-title="Size XL">XL</span>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </div>-->
 
 		                    <div class="cui-ecommerce--product--controls">
 		                        <button type="button" class="btn btn-icon btn-primary btn-sm margin-right-15" ng-click="toHistory(btf.marketingCode)">
 		                            <i class="icmn-cart5 margin-right-5"></i>
 		                            ย้อนกลับ
 		                        </button>
-		                        <!--<a href="javascript: void(0);" class="btn btn-icon btn-info btn-sm">
-		                            <i class="icmn-heart4"></i>
-		                            Add to Cart
-		                        </a>-->
-		                        <!--<ngcart-addtocart id="{{product[0].productId}}" quantity="1" quantity-max="9" name="{{product[0].productNameTh}}" price="{{product[0].productPrice}}" template-url="/template/ngCart/addtocart.html" data="product">Add to Cart</ngcart-addtocart>-->
 														<button type="button" class="btn btn-icon btn-info btn-sm" ng-click="addCart()">
 
 																<i class="fa fa-shopping-cart" style="font-size:18px;" aria-hidden="true"></i>
@@ -261,63 +140,8 @@ select.form-control{
 		                            <i class="icmn-cart5 margin-right-5"></i>
 		                            กลับสู่หน้าหลัก
 		                        </button>
-		                        <!--<a href="javascript: void(0);" class="btn btn-icon btn-default btn-sm">
-		                            <i class="icmn-stats-bars2"></i>
-		                            กลับสู่หน้าหลัก
-		                        </a>-->
-
-
-
 		                    </div>
 		                    </form>
-		                    <!--<div class="cui-ecommerce--product--info">
-		                        <div class="nav-tabs-horizontal">
-		                            <ul class="nav nav-tabs" role="tablist">
-		                                <li class="nav-item">
-		                                    <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">Information</a>
-		                                </li>
-		                                <li class="nav-item">
-		                                    <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">Description</a>
-		                                </li>
-		                            </ul>
-		                            <div class="tab-content padding-vertical-20">
-		                                <div class="tab-pane active" id="tab1" role="tabpanel">
-		                                    <dl class="dl-horizontal user-profile-dl">
-		                                        <dt>Description lists</dt>
-		                                        <dd>A description list is perfect for defining terms</dd>
-		                                        <dt>Euismod</dt>
-		                                        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia
-		                                            odio sem nec elit</dd>
-		                                        <dd>Donec id elit non mi porta gravida</dd>
-		                                        <dt>Malesuada porta</dt>
-		                                        <dd>Etiam porta sem malesuada magna mollis euismod</dd>
-		                                        <dt>Qui eiusmod magna</dt>
-		                                        <dd>Lorem ipsum In enim nostrud ut in mollit sint cillum laborum
-		                                            ea quis qui</dd>
-		                                    </dl>
-		                                </div>
-		                                <div class="tab-pane" id="tab2" role="tabpanel">
-		                                    <p>
-		                                        Mnesarchum velit cumanum utuntur tantam deterritum, democritum vulgo contumeliae
-		                                        abest studuisse quanta telos. Inmensae. Arbitratu dixisset
-		                                        invidiae ferre constituto gaudeat contentam, omnium nescius,
-		                                        consistat interesse animi, amet fuisset numen graecos incidunt
-		                                        euripidis praesens, homines religionis dirigentur postulant.
-		                                        Magnum utrumvis gravitate appareat fabulae facio perveniri
-		                                        fruenda indicaverunt texit, frequenter probet diligenter
-		                                        sententia meam distinctio theseo legerint corporis quoquo,
-		                                        optari futurove expedita.
-		                                    </p>
-		                                    <p>
-		                                        Cumanum utuntur tantam deterritum, democritum vulgo contumeliae
-		                                        abest studuisse quanta telos. Inmensae. Arbitratu dixisset
-		                                        invidiae ferre constituto gaudeat contentam, omnium nescius,
-		                                        consistat interesse animi, amet fuisset numen graecos incidunt
-		                                        euripidis praesens.
-		                                    </p>
-		                                </div>
-		                            </div>
-		                        </div>-->
 		                    </div>
 		                </div>
 
@@ -363,6 +187,7 @@ select.form-control{
 					                                    <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked"><!-- --></i>
 					                                    <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
 					                                </div>
+																					<span class="favorite-icon"><i class="fa fa-star"></i></span>
 					                                <a href="javascript: void(0);">
 					                                    <img src="../assets/common/img/temp/ecommerce/001.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
 					                                </a>
@@ -402,20 +227,16 @@ select.form-control{
 																					<div class="ribbon">NEW</div>
 																			</div>
 																			<div class="cui-ecommerce--catalog--item--img-thumb">
-																					<!--
-					                                <div class="cui-ecommerce--catalog--item--status">
-					                                    <span class="cui-ecommerce--catalog--item--status--title">New</span>
-					                                </div>
-																				-->
 					                                <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected">
 					                                    <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked"><!-- --></i>
 					                                    <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
 					                                </div>
+																					<span class="favorite-icon"><i class="fa fa-star"></i></span>
 					                                <a href="javascript: void(0);">
-					                                    <img src="{{partImgProduct}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" class="img-responsive">
+					                                    <img src="{{partImgProduct}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"  class="img-responsive img-product">
 					                                </a>
 					                            </div>
-					                            <div class="text-center">
+					                            <div class="text-center  product-desc">
 																				<div class="product-name">
 																					<h5 class="ng-binding">{{product.btfWebDescTh}}</h5>
 																				</div>

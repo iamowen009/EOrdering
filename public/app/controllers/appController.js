@@ -75,6 +75,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
     $scope.loadingcart = true;
     angular.copy($scope.items[$index], $scope.editedItem);
     //console.log($scope.editedItem);
+      if( $scope.editedItem.qty > 1)
     var cartList = [{
         customerId: Customers.customerId(),
         productId: $scope.editedItem.productId,
@@ -103,9 +104,16 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
 
     Carts.removeCart(cartList).then(function (response) {
         if(response.data.result=='SUCCESS'){
-            swal('ลบสินค้าเรียบร้อยแล้ว');
+            swal({
+              'text'  : 'ลบสินค้าเรียบร้อยแล้ว'
+            },
+            function(){
+              fetchCart(Customers.customerId());
+              //window.location.reload();
+            });
             fetchCart(Customers.customerId());
-            $uibModalInstance.dismiss('cancel');
+            //$uibModalInstance.dismiss('cancel');
+
         }else{
             swal('ลบสินค้าไม่สำเร็จ');
         }
@@ -222,11 +230,14 @@ app.controller('AppController',
         }
         console.log(Auth.userTypeDesc());
         $scope.toHome = function(){
+          /*
             if(Auth.userTypeDesc()=='Multi'){
                 window.location= _base + '/customer';
             }else{
                 window.location= _base + '/home/'+Customers.customerId();
             }
+            */
+            window.location= _base + '/home/'+Customers.customerId();
         }
 
         $scope.logout = function(){

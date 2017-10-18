@@ -196,6 +196,7 @@
                                             <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
                                             <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('store')  ?>')">เปลี่ยนร้านค้า</a></li>
                                             <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')">เปลี่ยนรหัสผ่าน</a></li>
+                                            <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('faq')  ?>')">ปัญหาที่พบ</a></li>
                                             <li><a ng-click="$event.preventDefault(); logout()">ออกจากระบบ</a></li>
                                           </ul>
                                     </div>

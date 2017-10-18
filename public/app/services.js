@@ -200,6 +200,20 @@ angular.module('app')
 
         	return deferred.promise;
 		},
+		fetchOne: function (userId)
+		{
+			// TODO: remove the use of futures
+			var deferred = $q.defer();
+			var url = API_URL + 'CustomerInfo?customerId='+userId;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching all products');
+            });
+
+        	return deferred.promise;
+		},
         setCustomer: function(customerId,customerName){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
@@ -260,6 +274,20 @@ angular.module('app')
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while fetching all products');
+            });
+
+            return deferred.promise;
+        },
+        fetchHistory: function (orderId)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderHistory';
+
+            $http.get( url , { params: {orderId: orderId}}).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching order history');
             });
 
             return deferred.promise;
@@ -722,24 +750,27 @@ angular.module('app')
 
 }])
 
+<<<<<<< HEAD
 
 .service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+=======
+.service('OrderPrecessInfo', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {
         items: [],
         /**
-        * Fetch all separations
+        * Fetch all products
         */
-        fetchAll: function (customerId)
+        fetchOne: function (saleOrderNumber)
         {
             // TODO: remove the use of futures
             var deferred = $q.defer();
-            var url = API_URL + 'Separations?customerId='+customerId;
+            var url = API_URL + 'OrderPrecessInfo?saleOrderNumber='+saleOrderNumber;
 
             $http.get( url ).then(function (data) {
                 deferred.resolve(data);
             },function (error){
-                deferred.reject('An error occured while fetching all separations');
+                deferred.reject('An error occured  Order Precess Info ');
             });
 
             return deferred.promise;
@@ -748,3 +779,48 @@ angular.module('app')
     }
 
 }])
+
+.service('OrderProcessTracking', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+>>>>>>> Nong
+{
+    return {
+        items: [],
+        /**
+<<<<<<< HEAD
+        * Fetch all separations
+        */
+        fetchAll: function (customerId)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'Separations?customerId='+customerId;
+=======
+        * Fetch all products
+        */
+        fetchOne: function (saleOrderNumber)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderProcessTracking?saleOrderNumber='+saleOrderNumber;
+>>>>>>> Nong
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+<<<<<<< HEAD
+                deferred.reject('An error occured while fetching all separations');
+=======
+                deferred.reject('An error occured  Order Precess tracking ');
+>>>>>>> Nong
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+<<<<<<< HEAD
+}])
+=======
+}])
+>>>>>>> Nong
