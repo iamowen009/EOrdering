@@ -331,6 +331,20 @@ angular.module('app')
             });
 
             return deferred.promise;
+        },
+        validate: function (promotionId,cartList)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'PromotionValidate';
+
+            $http.get( url , { params: {promotionId: promotionId,cartList:cartList}}).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while validate promotion');
+            });
+
+            return deferred.promise;
         }
 
 	}
@@ -736,6 +750,10 @@ angular.module('app')
 
 }])
 
+<<<<<<< HEAD
+
+.service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+=======
 .service('OrderPrecessInfo', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {
@@ -763,10 +781,20 @@ angular.module('app')
 }])
 
 .service('OrderProcessTracking', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+>>>>>>> Nong
 {
     return {
         items: [],
         /**
+<<<<<<< HEAD
+        * Fetch all separations
+        */
+        fetchAll: function (customerId)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'Separations?customerId='+customerId;
+=======
         * Fetch all products
         */
         fetchOne: function (saleOrderNumber)
@@ -774,11 +802,16 @@ angular.module('app')
             // TODO: remove the use of futures
             var deferred = $q.defer();
             var url = API_URL + 'OrderProcessTracking?saleOrderNumber='+saleOrderNumber;
+>>>>>>> Nong
 
             $http.get( url ).then(function (data) {
                 deferred.resolve(data);
             },function (error){
+<<<<<<< HEAD
+                deferred.reject('An error occured while fetching all separations');
+=======
                 deferred.reject('An error occured  Order Precess tracking ');
+>>>>>>> Nong
             });
 
             return deferred.promise;
@@ -786,4 +819,8 @@ angular.module('app')
 
     }
 
+<<<<<<< HEAD
 }])
+=======
+}])
+>>>>>>> Nong

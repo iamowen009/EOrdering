@@ -119,10 +119,10 @@ app.controller('HomeController',
                     $scope.loading = false;
                 });
         */
-        /*$scope.toPromotionList = function(promotionId){
-            var url =  '../../promotion/'+promotionId;
+        $scope.toPromotionList = function(promotionId){
+            var url =  _base + '/promotion/'+promotionId;
             window.location.href = url;
-        }*/
+        }
 
         $scope.toProductList = function(marketingCode){
             var url =  _base + '/product/'+marketingCode;
