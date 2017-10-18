@@ -183,7 +183,7 @@ app.controller('AppController',
         $scope.totalQty = 0;
         $scope.username = Auth.username();
         $scope.usertype = Auth.userTypeDesc();
-        $scope.customerName = Customers.customerName();
+        $scope.customerName = Auth.userTypeDesc() == 'Multi' ? Customers.customerName() : Auth.customerName();
         function fetchCart(customerId) {
             console.log('cart');
             Carts.fetchAll(customerId).then(function (response) {

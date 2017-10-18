@@ -2,7 +2,6 @@
 app.controller('HomeController',
     function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService,Auth) {
         //retrieve customers listing from API
-
         $scope.marketings = {};
         $scope.promotions_all = {};
         $scope.promotions = {};
@@ -13,11 +12,11 @@ app.controller('HomeController',
         $scope.slideshows3 = '';
         $scope.carts = {};
         $scope.marketingmodel = [];
-        $scope.usersId = Auth.userTypeDesc() == 'multi' ? Auth.customerId() : Customers.customerId();
+        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.customerId() : Customers.customerId();
         $scope.usersId;
         $scope.partImgPromotion = Config.partImgPromotion();
         //Customers.setCustomer(window.location.href.split('/').pop());
-        console.log('usersId = ' + $scope.usersId);
+        console.log('usersId xx = ' + $scope.usersId);
         // fetch
         fetchAllMarketings(Customers.customerId());
         //fetchAllPromotions(Customers.customerId(), ['10', '40'], ['01', '18'], ['003', '006']);

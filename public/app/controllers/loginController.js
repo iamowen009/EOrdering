@@ -1,6 +1,6 @@
 "use strict";
 app.controller('LoginController',
-    function ($scope, $http, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService,Customers) {
+    function ($scope, $http,$timeout, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService,Customers) {
 
         console.log('Customers');
         console.log( Auth.username() );
@@ -10,7 +10,7 @@ app.controller('LoginController',
           if(Auth.userTypeDesc()=='Multi'){
               window.location= _base + '/customer';
           }else{
-              window.location= _base + '/home/'+Customers.customerId();
+              window.location= _base + '/home';
           }
 
         }
@@ -134,11 +134,12 @@ console.log('$scope.logintime ' + $scope.logintime);
                         if(response.data.data.userInfo.userTypeDesc=='Multi'){
                             //sales
                             Auth.storeUserCredentials('sales',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc);
-                            window.location = "./customer";
+                          //  window.location = "./customer";
                         }else{
                             //store
                             Auth.storeUserCredentials('store',response.data.data.userInfo.userName,response.data.data.userInfo.userId,response.data.data.userInfo.tokenId,response.data.data.userInfo.userTypeDesc);
-                            //window.location = "./home/1";
+
+
                         }
                     }else{
                         $scope.logintime+=1;

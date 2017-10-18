@@ -94,7 +94,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
                         @verbatim
-                        <span class="pull-right">ยินดีต้อนรับ {{username}} <span ng-show="usertype=='Multi' && !hidemenu">,{{customerName}}</span></span>
+                        <span class="pull-right">ยินดีต้อนรับ {{username}} <span ng-show="!hidemenu">,{{customerName}}</span></span>
                         @endverbatim
                     </div>
                 </div>

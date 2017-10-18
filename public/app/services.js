@@ -35,28 +35,42 @@ angular.module('app')
             window.localStorage.setItem('userId',userId);
             window.localStorage.setItem('tokenId',tokenId);
             window.localStorage.setItem('userTypeDesc',userTypeDesc);
-            var customers = {};
-            var deferred = $q.defer();
-            var url = API_URL + 'Customer?userId='+1;
+            if( userTypeDesc != 'Multi'){
+                var customers = {};
+                var deferred = $q.defer();
+                var url = API_URL + 'Customer?userId='+1;
 
-              $http.get( url ).then(function (response) {
-                if(response.data.result=='SUCCESS'){
-                    customers = response.data.data.customerList;
-                    customers = getResult(customers,'customerName','customerCode',username);
-                    window.localStorage.setItem('customerId',customers[0].customerId);
-                    console.log('customers = ' + customers[0].customerId);
+                  $http.get( url ).then(function (response) {
+                    if(response.data.result=='SUCCESS'){
+                        customers = response.data.data.customerList;
+                        customers = getResult(customers,'customerName','customerCode',username);
+                        window.localStorage.setItem('customerId', angular.toJson(customers[0]) );
+                        console.log('customers = ' + angular.toJson(customers[0]));
+                        window.location.href= _base + '/home'
+                    }
+                },function (error){
+                      deferred.reject('An error occured while fetching all products');
+                });
+                function getResult(results,keyToFilter,keyToFilter2, valueStartsWith){
+                      return _.filter(results, function(d){ return d[keyToFilter].indexOf(valueStartsWith)!=-1 || d[keyToFilter2].indexOf(valueStartsWith)!=-1; })
                 }
-            },function (error){
-                  deferred.reject('An error occured while fetching all products');
-            });
-            function getResult(results,keyToFilter,keyToFilter2, valueStartsWith){
-                  return _.filter(results, function(d){ return d[keyToFilter].indexOf(valueStartsWith)!=-1 || d[keyToFilter2].indexOf(valueStartsWith)!=-1; })
-            }
 
+          }else{
+            window.location.href= _base + '/customer'
+          }
 
         },
         customerId : function(){
-          return  window.localStorage.getItem('customerId');
+          var customer =  window.localStorage.getItem('customerId');
+          var res = JSON.parse( customer );
+          //console.log('function customer id is ' + res.customerId );
+          return res.customerId;
+        },
+        customerName : function(){
+          var customer =  window.localStorage.getItem('customerId');
+          var res = JSON.parse( customer );
+          //console.log('function customer id is ' + res.customerId );
+          return res.customerName;
         },
         isAuthorized: function(){
             console.log('isAuthenticated',isAuthenticated);
