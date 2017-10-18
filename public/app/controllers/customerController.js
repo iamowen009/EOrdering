@@ -5,9 +5,9 @@ app.controller('CustomerController',
         $scope.customers = {};
         $scope.loading = true;
 
-
+        
         fetchAllCustomers(Auth.userId());
-
+        
         function fetchAllCustomers(userId) {
             Customers.fetchAll(userId).then(function (response) {
                 if(response.data.result=='SUCCESS'){
@@ -60,24 +60,4 @@ app.controller('CustomerController',
             window.location.href = url;
           }
 
- })
-
- app.controller('homeContactController',
-     function ($scope, $http, $filter,Products,Promotions,Config,Customers,Auth,Carts,Fav) {
-       $scope.customers = {};
-       $scope.loading = true;
-
-
-       fetchCustomer(Customers.customerId());
-
-       function fetchCustomer(customerId) {
-           Customers.fetchOne(customerId).then(function (response) {
-               if(response.data.result=='SUCCESS'){
-                 console.log('customer info fetch')
-                   $scope.customer = response.data.data.customerInfo;
-
-               }
-               $scope.loading = false;
-           });
-       }
-});
+ });

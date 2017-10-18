@@ -200,20 +200,6 @@ angular.module('app')
 
         	return deferred.promise;
 		},
-		fetchOne: function (userId)
-		{
-			// TODO: remove the use of futures
-			var deferred = $q.defer();
-			var url = API_URL + 'CustomerInfo?customerId='+userId;
-
-            $http.get( url ).then(function (data) {
-                deferred.resolve(data);
-            },function (error){
-                deferred.reject('An error occured while fetching all products');
-            });
-
-        	return deferred.promise;
-		},
         setCustomer: function(customerId,customerName){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
@@ -328,6 +314,20 @@ angular.module('app')
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while fetching all products');
+            });
+
+            return deferred.promise;
+        },
+        validate: function (promotionId,cartList)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'PromotionValidate';
+
+            $http.get( url , { params: {promotionId: promotionId,cartList:cartList}}).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while validate promotion');
             });
 
             return deferred.promise;
@@ -736,6 +736,10 @@ angular.module('app')
 
 }])
 
+//<<<<<<< HEAD
+
+//.service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+
 .service('OrderPrecessInfo', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {
@@ -767,8 +771,10 @@ angular.module('app')
     return {
         items: [],
         /**
-        * Fetch all products
+<<<<<<< HEAD
+        * Fetch all separations
         */
+
         fetchOne: function (saleOrderNumber)
         {
             // TODO: remove the use of futures
@@ -785,5 +791,6 @@ angular.module('app')
         },
 
     }
+
 
 }])

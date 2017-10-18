@@ -95,8 +95,7 @@
 			                <div class="row">
 			                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" dir-paginate="product in products | itemsPerPage: 12" pagination-id="product.id">
 			                        <div class="cui-ecommerce--catalog--item" ng-click="toProductDetail(product.btf)">
-			                            <span class="favorite-icon"><i class="fa fa-star"></i></span>
-																	<div class="cui-ecommerce--catalog--item--img">
+			                            <div class="cui-ecommerce--catalog--item--img">
 			                                <!--<div class="cui-ecommerce--catalog--item--status">
 			                                    <span class="cui-ecommerce--catalog--item--status--title">New</span>
 			                                </div>-->
@@ -104,7 +103,7 @@
 			                                    <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked"><!-- --></i>
 			                                    <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
 			                                </div>
-
+																			<span class="favorite-icon"><i class="fa fa-star"></i></span>
 			                                <a href="javascript: void(0);">
 			                                    <img src="{{partImgProduct}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" class="img-responsive img-product">
 			                                </a>

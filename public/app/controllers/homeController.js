@@ -1,4 +1,6 @@
 "use strict";
+
+
 app.controller('HomeController',
     function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService,Auth) {
         //retrieve customers listing from API
@@ -120,10 +122,10 @@ app.controller('HomeController',
                     $scope.loading = false;
                 });
         */
-        /*$scope.toPromotionList = function(promotionId){
-            var url =  '../../promotion/'+promotionId;
+        $scope.toPromotionList = function(promotionId){
+            var url =  _base + '/promotion/'+promotionId;
             window.location.href = url;
-        }*/
+        }
 
         $scope.toProductList = function(marketingCode){
             var url =  _base + '/product/'+marketingCode;

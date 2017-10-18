@@ -15,7 +15,6 @@
     <link href="<?= asset('css/custom.min.css') ?>" rel="stylesheet">
     <link href="<?= asset('./css/ecommerce.css') ?>" rel="stylesheet">
     <link href="<?= asset('css/custom.css') ?>" rel="stylesheet">
-    <link href="<?= asset('css/login.css') ?>" rel="stylesheet">
 
     <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
 
@@ -53,28 +52,27 @@
                             </ol>
                             <div class="carousel-inner" role="listbox">
                                 <!-- Slide One - Set the background image for this slide in the line below -->
-                                <div class="carousel-item active" style="background-image: url('{{slide1}}')">
+                                <div class="carousel-item active" style="background-image: url('{{slideshows1}}')">
                                     <div class="carousel-caption d-none d-md-block">
                                         <!--<h3>First Slide</h3>
                                         <p>This is a description for the first slide.</p>-->
                                     </div>
                                 </div>
                                 <!-- Slide Two - Set the background image for this slide in the line below -->
-                                <div class="carousel-item" style="background-image: url('{{slide2}}')">
+                                <div class="carousel-item" style="background-image: url('{{slideshows2}}')">
                                     <div class="carousel-caption d-none d-md-block">
                                         <!--<h3>Second Slide</h3>
                                         <p>This is a description for the second slide.</p>-->
                                     </div>
                                 </div>
                                 <!-- Slide Three - Set the background image for this slide in the line below -->
-                                <div class="carousel-item" style="background-image: url('{{slide3}}')">
+                                <div class="carousel-item" style="background-image: url('{{slideshows3}}')">
                                     <div class="carousel-caption d-none d-md-block">
                                         <!--<h3>Third Slide</h3>
                                         <p>This is a description for the third slide.</p>-->
                                     </div>
                                 </div>
                             </div>
-
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
@@ -89,9 +87,9 @@
             </div>
             <div class="col-md-4">
 
-        <div class="card card-container form-login">
+        <div class="card card-container">
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="<?php echo asset('images/iconlogin.png'); ?>" />
+            <img id="profile-img" class="profile-img-card" src="../images/iconlogin.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-horizontal form-label-left input_mask" ng-submit="dologin()">
                             <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
@@ -103,7 +101,7 @@
 
                           <div class="col-md-12 form-group has-feedback">
                             <input type="password" class="form-control" id="password" placeholder="Password" type="text" ng-model="loginData.password" style="margin-top:6px;">
-                            <a href="#" class="fa fa-eye form-control-feedback right show-password"  ng-click="showPassword()" aria-hidden="true" style="padding-top:6px;" ></a>
+                            <span class="fa fa-eye form-control-feedback right" aria-hidden="true" style="padding-top:6px;" ></span>
                           </div>
 
                           <div class="clearfix"></div>
@@ -114,7 +112,7 @@
 
                           <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <a href="<?php echo url('forgot-password'); ?>" class="pull-right link-blue link-underlined">ลืมรหัสผ่าน?</a>
+                                <a href="/forgot-password" class="pull-right link-blue link-underlined">ลืมรหัสผ่าน?</a>
                                 <div class="checkbox pull-left">
                                     <label>
                                         <input name="example6" type="checkbox" ng-model="rememberme">
@@ -136,7 +134,7 @@
                             </div>
                           </div>
 
-            </form>
+                        </form>
 
         </div><!-- /card-container -->
 
@@ -150,7 +148,7 @@
         </div><!--section2-->
 
          <!-- Page Content -->
-      <div class="content" style="margin-top:15px;">
+      <div class="content">
         <div class="row" >
             <div class="col-md-12">
                 <div class="panel panel-default">
