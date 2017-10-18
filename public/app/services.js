@@ -200,20 +200,6 @@ angular.module('app')
 
         	return deferred.promise;
 		},
-		fetchOne: function (userId)
-		{
-			// TODO: remove the use of futures
-			var deferred = $q.defer();
-			var url = API_URL + 'CustomerInfo?customerId='+userId;
-
-            $http.get( url ).then(function (data) {
-                deferred.resolve(data);
-            },function (error){
-                deferred.reject('An error occured while fetching all products');
-            });
-
-        	return deferred.promise;
-		},
         setCustomer: function(customerId,customerName){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
