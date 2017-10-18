@@ -1,7 +1,18 @@
 @extends('layouts.main')
-@section('head')
-<link href="<?= asset('/css/customer-index.css') ?>" rel="stylesheet">
+@section('header')
+<style>
+	.bg-white{
+		padding:50px 10px 10px 10px;
+		background-color:#fff;
+	}
+	.panel-content{
+		border:none;
+	}
+	.panel-store .panel-body{
+		min-height:100px;
+	}
 
+</style>
 @stop
 
 @section('content')
@@ -13,8 +24,7 @@
 
 				<div class="panel-content panel panel-default">
                       <!-- <div class="panel-heading">ร้านค้าบนระบบ</div> -->
-          <strong class="text-center titlestore">ร้านค้าบนระบบ</strong>
-					<hr>
+          <h2 class="text-center titlestore">ร้านค้าบนระบบ</h2><hr>
           <div class="panel-body">
             <br/>
 						<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
@@ -22,9 +32,7 @@
 
 							<div class="col-md-12">
 							  <div dir-paginate="customer in customers | itemsPerPage: 18" pagination-id="customer.customerId">
-									<!--
 							    <div ng-class="{'clearfix': $index%6 === 0}"></div>
-								-->
 							    <div class="col-md-2 col-sm-2 col-xs-6">
 
 							    	<div class="panel panel-default brickbg" style="min-height:185px;">

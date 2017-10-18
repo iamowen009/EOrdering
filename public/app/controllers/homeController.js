@@ -2,7 +2,7 @@
 
 
 app.controller('HomeController',
-    function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService,Auth) {
+    function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService) {
         //retrieve customers listing from API
 
         $scope.marketings = {};
@@ -18,8 +18,7 @@ app.controller('HomeController',
 
         $scope.partImgPromotion = Config.partImgPromotion();
         //Customers.setCustomer(window.location.href.split('/').pop());
-        console.log('customer id ' + Customers.customerId() );
-        console.log('Auth customer id ' + Auth.customerId() );
+
         // fetch
         fetchAllMarketings(Customers.customerId());
         //fetchAllPromotions(Customers.customerId(), ['10', '40'], ['01', '18'], ['003', '006']);
