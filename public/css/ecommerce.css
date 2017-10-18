@@ -97,8 +97,8 @@
 }
 
 .cui-ecommerce--catalog--item--img a img {
-    min-height: 220px;
-    /*max-height: 250px;*/
+    /*min-height: 220px;
+    max-height: 250px;*/
     max-width: 100%;
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
@@ -399,7 +399,7 @@
 =========================================================================================== */
 
 .favorite-icon{
-  font-size: 24px;
+  font-size: 26px;
   text-align: right;
   position: absolute;
   float: right;
@@ -411,7 +411,7 @@
 }
 .favorite-icon:hover i.fa{
   color: #e8bc02;
-	font-size: 26px;
+	font-size: 28px;
 
 }
 

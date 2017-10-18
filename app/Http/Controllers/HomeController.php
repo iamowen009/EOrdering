@@ -10,7 +10,7 @@ use Mail;
 
 class HomeController extends Controller
 {
-    public function index($id)
+    public function index($id = 0)
     {
         return view('home.index',compact('id'));
     }

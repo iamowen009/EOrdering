@@ -75,11 +75,13 @@
 	                                <div class="tab-pane active" id="tab1" role="tabpanel">
 
 	                                    <div class="dd" id="nestable1">
+																				<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
                                         @include('order.inc-order-process')
 				                              </div>
 	                                </div>
 	                                <div class="tab-pane" id="tab2" role="tabpanel">
 	                                    <div class="dd" id="nestable1">
+																				<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
 																				@include('order.inc-history-process')
 				                        			</div>
 	                                </div>

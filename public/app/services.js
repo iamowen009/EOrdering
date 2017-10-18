@@ -200,6 +200,20 @@ angular.module('app')
 
         	return deferred.promise;
 		},
+		fetchOne: function (userId)
+		{
+			// TODO: remove the use of futures
+			var deferred = $q.defer();
+			var url = API_URL + 'CustomerInfo?customerId='+userId;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching all products');
+            });
+
+        	return deferred.promise;
+		},
         setCustomer: function(customerId,customerName){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
@@ -324,7 +338,8 @@ angular.module('app')
             var deferred = $q.defer();
             var url = API_URL + 'PromotionValidate';
 
-            $http.get( url , { params: {promotionId: promotionId,cartList:cartList}}).then(function (data) {
+            //$http.get( url , { params: {promotionId: promotionId,cartList:cartList}}).then(function (data) {
+            $http.post( url , {promotionId: promotionId,cartList:cartList}).then(function (data) {
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while validate promotion');
@@ -736,10 +751,6 @@ angular.module('app')
 
 }])
 
-//<<<<<<< HEAD
-
-//.service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
-
 .service('OrderPrecessInfo', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {
@@ -771,10 +782,8 @@ angular.module('app')
     return {
         items: [],
         /**
-<<<<<<< HEAD
-        * Fetch all separations
+        * Fetch all products
         */
-
         fetchOne: function (saleOrderNumber)
         {
             // TODO: remove the use of futures
@@ -792,5 +801,30 @@ angular.module('app')
 
     }
 
+}])
+
+.service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        /**
+        * Fetch all separations
+        */
+        fetchAll: function (customerId)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'Separations?customerId='+customerId;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured while fetching all separations');
+            });
+
+            return deferred.promise;
+        },
+
+    }
 
 }])
