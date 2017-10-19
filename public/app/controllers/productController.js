@@ -1,6 +1,6 @@
 "use strict";
 app.controller('ProductController',
-    function ($scope, $http, $filter,Marketings,Products,Config,Brands,Types,Promotions,Customers,sharedService) {
+    function ($scope, $http, $filter,Marketings,Products,Config,Brands,Types,Promotions,Customers,sharedService,Auth) {
 
         $scope.marketings = {};
         $scope.brands = {};
@@ -13,17 +13,19 @@ app.controller('ProductController',
         $scope.marketingCode = [window.location.href.split('/').pop()];
         $scope.brandCode = [];
         $scope.typeCode = [];
+        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
+        console.log('usersId xx = ' + $scope.usersId);
 
         // fetch
-        fetchAllMarketings(Customers.customerId());
-        //fetchAllProducts(Customers.customerId(), [$scope.marketingCode], ['01', '18'], ['003', '006'],true)
-        fetchAllProducts(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
-        //fetchBrands($scope.marketingCode,Customers.customerId());
-        //fetchTypes($scope.marketingCode,Customers.customerId(),$scope.brandCode);
-        //fetchAllPromotions(Customers.customerId(), [$scope.marketingCode], ['01', '18'], ['003', '006']);
-        fetchAllPromotions(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+        fetchAllMarketings($scope.usersId);
+        //fetchAllProducts($scope.usersId, [$scope.marketingCode], ['01', '18'], ['003', '006'],true)
+        fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
+        //fetchBrands($scope.marketingCode,$scope.usersId);
+        //fetchTypes($scope.marketingCode,$scope.usersId,$scope.brandCode);
+        //fetchAllPromotions($scope.usersId, [$scope.marketingCode], ['01', '18'], ['003', '006']);
+        fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
         function fetchAllMarketings(customerId) {
             Marketings.fetchAll(customerId).then(function (response) {
@@ -107,11 +109,11 @@ app.controller('ProductController',
             $scope.brandsFilter = getFilterMarketing($scope.brands,$scope.marketingCode);
             $scope.typesFilter = getFilterMarketing($scope.types,$scope.marketingCode);
 
-            fetchAllProducts(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
-            //fetchBrands($scope.marketingCode,Customers.customerId());
-            //fetchTypes($scope.marketingCode,Customers.customerId(),$scope.brandCode);
-            //fetchAllPromotions(Customers.customerId(), [$scope.marketingCode], ['01', '18'], ['003', '006']);
-            fetchAllPromotions(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+            fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
+            //fetchBrands($scope.marketingCode,$scope.usersId);
+            //fetchTypes($scope.marketingCode,$scope.usersId,$scope.brandCode);
+            //fetchAllPromotions($scope.usersId, [$scope.marketingCode], ['01', '18'], ['003', '006']);
+            fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
           };
 
@@ -127,13 +129,13 @@ app.controller('ProductController',
             else {
               $scope.brandCode.push(code);
             }
-            //fetchTypes($scope.marketingCode,Customers.customerId(),$scope.brandCode);
+            //fetchTypes($scope.marketingCode,$scope.usersId,$scope.brandCode);
             if(code == ''){
                 $scope.typesFilter = getFilterMarketing($scope.types,$scope.marketingCode,$scope.brandCode);
             }else
                 $scope.typesFilter = getFilterBrand($scope.types,$scope.marketingCode,$scope.brandCode);
-            fetchAllProducts(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
-            fetchAllPromotions(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+            fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
+            fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
           };
 
@@ -149,8 +151,8 @@ app.controller('ProductController',
             else {
               $scope.typeCode.push(code);
             }
-            fetchAllProducts(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
-            fetchAllPromotions(Customers.customerId(), $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+            fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode,true);
+            fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
           };
 
@@ -238,11 +240,12 @@ app.controller('ProductDetailController',
         $scope.productId = {};
         $scope.cartProductQty = 1;
         $scope.productSelect = {};
-        $scope.usersId = Auth.userTypeDesc() == 'multi' ? Auth.customerId() : Customers.customerId();
+        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
         $scope.btfId = window.location.href.split('/').pop();
         // fetch
+        console.log('product detail user ' + $scope.usersId + ' | ' + Auth.genId() + ' | ' + Auth.userTypeDesc() );
         fetchOneProduct($scope.btfId);
         fetchAllPromotions($scope.usersId, [], [], []);
         fetchAllProducts($scope.usersId, [], [], [],true);
@@ -376,7 +379,7 @@ app.controller('ProductDetailController',
             };
 
 
-            Fav.addFav(Customers.customerId(),btfCode,Auth.username()).then(function (response) {
+            Fav.addFav($scope.usersId,btfCode,Auth.username()).then(function (response) {
                 $scope.loading = false;
                 if(response.data.result=='SUCCESS'){
                         $scope.productSelect.isFavorite = true;
@@ -395,7 +398,7 @@ app.controller('ProductDetailController',
         $scope.removeFav = function(productId){
 
             var favoriteInfo = [{
-                customerId: Customers.customerId(),
+                customerId: $scope.usersId,
                 productId: productId,
                 userName: Auth.username()
             }];

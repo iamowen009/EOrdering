@@ -12,7 +12,7 @@ app.controller('HomeController',
         $scope.slideshows3 = '';
         $scope.carts = {};
         $scope.marketingmodel = [];
-        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.customerId() : Customers.customerId();
+        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
         $scope.usersId;
         $scope.partImgPromotion = Config.partImgPromotion();
         //Customers.setCustomer(window.location.href.split('/').pop());
