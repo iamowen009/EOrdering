@@ -1,7 +1,6 @@
 body{
 	background-color:rgb(232,241,254) !important;
     color:#000 !important;
-    border: none;
 }
 .navbar-brand, .navbar-nav > li > a, .site_title {
     color: #000 !important;
