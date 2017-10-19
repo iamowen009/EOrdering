@@ -70,7 +70,7 @@ angular.module('app')
           var customer =  window.localStorage.getItem('customerId');
           var res = JSON.parse( customer );
           //console.log('function customer id is ' + res.customerId );
-          return res.customerName;
+          return res ? res.customerName : '';
         },
         isAuthorized: function(){
             console.log('isAuthenticated',isAuthenticated);
