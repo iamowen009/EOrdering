@@ -13,9 +13,10 @@ app.controller('ProductController',
         $scope.marketingCode = [window.location.href.split('/').pop()];
         $scope.brandCode = [];
         $scope.typeCode = [];
-        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.customerId() : Customers.customerId();
+        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
+        console.log('usersId xx = ' + $scope.usersId);
 
         // fetch
         fetchAllMarketings($scope.usersId);
@@ -239,12 +240,12 @@ app.controller('ProductDetailController',
         $scope.productId = {};
         $scope.cartProductQty = 1;
         $scope.productSelect = {};
-        $scope.usersId = Auth.userTypeDesc() == 'multi' ? Auth.customerId() : Customers.customerId();
+        $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
         $scope.btfId = window.location.href.split('/').pop();
         // fetch
-        console.log('product detail user id ' + $scope.usersId );
+        console.log('product detail user ' + $scope.usersId + ' | ' + Auth.genId() + ' | ' + Auth.userTypeDesc() );
         fetchOneProduct($scope.btfId);
         fetchAllPromotions($scope.usersId, [], [], []);
         fetchAllProducts($scope.usersId, [], [], [],true);
@@ -378,7 +379,7 @@ app.controller('ProductDetailController',
             };
 
 
-            Fav.addFav(Customers.customerId(),btfCode,Auth.username()).then(function (response) {
+            Fav.addFav($scope.usersId,btfCode,Auth.username()).then(function (response) {
                 $scope.loading = false;
                 if(response.data.result=='SUCCESS'){
                         $scope.productSelect.isFavorite = true;
@@ -397,7 +398,7 @@ app.controller('ProductDetailController',
         $scope.removeFav = function(productId){
 
             var favoriteInfo = [{
-                customerId: Customers.customerId(),
+                customerId: $scope.usersId,
                 productId: productId,
                 userName: Auth.username()
             }];

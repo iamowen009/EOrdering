@@ -44,7 +44,7 @@ angular.module('app')
                     if(response.data.result=='SUCCESS'){
                         customers = response.data.data.customerList;
                         customers = getResult(customers,'customerName','customerCode',username);
-                        window.localStorage.setItem('customerId', angular.toJson(customers[0]) );
+                        window.localStorage.setItem('custId', angular.toJson(customers[0]) );
                         console.log('customers = ' + angular.toJson(customers[0]));
                         window.location.href= _base + '/home'
                     }
@@ -60,16 +60,14 @@ angular.module('app')
           }
 
         },
-        customerId : function(){
-          var customer =  window.localStorage.getItem('customerId');
-          var res = JSON.parse( customer );
-          console.log('function customer id is ' + res.customerId );
+        genId : function(){
+          var cid =  window.localStorage.getItem('custId');
+          var res = JSON.parse( cid );
           return res ? res.customerId : '';
         },
         customerName : function(){
-          var customer =  window.localStorage.getItem('customerId');
+          var customer =  window.localStorage.getItem('custId');
           var res = JSON.parse( customer );
-          //console.log('function customer id is ' + res.customerId );
           return res ? res.customerName : '';
         },
         isAuthorized: function(){
@@ -214,7 +212,7 @@ angular.module('app')
 
 }])
 
-.service('Customers', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+.service('Customers', ['$http', '$q', 'API_URL','Auth', function($http, $q, API_URL,Auth)
 {
 	return {
 		items: [],
@@ -256,10 +254,10 @@ angular.module('app')
 
         },
         customerId: function(){
-            return window.localStorage.getItem('customerId');
+            return Auth.userTypeDesc() == 'Multi' ? window.localStorage.getItem('customerId') : Auth.genId();
         },
         customerName: function(){
-            return window.localStorage.getItem('customerName');
+            return Auth.userTypeDesc() == 'Multi' ? window.localStorage.getItem('customerName') : Auth.customerName();
         },
 	}
 
