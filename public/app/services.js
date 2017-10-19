@@ -63,8 +63,8 @@ angular.module('app')
         customerId : function(){
           var customer =  window.localStorage.getItem('customerId');
           var res = JSON.parse( customer );
-          //console.log('function customer id is ' + res.customerId );
-          return res.customerId;
+          console.log('function customer id is ' + res.customerId );
+          return res ? res.customerId : '';
         },
         customerName : function(){
           var customer =  window.localStorage.getItem('customerId');
