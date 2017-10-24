@@ -3,10 +3,12 @@
 	select.form-control {
 		height: auto !important;
 	}
+
 	.cui-ecommerce--product--controls .btn {
 		padding: 4px 40px !important;
 		font-weight: bold;
 	}
+
 	.cui-ecommerce--catalog--item--img a .img {
 		min-height: 250px;
 		max-height: 250px;
@@ -14,12 +16,14 @@
 		-webkit-transition: all 0.4s ease-in-out;
 		transition: all 0.4s ease-in-out;
 	}
+
 	.cui-ecommerce--catalog--item--img a img {
 		min-height: 150px;
 		max-width: 100%;
 		-webkit-transition: all 0.4s ease-in-out;
 		transition: all 0.4s ease-in-out;
 	}
+
 	.colorpicker-element .input-group-addon i {
 		display: inline-block;
 		cursor: pointer;
@@ -27,28 +31,34 @@
 		vertical-align: text-top;
 		width: 16px;
 	}
+
 	.input-group-addon {
 		background-color: #fff;
 		border-right: none;
 		font-weight: bold;
 	}
+
 	.colorpicker-element .input-group-addon i {
 		height: 20px;
 		width: 30px;
 	}
+
 	.input-group-addon img {
 		width: 30px;
 		height: 20px;
 	}
+
 	.cui-ecommerce--catalog--item--img a img {
 		min-height: 100px;
 	}
 	/* Hide HTML5 Up and Down arrows. */
+
 	input[type="number"]::-webkit-outer-spin-button,
 	input[type="number"]::-webkit-inner-spin-button {
 		-webkit-appearance: none;
 		margin: 0;
 	}
+
 	input[type="number"] {
 		-moz-appearance: textfield;
 	}
@@ -112,7 +122,8 @@
 							</div>
 							<div class="col-md-1">
 								<label class="form-control text-center" ng-show="!promotionHD[0].promotionSetEdit">{{promotionHD[0].promotionSetTotal}}</label>
-								<input class="form-control text-center" type="number" ng-model="promotionHD[0].promotionSetTotal" ng-show="promotionHD[0].promotionSetEdit" ng-change="minSetTotal()">
+								<input class="form-control text-center" type="number" ng-model="promotionHD[0].promotionSetTotal" ng-show="promotionHD[0].promotionSetEdit"
+								    ng-change="minSetTotal()">
 							</div>
 							<div class="col-md-1">
 								<label>Set</label>
@@ -146,13 +157,30 @@
 													<tr ng-repeat="p in promotionDT" ng-if="p.promotionHdId==promotionCode">
 														<td>
 															<label ng-hide="p.btfEdit">{{ p.btfDesc }}</label>
-															<select class="form-control" ng-model="p.btfCode" ng-show="p.btfEdit" ng-change="findSize(p.promotionDtId,p.btfCode,p.listNo)">
+															<!--  <select class="form-control" ng-model="p.btfCode" ng-show="p.btfEdit" ng-change="findSize(p.promotionDtId,p.btfCode,p.listNo,p.format)">
 																<option ng-repeat="s in btfList[p.listNo]" value="{{ s.btfCode}}">{{ s.btfDesc }}</option>
-															</select>
+															</select>  -->
+															<div class="form-group" ng-show="p.btfEdit">
+																<div class="dropdown color-element">
+																	<button style="width:100px;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+																	    aria-expanded="true">
+																		<!--<span class="frame-color" ng-show="p.btfCode!=''" style="background-image: url({{p.partImgProduct}}/{{p.btfCode}}.jpg);"></span>-->
+																		<img class="frame-color" ng-show="p.btfCode!=''"  src="{{p.partImgProduct}}/{{p.btfCode}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg">
+																		<img class="frame-color" ng-show="p.btfCode==''" src="{{p.partImgProduct}}/Noimage.jpg">{{ p.btfDesc}}
+																	</button>
+																	<ul class="dropdown-menu" style="width:500px;">
+																		<li ng-repeat="s in btfList[p.listNo]">
+																			<a ng-click="findSize(p.promotionDtId,s.btfCode,p.listNo,p.format)" ng-model="p.btfCode" value="{{ s.btfCode }}" style="height:60px;">
+																				<img ng-show="s.btfCode!=''" class="frame-color" src="{{p.partImgProduct}}/{{s.btfCode}}.jpg" style="width:60px;" err-SRC="{{p.partImgProduct}}/Noimage.jpg">
+																				<img ng-show="s.btfCode==''" class="frame-color" src="{{p.partImgProduct}}/Noimage.jpg" style="width:60px;">{{ s.btfDesc}}</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
 														</td>
 														<td>
 															<label ng-hide="p.sizeEdit">{{ p.sizeDesc }}</label>
-															<select class="form-control" ng-model="p.sizeCode" ng-show="p.sizeEdit" ng-change="findColor(p.promotionDtId,p.sizeCode,p.listNo)">
+															<select class="form-control" ng-model="p.sizeCode" ng-show="p.sizeEdit" ng-change="findColor(p.promotionDtId,p.sizeCode,p.listNo,p.format)">
 																<option ng-repeat="s in sizeList[p.listNo]" value="{{ s.sizeCode}}">{{ s.sizeDesc }}</option>
 															</select>
 														</td>
@@ -191,7 +219,7 @@
 															</div>
 														</td>
 														<td ng-hide="promotionHD[0].isPromotionSet">
-															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProduct(p.promotionDtId,p.listNo)" ng-show="p.salesqty > 0"></i>
+															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProduct(p.promotionDtId,p.listNo,p.format)" ng-show="p.salesqty > 0"></i>
 															<i class="fa fa-arrow-right fa-2x" style="color:#bab2b2;" ng-show="p.salesqty == 0"></i>
 														</td>
 													</tr>
@@ -284,7 +312,7 @@
 												<tbody>
 													<tr ng-repeat="f in freeGoods">
 														<td>
-															<img class="img" src="{{f.partImgProduct}}/{{f.btf}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px">
+															<img class="img" src="{{f.partImgProduct}}/{{f.btfWeb}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px">
 															<label ng-hide="f.btfFreegoodsEdit">{{ f.btfDesc }}</label>
 															<select class="form-control" ng-model="f.btfCode" ng-show="p.btfEdit" ng-change="findSizeFreegoods(f.freeGoodsId,f.btfCode,f.listNo)">
 																<option ng-repeat="s in btfFreegoodsList[f.listNo]" value="{{ s.btfCode}}">{{ s.btfDesc }}</option>
@@ -349,7 +377,7 @@
 												<tbody>
 													<tr ng-repeat="f in freeGoods_Sel" ng-show="f.selected">
 														<td>
-															<img class="img" src="{{f.partImgProduct}}/{{f.btf}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px"> {{f.productNoSelected}}
+															<img class="img" src="{{f.partImgProduct}}/{{f.btfWeb}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px"> {{f.productNoSelected}}
 														</td>
 														<td>
 															<span ng-bind-html="f.productNameSelected"></span>
