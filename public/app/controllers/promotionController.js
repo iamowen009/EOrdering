@@ -6,6 +6,7 @@ app.controller('PromotionController',
         $scope.promotionDT = {};
         $scope.freeGoods = {};
         $scope.pricingConditionList = {};
+        $scope.btfInDt = {}
         $scope.productInDt = {};
         $scope.productInFreeGoods = {};
 
@@ -41,14 +42,14 @@ app.controller('PromotionController',
 
         fetchOne_Promotion($scope.promotionId);
         // fetchAll_Separations(Customers.customerId());
-        testcart();
+        // testcart();
 
-        function testcart() {
-            Carts.fetchAll(Customers.customerId()).then(function (response) {
-                console.log("cartall");
-                console.log(response);
-            });
-        }
+        // function testcart() {
+        //     Carts.fetchAll(Customers.customerId()).then(function (response) {
+        //         console.log("cartall");
+        //         console.log(response);
+        //     });
+        // }
 
         function fetchOne_Promotion(promotionId) {
             Promotions.fetchOne(promotionId).then(function (response) {
@@ -57,6 +58,7 @@ app.controller('PromotionController',
                     $scope.promotionDT = response.data.data.promotionDTList;
                     $scope.freeGoods = response.data.data.freeGoodsList;
                     $scope.pricingConditionList = response.data.data.pricingConditionList;
+                    $scope.btfInDt = response.data.data.btfInDtList;
                     $scope.productInDt = response.data.data.productInDtList;
                     $scope.productInFreeGoods = response.data.data.productInFreeGoodsList;
 
@@ -117,10 +119,18 @@ app.controller('PromotionController',
 
                         $scope.freeGoods_Sel[key].listNo = index + 1;
                         $scope.freeGoods_Sel[key].freeQty = 0;
+                        $scope.freeGoods_Sel[key].partImgProduct = Config.partImgProduct();
                         index++;
+
+                        var log = [];
+                        angular.forEach($scope.productInFreeGoods, function (value1, key1) {
+                            if (value1.freeGoodsId == $scope.freeGoods[key].freeGoodsId) {
+                                $scope.freeGoods[key].btfWeb = value1.btfWeb;
+                            }
+                        });
                     }
 
-                    // console.log($scope.freeGoods);
+
 
                     //Sales Product
                     setPromotionProduct($scope.promotionDT);
@@ -144,21 +154,21 @@ app.controller('PromotionController',
                 switch (value1.format) {
                     case "MG":
                     case "B":
-                        getBTF(value1.listNo);
+                        getBTF(value1.promotionDtId, value1.listNo);
                         break;
                     case "BTF":
-                        getSize(value1.promotionDtId, value1.listNo);
+                        getSize(value1.promotionDtId, value1.listNo, value1.format);
                         break;
                     case "BTFS":
-                        getSize(value1.promotionDtId, value1.listNo);
-                        getColor(value1.promotionDtId, $scope.promotionDT[value1.listNo - 1].sizeCode, value1.listNo);
+                        getSize(value1.promotionDtId, value1.listNo, value1.format);
+                        getColor(value1.promotionDtId, $scope.promotionDT[value1.listNo - 1].sizeCode, value1.listNo, value1.format);
                         $scope.promotionDT[value1.listNo - 1].btfCode = value1.btfsCode;
                         $scope.promotionDT[value1.listNo - 1].btfDesc = value1.btfsDesc;
                         $scope.promotionDT[value1.listNo - 1].sizeEdit = false;
                         break;
                     case "SKU":
-                        getSize(value1.promotionDtId, value1.listNo);
-                        getColor(value1.promotionDtId, $scope.promotionDT[value1.listNo - 1].sizeCode, value1.listNo);
+                        getSize(value1.promotionDtId, value1.listNo, value1.format);
+                        getColor(value1.promotionDtId, $scope.promotionDT[value1.listNo - 1].sizeCode, value1.listNo, value1.format);
                         $scope.promotionDT[value1.listNo - 1].btfCode = $scope.promotionDT[value1.listNo - 1].brandCode +
                             $scope.promotionDT[value1.listNo - 1].typeCode +
                             $scope.promotionDT[value1.listNo - 1].functionCode;
@@ -248,132 +258,132 @@ app.controller('PromotionController',
             }, log);
         }
 
-        function fetchAll_Separations(customerId) {
-            Separations.fetchAll(customerId).then(function (response) {
-                if (response.data.result == 'SUCCESS') {
-                    $scope.brandListAll = response.data.data.brandList;
-                    $scope.typeListAll = response.data.data.typeList;
-                    $scope.functionListAll = response.data.data.functionList;
-                    $scope.sizeListAll = response.data.data.sizeList;
+        // function fetchAll_Separations(customerId) {
+        //     Separations.fetchAll(customerId).then(function (response) {
+        //         if (response.data.result == 'SUCCESS') {
+        //             $scope.brandListAll = response.data.data.brandList;
+        //             $scope.typeListAll = response.data.data.typeList;
+        //             $scope.functionListAll = response.data.data.functionList;
+        //             $scope.sizeListAll = response.data.data.sizeList;
 
-                    var log = [];
+        //             var log = [];
 
-                    angular.forEach($scope.promotionDT, function (value1, key1) {
-                        // console.log(value1.format);
+        //             angular.forEach($scope.promotionDT, function (value1, key1) {
+        //                 // console.log(value1.format);
 
-                        // console.log("btf = " + value1.brandCode + value1.typeCode + value1.functionCode);
-                        switch (value1.format) {
-                            case "B":
-                                //Get Type
-                                $scope.typeList[value1.listNo] = [];
-                                angular.forEach(response.data.data.typeList, function (value2, key2) {
+        //                 // console.log("btf = " + value1.brandCode + value1.typeCode + value1.functionCode);
+        //                 switch (value1.format) {
+        //                     case "B":
+        //                         //Get Type
+        //                         $scope.typeList[value1.listNo] = [];
+        //                         angular.forEach(response.data.data.typeList, function (value2, key2) {
 
-                                    if (value1.brandCode == value2.brandCode) {
-                                        $scope.typeobj = [];
-                                        $scope.typeobj.typeCode = value2.typeCode;
-                                        $scope.typeobj.typeDesc = value2.typeDesc;
+        //                             if (value1.brandCode == value2.brandCode) {
+        //                                 $scope.typeobj = [];
+        //                                 $scope.typeobj.typeCode = value2.typeCode;
+        //                                 $scope.typeobj.typeDesc = value2.typeDesc;
 
-                                        if (!(hasDupsObjects($scope.typeList[value1.listNo], $scope.typeobj.typeCode, "typeCode"))) {
-                                            $scope.typeList[value1.listNo].push($scope.typeobj);
-                                        }
-                                    }
-                                }, log);
+        //                                 if (!(hasDupsObjects($scope.typeList[value1.listNo], $scope.typeobj.typeCode, "typeCode"))) {
+        //                                     $scope.typeList[value1.listNo].push($scope.typeobj);
+        //                                 }
+        //                             }
+        //                         }, log);
 
-                                if ($scope.typeList[value1.listNo].length > 0)
-                                    $scope.promotionDT[value1.listNo - 1].typeEdit = true;
+        //                         if ($scope.typeList[value1.listNo].length > 0)
+        //                             $scope.promotionDT[value1.listNo - 1].typeEdit = true;
 
-                                break;
-                            case "BTF":
-                                var btf = value1.brandCode + value1.typeCode + value1.functionCode;
-                                $scope.sizeList[value1.listNo] = [];
-                                $scope.colorList[value1.listNo] = [];
-                                fetchOne_BTF(btf, "SC", value1.listNo);
+        //                         break;
+        //                     case "BTF":
+        //                         var btf = value1.brandCode + value1.typeCode + value1.functionCode;
+        //                         $scope.sizeList[value1.listNo] = [];
+        //                         $scope.colorList[value1.listNo] = [];
+        //                         fetchOne_BTF(btf, "SC", value1.listNo);
 
-                                break;
-                            case "BTFS":
-                                var btf = value1.brandCode + value1.typeCode + value1.functionCode;
-                                $scope.colorList[value1.listNo] = [];
-                                fetchOne_BTF(btf, "C", value1.listNo);
+        //                         break;
+        //                     case "BTFS":
+        //                         var btf = value1.brandCode + value1.typeCode + value1.functionCode;
+        //                         $scope.colorList[value1.listNo] = [];
+        //                         fetchOne_BTF(btf, "C", value1.listNo);
 
-                                break;
-                            default:
-                                //  SKU
-                                // console.log($scope.promotionDT[value1.listNo-1].productDescTH);
-                                $scope.promotionDT[value1.listNo - 1].colorCode = $scope.promotionDT[value1.listNo - 1].productDescTH;
-                                break;
-                        }
-                    }, log);
-                }
-                $scope.loading = false;
-            });
-        }
+        //                         break;
+        //                     default:
+        //                         //  SKU
+        //                         // console.log($scope.promotionDT[value1.listNo-1].productDescTH);
+        //                         $scope.promotionDT[value1.listNo - 1].colorCode = $scope.promotionDT[value1.listNo - 1].productDescTH;
+        //                         break;
+        //                 }
+        //             }, log);
+        //         }
+        //         $scope.loading = false;
+        //     });
+        // }
 
-        function fetchOne_BTF(btf, format, listNo) {
-            Products.fetchOne(btf).then(function (response) {
-                if (response.data.result == 'SUCCESS') {
-                    $scope.btfInfo = response.data.data.btfInfo;
-                    $scope.productListAll = response.data.data.productList;
-                    var log = [];
-                    //    console.log(response);
-                    switch (format) {
-                        case "S":
-                            getSize($scope.productListAll, listNo);
-                            break;
-                        case "C":
-                            getColor($scope.productListAll, listNo);
-                            break;
-                        case "SC":
-                            getSize($scope.productListAll, listNo);
-                            getColor($scope.productListAll, listNo);
-                            break;
-                        case "SEL":
+        // function fetchOne_BTF(btf, format, listNo) {
+        //     Products.fetchOne(btf).then(function (response) {
+        //         if (response.data.result == 'SUCCESS') {
+        //             $scope.btfInfo = response.data.data.btfInfo;
+        //             $scope.productListAll = response.data.data.productList;
+        //             var log = [];
+        //             //    console.log(response);
+        //             switch (format) {
+        //                 case "S":
+        //                     getSize($scope.productListAll, listNo);
+        //                     break;
+        //                 case "C":
+        //                     getColor($scope.productListAll, listNo);
+        //                     break;
+        //                 case "SC":
+        //                     getSize($scope.productListAll, listNo);
+        //                     getColor($scope.productListAll, listNo);
+        //                     break;
+        //                 case "SEL":
 
-                            angular.forEach($scope.productListAll, function (value1, key1) {
-                                // console.log(value1.productNameTh);
-                                if (value1.sizeCode == $scope.promotionDT[listNo - 1].sizeCode
-                                    // && value1.colorCode == $scope.promotionDT[listNo - 1].colorCode
-                                ) {
-                                    // console.log($scope.promotionDT_Sel);
-                                    if (value1.colorCode == $scope.promotionDT[listNo - 1].colorCode) {
-                                        $scope.promotionDT_Sel[listNo - 1].productNoSelected = value1.productCode;
-                                        $scope.promotionDT_Sel[listNo - 1].productNameSelected = value1.productNameTh;
-                                        $scope.promotionDT_Sel[listNo - 1].unitSelected = value1.unitNameTh;
-                                        $scope.promotionDT_Sel[listNo - 1].priceSelected = value1.productPrice;
-                                        $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value1.productPrice;
-                                        $scope.promotionDT_Sel[listNo - 1].btf = btf;
-                                        $scope.promotionDT_Sel[listNo - 1].productId = value1.productId;
-                                    } else {
-                                        if (value1.productCode == $scope.promotionDT_Sel[listNo - 1].productNo) {
-                                            $scope.promotionDT_Sel[listNo - 1].productNoSelected = value1.productCode;
-                                            $scope.promotionDT_Sel[listNo - 1].productNameSelected = value1.productNameTh;
-                                            $scope.promotionDT_Sel[listNo - 1].unitSelected = value1.unitNameTh;
-                                            $scope.promotionDT_Sel[listNo - 1].priceSelected = value1.productPrice;
-                                            $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value1.productPrice;
-                                            $scope.promotionDT_Sel[listNo - 1].btf = btf;
-                                            $scope.promotionDT_Sel[listNo - 1].productId = value1.productId;
-                                        }
-                                    }
-                                }
-                            }, log);
+        //                     angular.forEach($scope.productListAll, function (value1, key1) {
+        //                         // console.log(value1.productNameTh);
+        //                         if (value1.sizeCode == $scope.promotionDT[listNo - 1].sizeCode
+        //                             // && value1.colorCode == $scope.promotionDT[listNo - 1].colorCode
+        //                         ) {
+        //                             // console.log($scope.promotionDT_Sel);
+        //                             if (value1.colorCode == $scope.promotionDT[listNo - 1].colorCode) {
+        //                                 $scope.promotionDT_Sel[listNo - 1].productNoSelected = value1.productCode;
+        //                                 $scope.promotionDT_Sel[listNo - 1].productNameSelected = value1.productNameTh;
+        //                                 $scope.promotionDT_Sel[listNo - 1].unitSelected = value1.unitNameTh;
+        //                                 $scope.promotionDT_Sel[listNo - 1].priceSelected = value1.productPrice;
+        //                                 $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value1.productPrice;
+        //                                 $scope.promotionDT_Sel[listNo - 1].btf = btf;
+        //                                 $scope.promotionDT_Sel[listNo - 1].productId = value1.productId;
+        //                             } else {
+        //                                 if (value1.productCode == $scope.promotionDT_Sel[listNo - 1].productNo) {
+        //                                     $scope.promotionDT_Sel[listNo - 1].productNoSelected = value1.productCode;
+        //                                     $scope.promotionDT_Sel[listNo - 1].productNameSelected = value1.productNameTh;
+        //                                     $scope.promotionDT_Sel[listNo - 1].unitSelected = value1.unitNameTh;
+        //                                     $scope.promotionDT_Sel[listNo - 1].priceSelected = value1.productPrice;
+        //                                     $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value1.productPrice;
+        //                                     $scope.promotionDT_Sel[listNo - 1].btf = btf;
+        //                                     $scope.promotionDT_Sel[listNo - 1].productId = value1.productId;
+        //                                 }
+        //                             }
+        //                         }
+        //                     }, log);
 
-                            break;
-                        default:
+        //                     break;
+        //                 default:
 
-                            break;
-                    }
-                }
-                $scope.loading = false;
-            });
-        }
+        //                     break;
+        //             }
+        //         }
+        //         $scope.loading = false;
+        //     });
+        // }
 
         //Use
-        function getBTF(listNo) {
+        function getBTF(promotionDtId, listNo) {
             var log = [];
             $scope.btfList[listNo] = [];
-            angular.forEach($scope.promotionDT, function (value1, key1) {
-                if (value1.listNo == listNo) {
+            angular.forEach($scope.btfInDt, function (value1, key1) {
+                if (value1.promotionDtId == promotionDtId) {
                     $scope.btfobj = [];
-                    $scope.btfobj.btfCode = value1.btfCode;
+                    $scope.btfobj.btfCode = value1.btf;
                     $scope.btfobj.btfDesc = value1.btfDesc;
 
                     if (!(hasDupsObjects($scope.btfList[listNo], $scope.btfobj.btfCode, "btfCode"))) {
@@ -385,16 +395,29 @@ app.controller('PromotionController',
             if ($scope.btfList[listNo].length > 0)
                 $scope.promotionDT[listNo - 1].btfEdit = true;
 
-            console.log($scope.btfList);
+            // console.log($scope.btfList);
         }
 
         //Use
-        function getSize(promotionDtId, listNo) {
+        function getSize(promotionDtId, listNo, format) {
             //Get  size
             var log = [];
             $scope.sizeList[listNo] = [];
-            angular.forEach($scope.productInDt, function (value1, key1) {
-                if (value1.promotionDtId == promotionDtId) {
+            console.log(format);
+            if (format != "MG" && format != "B") {
+                angular.forEach($scope.TmpList, function (value1, key1) {
+                    if (value1.promotionDtId == promotionDtId) {
+                        $scope.$sizeobj = [];
+                        $scope.$sizeobj.sizeCode = value1.sizeCode;
+                        $scope.$sizeobj.sizeDesc = value1.sizeName;
+
+                        if (!(hasDupsObjects($scope.sizeList[listNo], $scope.$sizeobj.sizeCode, "sizeCode"))) {
+                            $scope.sizeList[listNo].push($scope.$sizeobj);
+                        }
+                    }
+                }, log);
+            } else {
+                angular.forEach($scope.productListAll, function (value1, key1) {
                     $scope.$sizeobj = [];
                     $scope.$sizeobj.sizeCode = value1.sizeCode;
                     $scope.$sizeobj.sizeDesc = value1.sizeName;
@@ -402,12 +425,13 @@ app.controller('PromotionController',
                     if (!(hasDupsObjects($scope.sizeList[listNo], $scope.$sizeobj.sizeCode, "sizeCode"))) {
                         $scope.sizeList[listNo].push($scope.$sizeobj);
                     }
-                }
-            }, log);
+                }, log);
+            }
 
             if ($scope.sizeList[listNo].length > 0)
                 $scope.promotionDT[listNo - 1].sizeEdit = true;
         }
+
 
         function getSizeFreegoods(freeGoodsId, listNo) {
             //Get  size
@@ -430,29 +454,44 @@ app.controller('PromotionController',
         }
 
         //Use
-        function getColor(promotionDtId, sizeCode, listNo) {
+        function getColor(promotionDtId, sizeCode, listNo, format) {
             //Color
             var log = [];
             $scope.colorList[listNo] = [];
-            angular.forEach($scope.productInDt, function (value1, key1) {
+            if (format != "MG" && format != "B") {
+                angular.forEach($scope.productInDt, function (value1, key1) {
+                    if (value1.promotionDtId == promotionDtId &&
+                        value1.sizeCode == sizeCode) {
+                        // console.log("value1.promotionDtId = " + value1.promotionDtId);
+                        // console.log("value1.sizeCode = " + value1.sizeCode);
+                        // console.log("promotionDtId = " + promotionDtId);
+                        // console.log("sizeCode = " + sizeCode);
+                        $scope.$colorobj = [];
+                        $scope.$colorobj.colorCode = value1.colorCode;
+                        $scope.$colorobj.colorNameTh = value1.colorNameTh;
+                        $scope.$colorobj.colorNameEng = value1.colorNameEng;
+                        $scope.$colorobj.rgbCode = value1.rgbCode;
 
-                if (value1.promotionDtId == promotionDtId &&
-                    value1.sizeCode == sizeCode) {
-                    // console.log("value1.promotionDtId = " + value1.promotionDtId);
-                    // console.log("value1.sizeCode = " + value1.sizeCode);
-                    // console.log("promotionDtId = " + promotionDtId);
-                    // console.log("sizeCode = " + sizeCode);
-                    $scope.$colorobj = [];
-                    $scope.$colorobj.colorCode = value1.colorCode;
-                    $scope.$colorobj.colorNameTh = value1.colorNameTh;
-                    $scope.$colorobj.colorNameEng = value1.colorNameEng;
-                    $scope.$colorobj.rgbCode = value1.rgbCode;
-
-                    if (!(hasDupsObjects($scope.colorList[listNo], $scope.$colorobj.colorCode, "colorCode"))) {
-                        $scope.colorList[listNo].push($scope.$colorobj);
+                        if (!(hasDupsObjects($scope.colorList[listNo], $scope.$colorobj.colorCode, "colorCode"))) {
+                            $scope.colorList[listNo].push($scope.$colorobj);
+                        }
                     }
-                }
-            }, log);
+                }, log);
+            } else {
+                angular.forEach($scope.productListAll, function (value1, key1) {
+                    if (value1.sizeCode == sizeCode) {
+                        $scope.$colorobj = [];
+                        $scope.$colorobj.colorCode = value1.colorCode;
+                        $scope.$colorobj.colorNameTh = value1.colorNameTh;
+                        $scope.$colorobj.colorNameEng = value1.colorNameEng;
+                        $scope.$colorobj.rgbCode = value1.rgbCode;
+
+                        if (!(hasDupsObjects($scope.colorList[listNo], $scope.$colorobj.colorCode, "colorCode"))) {
+                            $scope.colorList[listNo].push($scope.$colorobj);
+                        }
+                    }
+                }, log);
+            }
 
             if ($scope.colorList[listNo].length > 0)
                 $scope.promotionDT[listNo - 1].colorEdit = true;
@@ -486,7 +525,7 @@ app.controller('PromotionController',
         }
 
         //Use
-        $scope.selectedProduct = function (promotionDtId, listNo) {
+        $scope.selectedProduct = function (promotionDtId, listNo, format) {
             var log = [];
             console.log($scope.promotionDT[listNo - 1]);
             if (
@@ -508,22 +547,14 @@ app.controller('PromotionController',
                             }
                         }, log);
 
-                        angular.forEach($scope.productInDt, function (value3, key3) {
-                            if (value3.promotionDtId == promotionDtId &&
-                                value3.sizeCode == $scope.promotionDT[listNo - 1].sizeCode &&
-                                value3.colorCode == $scope.promotionDT[listNo - 1].colorCode
-                            ) {
-                                // console.log($scope.promotionDT_Sel);
-                                if (value3.colorCode == $scope.promotionDT[listNo - 1].colorCode) {
-                                    $scope.promotionDT_Sel[listNo - 1].productNoSelected = value3.productCode;
-                                    $scope.promotionDT_Sel[listNo - 1].productNameSelected = value3.productNameTh;
-                                    $scope.promotionDT_Sel[listNo - 1].unitSelected = value3.unitNameTh;
-                                    $scope.promotionDT_Sel[listNo - 1].priceSelected = value3.productPrice;
-                                    $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value3.productPrice;
-                                    $scope.promotionDT_Sel[listNo - 1].btf = $scope.promotionDT[listNo - 1].brandCode + $scope.promotionDT[listNo - 1].typeCode + $scope.promotionDT[listNo - 1].functionCode;
-                                    $scope.promotionDT_Sel[listNo - 1].productId = value3.productId;
-                                } else {
-                                    if (value3.productCode == $scope.promotionDT_Sel[listNo - 1].productNo) {
+                        if (format != "MG" && format != "B") {
+                            angular.forEach($scope.productInDt, function (value3, key3) {
+                                if (value3.promotionDtId == promotionDtId &&
+                                    value3.sizeCode == $scope.promotionDT[listNo - 1].sizeCode &&
+                                    value3.colorCode == $scope.promotionDT[listNo - 1].colorCode
+                                ) {
+                                    // console.log($scope.promotionDT_Sel);
+                                    if (value3.colorCode == $scope.promotionDT[listNo - 1].colorCode) {
                                         $scope.promotionDT_Sel[listNo - 1].productNoSelected = value3.productCode;
                                         $scope.promotionDT_Sel[listNo - 1].productNameSelected = value3.productNameTh;
                                         $scope.promotionDT_Sel[listNo - 1].unitSelected = value3.unitNameTh;
@@ -531,10 +562,47 @@ app.controller('PromotionController',
                                         $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value3.productPrice;
                                         $scope.promotionDT_Sel[listNo - 1].btf = $scope.promotionDT[listNo - 1].brandCode + $scope.promotionDT[listNo - 1].typeCode + $scope.promotionDT[listNo - 1].functionCode;
                                         $scope.promotionDT_Sel[listNo - 1].productId = value3.productId;
+                                    } else {
+                                        if (value3.productCode == $scope.promotionDT_Sel[listNo - 1].productNo) {
+                                            $scope.promotionDT_Sel[listNo - 1].productNoSelected = value3.productCode;
+                                            $scope.promotionDT_Sel[listNo - 1].productNameSelected = value3.productNameTh;
+                                            $scope.promotionDT_Sel[listNo - 1].unitSelected = value3.unitNameTh;
+                                            $scope.promotionDT_Sel[listNo - 1].priceSelected = value3.productPrice;
+                                            $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value3.productPrice;
+                                            $scope.promotionDT_Sel[listNo - 1].btf = $scope.promotionDT[listNo - 1].brandCode + $scope.promotionDT[listNo - 1].typeCode + $scope.promotionDT[listNo - 1].functionCode;
+                                            $scope.promotionDT_Sel[listNo - 1].productId = value3.productId;
+                                        }
                                     }
                                 }
-                            }
-                        }, log);
+                            }, log);
+                        } else {
+                            angular.forEach($scope.productListAll, function (value3, key3) {
+                                if (value3.sizeCode == $scope.promotionDT[listNo - 1].sizeCode &&
+                                    value3.colorCode == $scope.promotionDT[listNo - 1].colorCode
+                                ) {
+                                    // console.log($scope.promotionDT_Sel);
+                                    if (value3.colorCode == $scope.promotionDT[listNo - 1].colorCode) {
+                                        $scope.promotionDT_Sel[listNo - 1].productNoSelected = value3.productCode;
+                                        $scope.promotionDT_Sel[listNo - 1].productNameSelected = value3.productNameTh;
+                                        $scope.promotionDT_Sel[listNo - 1].unitSelected = value3.unitNameTh;
+                                        $scope.promotionDT_Sel[listNo - 1].priceSelected = value3.productPrice;
+                                        $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value3.productPrice;
+                                        $scope.promotionDT_Sel[listNo - 1].btf = $scope.promotionDT[listNo - 1].btfCode;
+                                        $scope.promotionDT_Sel[listNo - 1].productId = value3.productId;
+                                    } else {
+                                        if (value3.productCode == $scope.promotionDT_Sel[listNo - 1].productNo) {
+                                            $scope.promotionDT_Sel[listNo - 1].productNoSelected = value3.productCode;
+                                            $scope.promotionDT_Sel[listNo - 1].productNameSelected = value3.productNameTh;
+                                            $scope.promotionDT_Sel[listNo - 1].unitSelected = value3.unitNameTh;
+                                            $scope.promotionDT_Sel[listNo - 1].priceSelected = value3.productPrice;
+                                            $scope.promotionDT_Sel[listNo - 1].totalPrice = $scope.promotionDT_Sel[listNo - 1].salesqty_sel * value3.productPrice;
+                                            $scope.promotionDT_Sel[listNo - 1].btf = $scope.promotionDT[listNo - 1].btfCode;
+                                            $scope.promotionDT_Sel[listNo - 1].productId = value3.productId;
+                                        }
+                                    }
+                                }
+                            }, log);
+                        }
                     }
                 }, log);
 
@@ -649,7 +717,7 @@ app.controller('PromotionController',
                     if (value1.freeGoodsId == freeGoodsId) {
                         angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
                             if (value2.listNo == value1.listNo) {
-                                value2.freeQty = value1.freeGoodsQty;
+                                value2.freeQty = value1.freeGoodsQty_Rt;
                                 value2.selected = true;
                             }
                         }, log);
@@ -668,6 +736,8 @@ app.controller('PromotionController',
                                     $scope.freeGoods_Sel[listNo - 1].totalPrice = $scope.freeGoods_Sel[listNo - 1].freeQty * value3.productPrice;
                                     $scope.freeGoods_Sel[listNo - 1].btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
                                     $scope.freeGoods_Sel[listNo - 1].productId = value3.productId;
+                                    $scope.freeGoods_Sel[listNo - 1].btfWeb = value3.btfWeb;
+
                                 } else {
                                     if (value3.productCode == $scope.freeGoods_Sel[listNo - 1].productNo) {
                                         $scope.freeGoods_Sel[listNo - 1].productNoSelected = value3.productCode;
@@ -677,6 +747,7 @@ app.controller('PromotionController',
                                         $scope.freeGoods_Sel[listNo - 1].totalPrice = $scope.freeGoods_Sel[listNo - 1].freeQty * value3.productPrice;
                                         $scope.freeGoods_Sel[listNo - 1].btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
                                         $scope.freeGoods_Sel[listNo - 1].productId = value3.productId;
+                                        $scope.freeGoods_Sel[listNo - 1].btfWeb = value3.btfWeb;
                                     }
                                 }
                             }
@@ -798,24 +869,29 @@ app.controller('PromotionController',
         }
 
         //รออออ
-        $scope.findSize = function (promotionDtId, btfCode, no) {
+        $scope.findSize = function (promotionDtId, btfCode, no, format) {
 
-            // $scope.promotionDT[no - 1].sizeCode = "";
-            // $scope.promotionDT[no - 1].colorCode = "";
-            // $scope.promotionDT[no - 1].rgbCode = "";
-            // $scope.promotionDT[no - 1].color = "";
+            $scope.promotionDT[no - 1].btfCode = btfCode;
 
-            // $scope.promotionDT[no - 1].sizeEdit = false;
-            // $scope.promotionDT[no - 1].colorEdit = false;
+            $scope.promotionDT[no - 1].sizeCode = "";
+            $scope.promotionDT[no - 1].colorCode = "";
+            $scope.promotionDT[no - 1].rgbCode = "";
+            $scope.promotionDT[no - 1].color = "";
 
-            // if (typeCode != "" && functionCode != "") {
-            //     var btf = brandCode + typeCode + functionCode;
-            //     // console.log("btf = " + btf + "/" + no);
+            $scope.promotionDT[no - 1].sizeEdit = false;
+            $scope.promotionDT[no - 1].colorEdit = false;
 
-            //     $scope.sizeList[no] = [];
-            //     $scope.colorList[no] = [];
-            //     fetchOne_BTF(btf, "SC", no);
-            // }
+            $scope.sizeList[no] = [];
+            $scope.colorList[no] = [];
+
+            Products.fetchOne(btfCode).then(function (response) {
+                if (response.data.result == 'SUCCESS') {
+                    $scope.btfInfo = response.data.data.btfInfo;
+                    $scope.productListAll = response.data.data.productList;
+
+                    getSize(promotionDtId, no, format);
+                }
+            });
         }
 
 
@@ -824,7 +900,7 @@ app.controller('PromotionController',
         }
 
         //Use
-        $scope.findColor = function (promotionDtId, sizeCode, no) {
+        $scope.findColor = function (promotionDtId, sizeCode, no, format) {
             $scope.promotionDT[no - 1].colorCode = "";
             $scope.promotionDT[no - 1].rgbCode = "";
             $scope.promotionDT[no - 1].color = "";
@@ -833,7 +909,7 @@ app.controller('PromotionController',
             // console.log("listNo = " + no);
             // console.log("sizeCode = " + sizeCode);
 
-            getColor(promotionDtId, sizeCode, no);
+            getColor(promotionDtId, sizeCode, no, format);
         }
 
         $scope.findColorFreegoods = function (freeGoodsId, sizeCode, no) {
@@ -928,11 +1004,11 @@ app.controller('PromotionController',
                 swal("กรุณาเลือกสินค้า!");
             } else {
 
-                console.log($scope.cartList);
+                // console.log($scope.cartList);
 
                 Promotions.validate($scope.promotionId, $scope.cartList).then(function (response) {
-                    console.log("call freegoods");
-                    console.log(response);
+                    // console.log("call freegoods");
+                    // console.log(response);
                     if (response.data.result == 'SUCCESS') {
 
                         var freeGoodsList = response.data.freeGoodsList;

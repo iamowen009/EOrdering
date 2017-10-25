@@ -120,10 +120,10 @@ select.form-control{
 						<div class="row" >
 					            <div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions">
 								    <span class="media-left">
-								    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;">
+								    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;cursor: pointer;">
 								        <!--<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionHdId)" style="width:70%;">-->
 								    </span>
-								    <div class="media-body" ng-click="toPromotionList(promotion.promotionHdId)">
+								    <div class="media-body" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
 								        <h4 class="media-heading">{{ promotion.promotionName }}</h4>
 								        <!-- <div ng-bind-html="promotion.promotionDesc"></div> -->
 								    </div>
@@ -135,9 +135,9 @@ select.form-control{
                	<div class="row" >
 					          <div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions" ng-show="promotion.marketingCode==marketing.marketingCode">
 										    <span class="media-left">
-										        <img src="http://placehold.it/250x150" alt="..." ng-click="toPromotionList(promotion.promotionHdId)">
+										        <img src="http://placehold.it/250x150" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
 										    </span>
-										    <div class="media-body" ng-click="toPromotionList(promotion.promotionHdId)">
+										    <div class="media-body" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
 										        <h6 class="media-heading">{{ promotion.promotionName }}</h6>
 										        <div ng-bind-html="promotion.promotionDesc"></div>
 										    </div>
