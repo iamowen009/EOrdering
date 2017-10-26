@@ -156,10 +156,10 @@ select.form-control{
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่สั่งซื้อ :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ cartDate }}</label>
                                 </div>
-                                <div class="form-group col-md-6" ng-if="customer.isReceive === true">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนส่งโดย :</label>
+                                <div class="form-group col-md-6" ng-if="customer.shipCondition=='01'">
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนส่งโดย :  </label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="checkbox-inline"><input type="checkbox"  ng-model="ddlShipTo.shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-click="pickUp()"  ng-model="shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
                                   </div>
 
                                 </div>
@@ -167,11 +167,10 @@ select.form-control{
                               <div class="col-md-12">
                                 <div class="form-group col-md-6">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">การชำระเงิน :</label>
-                                  <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="radio-inline"><input type="radio" ng-click="paidType('CASH')" name="optradio" ng-model="pay.name" value="CASH">เงินสด</label>
-                                    <label class="radio-inline" ng-if="paid !== 'CASH'"  ><input type="radio" ng-click="paidType('CREDIT')"  name="optradio" ng-model="pay.name" value="CREDIT">เครดิต</label>
-                                    {{ showPaid }}
 
+                                  <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <label class="radio-inline"><input type="radio" name="optradio" ng-model="paymentTerm" value="CASH">เงินสด</label>
+                                    <label class="radio-inline" ng-if="customer.paymentTerm !== 'CASH'"><input type="radio" name="optradio" ng-model="paymentTerm" value="{{ customer.paymentTerm }}">เครดิต</label>
                                   </div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -182,9 +181,7 @@ select.form-control{
                                         name="date_id" id="date_id"
                                         class="form-control"
                                         ng-model="ddlDate"
-                                        ng-change="i.id=ddlDate.id"
-                                        ng-options="i.reqDate for i in requests track by i.id | date:'dd/mm/yy'">
-                                        <option value=''>Select</option>
+                                        ng-options="i as i.reqDate for i in requests track by i.reqDate | date:'dd/mm/yy'">
                                       </select>
 
 
@@ -199,7 +196,7 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}</label>
 
                                 </div>
-                                <div class="form-group col-md-6" ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
+                                <div class="form-group col-md-6" ng-show="shippingType=='show'" ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
 
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -208,19 +205,13 @@ select.form-control{
                                         class="form-control"
                                         ng-model="ddlShipTo"
                                         ng-change="changeShip(ddlShipTo.shipId)"
-
-                                        ng-options="i.shipName for i in ships track by i.shipId">
+                                        ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
                                         <!--
                                         <option value=''>Select</option>
                                         -->
-                                      </select>
-
-
+                                      </select>{{ddlShipTo.shipCondition}}
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
-
-
-
                                 </div>
                               </div>
                               <div class="col-md-12">
@@ -229,7 +220,7 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.email}}</label>
 
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" ng-show="shippingType=='show'">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">ที่อยู่สถานที่ส่ง :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{shipaddress}}</label>
                                 </div>
@@ -240,19 +231,17 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง :  </label>
+                                <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง : </label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
+                                  
                                     <select
                                         name="trans_id" id="trans_id"
                                         class="form-control"
                                         ng-model="ddlTransport"
-                                        ng-change="i.transportId=ddlTransport.transportId"
-                                        ng-options="i.transportZoneDesc for i in transports track by i.transportId">
+                                        ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone">
 
                                       </select>
-
-
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-12"><!-- <span ng-show="formcart.trans_id.$error.required"><font color="red" size="2px">Required Field</font></span> --></div>
                                 </div>
@@ -363,17 +352,17 @@ select.form-control{
                                   <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่สั่งซื้อ :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ cartDate }}</label>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" ng-show="shipCondition">
                                   <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">ขนส่งโดย :</label>
-                                  <label class="col-md-9 col-sm-9 col-xs-12">มารับเอง</label>
+                                  <label class="col-md-9 col-sm-9 col-xs-12">{{shipCondition === true ? 'รับสินค้าเอง' : ''}}</label>
 
                                 </div>
                               </div>
                               <div class="col-md-12">
                                 <div class="form-group col-md-6">
                                   <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">การชำระเงิน :</label>
-                                  <label ng-show="pay.name==='CASH'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
-                                  <label ng-show="pay.name==='CREDIT'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
+                                  <label ng-show="paymentTerm==='CASH'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
+                                  <label ng-show="paymentTerm!=='CASH'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่ต้องการ :</label>
@@ -387,7 +376,7 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}</label>
 
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" ng-show="shippingType=='show'">
                                   <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">สถานที่ส่ง :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ddlShipTo.shipName}}</label>
 
@@ -399,7 +388,7 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.email}}</label>
 
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" ng-show="shippingType=='show'">
                                   <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">ที่อยู่สถานที่ส่ง :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{shipaddress}}</label>
 
@@ -410,7 +399,7 @@ select.form-control{
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เบอร์โทรศัพท์ :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">บริษัทขนส่ง :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZoneDesc}}</label>
                                 </div>

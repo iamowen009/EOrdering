@@ -38,7 +38,11 @@ app.controller('ProductCheckoutController',
        $scope.requests={};
        $scope.ships={};
        $scope.transports={};
-       $scope.carts = {};
+       $scope.ddlShipTo = {};
+       $scope.paymentTerm = {};
+       $scope.ddlDate = {};
+       $scope.ddlTransport = {};
+       $scope.shipper = {};
        //$scope.pay = {'name':'CASH','name':'CREDIT'};
        $scope.partImgProduct = Config.partImgProduct();
        $scope.shipaddress = '-';
@@ -75,7 +79,8 @@ app.controller('ProductCheckoutController',
                 if(response.data.result=='SUCCESS'){
                     $scope.customer = response.data.data.customerInfo;
                     $scope.requests = response.data.data.requestDateList;
-
+                    var ls = $scope.requests.length;
+                    console.log('ls ' + ls)
                     for(var key in $scope.requests){
 
                         var list_date = $scope.requests[key]['reqDate'].split('T');
@@ -83,16 +88,47 @@ app.controller('ProductCheckoutController',
                         $scope.requests[key]['reqDate'] = split_date[2]+'/'+split_date[1]+'/'+split_date[0];
 
                     }
-                    $scope.ships      = response.data.data.shipToList;
-                    $scope.transports = response.data.data.transportList;
-                    $scope.carts      = response.data.data.cartProductList;
-                    $scope.ddlTransport = $scope.transports[0];
-                    $scope.ddlShipTo = $scope.ships[0];
-                    $scope.shipaddress = $scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName;
+                    $scope.ships        = response.data.data.shipToList;
+                    $scope.transports   = response.data.data.transportList;
+                    $scope.carts        = response.data.data.cartProductList;
+                  //  if( $scope.transports.length > 0)
+                    $scope.ddlTransport = $scope.transports[0];//.transportZone +' ' + $scope.transports[0].transportZoneDesc;
+                    $scope.ddlShipTo    = $scope.ships[0];
+                    $scope.ddlDate      = $scope.requests[0];
+                    $scope.paymentTerm  = $scope.customer.paymentTerm !== 'CASH' ? $scope.customer.paymentTerm : 'CASH';//$scope.paymentTerm;
+                    //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
+                    $scope.shipaddress  = $scope.ships.length > 0 ? ($scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName ) : '';
+                   var shipper = angular.toJson($scope.ddlShipTo);
+                   //console.log('shipper',shipper);
+/*
+                    if( ( $scope.ddlShipTo.shipCondition == '03' || $scope.ddlShipTo.shipCondition == '08') && $scope.transports.length == 0 )
+                    {
+                      $scope.transports = [{
+                        id : $scope.ddlShipTo.transportZone,
+                        label : $scope.ddlShipTo.transportZone,
+                        value : $scope.ddlShipTo.transportZone +' '+ shipper.transportZoneDesc,
+                        name : $scope.ddlShipTo.transportZone +' '+ shipper.transportZoneDesc
+                      }];
+                      //$scope.ddlTransport = $scope.shipLoop;
+                    }
+*/
+
                 }
+                console.log('ddlShipTo : ' , $scope.transports);
                 $scope.loading = false;
             });
        }
+
+       $scope.shippingType = 'show';
+       $scope.shipCondition = false;
+       $scope.pickUp = function(){
+          if( $scope.shipCondition ){
+            $scope.shippingType = 'hide';
+          }else{
+            $scope.shippingType = 'show';
+          }
+       }
+
 
        $scope.changeShip = function(sel){
         if(typeof sel!="undefined"){
@@ -102,8 +138,13 @@ app.controller('ProductCheckoutController',
         }
        }
 
+
       var getFilter = function(results, valueStartsWith){
             return _.filter(results, function(d){ return d['shipId'] == valueStartsWith; })
+        }
+
+      var getTransport = function(results, valueStartsWith){
+            return _.filter(results, function(d){ return d['transportId'] == valueStartsWith; })
         }
 
        $scope.removeCart = function(productId){
@@ -148,11 +189,8 @@ app.controller('ProductCheckoutController',
 
                     console.log(response);
             });
-
-
         }
         $scope.removeQty = function(field){
-
             $scope.editing = $scope.carts.indexOf(field);
             $scope.newField = angular.copy(field);
             console.log('new qty ' + $scope.newField['qty']);
@@ -172,7 +210,6 @@ app.controller('ProductCheckoutController',
 
                 fetchCart(Customers.customerId());
             }, function (response) {
-
                     console.log(response);
             });
           }

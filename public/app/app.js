@@ -24,6 +24,10 @@ app.run(function(Orders,Auth,Customers) {
               console.log("Step changed to: " + currentIndex);
               if( currentIndex == 0){
                 $('.li-btn').show();
+              }else if( currentIndex == 1){
+                //window.localStorage.setItem('ddlShipTo','');
+                //$(document).find('.actions ul[role="menu"] li a[href="#next"]').attr('ng-click','formset()');
+
               }else{
                 $('.li-btn').hide();
               }
@@ -33,8 +37,8 @@ app.run(function(Orders,Auth,Customers) {
 
               console.log('onInit is ' + currentIndex );
               if( currentIndex == 0){
-                var btnPrint = $("<a>").attr({"href":"#","ng-click":"btnPrint"}).addClass("btn-print btn btn-primary").text("Print");
-                var btnClear = $("<a>").attr({"href":"#","ng-click":"removeAll()"}).addClass("btn-clear btn btn-primary").text("ลบรายการสินค้าทั้งหมด");
+                var btnPrint  = $("<a>").attr({"href":"#","ng-click":"btnPrint"}).addClass("btn-print btn btn-primary").text("Print");
+                var btnClear  = $("<a>").attr({"href":"#","ng-click":"removeAll()"}).addClass("btn-clear btn btn-primary").text("ลบรายการสินค้าทั้งหมด");
                 var printeBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnPrint);
                 var cleareBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnClear);
                 var ul        = $("<ul>").addClass('pull-left').append(printeBtn).append(cleareBtn);
@@ -65,11 +69,12 @@ app.run(function(Orders,Auth,Customers) {
                     if (isConfirm) {
                         var appElement = document.querySelector('[ng-controller=ProductCheckoutController]');
                         var appScope = angular.element(appElement).scope();
-                        swal('Loading');
-                        var shipCondition = '';
+                        //swal('Loading');
+                        var appShipCondition = false;
                         var shipId = 0;
                         var shipCode = '';
                         var shipName = '';
+                        var appPaymentTerm = '';
                         function newLocalDate() {
                              var date = new Date();
                              var dateStr = `${moment(date).get('year')}-${moment(date).format('MM-DD')}`;
@@ -77,16 +82,21 @@ app.run(function(Orders,Auth,Customers) {
                              var dateStr2 = `${moment(date2).get('year')}-${moment(date2).format('MM-DD')}`;
                               return new Date(dateStr2);
                          }
+                         console.log(appScope);
 
-                        var reqDate =newLocalDate();
+                        if(typeof appScope.paymentTerm !== 'undefined'){
+                          appPaymentTerm = appScope.paymentTerm;
+                        }
+                        console.log('appPaymentTerm : ' + appPaymentTerm );
                         if(typeof appScope.ddlShipTo !== 'undefined'){
-                            shipCondition = appScope.ddlShipTo.shipCondition;
+                            appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
                             shipName = appScope.ddlShipTo.shipName;
-
-                            console.log('not undefined ship shipId ' + shipId + ' shipCode ' + shipCode + ' shipName ' + shipName + ' shipCondition ' + shipCondition );
+                            console.log('not undefined ship shipId ' + shipId + ' shipCode ' + shipCode + ' shipName ' + shipName + ' shipCondition ' + appShipCondition );
                         }
+
+                        console.log('appScope.ddlShipTo : ', appScope.ddlShipTo );
                         var transportId=0;
                         var transportZone='';
                         var transportZoneDesc='';
@@ -99,8 +109,10 @@ app.run(function(Orders,Auth,Customers) {
                         if(typeof appScope.customerPO !== 'undefined'){
                             customerPO = appScope.customerPO;
                         }
+                        var reqDate =newLocalDate();
                         if(typeof appScope.ddlDate !== 'undefined'){
                           function LocalDate(date) {
+                              console.log('date : ', date);
                               // var date = new Date();
                                var dx = date.split('/');
                                 return dx[2] + '-' + dx[1] + '-' + dx[0] + 'T00:00:00';
@@ -108,18 +120,19 @@ app.run(function(Orders,Auth,Customers) {
                             reqDate = appScope.ddlDate.reqDate;
                             reqDate = LocalDate(reqDate);//.replace('/','-') + ' 00:00:00T';
                         }
+
                         console.log('reqDate ' + reqDate );
                         var order =  {
-                            documentDate:appScope.carts[0].cartDate,
-                            userName    :Auth.username(),
-                            customerId  :Customers.customerId(),
-                            customerCode    :appScope.carts[0].customerCode,
-                            customerName    :appScope.carts[0].customerName,
-                            paymentTerm :appScope.pay.name,
-                            shipCondition   : shipCondition === true ? 'มารับเอง' : '01',
-                            shipId  : (shipId === undefined || shipId == '' || shipCondition === true ) ? 0 : shipId,
-                            shipCode    : (shipCode === undefined || shipCode ==='' || shipCondition === true ) ? '00' : shipCode,
-                            shipName    : (shipName === undefined || shipName === '' || shipCondition === true ) ? 'รับสินค้าเอง' : shipName,
+                            documentDate    : appScope.carts[0].cartDate,
+                            userName        : Auth.username(),
+                            customerId      : Customers.customerId(),
+                            customerCode    : appScope.carts[0].customerCode,
+                            customerName    : appScope.carts[0].customerName,
+                            paymentTerm     : appPaymentTerm,
+                            shipCondition   : appShipCondition === true ? 'มารับเอง' : '01',
+                            shipId          : (shipId === undefined || shipId == '' || appShipCondition === true ) ? 0 : shipId,
+                            shipCode    : (shipCode === undefined || shipCode ==='' || appShipCondition === true ) ? '00' : shipCode,
+                            shipName    : (shipName === undefined || shipName === '' || appShipCondition === true ) ? 'รับสินค้าเอง' : shipName,
                             requestDate : reqDate,
                             customerPO  : customerPO,
                             transportId : (transportId !== '' && transportId !== 0 )? transportId : 0,
