@@ -165,7 +165,7 @@
 																	<button style="width:100px;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
 																	    aria-expanded="true">
 																		<!--<span class="frame-color" ng-show="p.btfCode!=''" style="background-image: url({{p.partImgProduct}}/{{p.btfCode}}.jpg);"></span>-->
-																		<img class="frame-color" ng-show="p.btfCode!=''"  src="{{p.partImgProduct}}/{{p.btfCode}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg">
+																		<img class="frame-color" ng-show="p.btfCode!=''" src="{{p.partImgProduct}}/{{p.btfCode}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg">
 																		<img class="frame-color" ng-show="p.btfCode==''" src="{{p.partImgProduct}}/Noimage.jpg">{{ p.btfDesc}}
 																	</button>
 																	<ul class="dropdown-menu" style="width:500px;">
@@ -347,7 +347,7 @@
 															<input class="form-control text-center" type="text" ng-model="f.freeGoodsQty_Rt" ng-readonly="true">
 														</td>
 														<td>
-															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProductFreegoods(f.freeGoodsId,f.listNo)" ng-show="isCallFreegoods"></i>
+															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProductFreegoods(f.freeGoodsId,f.listNo,f.format)" ng-show="isCallFreegoods"></i>
 															<i class="fa fa-arrow-right fa-2x" style="color:#bab2b2;" ng-show="!isCallFreegoods"></i>
 														</td>
 													</tr>

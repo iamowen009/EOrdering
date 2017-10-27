@@ -694,20 +694,38 @@ app.controller('PromotionController',
 
         }
 
-        $scope.selectedProductFreegoods = function (freeGoodsId, listNo) {
+        $scope.selectedProductFreegoods = function (freeGoodsId, listNo, format) {
+            // console.log("format=" + format);
             var log = [];
             // console.log("listno  = "+listNo);
             // console.log($scope.freeGoods[listNo - 1]);
             console.log("$scope.freeGoods[listNo - 1].sizeCode =" + $scope.freeGoods[listNo - 1].sizeCode);
             console.log("$scope.freeGoods[listNo - 1].colorCode =" + $scope.freeGoods[listNo - 1].colorCode);
             console.log("$scope.freeGoods[listNo - 1].freeGoodsQty_Rt =" + $scope.freeGoods[listNo - 1].freeGoodsQty_Rt);
+
+            var chkValid = false;
+            var exceptSKU = false;
+
+            if (format == "SKU") {
+                chkValid = true;
+                exceptSKU =true;
+            } else if (format != "SKU" &&
+                $scope.freeGoods[listNo - 1].sizeCode != "" &&
+                $scope.freeGoods[listNo - 1].colorCode != "" &&
+                $scope.freeGoods[listNo - 1].freeGoodsQty_Rt > 0) {
+                chkValid = true;
+            } else {
+                chkValid = false;
+            }
+
             if (
+                chkValid
                 // $scope.freeGoods[listNo - 1].brandCode != "" &&
                 // $scope.freeGoods[listNo - 1].typeCode != "" &&
                 // $scope.freeGoods[listNo - 1].functionCode != "" &&
-                $scope.freeGoods[listNo - 1].sizeCode != "" &&
-                $scope.freeGoods[listNo - 1].colorCode != "" &&
-                $scope.freeGoods[listNo - 1].freeGoodsQty_Rt > 0
+                // $scope.freeGoods[listNo - 1].sizeCode != "" &&
+                // $scope.freeGoods[listNo - 1].colorCode != "" &&
+                // $scope.freeGoods[listNo - 1].freeGoodsQty_Rt > 0
             ) {
                 //Count freegoods
                 $scope.countFreegoods++;
@@ -723,9 +741,10 @@ app.controller('PromotionController',
                         }, log);
 
                         angular.forEach($scope.productInFreeGoods, function (value3, key3) {
-                            if (value3.freeGoodsId == freeGoodsId &&
+                            if ((value3.freeGoodsId == freeGoodsId &&
                                 value3.sizeCode == $scope.freeGoods[listNo - 1].sizeCode &&
-                                value3.colorCode == $scope.freeGoods[listNo - 1].colorCode
+                                value3.colorCode == $scope.freeGoods[listNo - 1].colorCode)
+                                || (exceptSKU)
                             ) {
                                 // console.log($scope.freeGoods_Sel);
                                 if (value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) {
@@ -1004,11 +1023,12 @@ app.controller('PromotionController',
                 swal("กรุณาเลือกสินค้า!");
             } else {
 
-                // console.log($scope.cartList);
-
+                console.log($scope.cartList);
+                console.log($scope.promotionId);
+                
                 Promotions.validate($scope.promotionId, $scope.cartList).then(function (response) {
-                    // console.log("call freegoods");
-                    // console.log(response);
+                     console.log("call freegoods");
+                     console.log(response);
                     if (response.data.result == 'SUCCESS') {
 
                         var freeGoodsList = response.data.freeGoodsList;
@@ -1082,6 +1102,5 @@ app.controller('PromotionController',
 
                 console.log(response);
             });
-
         }
     });
