@@ -104,6 +104,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 										$scope.inv = head;
 										$scope.detail = detail;
 										$scope.totalAmount=0;
+										$scope.totalQty=0;
 										for(var key in $scope.detail){
                         $scope.totalAmount += $scope.detail[key]['totalAmount'];
                         $scope.totalQty += $scope.detail[key]['qty'];
