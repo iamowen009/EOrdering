@@ -1,6 +1,6 @@
 #nestable1 a{color:#00BFFF !important;}
 .modal-lg {
-    width: 1000px!important;
+    max-width: 1000px!important;
     margin: 0 auto;
 }
 
@@ -33,3 +33,22 @@ a.nav-link.tab1 {
   padding-top: 5px;
 }
 .total_price{color:#00BFFF;}
+.invoice-header h4{
+  margin:4px 0;
+}
+.modal-title{
+  margin:5px 0;
+}
+.x_content{
+  background: transparent !important;
+}
+.invoice-header p{
+  line-height: 1.4;
+  padding:0;
+  margin: 2px;
+}
+tfoot > tr > td{
+  background: #ddd;
+  vertical-align: middle;
+  color:#000;
+}

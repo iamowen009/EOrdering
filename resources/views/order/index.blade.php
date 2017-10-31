@@ -2,6 +2,7 @@
 
 @section('head')
 <link href="<?= asset('vendors/nestable/nestable.css') ?>" rel="stylesheet">
+<link href="<?= asset('node_modules/ng-flat-datepicker/dist/ng-flat-datepicker.css') ?>" rel="stylesheet">
 <link href="<?= asset('/css/orders.css') ?>" rel="stylesheet">
 @stop
 
@@ -113,6 +114,7 @@
 
 @section('footer')
 	<script src="<?= asset('app/controllers/orderController.js') ?>"></script>
+	<script src="<?= asset('node_modules/ng-flat-datepicker/dist/ng-flat-datepicker.js') ?>"></script>
 	<script src="<?= asset('vendors/nestable/jquery.nestable.js') ?>"></script>
 
     <script>
