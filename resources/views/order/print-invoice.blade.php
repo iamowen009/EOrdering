@@ -1,103 +1,13 @@
 <div id="invoiceModal" class="modal" role="dialog">
   <div class="modal-dialog-invoice modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content inv-content">
-      <div class="modal-header info">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-12 text-center">
-        	<h4 class="modal-title">ใบสั่งซื้อ</h4>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="row inv-header">
-          <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong>  @{{ inv.customerName }}</p>
-              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber }}</p>
-              <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</p>
-              <p><strong>การชำระเงิน :</strong> @{{ shipto(inv.shipCondition) }}</p>
-              <p><strong>ที่อยู่ :</strong> @{{ shipto(inv.shipCondition) }}</p>
-              <p><strong>อีเมล์ : </strong> @{{ shipto(inv.shipCondition) }}</p>
-              <p><strong>เบอร์โทรศัพท์ : </strong> @{{ shipto(inv.shipCondition) }}</p>
-
-          </div>
-          <div class="col-sm-4">
-              <p><strong>เลขที่ PO : </strong>@{{ inv.customerPO}}</p>
-              <p><strong>วันที่ต้องการ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</p>
-              <p><strong>สถานที่ส่ง : </strong>@{{ shipto(inv.shipName) }}</p>
-              <p><strong>ที่อยู่สถานที่ส่ง : </strong>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
-              <p><strong>บริษัทขนส่ง : </strong>@{{ shipto(inv.transportZoneDesc) }}</p>
-          </div>
-        </div>
-        <div>
-          <p>
-            <strong>รายละเอียดสินค้า</strong>
-          </p>
-          <div class="invoice-block row">
-              <table class="table table-hover table-bordered">
-                  <thead class="thead-default">
-                      <tr>
-                          <th colspan="2" class="text-center">รหัสสินค้า</th>
-                          <th class="text-center">สินค้า</th>
-                          <th class="text-right">จำนวน</th>
-                          <th class="text-center">หน่วย</th>
-                          <th class="text-right">ราคาหน่วย</th>
-                          <th class="text-right">ราคารวม</th>
-                          <th class="text-right">ชื่อโปรโมชั่น</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                  <tr ng-repeat="item in detail">
-                      <td class="text-center">
-                         <img class="img-product" src="@{{ partImgProduct +'/'+ item.btf }}.jpg" err-SRC="@{{partImgProduct}}/Noimage.jpg" style="height:40px;">
-                      </td>
-                      <td>
-                          @{{item.productCode}}
-                      </td>
-                      <td class="text-left"> @{{ item.productNameTh }}</td>
-                      <td class="text-right">@{{ item.qty | number }} @{{item.unitNameTh}}</td>
-                      <td class="text-center">@{{item.unitNameTh}}</td>
-                      <td class="text-right">@{{ item.amount | number:2}}</td>
-                      <td class="text-right">@{{ +item.amount*+item.qty | number:2 }}</td>
-                      <td class="text-center">@{{item.promotionName}}</td>
-                  </tr>
-                  </tbody>
-              </table>
-
-          </div>
-          <div class="row">
-            <div class="col-sm-6 text-danger">ราคาต่อหน่วยหลังหักราคามาตรฐานเท่านั้น </div>
-            <div class="col-sm-6 text-right">
-              <strong>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT):</strong>
-                @{{ totalAmount | number:2 }}
-              <strong>บาท</strong>
-            </div>
-          </div>
-
-      </div>
-      <div class="modal-footer text-center">
-      	<button type="button" class="btn btn-info" ng-click="OrderPrint(inv.id)">พิมพ์</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-<!--
-:: print invoice
-=====================================================================
--->
-<div id="invoiceModal-print" class="modal" role="dialog">
-  <div class="modal-dialog-invoice modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
-      <!-- <div class="modal-header info">
+      <div class="modal-header info">
       	<div class="col-sm-12">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
     	  </div>
-      </div> -->
+      </div>
       <div class="modal-body">
         <div class="row invoice-header">
           <div class="col-md-8">
@@ -107,7 +17,8 @@
             <p>ถนนบางนา-ตราด ตำบลบางเสาธง อ.บางเสาธง จ.สมุทรปราการ 10570</p>
           </div>
           <div class="col-md-4 text-right">
-
+            <p>วันที่ : <strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</strong></p>
+            <p>เลขที่ใบสั่งซื้อ : <strong>@{{ inv.documentNumber }}</strong></p>
           </div>
         </div>
         <h4 class="text-center modal-title">ใบสั่งซื้อ</h4>
@@ -211,8 +122,8 @@
       </div>
 
       <div class="modal-footer">
-      	<!-- <button type="button" class="btn btn-info" data-dismiss="modal">พิมพ์</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button> -->
+      	<button type="button" class="btn btn-info" data-dismiss="modal">พิมพ์</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
       </div>
     </div>
 
