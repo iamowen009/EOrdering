@@ -263,13 +263,14 @@ app.controller('ProductDetailController',
                             if(hasDupsObjects($scope.sizes,$scope.product[key]['sizeCode'],'sizeCode')==false)
                                 $scope.sizes.push({'sizeCode':$scope.product[key]['sizeCode'],'sizeName':$scope.product[key]['sizeName']});
                         }
-                        if($scope.colors.indexOf($scope.product[key]['colorCode'])==-1)
-                            if(hasDupsObjects($scope.colors,$scope.product[key]['colorCode'],'colorCode')==false)
-                                $scope.colors.push({'colorCode':$scope.product[key]['colorCode'],'colorNameTh':$scope.product[key]['colorNameTh'],'cartrgbColor':$scope.product[key]['rgbCode']})
+                        if($scope.product[key]['colorCode'] && $scope.colors.indexOf($scope.product[key]['colorCode'])==-1 && $scope.colors.indexOf($scope.product[key]['sizeCode'])==-1)
+                            if(hasDupsObjects($scope.colors,$scope.product[key]['colorCode'],'colorCode')==false ){
+                                $scope.colors.push({'colorCode':$scope.product[key]['colorCode'],'colorNameTh':$scope.product[key]['colorNameTh'],'cartrgbColor':$scope.product[key]['rgbCode'],'sizeCode' : $scope.product[key]['sizeCode'] })
+                            }
                     }
                     $scope.cartSize= $scope.sizes[0]['sizeCode'];
-                    $scope.cartColor = $scope.colors[0]['colorCode'];
-                    $scope.cartrgbColor = $scope.colors[0]['rgbCode'];
+                    $scope.cartColor = $scope.colors[0] ? $scope.colors[0]['colorCode'] : {};
+                    $scope.cartrgbColor = $scope.colors[0] ? $scope.colors[0]['rgbCode'] : {};
                     $scope.getProduct();
 
                 }
@@ -356,6 +357,8 @@ app.controller('ProductDetailController',
                     if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']==$scope.cartColor){
                         $scope.productSelect = $scope.product[key];
                         $scope.cartrgbColor = $scope.product[key]['rgbCode'];
+
+
                         console.log('key ' + key );
                     }
                 }

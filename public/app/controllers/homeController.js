@@ -2,6 +2,7 @@
 app.controller('HomeController',
     function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService,Auth) {
         //retrieve customers listing from API
+        
         $scope.marketings = {};
         $scope.promotions_all = {};
         $scope.promotions = {};
@@ -10,6 +11,7 @@ app.controller('HomeController',
         $scope.slideshows1 = '';
         $scope.slideshows2 = '';
         $scope.slideshows3 = '';
+
         $scope.carts = {};
         $scope.marketingmodel = [];
         $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();

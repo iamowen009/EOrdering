@@ -177,7 +177,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
 
 app.controller('AppController',
     function ($scope, $http, $filter,Customers,Auth,$uibModal,$log,Carts,Config,sharedService) {
-
+        $scope.placesearch = 'ค้นหาสินค้า';
         fetchCart(Customers.customerId());
         $scope.totalAmount = 0;
         $scope.totalQty = 0;

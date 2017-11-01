@@ -69,12 +69,12 @@
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-6">ขนาด</label>
 		                        <div class="col-md-4 col-sm-4 col-xs-6">
 		                         	<select class="form-control" ng-model="cartSize" ng-change="getProduct()">
-		                         		<option ng-repeat="p in sizes" value="{{ p.sizeCode}}" >{{ p.sizeName }}</option>
+		                         		<option ng-repeat="p in sizes" value="{{ p.sizeCode}}" >{{ p.sizeName }} </option>
 		                         	</select>
 		                        </div>
 		                      </div>
 
-		                      <div class="form-group">
+		                      <div class="form-group" ng-if="colors.length > 0 ">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี</label>
 		                        <div class="col-md-4 col-sm-4 col-xs-6" >
 															<div class="dropdown color-element">
@@ -85,11 +85,11 @@
 
 															  </button>
 															  <ul class="dropdown-menu">
-															    <li ng-repeat="p in colors">
+															    <li ng-repeat="p in colors" ng-if="cartSize == p.sizeCode">
 																		<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
 																		<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 																		<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
-															      {{ p.colorCode}}</a>
+															      {{ p.colorCode}} {{ p.sizeCode }}</a>
 															    </li>
 															  </ul>
 															</div>
