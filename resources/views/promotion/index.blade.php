@@ -253,10 +253,10 @@
 															<img class="img" src="{{p.partImgProduct}}/{{p.btf}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg" width="50px"> {{p.productNoSelected}}
 														</td>
 														<td>{{p.productNameSelected}}</td>
-														<td>{{p.salesqty_sel}}</td>
-														<td>{{p.unitSelected}}</td>
-														<td>{{p.priceSelected}}</td>
-														<td>{{p.totalPrice}}</td>
+														<td>{{p.salesqty_sel | number}}</td>
+														<td>{{p.unitSelected }}</td>
+														<td>{{p.priceSelected | number}}</td>
+														<td>{{p.totalPrice | number }}</td>
 														<td ng-hide="promotionHD[0].isPromotionSet">
 															<i class="fa fa-trash fa-2x" ng-click="deletedProduct(p.listNo)"></i>
 														</td>
@@ -276,7 +276,7 @@
 								จำนวนรวมทั้งหมด
 							</div>
 							<div class="form-group col-md-1">
-								<label class="form-control text-center">{{totalQty()}}</label>
+								<label class="form-control text-center">{{totalQty() | number }}</label>
 							</div>
 							<div class="form-group col-md-2">
 								ราคารวมทั้งหมด
@@ -383,7 +383,7 @@
 															<span ng-bind-html="f.productNameSelected"></span>
 														</td>
 														<td>{{f.freeQty}}</td>
-														<td>{{f.unitSelected}}</td>
+														<td>{{f.unitSelected| number}}</td>
 														<!--<td>{{f.priceSelected}}</td>
 														<td>{{f.totalPrice}}</td>-->
 														<td>
@@ -399,10 +399,10 @@
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
 							<div class="cui-ecommerce--product--controls">
-								<button type="button" class="btn btn-icon btn-default btn-sm margin-right-15" ng-click="toHistory(btf.marketingCode)">
+								<!--<button type="button" class="btn btn-icon btn-default btn-sm margin-right-15" ng-click="toHistory(btf.marketingCode)">
 									<i class="icmn-cart5 margin-right-5"></i>
 									ย้อนกลับ
-								</button>
+								</button>-->
 								<button type="button" class="btn btn-icon btn-info btn-sm" ng-click="addCart()">
 									<i class="fa fa-shopping-cart" style="font-size:18px;" aria-hidden="true"></i>
 									<i>Add to Cart</i>

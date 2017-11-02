@@ -1,6 +1,6 @@
 "use strict";
 app.controller('OrderController',
-function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInfo,OrderPrecessInfo,OrderProcessTracking) {
+function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInfo,OrderPrecessInfo,OrderProcessTracking) {
         /* Bindable functions
 		 -----------------------------------------------*/
 		$scope.endDateBeforeRender = endDateBeforeRender;
@@ -16,7 +16,7 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
     $scope.ordersList = [];
     var arr = [];
     var Ym = [];
-
+		$scope.partImgProduct = Config.partImgProduct();
     fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
 
     function fetchOrderPrecess(customerId,startDate,endDate){
@@ -108,10 +108,31 @@ function ($scope, $http, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInf
 										for(var key in $scope.detail){
                         $scope.totalAmount += $scope.detail[key]['totalAmount'];
                         $scope.totalQty += $scope.detail[key]['qty'];
-
-
                     }
 								$('#invoiceModal').modal('show');
+						}else{
+						}
+				});
+		}
+
+		$scope.OrderPrint = function(orderId){
+				Orders.fetchOne(orderId).then(function (response) {
+            if(response.data.result=='SUCCESS'){
+								var head = response.data.data.order,
+										detail = response.data.data.orderDetailList;
+										$scope.inv = head;
+										$scope.detail = detail;
+										$scope.totalAmount=0;
+										$scope.totalQty=0;
+										for(var key in $scope.detail){
+                        $scope.totalAmount += $scope.detail[key]['totalAmount'];
+                        $scope.totalQty += $scope.detail[key]['qty'];
+                    }
+								$('#invoiceModal-print').modal('show');
+								window.print();
+								setTimeout(function(){
+									$('#invoiceModal-print').modal('hide');
+								},600);
 						}else{
 						}
 				});

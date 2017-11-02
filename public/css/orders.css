@@ -52,3 +52,40 @@ tfoot > tr > td{
   vertical-align: middle;
   color:#000;
 }
+#invoiceModal .modal-title{
+  margin:0;
+}
+#invoiceModal .modal-header{
+  /*padding:4px 10px;*/
+  background: #c4fffd;
+  color:#000;
+}
+#invoiceModal .inv-header{
+  background: #fbfbbe;
+  padding:10px;
+  margin-bottom: 10px;
+}
+#invoiceModal .modal-footer{
+  display:block;
+  text-align: center;
+}
+#invoiceModal .modal-footer > button{
+  margin:auto;
+}
+#invoiceModal .modal .modal-body,
+#invoiceModal .modal .modal-body{
+  padding:10px;
+}
+@media print {
+  .page-content > .content,
+  #invoiceModal ,
+  #orderModal,
+  #taxModal,
+  .bg-toa{
+    display: none;
+  }
+  .modal-lg {
+      max-width: 100% !important;
+      margin: 0 auto;
+  }
+}

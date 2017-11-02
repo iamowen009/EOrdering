@@ -3,9 +3,9 @@
 	overflow:auto;
 }
 .cui-ecommerce--catalog--item--img {
-    height: 220px !important;
+    height: 20px !important;
 		display: inline-block;
-		padding: 10px 30px;
+		padding: 0px;
 }
 .cui-ecommerce--catalog--item--img a{
 		display: inline-block;
