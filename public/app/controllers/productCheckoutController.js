@@ -168,6 +168,27 @@ app.controller('ProductCheckoutController',
 		    });
 		  }
 
+      $scope.updateCart = function($index){
+        $scope.loadingcart = true;
+        angular.copy($scope.items[$index], $scope.editedItem);
+        //console.log($scope.editedItem);
+        var cartList = [{
+            customerId: Customers.customerId(),
+            productId: $scope.editedItem.productId,
+            qty: $scope.editedItem.qty,
+            userName: Auth.username()
+        }];
+        var promotionList = [];
+        Carts.updateCart(cartList,promotionList).then(function (response) {
+            $scope.loadingcart = false;
+
+            fetchCart(Customers.customerId());
+        }, function (response) {
+
+                console.log(response);
+        });
+      }
+
       $scope.addQty = function(field){
             $scope.editing = $scope.carts.indexOf(field);
             $scope.newField = angular.copy(field);

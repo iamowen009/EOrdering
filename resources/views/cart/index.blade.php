@@ -78,7 +78,7 @@ select.form-control{
                                           <span class="input-group-btn">
                                                       <button type="button" class="btn btn-default" ng-click="removeQty(item)">-</button>
                                                 </span>
-                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"  type="text" value="{{ item.qty | number }}">
+                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"  type="text" value="{{ item.qty | number }}" ng-blur="updateCart(item)">
                                           <span class="input-group-btn">
                                                       <button type="button" class="btn btn-default" ng-click="addQty(item)">+</button>
                                                 </span>
@@ -234,7 +234,7 @@ select.form-control{
                                 <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง : </label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
-                                  
+
                                     <select
                                         name="trans_id" id="trans_id"
                                         class="form-control"

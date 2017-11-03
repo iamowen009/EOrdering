@@ -26,41 +26,11 @@
 
     <link rel="stylesheet" href="<?= asset('node_modules/bootstrap/dist/css/bootstrap.css') ?>">
     <link rel="stylesheet" href="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css') ?>"/>
+    <link rel="stylesheet" href="<?= asset('css/main.css') ?>"/>
 
     <!--<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>-->
     <style>
-    .navbar-nav li{
-        list-style-type:none;
-    }
-    .navbar-toggle .icon-bar {
-        background-color: #fff;
-    }
-    .navbar-toggle {
-        border-color: #333;
-    }
-    .navbar-header {
-        background: none !important;
-    }
-    .bell {
-        display: inline-block;
-        position: relative;
-        width: auto;
-        height: 42px;
-        text-align: center;
-    }
-    .bellnumbers {
-        font-size:12px;
-        background-color:red;
-        width:20px;
-        line-height: 20px;
-        text-align: center;
-        color:#fff !important;
-        z-index: 2;
-        border-radius: 3px;
-        position: absolute;
-        left: 40px;
-        top:-5px;
-    }
+
     </style>
     @yield('head')
 </head>
@@ -68,10 +38,7 @@
 <body ng-app="app" ng-controller="AppController">
 
     <!-- Navigation -->
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-toa fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-toa navbar-fixed-top">
         <div class="container-fluid ">
             <div class="navbar-header ">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -120,7 +87,7 @@
                                     <br/>
                                     @verbatim
                                     ตะกร้าสินค้า
-                                    <span class="bellnumbers">{{totalQty}}</span>
+                                    <span class="bellnumbers">{{carts.length}}</span>
                                     @endverbatim
                                 </span>
                                 </a>
@@ -214,7 +181,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
                         <div class="input-group">
-                            <input class="form-control" placeholder="ค้นหา" type="text" ng-model="searchstring">
+                            <input class="form-control top-search" placeholder="ค้นหาสินค้า" type="text" ng-model="searchstring">
                             <span class="input-group-btn">
                               <button class="btn btn-default" type="button"  ng-click="search()"><span class="fa fa-search"></span></button>
                             </span>
@@ -229,9 +196,9 @@
         </div>
 
     </nav>
-
     <!-- Page Content -->
-    <div class="wrapper">
+
+    <div class="wrapper container-fluid">
         @yield('content')
         @verbatim
         <script type="text/ng-template" id="myModalContent.html">
@@ -268,7 +235,7 @@
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="mremoveQty($index)">-</button>
                                 </span>
-                                <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:40px; padding:5px;" ng-change="updateCart($index)">
+                                <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:80px; padding:5px;" ng-blur="updateCart($index)">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="maddQty($index)">+</button>
                                 </span>

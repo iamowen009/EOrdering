@@ -4,7 +4,7 @@ app.controller('CustomerController',
         //retrieve customers listing from API
         $scope.customers = {};
         $scope.loading = true;
-
+$('.top-search').attr('placeholder','ค้นหาร้านค้า');
 
         fetchAllCustomers(Auth.userId());
 
