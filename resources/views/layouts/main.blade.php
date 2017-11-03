@@ -235,7 +235,7 @@
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="mremoveQty($index)">-</button>
                                 </span>
-                                <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:40px; padding:5px;" ng-change="updateCart($index)">
+                                <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:80px; padding:5px;" ng-blur="updateCart($index)">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="maddQty($index)">+</button>
                                 </span>

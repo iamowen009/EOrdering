@@ -81,11 +81,11 @@
 															  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 																	<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
 																	<span class="frame-color" ng-show="cartrgbColor==''" style="background-color: #fff;"></span>
-																	{{ productSelect.colorCode}}
+																	{{ colorCodeName }}
 
 															  </button>
 															  <ul class="dropdown-menu">
-															    <li ng-repeat="p in colors" ng-if="cartSize == p.sizeCode">
+															    <li ng-repeat="p in listColors">
 																		<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
 																		<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 																		<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>

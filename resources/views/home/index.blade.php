@@ -1,12 +1,7 @@
 @extends('layouts.main')
 
 @section('head')
-<style>
-select.form-control{
-	height:auto !important;
-}
-
-</style>
+<link rel="stylesheet" href="{{ asset('css/home.css') }}" />
 @stop
 
 @section('content')
@@ -15,7 +10,7 @@ select.form-control{
 		<!-- LOADING ICON =============================================== -->
     	<!-- show loading icon if the loading variable is set to true -->
 		<div class="row " ng-controller="HomeController">
-			<div class="col-md-2 col-sm-2 col-xs-12">
+			<div class="col-md-2 col-sm-2 col-xs-12 sidedata">
 				<div>
                   <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
                   <div class="category-home">

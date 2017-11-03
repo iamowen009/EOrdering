@@ -22,7 +22,8 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
           window.location= _base + '/customer';
       }else{
       */
-          window.location= _base + '/home/'+Customers.customerId();
+          // window.location= _base + '/home/'+Customers.customerId();
+          window.location= _base + '/product/0';//+Customers.customerId();
   //    }
   }
 
