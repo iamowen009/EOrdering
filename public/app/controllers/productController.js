@@ -296,10 +296,10 @@ app.controller('ProductDetailController',
         var checkCartId = function(array,value,field) {
             for(var key in array){
                 if(array[key][field]==value){
-                    return array[key];//['cartId'];
+                    return array[key];
                 }
             }
-            return 0;
+            return false;
 
         }
 
@@ -380,7 +380,7 @@ app.controller('ProductDetailController',
 
             var promotionList = [];
           var inCart =  $scope.checkCart($scope.productId);
-
+          /*
           if( inCart === 'false' ){
             var cartList = [{
                 customerId: $scope.usersId,
@@ -434,6 +434,7 @@ app.controller('ProductDetailController',
                     console.log(response);
             });
           }
+          */
         }
 
         $scope.getProduct = function(){
