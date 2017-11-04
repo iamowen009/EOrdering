@@ -165,7 +165,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
                 //  $('.bellnumbers').text($scope.totalQty);
 
               }
-              $('.bellnumbers').text($scope.totalQty);
+              $('.bellnumbers').text($scope.items.length);
           }
           $scope.loading = false;
       });

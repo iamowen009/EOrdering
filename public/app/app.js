@@ -13,6 +13,7 @@ app.run(function(Orders,Auth,Customers) {
             headerTag: "h3",
             bodyTag: "section",
             transitionEffect: 0,
+            startIndex:1,
             autoFocus: true,
             labels: {
 
@@ -36,7 +37,7 @@ app.run(function(Orders,Auth,Customers) {
             onInit:function (event, currentIndex) {
 
               console.log('onInit is ' + currentIndex );
-              if( currentIndex == 0){
+              if( currentIndex == 0 || currentIndex == 1){
                 var btnPrint  = $("<a>").attr({"href":"#","ng-click":"btnPrint"}).addClass("btn-print btn btn-primary").text("Print");
                 var btnClear  = $("<a>").attr({"href":"#","ng-click":"removeAll()"}).addClass("btn-clear btn btn-primary").text("ลบรายการสินค้าทั้งหมด");
                 var printeBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnPrint);
@@ -228,6 +229,26 @@ app.directive('errSrc', function() {
           });
         }
       }
+    })
+    .directive('numbersOnly', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attr, ngModelCtrl) {
+                function fromUser(text) {
+                    if (text) {
+                        var transformedInput = text.replace(/[^0-9]/g, '');
+
+                        if (transformedInput !== text) {
+                            ngModelCtrl.$setViewValue(transformedInput);
+                            ngModelCtrl.$render();
+                        }
+                        return transformedInput;
+                    }
+                    return undefined;
+                }
+                ngModelCtrl.$parsers.push(fromUser);
+            }
+        };
     });
 
 angular.module('UserValidation', []).directive('validPasswordC', function () {

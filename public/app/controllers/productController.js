@@ -293,6 +293,15 @@ app.controller('ProductDetailController',
             return false;
 
         }
+        var checkCartId = function(array,value,field) {
+            for(var key in array){
+                if(array[key][field]==value){
+                    return array[key];//['cartId'];
+                }
+            }
+            return 0;
+
+        }
 
         function fetchAllPromotions(customerId,marketingCodeList,brandCodeList,typeCodeList) {
             Promotions.fetchAll(customerId,marketingCodeList,brandCodeList,typeCodeList).then(function (response) {
@@ -346,6 +355,19 @@ app.controller('ProductDetailController',
         $scope.logout = function(){
             Config.logout();
         }
+        // Check product in cart before add product to cart//
+        $scope.checkCart = function(productId){
+          Carts.fetchAll($scope.usersId).then(function(response){
+            if(response.data.result=='SUCCESS'){
+              console.log(response.data.data.cartList,'|', checkCartId(response.data.data.cartList,productId,'productId'), '=' + productId );
+              return checkCartId(response.data.data.cartList,productId,'productId');
+
+            }else{
+              return 'false';
+            }
+          });
+          return 'false';
+        }
 
         $scope.addCart = function(){
 
@@ -354,13 +376,18 @@ app.controller('ProductDetailController',
                     $scope.productId = $scope.product[key]['productId'];
                 }
             }
+
+
+            var promotionList = [];
+          var inCart =  $scope.checkCart($scope.productId);
+
+          if( inCart === 'false' ){
             var cartList = [{
                 customerId: $scope.usersId,
                 productId: $scope.productId,
                 qty: $scope.cartProductQty,
                 userName: Auth.username()
             }];
-            var promotionList = [];
             Carts.addCart(cartList,promotionList).then(function (response) {
                 $scope.loading = false;
                 if(response.data.result=='SUCCESS'){
@@ -379,6 +406,34 @@ app.controller('ProductDetailController',
 
                     console.log(response);
             });
+          }else{
+            var cartList = [{
+                customerId: $scope.usersId,
+                productId: inCart.productId,
+                qty: parseInt(inCart.qty)+parseInt($scope.cartProductQty),
+                userName: Auth.username()
+            }];
+
+            Carts.updateCart($scope.checkCart($scope.productId),promotionList).then(function (response) {
+                $scope.loadingcart = false;
+                if(response.data.result=='SUCCESS'){
+                      swal({
+                        title:'',
+                        text:'เพิ่มสินค้าเรียบร้อยแล้ว'},
+                      function(){
+                        location.reload();
+                      });
+
+                    }else{
+                        console.log('cartList ', cartList );
+                        swal('เพิ่มสินค้าไม่สำเร็จ');
+                    }
+                //fetchCart(Customers.customerId());
+            }, function (response) {
+
+                    console.log(response);
+            });
+          }
         }
 
         $scope.getProduct = function(){

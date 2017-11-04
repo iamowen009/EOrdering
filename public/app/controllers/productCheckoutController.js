@@ -34,6 +34,7 @@ app.controller('ProductCheckoutController',
        $scope.totalAmount = 0;
        $scope.totalQty = 0;
        $scope.carts={};
+      //  $scope.cartProductQty =[];
        $scope.customer={};
        $scope.requests={};
        $scope.ships={};
@@ -57,6 +58,7 @@ app.controller('ProductCheckoutController',
                     for(var key in $scope.carts){
                         $scope.totalAmount += $scope.carts[key]['totalAmount'];
                         $scope.totalQty += $scope.carts[key]['qty'];
+                        $scope.cartProductQty[key] = $scope.carts[key]['qty'];
                         var list_date = $scope.carts[key]['cartDate'].split('T');
                         var split_date = list_date[0].split('-');
                         $scope.cartDate = split_date[2]+'/'+split_date[1]+'/'+split_date[0];
@@ -65,6 +67,9 @@ app.controller('ProductCheckoutController',
                 }
                 $scope.loading = false;
             });
+       }
+       $scope.cartProductQty = function(qty){
+         return qty;
        }
 
        $scope.paidType = function(showPaid){

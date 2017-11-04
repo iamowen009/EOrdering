@@ -103,7 +103,7 @@
                             			<span class="input-group-btn">
                                       <button type="button" class="btn btn-default" ng-click="removeQty()"><i class="fa fa-minus"></i></button>
                                   </span>
-			                            <input class="form-control text-center" type="text" ng-model="cartProductQty" >
+			                            <input class="form-control text-center" type="text" numbers-only ng-model="cartProductQty" >
 			                            <span class="input-group-btn">
                                               <button type="button" class="btn btn-default" ng-click="addQty()"><i class="fa fa-plus"></i></button>
                                   </span>
