@@ -39,11 +39,11 @@ select.form-control{
         <div class="panel-body">
             <div class="cui-ecommerce--cart">
 
-              <div class="alert alert-warning" role="alert" ng-show="totalQty === 0">
+              <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
                           Your cart is empty
               </div>
 
-                <div id="cart-checkout" class="cui-wizard" ng-show="totalQty > 0">
+                <div id="cart-checkout" class="cui-wizard" ng-show="carts.length > 0">
                     <h3>
                         <i class="fa fa-shopping-cart cui-wizard--steps--icon"></i>
                         <span class="cui-wizard--steps--title">Cart</span>
@@ -78,11 +78,11 @@ select.form-control{
                                           <span class="input-group-btn">
                                               <button type="button" class="btn btn-default" ng-click="removeQty(item)">-</button>
                                           </span>
-                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"  type="text" value="{{ item.qty | number }}" ng-model="cartProductQty(item.qty)" numbers-only>
+                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"  type="text" value="{{ item.qty }}" ng-blur="updateCart($index)" ng-model="item.qty" numbers-only >
                                           <span class="input-group-btn">
                                               <button type="button" class="btn btn-default" ng-click="addQty(item)">+</button>
                                           </span>
-                                          <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
+                                          <p class="text-center" ng-show="loadingcart[$index]"><span class="fa fa-refresh  fa-spin"></span></p>
                                       </div>
                                       <!--
                                       <span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.qty==1}"
@@ -204,7 +204,7 @@ select.form-control{
                                     <select
                                         name="ship_id" id="ship_id"
                                         class="form-control"
-                                        ng-model="ddlShipTo"
+                                        ng-model="ddlShipTos"
                                         ng-change="changeShip(ddlShipTo.shipId)"
                                         ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
                                         <!--

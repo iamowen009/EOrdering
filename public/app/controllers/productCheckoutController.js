@@ -34,16 +34,19 @@ app.controller('ProductCheckoutController',
        $scope.totalAmount = 0;
        $scope.totalQty = 0;
        $scope.carts={};
+       //$scope.itemQty = [];
       //  $scope.cartProductQty =[];
        $scope.customer={};
        $scope.requests={};
        $scope.ships={};
        $scope.transports={};
        $scope.ddlShipTo = {};
+       $scope.ddlShipTos = {};
        $scope.paymentTerm = {};
        $scope.ddlDate = {};
        $scope.ddlTransport = {};
        $scope.shipper = {};
+       $scope.loadingcart = [];
        //$scope.pay = {'name':'CASH','name':'CREDIT'};
        $scope.partImgProduct = Config.partImgProduct();
        $scope.shipaddress = '-';
@@ -58,16 +61,18 @@ app.controller('ProductCheckoutController',
                     for(var key in $scope.carts){
                         $scope.totalAmount += $scope.carts[key]['totalAmount'];
                         $scope.totalQty += $scope.carts[key]['qty'];
-                        $scope.cartProductQty[key] = $scope.carts[key]['qty'];
+                        //$scope.itemQty = $scope.carts[key]['qty'];
                         var list_date = $scope.carts[key]['cartDate'].split('T');
                         var split_date = list_date[0].split('-');
                         $scope.cartDate = split_date[2]+'/'+split_date[1]+'/'+split_date[0];
+                        $scope.loadingcart[key] = false;
 
                     }
                 }
                 $scope.loading = false;
             });
        }
+
        $scope.cartProductQty = function(qty){
          return qty;
        }
@@ -98,7 +103,7 @@ app.controller('ProductCheckoutController',
                     $scope.carts        = response.data.data.cartProductList;
                   //  if( $scope.transports.length > 0)
                     $scope.ddlTransport = $scope.transports[0];//.transportZone +' ' + $scope.transports[0].transportZoneDesc;
-                    $scope.ddlShipTo    = $scope.ships[0];
+                    $scope.ddlShipTos    = $scope.ships[0];
                     $scope.ddlDate      = $scope.requests[0];
                     $scope.paymentTerm  = $scope.customer.paymentTerm !== 'CASH' ? $scope.customer.paymentTerm : 'CASH';//$scope.paymentTerm;
                     //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
@@ -174,18 +179,20 @@ app.controller('ProductCheckoutController',
 		  }
 
       $scope.updateCart = function($index){
-        $scope.loadingcart = true;
-        angular.copy($scope.items[$index], $scope.editedItem);
-        //console.log($scope.editedItem);
+        $scope.loadingcart[$index] = true;
+        console.log('index : ' , $index , ' items : ', $scope.carts );
+        angular.copy($scope.carts[$index], $scope.editedItem);
+        console.log('edited item : ', $scope.editedItem );
+
         var cartList = [{
             customerId: Customers.customerId(),
-            productId: $scope.editedItem.productId,
-            qty: $scope.editedItem.qty,
+            productId: $scope.carts[$index].productId,
+            qty: $scope.carts[$index].qty,
             userName: Auth.username()
         }];
         var promotionList = [];
         Carts.updateCart(cartList,promotionList).then(function (response) {
-            $scope.loadingcart = false;
+            $scope.loadingcart[$index] = false;
 
             fetchCart(Customers.customerId());
         }, function (response) {
@@ -194,12 +201,17 @@ app.controller('ProductCheckoutController',
         });
       }
 
+      $scope.goShop = function(){
+        console.log('to to shop');
+          //window.location= _base + '/product/0';
+      }
+
       $scope.addQty = function(field){
             $scope.editing = $scope.carts.indexOf(field);
             $scope.newField = angular.copy(field);
             $scope.newField['qty']+=1;
             $scope.carts[$scope.editing] = $scope.newField;
-            $scope.loadingcart = true;
+            $scope.loadingcart[$index] = true;
             var cartList = [{
                 customerId: Customers.customerId(),
                 productId: $scope.newField['productId'],
@@ -208,7 +220,7 @@ app.controller('ProductCheckoutController',
             }];
             var promotionList = [];
             Carts.updateCart(cartList,promotionList).then(function (response) {
-                $scope.loadingcart = false;
+                $scope.loadingcart[$index] = false;
 
                 fetchCart(Customers.customerId());
             }, function (response) {
@@ -223,7 +235,7 @@ app.controller('ProductCheckoutController',
           if( $scope.newField['qty'] > 1 ){
             $scope.newField['qty']-=1;
             $scope.carts[$scope.editing] = $scope.newField;
-            $scope.loadingcart = true;
+            $scope.loadingcart[$index] = true;
             var cartList = [{
                 customerId: Customers.customerId(),
                 productId: $scope.newField['productId'],
@@ -232,7 +244,7 @@ app.controller('ProductCheckoutController',
             }];
             var promotionList = [];
             Carts.updateCart(cartList,promotionList).then(function (response) {
-                $scope.loadingcart = false;
+                $scope.loadingcart[$index] = false;
 
                 fetchCart(Customers.customerId());
             }, function (response) {
