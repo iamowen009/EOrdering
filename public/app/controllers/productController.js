@@ -356,20 +356,17 @@ app.controller('ProductDetailController',
             Config.logout();
         }
         // Check product in cart before add product to cart//
-        $scope.checkCart = function(productId){
+        $scope.onCart = {};
+        var onCart = function(){
+          $scope.checkCart = [];
           Carts.fetchAll($scope.usersId).then(function(response){
             if(response.data.result=='SUCCESS'){
-              console.log(response.data.data.cartList,'|', checkCartId(response.data.data.cartList,productId,'productId'), '=' + productId );
-              if( checkCartId(response.data.data.cartList,productId,'productId') !== false)
-                return checkCartId(response.data.data.cartList,productId,'productId');
-
-            }else{
-              return false;
+                $scope.onCart = response.data.data.cartList;
             }
           });
           // return 'false';
         }
-
+        onCart();
         $scope.addCart = function(){
 
             for(var key in $scope.product){
@@ -380,10 +377,11 @@ app.controller('ProductDetailController',
 
 
             var promotionList = [];
-          var inCart =  $scope.checkCart($scope.productId);
-          console.log('in cart val ' , inCart );
-          /*
-          if( inCart === 'false' ){
+            var inCart = checkCartId($scope.onCart,$scope.productId,'productId');
+            console.log('in cart val ' ,  inCart );
+
+
+          if( inCart === false ){
             var cartList = [{
                 customerId: $scope.usersId,
                 productId: $scope.productId,
@@ -416,7 +414,7 @@ app.controller('ProductDetailController',
                 userName: Auth.username()
             }];
 
-            Carts.updateCart($scope.checkCart($scope.productId),promotionList).then(function (response) {
+            Carts.updateCart(cartList,promotionList).then(function (response) {
                 $scope.loadingcart = false;
                 if(response.data.result=='SUCCESS'){
                       swal({
@@ -436,7 +434,7 @@ app.controller('ProductDetailController',
                     console.log(response);
             });
           }
-          */
+
         }
 
         $scope.getProduct = function(){

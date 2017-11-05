@@ -57,6 +57,7 @@
 		                    <div class="cui-ecommerce--product--price">
 		                    </div>
 		                    <form action="/cart/add" name="add_to_cart" method="post" class="form-horizontal form-label-left" accept-charset="UTF-8">
+													<input type="hidden" ng-model="onCart" />
 
                 				<div class="form-group" ng-show="productSelect.productId">
 			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคา(บาท)</label>
