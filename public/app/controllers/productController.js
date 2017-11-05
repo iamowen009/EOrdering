@@ -324,32 +324,32 @@ app.controller('ProductDetailController',
         }
 
         function colorval(){
-          $scope.listColors = [];
+            $scope.listColors = [];
 
-          for(var kr in $scope.colors){
-            console.log('kr ', $scope.colors[kr].sizeCode , ' cartSize ', $scope.cartSize);
+            for(var kr in $scope.colors){
+              console.log('kr ', $scope.colors[kr].sizeCode , ' cartSize ', $scope.cartSize);
 
-            if( $scope.colors[kr].sizeCode == $scope.cartSize){
-              $scope.listColors.push({'colorCode':$scope.colors[kr]['colorCode'],'colorNameTh':$scope.colors[kr]['colorNameTh'],'cartrgbColor':$scope.colors[kr]['rgbCode'],'sizeCode' : $scope.colors[kr]['sizeCode'] });
-            }
-          }
-          $scope.colorCodeName = $scope.listColors[0] ? $scope.listColors[0]['colorCode'] : '';
-          for(var key in $scope.product){
-              if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']==$scope.colorCodeName){
-                  $scope.productSelect = $scope.product[key];
-                  $scope.productId = $scope.product[key]['productId'];
-                  //$scope.cartrgbColor = $scope.product[key]['rgbCode'];
+              if( $scope.colors[kr].sizeCode == $scope.cartSize){
+                $scope.listColors.push({'colorCode':$scope.colors[kr]['colorCode'],'colorNameTh':$scope.colors[kr]['colorNameTh'],'cartrgbColor':$scope.colors[kr]['rgbCode'],'sizeCode' : $scope.colors[kr]['sizeCode'] });
               }
-          }
+            }
+            $scope.colorCodeName = $scope.listColors[0] ? $scope.listColors[0]['colorCode'] : '';
+            for(var key in $scope.product){
+                if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']==$scope.colorCodeName){
+                    $scope.productSelect = $scope.product[key];
+                    $scope.productId = $scope.product[key]['productId'];
+                    //$scope.cartrgbColor = $scope.product[key]['rgbCode'];
+                }
+            }
 
-          //$scope.setProduct( $scope.listColors[0]['colorCode'] );
-          console.log( 'listColors : ', $scope.listColors );
+            //$scope.setProduct( $scope.listColors[0]['colorCode'] );
+            console.log( 'listColors : ', $scope.listColors );
         }
 
 
         $scope.toProductDetail = function(productId){
-        	var url =  _base +'/product-detail/'+productId;
-            window.location.href = url;
+        	   var url =  _base +'/product-detail/'+productId;
+             window.location.href = url;
         }
 
         $scope.logout = function(){
@@ -360,13 +360,14 @@ app.controller('ProductDetailController',
           Carts.fetchAll($scope.usersId).then(function(response){
             if(response.data.result=='SUCCESS'){
               console.log(response.data.data.cartList,'|', checkCartId(response.data.data.cartList,productId,'productId'), '=' + productId );
-              return checkCartId(response.data.data.cartList,productId,'productId');
+              if( checkCartId(response.data.data.cartList,productId,'productId') !== false)
+                return checkCartId(response.data.data.cartList,productId,'productId');
 
             }else{
-              return 'false';
+              return false;
             }
           });
-          return 'false';
+          // return 'false';
         }
 
         $scope.addCart = function(){
@@ -380,6 +381,7 @@ app.controller('ProductDetailController',
 
             var promotionList = [];
           var inCart =  $scope.checkCart($scope.productId);
+          console.log('in cart val ' , inCart );
           /*
           if( inCart === 'false' ){
             var cartList = [{
