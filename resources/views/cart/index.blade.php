@@ -204,13 +204,13 @@ select.form-control{
                                     <select
                                         name="ship_id" id="ship_id"
                                         class="form-control"
-                                        ng-model="ddlShipTos"
+                                        ng-model="ddlShipTo"
                                         ng-change="changeShip(ddlShipTo.shipId)"
                                         ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
                                         <!--
                                         <option value=''>Select</option>
                                         -->
-                                      </select>{{ddlShipTo.shipCondition}}
+                                      </select>
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
                                 </div>
@@ -402,7 +402,7 @@ select.form-control{
                                 </div>
                                 <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">บริษัทขนส่ง :</label>
-                                  <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZoneDesc}}</label>
+                                  <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZone}} {{ddlTransport.transportZoneDesc}}</label>
                                 </div>
                               </div>
                             </form>
