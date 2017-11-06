@@ -38,10 +38,10 @@ app.controller('ProductCheckoutController',
       //  $scope.cartProductQty =[];
        $scope.customer={};
        $scope.requests={};
-       $scope.ships={};
-       $scope.transports={};
+       $scope.ships=[];
+       $scope.transportss={};
+       $scope.transports=[];
        $scope.ddlShipTo = {};
-       $scope.ddlShipTos = {};
        $scope.paymentTerm = {};
        $scope.ddlDate = {};
        $scope.ddlTransport = {};
@@ -98,18 +98,27 @@ app.controller('ProductCheckoutController',
                         $scope.requests[key]['reqDate'] = split_date[2]+'/'+split_date[1]+'/'+split_date[0];
 
                     }
-                    $scope.ships        = response.data.data.shipToList;
-                    $scope.transports   = response.data.data.transportList;
+                    $scope.shipss        = response.data.data.shipToList;
+                    for( var k in $scope.shipss ){
+                      if($scope.shipss[k]['shipCode'])
+                          $scope.ships.push($scope.shipss[k]);
+                    }
+
+                    $scope.transportss   = response.data.data.transportList;
+                    for( var k in $scope.transportss ){
+                      if($scope.transportss[k]['transportId'] != 0)
+                          $scope.transports.push($scope.transportss[k]);
+                    }
                     $scope.carts        = response.data.data.cartProductList;
                   //  if( $scope.transports.length > 0)
                     $scope.ddlTransport = $scope.transports[0];//.transportZone +' ' + $scope.transports[0].transportZoneDesc;
-                    $scope.ddlShipTos    = $scope.ships[0];
+                    $scope.ddlShipTo    = $scope.ships[0];
                     $scope.ddlDate      = $scope.requests[0];
                     $scope.paymentTerm  = $scope.customer.paymentTerm !== 'CASH' ? $scope.customer.paymentTerm : 'CASH';//$scope.paymentTerm;
                     //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
                     $scope.shipaddress  = $scope.ships.length > 0 ? ($scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName ) : '';
                    var shipper = angular.toJson($scope.ddlShipTo);
-                   //console.log('shipper',shipper);
+                   console.log('shipper',$scope.ddlShipTo);
 /*
                     if( ( $scope.ddlShipTo.shipCondition == '03' || $scope.ddlShipTo.shipCondition == '08') && $scope.transports.length == 0 )
                     {
@@ -139,6 +148,9 @@ app.controller('ProductCheckoutController',
           }
        }
 
+        $scope.removeNull = function(itm) {
+           return itm.profiles;
+        }
 
        $scope.changeShip = function(sel){
         if(typeof sel!="undefined"){
