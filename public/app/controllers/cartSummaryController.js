@@ -31,7 +31,7 @@ app.controller('CartSummaryController',
                     prepareOrder(Customers.customerId());
                 }
                 $scope.loading = false;
-                console.log('response');
+                console.log('OrderId > response');
                 console.log(response);
             });
        }
@@ -65,7 +65,7 @@ app.controller('CartSummaryController',
 
                 }
                 $scope.loading = false;
-                console.log('response');
+                console.log('customerId > response');
                 console.log(response);
             });
        }
