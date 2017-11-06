@@ -110,10 +110,10 @@
                                   </span>
 
 			                        </div>
-
+															<input type="hidden" ng-model="altUnit1Amount" value="{{ productSelect.altUnit1Amount }}"/>
 		                        </div>
 		                        <div class="col-md-3 col-sm-3 col-xs-12">
-		                        	<label ng-show="productSelect.productId">หน่วยนับ : {{productSelect.unitNameTh}}</label>
+		                        	<label ng-show="productSelect.productId">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }}) {{ productSelect.unitNameTh }}</label>
 		                    	</div>
 		                      </div>
 
