@@ -14,18 +14,18 @@
               <p><strong>ร้านค้า :</strong>  @{{ inv.customerName }}</p>
               <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber }}</p>
               <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</p>
-              <p><strong>การชำระเงิน :</strong> @{{ shipto(inv.shipCondition) }}</p>
-              <p><strong>ที่อยู่ :</strong> @{{ shipto(inv.shipCondition) }}</p>
-              <p><strong>อีเมล์ : </strong> @{{ shipto(inv.shipCondition) }}</p>
-              <p><strong>เบอร์โทรศัพท์ : </strong> @{{ shipto(inv.shipCondition) }}</p>
-
+              <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
+              <p><strong>ที่อยู่ :</strong> @{{ inv.address }}</p>
+              <p><strong>อีเมล์ : </strong> @{{ customers.email }}</p>
+              <p><strong>เบอร์โทรศัพท์ : </strong> @{{ inv.customerTelNo }}</p> 
           </div>
           <div class="col-sm-4">
               <p><strong>เลขที่ PO : </strong>@{{ inv.customerPO}}</p>
               <p><strong>วันที่ต้องการ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</p>
-              <p><strong>สถานที่ส่ง : </strong>@{{ shipto(inv.shipName) }}</p>
+              <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
               <p><strong>ที่อยู่สถานที่ส่ง : </strong>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
-              <p><strong>บริษัทขนส่ง : </strong>@{{ shipto(inv.transportZoneDesc) }}</p>
+              <!-- <p><strong>บริษัทขนส่ง : </strong>@{{ shipto(inv.transportZoneDesc) }}</p> -->
+              <p><strong>บริษัทขนส่ง : </strong>@{{ inv.transportZoneDesc }}</p>
           </div>
         </div>
         <div>

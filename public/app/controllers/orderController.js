@@ -13,7 +13,10 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
     $scope.ordersYear = [];
     $scope.ordersYearMonth = [];
     $scope.ordersYm = [];
-    $scope.ordersList = [];
+		$scope.ordersList = [];
+		
+		$scope.Customer = {};
+
     var arr = [];
     var Ym = [];
 		$scope.partImgProduct = Config.partImgProduct();
@@ -102,6 +105,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 								var head = response.data.data.order,
 										detail = response.data.data.orderDetailList;
 										$scope.inv = head;
+										console.log("nook");
+										console.log($scope.inv);
 										$scope.detail = detail;
 										$scope.totalAmount=0;
 										$scope.totalQty=0;
