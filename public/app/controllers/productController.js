@@ -374,12 +374,18 @@ app.controller('ProductDetailController',
                     $scope.productId = $scope.product[key]['productId'];
                 }
             }
+            console.log( $scope.cartProductQty ,'<', $scope.productSelect.altUnit1Amount);
+            var cqty = true;
+            if( $scope.cartProductQty < $scope.productSelect.altUnit1Amount){
+              swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
+               cqty = false;
+            }
 
 
             var promotionList = [];
             var inCart = checkCartId($scope.onCart,$scope.productId,'productId');
             console.log('in cart val ' ,  inCart );
-
+          if(cqty === true){
 
           if( inCart === false ){
             var cartList = [{
@@ -433,6 +439,7 @@ app.controller('ProductDetailController',
 
                     console.log(response);
             });
+          }
           }
 
         }
