@@ -9,7 +9,6 @@ app.controller('CartSummaryController',
        $scope.shipaddress = '-';
        console.log('$scope.partImgProduct' + $scope.partImgProduct );
 
-
        function fetchOrder(orderId) {
             Orders.fetchOne(orderId).then(function (response) {
                 if(response.data.result=='SUCCESS'){
@@ -20,8 +19,6 @@ app.controller('CartSummaryController',
                     for(var key in $scope.carts){
                         $scope.totalAmount += $scope.carts[key]['totalAmount'];
                         $scope.totalQty += $scope.carts[key]['qty'];
-
-
                     }
                     var list_date = $scope.order['documentDate'].split('T');
                     var split_date = list_date[0].split('-');
@@ -34,6 +31,8 @@ app.controller('CartSummaryController',
                     prepareOrder(Customers.customerId());
                 }
                 $scope.loading = false;
+                console.log('response');
+                console.log(response);
             });
        }
        $scope.imgProduct = function(productId){
@@ -66,6 +65,8 @@ app.controller('CartSummaryController',
 
                 }
                 $scope.loading = false;
+                console.log('response');
+                console.log(response);
             });
        }
        var getFilter = function(results, valueStartsWith){

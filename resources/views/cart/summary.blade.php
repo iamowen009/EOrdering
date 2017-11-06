@@ -55,50 +55,64 @@ select.form-control{
                                 <label class="col-md-8 text-left">{{order.documentNumber}}</label>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">ที่อยู่ :</label>
-                                <label class="col-md-8 text-left">{{order.address}} {{order.street}} {{order.subDistrictName}} {{order.districtName}} {{order.cityName}}</label>
+                              <label for="pwd" class="col-md-4 text-right">เลขที่ PO :</label>
+                              <label class="col-md-8 text-left">{{customer.customerPO}}</label>
                               </div>
+
+
+
                               <div class="form-group col-md-6">
                                 <label for="email" class="col-md-4 text-right">วันที่สั่งซื้อ :</label>
                                 <label class="col-md-8 text-left">{{ order.documentDate }}</label>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">อีเมลล์ :</label>
-                                <label class="col-md-8 text-left">{{ customer.email}}</label>
+                              <label for="email" class="col-md-4 text-right">&nbsp;</label>
+                                <label class="col-md-8 text-left"></label>
                               </div>
+
                               <div class="form-group col-md-6">
                                 <label for="email" class="col-md-4 text-right">การชำระเงิน :</label>
                                 <label ng-show="order.paymentTerm==='CASH'" class="col-md-8 text-left">เงินสด</label>
-                                <label ng-show="order.paymentTerm==='CREDIT'" class="col-md-8 text-left">เครดิต</label>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">เบอร์โทรศัพท์ :</label>
-                                <label class="col-md-8 text-left">{{ customer.telNo }}</label>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">ขนส่งโดยx :</label>
-                                <label class="col-md-8 text-left">มารับเอง</label>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">บริษัทขนส่ง :</label>
-                                <label class="col-md-8 text-left">{{order.transportZoneDesc}}</label>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">สถานที่ส่ง :</label>
-                                <label class="col-md-8 text-left">{{order.shipName}}</label>
+                                <label ng-show="order.paymentTerm!=='CREDIT'" class="col-md-8 text-left">เครดิต</label>
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="pwd" class="col-md-4 text-right">วันที่ต้องการ :</label>
                                 <label class="col-md-8 text-left">{{order.requestDate}}</label>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">ที่อยู่สถานที่ส่ง :</label>
-                                <label class="col-md-8 text-left">{{shipaddress}}</label>
+                                <label for="pwd" class="col-md-4 text-right">ที่อยู่ :</label>
+                                <label class="col-md-8 text-left">{{order.address}} {{order.street}} {{order.subDistrictName}} {{order.districtName}} {{order.cityName}}</label>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">เลขที่ PO :</label>
-                                <label class="col-md-8 text-left">{{customerPO}}</label>
+                                <label for="email" class="col-md-4 text-right">สถานที่ส่ง :</label>
+                                <label class="col-md-8 text-left">{{order.shipName}}</label>
                               </div>
+
+                              <div class="col-md-12">
+                              <div class="form-group col-md-6">
+                                <label for="pwd" class="col-md-4 text-right">อีเมลล์ :</label>
+                                <label class="col-md-8 text-left">{{ customer.email}}</label>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="email" class="col-md-4 text-right">ที่อยู่สถานที่ส่ง :</label>
+                                <label class="col-md-8 text-left">{{customer.shipaddress}}</label>
+                              </div>
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="pwd" class="col-md-4 text-right">เบอร์โทรศัพท์ :</label>
+                                <label class="col-md-8 text-left">{{ customer.telNo }}</label>
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="email" class="col-md-4 text-right">ขนส่งโดย :</label>
+                                <label class="col-md-8 text-left">มารับเอง</label>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="pwd" class="col-md-4 text-right">บริษัทขนส่ง :</label>
+                                <label class="col-md-8 text-left">{{order.transportZoneDesc}}</label>
+                              </div>
+                              
                             </form>
                           </div>
                         </div>
