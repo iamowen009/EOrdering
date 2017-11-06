@@ -20,7 +20,7 @@
         													<th>เลขที่เอกสารอ้างอิง<br />หลังหักส่วนลด</th>
         													<th>จำนวนเงินสุทธิ <br/>(ไม่รวม VAT)</th>
         													<th style="width:110px;">สถานะสั่งซื้อ</th>
-        													<th style="width:110px;">Order/Bill Tracking</th>
+        													<th style="width:110px;">Order / <br/>Bill Tracking</th>
         													</tr>
                               </thead>
         											<tbody>
@@ -28,17 +28,23 @@
         															<td>@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
         															<td>@{{ list.docName}}</td>
         															<td><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
-        															<td>@{{ list.orderId }}</td>
+                                      <td><a ng-click="OrderStatusModal(list.orderId)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
         															<td>@{{ list.netAmount}}</td>
         															<td>
+                                        <a ng-click="OrderDetailModal(list.orderId)" href="javascript:void(0)">
                                         <div class="progress">
                                           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
                                             @{{ list.percentComplete }}%
                                           </div>
                                         </div>
+                                        </a>
 
                                       </td>
-        															<td class="text-center"><a href="javascript:void(0)" class="text-success" ng-click="tracking( list.orderId )"><i class="fa fa-newspaper-o"></a></td>
+                                      <td>
+                                        <a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a>
+                                      </td>
+                                      
+        															<!-- <td class="text-center"><a href="javascript:void(0)" class="text-success" ng-click="OrderTrackingModal(list.orderId)"><i class="fa fa-newspaper-o"></a></td> -->
         													</tr>
         											</tbody>
                           </table>

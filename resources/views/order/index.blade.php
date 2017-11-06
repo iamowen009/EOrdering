@@ -99,16 +99,20 @@
 </div>
 
 <!-- Modal -->
+@include('order.modal-order-tracking')
+
+<!-- Modal -->
 @include('order.modal-invoice')
 
 
 @include('order.modal-order-detail')
 
 <!-- Modal -->
-@include('order.modal-tracking')
+@include('order.modal-order-status')
 
 <!-- Modal -->
 @include('order.modal-tax')
+
 </section>
 @stop
 
@@ -129,5 +133,24 @@
 	      modalMargin = '-' + (modalWidth/2) + 'px!important';
 	  $(this).css('margin-left',modalMargin);
 	});
+
+	$('#OrderDetailModal').each(function(){
+	  var modalWidth = $(this).width(),
+	      modalMargin = '-' + (modalWidth/2) + 'px!important';
+	  $(this).css('margin-left',modalMargin);
+	});
+
+	$('#OrderStatusModal').each(function(){
+	  var modalWidth = $(this).width(),
+	      modalMargin = '-' + (modalWidth/2) + 'px!important';
+	  $(this).css('margin-left',modalMargin);
+	});
+
+	$('#OrderTrackingModal').each(function(){
+	  var modalWidth = $(this).width(),
+	      modalMargin = '-' + (modalWidth/2) + 'px!important';
+	  $(this).css('margin-left',modalMargin);
+	});
+
 </script>
 @stop
