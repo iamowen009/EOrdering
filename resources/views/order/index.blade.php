@@ -99,9 +99,6 @@
 </div>
 
 <!-- Modal -->
-@include('order.modal-order-tracking')
-
-<!-- Modal -->
 @include('order.modal-invoice')
 
 
@@ -109,6 +106,9 @@
 
 <!-- Modal -->
 @include('order.modal-order-status')
+
+<!-- Modal -->
+@include('order.modal-order-tracking')
 
 <!-- Modal -->
 @include('order.modal-tax')

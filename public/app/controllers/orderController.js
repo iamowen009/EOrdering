@@ -229,8 +229,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 						var head = response.data.data.order,
 								detail = response.data.data.orderDetailList;
 								$scope.inv = head;
-								console.log("OrderTrackingModal");
-								console.log($scope.inv);
+								// console.log("OrderTrackingModal");
+								// console.log($scope.inv);
 								$scope.detail = detail;
 								$scope.totalAmount=0;
 								$scope.totalQty=0;

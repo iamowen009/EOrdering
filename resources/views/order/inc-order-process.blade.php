@@ -40,9 +40,7 @@
                                         </a>
 
                                       </td>
-                                      <td>
-                                        <a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a>
-                                      </td>
+                                      <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td>
                                       
         															<!-- <td class="text-center"><a href="javascript:void(0)" class="text-success" ng-click="OrderTrackingModal(list.orderId)"><i class="fa fa-newspaper-o"></a></td> -->
         													</tr>
