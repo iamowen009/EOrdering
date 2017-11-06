@@ -7,36 +7,43 @@ var app = angular.module('app', ['oitozero.ngSweetAlert','ngCart','ui.bootstrap.
 app.constant('API_URL', 'http://202.142.195.168:8010/API/');
 
 
-app.run(function(Orders,Auth,Customers) {
+app.run(function($rootScope,Orders,Auth,Customers) {
+
     $("#cart-checkout").steps({
       //console.log("Step changed to: " + currentIndex);
             headerTag: "h3",
             bodyTag: "section",
             transitionEffect: 0,
+            startIndex:1,
             autoFocus: true,
             labels: {
 
                 finish: "ยืนยัน",
                 previous: "ย้อนกลับ",
-                next: "สั่งซื้อ"
+                next: "ถัดไป"
             },
             onStepChanged:function (event, currentIndex, newIndex) {
               console.log("Step changed to: " + currentIndex);
               if( currentIndex == 0){
+                console.log('disabled nth-child(2)');
+                $('ul[role="tablist"] >li:nth-child(2)').removeClass('done').addClass('disabled');//('','#ddd');
+                $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');//('','#ddd');
+                $('ul[role="menu"] > li:nth-child(1)')
+                  .removeClass('disabled')
+                  .attr('aria-disabled','false');
+                $('ul[role="menu"] > li:nth-child(1) > a').attr('href', _base + '/product/0');//('goShop');
+                var prv = $('ul[role="menu"] > li:nth-child(1) > a').attr('href');
                 $('.li-btn').show();
               }else if( currentIndex == 1){
-                //window.localStorage.setItem('ddlShipTo','');
-                //$(document).find('.actions ul[role="menu"] li a[href="#next"]').attr('ng-click','formset()');
-
+                $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');
+                $('ul[role="menu"] > li:nth-child(1) > a').attr('href','#previous');
               }else{
                 $('.li-btn').hide();
               }
             },
 
             onInit:function (event, currentIndex) {
-
-              console.log('onInit is ' + currentIndex );
-              if( currentIndex == 0){
+              if( currentIndex == 0 || currentIndex == 1){
                 var btnPrint  = $("<a>").attr({"href":"#","ng-click":"btnPrint"}).addClass("btn-print btn btn-primary").text("Print");
                 var btnClear  = $("<a>").attr({"href":"#","ng-click":"removeAll()"}).addClass("btn-clear btn btn-primary").text("ลบรายการสินค้าทั้งหมด");
                 var printeBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnPrint);
@@ -228,6 +235,26 @@ app.directive('errSrc', function() {
           });
         }
       }
+    })
+    .directive('numbersOnly', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attr, ngModelCtrl) {
+                function fromUser(text) {
+                    if (text) {
+                        var transformedInput = text.replace(/[^0-9]/g, '');
+
+                        if (transformedInput !== text) {
+                            ngModelCtrl.$setViewValue(transformedInput);
+                            ngModelCtrl.$render();
+                        }
+                        return transformedInput;
+                    }
+                    return undefined;
+                }
+                ngModelCtrl.$parsers.push(fromUser);
+            }
+        };
     });
 
 angular.module('UserValidation', []).directive('validPasswordC', function () {

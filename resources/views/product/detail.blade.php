@@ -57,6 +57,7 @@
 		                    <div class="cui-ecommerce--product--price">
 		                    </div>
 		                    <form action="/cart/add" name="add_to_cart" method="post" class="form-horizontal form-label-left" accept-charset="UTF-8">
+													<input type="hidden" ng-model="onCart" />
 
                 				<div class="form-group" ng-show="productSelect.productId">
 			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคา(บาท)</label>
@@ -103,7 +104,7 @@
                             			<span class="input-group-btn">
                                       <button type="button" class="btn btn-default" ng-click="removeQty()"><i class="fa fa-minus"></i></button>
                                   </span>
-			                            <input class="form-control text-center" type="text" ng-model="cartProductQty" >
+			                            <input class="form-control text-center" type="text" numbers-only ng-model="cartProductQty" >
 			                            <span class="input-group-btn">
                                               <button type="button" class="btn btn-default" ng-click="addQty()"><i class="fa fa-plus"></i></button>
                                   </span>

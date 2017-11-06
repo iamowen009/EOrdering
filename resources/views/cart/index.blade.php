@@ -39,18 +39,18 @@ select.form-control{
         <div class="panel-body">
             <div class="cui-ecommerce--cart">
 
-              <div class="alert alert-warning" role="alert" ng-show="totalQty === 0">
+              <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
                           Your cart is empty
               </div>
 
-                <div id="cart-checkout" class="cui-wizard" ng-show="totalQty > 0">
+                <div id="cart-checkout" class="cui-wizard" ng-show="carts.length > 0">
                     <h3>
                         <i class="fa fa-shopping-cart cui-wizard--steps--icon"></i>
                         <span class="cui-wizard--steps--title">Cart</span>
                     </h3>
                     <section>
-                      <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ totalQty }} รายการ</h6>
-                      <div class="table-responsive col-lg-12" ng-show="totalQty > 0">
+                      <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6>
+                      <div class="table-responsive col-lg-12" ng-show="carts.length > 0">
                         <div class="invoice-block">
                             <table class="table table-hover text-right">
                                 <thead class="thead-default">
@@ -76,20 +76,21 @@ select.form-control{
                                     <td class="text-right">
                                       <div class="input-group">
                                           <span class="input-group-btn">
-                                                      <button type="button" class="btn btn-default" ng-click="removeQty(item)">-</button>
-                                                </span>
-                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"  type="text" value="{{ item.qty | number }}" ng-blur="updateCart(item)">
+                                              <button type="button" class="btn btn-default" ng-click="removeQty(item)">-</button>
+                                          </span>
+                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"  type="text" value="{{ item.qty }}" ng-blur="updateCart($index)" ng-model="item.qty" numbers-only >
                                           <span class="input-group-btn">
-                                                      <button type="button" class="btn btn-default" ng-click="addQty(item)">+</button>
-                                                </span>
-
-                                                <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
+                                              <button type="button" class="btn btn-default" ng-click="addQty(item)">+</button>
+                                          </span>
+                                          <p class="text-center" ng-show="loadingcart[$index]"><span class="fa fa-refresh  fa-spin"></span></p>
                                       </div>
-                                      <!--<span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.qty==1}"
+                                      <!--
+                                      <span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.qty==1}"
                                               ng-click="item.setQuantity(-1, true)"></span>
                                               <input class="form-control width-50" value="{{ item.qty | number }}" type="text">
 
-                                        <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span>-->
+                                        <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span>
+                                      -->
                                     </td>
                                     <td>{{item.unitNameTh}}</td>
                                     <td>{{ item.price | number:2}}</td>
@@ -209,7 +210,7 @@ select.form-control{
                                         <!--
                                         <option value=''>Select</option>
                                         -->
-                                      </select>{{ddlShipTo.shipCondition}}
+                                      </select>
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
                                 </div>
@@ -263,14 +264,14 @@ select.form-control{
 
                         <!--<ngcart-cart></ngcart-cart>-->
 
-                        <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ totalQty }} รายการ</h6>
+                        <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6>
 
-                      <div class="alert alert-warning" role="alert" ng-show="totalQty === 0">
+                      <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
                           Your cart is empty
                       </div>
 
 
-                      <div class="table-responsive col-lg-12" ng-show="totalQty > 0">
+                      <div class="table-responsive col-lg-12" ng-show="carts.length > 0">
                         <div class="invoice-block">
                             <table class="table table-hover text-right">
                                 <thead class="thead-default">
@@ -401,7 +402,7 @@ select.form-control{
                                 </div>
                                 <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">บริษัทขนส่ง :</label>
-                                  <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZoneDesc}}</label>
+                                  <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZone}} {{ddlTransport.transportZoneDesc}}</label>
                                 </div>
                               </div>
                             </form>
@@ -419,14 +420,14 @@ select.form-control{
                         <h6>รายละเอียดสินค้าที่สั่งซื้อ</h6>
 
                         <!--<ngcart-cart></ngcart-cart>-->
-                        <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ totalQty }} รายการ</h6>
+                        <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6>
 
-                      <div class="alert alert-warning" role="alert" ng-show="totalQty === 0">
+                      <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
                           Your cart is empty
                       </div>
 
 
-                      <div class="table-responsive col-lg-12" ng-show="totalQty > 0">
+                      <div class="table-responsive col-lg-12" ng-show="carts.length > 0">
                         <div class="invoice-block">
                             <table class="table table-hover text-right">
                                 <thead class="thead-default">

@@ -17,14 +17,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
   };
 
   $scope.toShop = function(){
-    /*
-      if(Auth.userTypeDesc()=='Multi'){
-          window.location= _base + '/customer';
-      }else{
-      */
-          // window.location= _base + '/home/'+Customers.customerId();
-          window.location= _base + '/product/0';//+Customers.customerId();
-  //    }
+      window.location= _base + '/product/0';//+Customers.customerId();
   }
 
   $scope.cancel = function () {
@@ -165,7 +158,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
                 //  $('.bellnumbers').text($scope.totalQty);
 
               }
-              $('.bellnumbers').text($scope.totalQty);
+              $('.bellnumbers').text($scope.items.length);
           }
           $scope.loading = false;
       });
