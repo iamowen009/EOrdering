@@ -16,7 +16,7 @@
               <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</p>
               <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
               <p><strong>ที่อยู่ :</strong> @{{ inv.address }}</p>
-              <p><strong>อีเมล์ : </strong> @{{ customers.email }}</p>
+              <p><strong>อีเมล์ : </strong> @{{ inv.customerEmail }}</p>
               <p><strong>เบอร์โทรศัพท์ : </strong> @{{ inv.customerTelNo }}</p> 
           </div>
           <div class="col-sm-4">
