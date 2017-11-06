@@ -73,7 +73,7 @@ select.form-control{
                               <div class="form-group col-md-6">
                                 <label for="email" class="col-md-4 text-right">การชำระเงิน :</label>
                                 <label ng-show="order.paymentTerm==='CASH'" class="col-md-8 text-left">เงินสด</label>
-                                <label ng-show="order.paymentTerm!=='CREDIT'" class="col-md-8 text-left">เครดิต</label>
+                                <label ng-show="order.paymentTerm!=='CASH'" class="col-md-8 text-left">เครดิต</label>
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="pwd" class="col-md-4 text-right">วันที่ต้องการ :</label>
