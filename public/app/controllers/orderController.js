@@ -20,7 +20,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
     var arr = [];
     var Ym = [];
 		$scope.partImgProduct = Config.partImgProduct();
-    fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
+		fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
+		prepareOrder(Customers.customerId());
 
     function fetchOrderPrecess(customerId,startDate,endDate){
       console.log( 'start date : ' + startDate + ' end date : ' + endDate );
@@ -105,8 +106,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 								var head = response.data.data.order,
 										detail = response.data.data.orderDetailList;
 										$scope.inv = head;
-										console.log("nook");
-										console.log($scope.inv);
+										$scope.inv.customerEmail = $scope.customer.email;
 										$scope.detail = detail;
 										$scope.totalAmount=0;
 										$scope.totalQty=0;
@@ -119,6 +119,19 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 						}
 				});
 		}
+
+		function prepareOrder(customerId){
+			Orders.fetchAll(customerId).then(function (response) {
+						if(response.data.result=='SUCCESS'){
+								$scope.customer = response.data.data.customerInfo;
+								console.log("customer-->",$scope.customer)
+								// $scope.ships = response.data.data.shipToList;
+								// $scope.ship = getFilter($scope.ships,$scope.order.shipId);
+								// $scope.shipaddress = $scope.ship[0].address+' '+$scope.ship[0].street+' '+$scope.ship[0].subdistrict+' '+$scope.ship[0].districtName+' '+$scope.ship[0].cityName;
+						}
+						$scope.loading = false;
+				});
+	 }
 
 		$scope.OrderPrint = function(orderId){
 				Orders.fetchOne(orderId).then(function (response) {
