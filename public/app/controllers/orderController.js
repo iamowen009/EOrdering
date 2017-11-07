@@ -14,6 +14,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
     $scope.ordersYearMonth = [];
     $scope.ordersYm = [];
 		$scope.ordersList = [];
+		$scope.haveBill = [];
+		$scope.haveNoBill = [];
 		
 		$scope.Customer = {};
 
@@ -190,23 +192,54 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 		 var head = response.data.data.orderProcessInfo;
 		 $scope.inv = head;
-		 console.log(head);
-		 console.log("head");
 		});
 	
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			if(response.data.result=='SUCCESS'){
-				console.log(response);
+				//console.log(response);
 				//var head = response.data.data.orderProcessHeaderList
 	
 				var detail = response.data.data.orderProcessOrderItemList;
+				var orderProcessShipmentList = response.data.data.orderProcessShipmentList;
 					$scope.detail = detail;
+					$scope.orderProcessShipmentList = orderProcessShipmentList;
 					$scope.totalAmount=0;
 					$scope.totalQty=0;
 					for(var key in $scope.detail){
 						$scope.totalAmount += $scope.detail[key]['totalAmount'];
 						$scope.totalQty += $scope.detail[key]['qty'];
 					}
+					$scope.haveNoBill =[];
+					$scope.haveBill = [];
+					for(var k in $scope.orderProcessShipmentList){
+						console.log($scope.orderProcessShipmentList[k].billNo);
+						arr = {
+							'billDate':$scope.orderProcessShipmentList[k].billDate,
+							'billNo':$scope.orderProcessShipmentList[k].billNo,
+							'billQty':$scope.orderProcessShipmentList[k].billQty,
+							'custRecDate':$scope.orderProcessShipmentList[k].custRecDate,
+							'custRecTime':$scope.orderProcessShipmentList[k].custRecTime,
+							'driveName':$scope.orderProcessShipmentList[k].driveName,
+							'foragt':$scope.orderProcessShipmentList[k].foragt,
+							'itmNumber':$scope.orderProcessShipmentList[k].itmNumber,
+							'lisense':$scope.orderProcessShipmentList[k].lisense,
+							'runno':$scope.orderProcessShipmentList[k].runno,
+							'salesdocument':$scope.orderProcessShipmentList[k].salesdocument,
+							'shipmentDoc':$scope.orderProcessShipmentList[k].shipmentDoc,
+							'startDat':$scope.orderProcessShipmentList[k].startDat,
+							'startTime':$scope.orderProcessShipmentList[k].startTime,
+							'telDrive':$scope.orderProcessShipmentList[k].telDrive
+						};
+
+						if($scope.orderProcessShipmentList[k].billNo === "")
+						$scope.haveNoBill.push(arr);
+						else
+						$scope.haveBill.push(arr);
+					}
+
+					console.log($scope.haveNoBill);
+					console.log($scope.haveBill);
+
 				$('#OrderHistoryModal').modal('show');
 			}else{
 	
