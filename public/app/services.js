@@ -837,6 +837,29 @@ angular.module('app')
 
 }])
 
+.service('OrderBillHistory', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
+{
+    return {
+        items: [],
+        fetchOne: function (saleOrderNumber)
+        {
+            // TODO: remove the use of futures
+            var deferred = $q.defer();
+            var url = API_URL + 'OrderHistory?saleOrderNumber='+saleOrderNumber;
+
+            $http.get( url ).then(function (data) {
+                deferred.resolve(data);
+            },function (error){
+                deferred.reject('An error occured  Order Precess Info ');
+            });
+
+            return deferred.promise;
+        },
+
+    }
+
+}])
+
 .service('Separations', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {

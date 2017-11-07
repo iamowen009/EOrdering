@@ -1,6 +1,6 @@
 "use strict";
 app.controller('OrderController',
-function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInfo,OrderPrecessInfo,OrderProcessTracking) {
+function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,OrderInfo,OrderPrecessInfo,OrderProcessTracking,OrderBillHistory) {
         /* Bindable functions
 		 -----------------------------------------------*/
 		$scope.endDateBeforeRender = endDateBeforeRender;
@@ -161,24 +161,6 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				});
 		}
 
-		// $scope.tracking = function(orderId){
-		// 	OrderProcessTracking.fetchOne(orderId).then(function (response) {
-		// 		if(response.data.result=='SUCCESS'){
-    //         var len = 0;
-		// 				$scope.orderProcessHeaderList = response.data.data.orderProcessHeaderList;
-		// 				$scope.orderProcessOrderItemList = response.data.data.orderProcessOrderItemList;
-		// 				$scope.orderProcessShipmentList = response.data.data.orderProcessShipmentList;
-    //         len = parseInt( $scope.orderProcessHeaderList.length ) + parseInt( $scope.orderProcessOrderItemList.length ) + parseInt( $scope.orderProcessShipmentList.length );
-    //         if( len > 0 ){
-		// 				    $('#orderModal').modal('show');
-    //         }else{
-    //             swal('สินค้ายังอยู่ในสถานะรอจัดส่ง');
-    //         }
-		// 		}else{
-		// 		}
-		// 	});
-		// }
-
 		$scope.OrderStatusModal = function(saleOrderNumber){
 			OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 					if(response.data.result=='SUCCESS'){
@@ -232,28 +214,6 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		});
 	}
 
-	// $scope.OrderDetailModal = function(orderId){
-	// 	Orders.fetchOne(orderId).then(function (response) {
-	// 			if(response.data.result=='SUCCESS'){
-	// 					var head = response.data.data.order,
-	// 							detail = response.data.data.orderDetailList;
-	// 							$scope.inv = head;
-	// 							console.log("Sale Order");
-	// 							console.log($scope.inv);
-	// 							$scope.detail = detail;
-	// 							$scope.totalAmount=0;
-	// 							$scope.totalQty=0;
-	// 							for(var key in $scope.detail){
-	// 									$scope.totalAmount += $scope.detail[key]['totalAmount'];
-	// 									$scope.totalQty += $scope.detail[key]['qty'];
-	// 							}
-	// 					$('#OrderDetailModal').modal('show');
-	// 			}else{
-
-	// 			}
-	// 	});
-	// }
-
 	$scope.OrderDetailModal = function(saleOrderNumber){
 		
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
@@ -283,6 +243,25 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		});
 	}
 
+	$scope.OrderBillHistory = function(saleOrderNumber){
+		$scope.Bill = '';
+		$scope.detail = '';
+		$scope.descountdetail = '';
+		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
+			if(response.data.result=='SUCCESS'){
+				console.log(response);
+				var head = response.data.data.orderHistoryHeaderList,
+						detail = response.data.data.orderHistoryDetailList,
+						descountdetail = response.data.data.prderHistoryDiscountList;
+					
+					$scope.Bill = head;
+					$scope.detail = detail;
+					$scope.descountdetail = descountdetail;
+			}else{
+			}
+		});
+	}
+
 	$scope.OrderTrackingModal = function(orderId){
 		Orders.fetchOne(orderId).then(function (response) {
 				if(response.data.result=='SUCCESS'){
@@ -305,33 +284,6 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				}
 		});
 	}
-
-		// $scope.ordersStatus = function(orderId){
-		// 	OrderProcessTracking.fetchOne(orderId).then(function (response) {
-		// 		if(response.data.result=='SUCCESS'){
-		// 				var len = 0;
-		// 				$scope.orderProcessHeaderList = response.data.data.orderProcessHeaderList;
-		// 				$scope.orderProcessOrderItemList = response.data.data.orderProcessOrderItemList;
-		// 				$scope.orderProcessShipmentList = response.data.data.orderProcessShipmentList;
-		// 				len = parseInt( $scope.orderProcessHeaderList.length ) + parseInt( $scope.orderProcessOrderItemList.length ) + parseInt( $scope.orderProcessShipmentList.length );
-		// 				if( len > 0 ){
-		// 						$('#orderDetailModal').modal('show');
-		// 				}else{
-		// 						swal('สินค้ายังอยู่ในสถานะรอจัดส่ง');
-		// 				}
-		// 		}else{
-		// 		}
-		// 	});		}
-
-			$scope.ordersHistory = function(orderId){
-				ordersHistory.fetchHistory(orderId).then(function (response) {
-					if(response.data.result=='SUCCESS'){
-
-					}else{
-
-					}
-				});
-			}
 
 		$scope.shipto = function(key){
 				var arr = {

@@ -31,7 +31,7 @@
           						    </a>
           						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           						        <datetimepicker data-ng-model="dateRangeStart"
-          						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
+          						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed'}"
           						                        data-on-set-time="startDateOnSetTime()"
           						                        data-before-render="startDateBeforeRender($dates)"></datetimepicker>
           						    </ul>
