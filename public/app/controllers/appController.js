@@ -1,13 +1,15 @@
 "use strict";
 
-app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmount,totalQty,$scope,Carts,Auth,Customers,Config) {
+app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,totalAmount,totalQty,$scope,Carts,Auth,Customers,Config) {
 
 
   $scope.items = items;
+  $scope.boms = boms;
   $scope.totalAmount = totalAmount;
   $scope.totalQty = totalQty;
   $scope.selected = {
-    item: $scope.items[0]
+    item: $scope.items[0],
+    boms: $scope.boms[0]
   };
   $scope.partImgProduct = Config.partImgProduct();
 
@@ -139,13 +141,14 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
         $scope.loading = false;
     });
   }
-
+$scope.bomxs = {};
   function fetchCart(customerId) {
       $scope.loading = true;
       console.log('cart ' + customerId);
       Carts.fetchAll(customerId).then(function (response) {
           if(response.data.result=='SUCCESS'){
               $scope.items = response.data.data.cartList;
+              $scope.bomxs   = response.data.data.cartBOMItems;
               //console.log('in cart');
               //console.log($scope.items);
               $scope.totalAmount=0;
@@ -172,9 +175,11 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, items,totalAmou
 app.controller('AppController',
     function ($scope, $http, $filter,Customers,Auth,$uibModal,$log,Carts,Config,sharedService) {
         $scope.placesearch = 'ค้นหาสินค้า';
+        $scope.bomxs = {};
         fetchCart(Customers.customerId());
         $scope.totalAmount = 0;
         $scope.totalQty = 0;
+
         $scope.username = Auth.username();
         $scope.usertype = Auth.userTypeDesc();
         $scope.customerName = Customers.customerName();
@@ -184,11 +189,12 @@ app.controller('AppController',
             Carts.fetchAll(customerId).then(function (response) {
                 if(response.data.result=='SUCCESS'){
                     $scope.carts = response.data.data.cartList;
+                    $scope.bomxs = response.data.data.cartBOMItems;
                     console.log('in cart');
                     console.log($scope.carts);
                     for(var key in $scope.carts){
                         $scope.totalAmount += $scope.carts[key]['totalAmount'];
-                        $scope.totalQty += $scope.carts[key]['qty'];
+                        $scope.totalQty += $scope.carts[key]['qty']+'ss';
                     }
                 }
                 $scope.loading = false;
@@ -259,7 +265,12 @@ app.controller('AppController',
               resolve: {
 
                 items: function () {
+                    console.log('items : ', $scope.carts);
                   return $scope.carts;
+                },
+                boms:function(){
+                  console.log('boms : ', $scope.bomxs);
+                  return $scope.bomxs;
                 },
                 totalAmount: function(){
                     return $scope.totalAmount;

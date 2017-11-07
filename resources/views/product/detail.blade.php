@@ -98,13 +98,13 @@
 		                      </div>
 
 		                      <div class="form-group">
-		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">จำนวน</label>
+		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">จำนวนสินค้า</label>
 		                        <div class="col-md-3 col-sm-3 col-xs-12">
 		                         	<div class="input-group">
                             			<span class="input-group-btn">
                                       <button type="button" class="btn btn-default" ng-click="removeQty()"><i class="fa fa-minus"></i></button>
                                   </span>
-			                            <input class="form-control text-center" type="text" numbers-only ng-model="cartProductQty" >
+			                            <input class="form-control text-center" type="text" numbers-only ng-model="cartProductQty"  >
 			                            <span class="input-group-btn">
                                               <button type="button" class="btn btn-default" ng-click="addQty()"><i class="fa fa-plus"></i></button>
                                   </span>
@@ -113,7 +113,7 @@
 															<input type="hidden" ng-model="altUnit1Amount" value="{{ productSelect.altUnit1Amount }}"/>
 		                        </div>
 		                        <div class="col-md-3 col-sm-3 col-xs-12">
-		                        	<label ng-show="productSelect.productId">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }}) {{ productSelect.unitNameTh }}</label>
+		                        	<label ng-show="productSelect.productId"><span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span> {{ productSelect.unitNameTh }}</label>
 		                    	</div>
 		                      </div>
 
