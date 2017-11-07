@@ -8,7 +8,6 @@
 
 @section('content')
 <section class="page-content" ng-controller="OrderController" >
-<<<<<<< HEAD
 
 	<div class="content">
 
@@ -58,7 +57,6 @@
 											</ul>
 										</div>
 									</div>
-=======
 <div class="content">
 
 	<div class="row ">
@@ -140,7 +138,6 @@
 	                            </div>
 	                        </div>
 	                    </div>
->>>>>>> parent of 2f5926a5... update สถานะคำสั่งซื้อ
 					</div>
 
 					</form>
