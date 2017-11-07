@@ -43,8 +43,8 @@
                                       <!-- <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td> -->
                                       
         															<td class="text-center">
-                                        <a href="javascript:void(0)" class="text-success" ng-click="OrderTrackingModal(list.orderId)"><i class="fa fa-newspaper-o"></i></a>
-                                        <a href="javascript:void(0)" class="text-success" ng-click="OrderTrackingModalAAA(list.orderId)"><i class="fa fa-newspaper-o" style="color:orange"></i></a>
+                                        <a href="javascript:void(0)" class="text-success" ng-click="OrderHistoryModal(list.salesOrderNumber)"><i class="fa fa-newspaper-o"></i></a>
+                                        <a href="javascript:void(0)" class="text-success" ng-click="OrderTrackingModalAAA(list.salesOrderNumber)"><i class="fa fa-newspaper-o" style="color:orange"></i></a>
                                       </td>
         													</tr>
         											</tbody>

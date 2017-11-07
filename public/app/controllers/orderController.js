@@ -196,11 +196,40 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 							// 				$scope.totalAmount += $scope.detail[key]['totalAmount'];
 							// 				$scope.totalQty += $scope.detail[key]['qty'];
 							// 		}
-							$('#OrderStatusModal').modal('show');
+							$('#OrderStatusModal2').modal('show');
 					}else{
 
 					}
 			});
+	}
+
+	$scope.OrderHistoryModal = function(saleOrderNumber){
+		
+		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
+		 var head = response.data.data.orderProcessInfo;
+		 $scope.inv = head;
+		 console.log(head);
+		 console.log("head");
+		});
+	
+		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
+			if(response.data.result=='SUCCESS'){
+				console.log(response);
+				//var head = response.data.data.orderProcessHeaderList
+	
+				var detail = response.data.data.orderProcessOrderItemList;
+					$scope.detail = detail;
+					$scope.totalAmount=0;
+					$scope.totalQty=0;
+					for(var key in $scope.detail){
+						$scope.totalAmount += $scope.detail[key]['totalAmount'];
+						$scope.totalQty += $scope.detail[key]['qty'];
+					}
+				$('#OrderHistoryModal').modal('show');
+			}else{
+	
+			}
+		});
 	}
 
 	// $scope.OrderDetailModal = function(orderId){

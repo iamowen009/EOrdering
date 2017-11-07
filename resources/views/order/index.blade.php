@@ -98,20 +98,11 @@
 	</div>
 </div>
 
-<!-- Modal -->
 @include('order.modal-invoice')
-
-
 @include('order.modal-order-detail')
+@include('order.modal-order-status2')
+@include('order.modal-order-history')
 
-<!-- Modal -->
-@include('order.modal-order-status')
-
-<!-- Modal -->
-@include('order.modal-order-tracking')
-
-<!-- Modal -->
-<!-- @include('order.modal-tax') -->
 
 </section>
 @stop
