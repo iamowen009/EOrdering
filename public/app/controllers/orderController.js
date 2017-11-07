@@ -16,7 +16,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		$scope.ordersList = [];
 		$scope.haveBill = [];
 		$scope.haveNoBill = [];
-		
+
 		$scope.Customer = {};
 
     var arr = [];
@@ -86,7 +86,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
                 console.log('$scope.ordersList');
                 console.log($scope.ordersList);
 								//console.log(arr);
-								
+
 								console.log('Owen List Order >> ');
 								console.log($scope.orders);
 
@@ -188,17 +188,17 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 	}
 
 	$scope.OrderHistoryModal = function(saleOrderNumber){
-		
+
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 		 var head = response.data.data.orderProcessInfo;
 		 $scope.inv = head;
 		});
-	
+
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			if(response.data.result=='SUCCESS'){
 				//console.log(response);
 				//var head = response.data.data.orderProcessHeaderList
-	
+
 				var detail = response.data.data.orderProcessOrderItemList;
 				var orderProcessShipmentList = response.data.data.orderProcessShipmentList;
 					$scope.detail = detail;
@@ -242,25 +242,25 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 
 				$('#OrderHistoryModal').modal('show');
 			}else{
-	
+
 			}
 		});
 	}
 
 	$scope.OrderDetailModal = function(saleOrderNumber){
-		
+
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 		 var head = response.data.data.orderProcessInfo;
 		 $scope.inv = head;
 		 console.log(head);
 		 console.log("head");
 		});
-	
+
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			if(response.data.result=='SUCCESS'){
 				console.log(response);
 				//var head = response.data.data.orderProcessHeaderList
-	
+
 				var detail = response.data.data.orderProcessOrderItemList;
 					$scope.detail = detail;
 					$scope.totalAmount=0;
@@ -271,7 +271,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 					}
 				$('#OrderDetailModal').modal('show');
 			}else{
-	
+
 			}
 		});
 	}
@@ -286,7 +286,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				var head = response.data.data.orderHistoryHeaderList,
 						detail = response.data.data.orderHistoryDetailList,
 						descountdetail = response.data.data.prderHistoryDiscountList;
-					
+
 					$scope.Bill = head;
 					$scope.detail = detail;
 					$scope.descountdetail = descountdetail;
@@ -306,7 +306,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				var head = response.data.data.orderHistoryHeaderList,
 						detail = response.data.data.orderHistoryDetailList,
 						descountdetail = response.data.data.prderHistoryDiscountList;
-					
+
 					$scope.Bill = head;
 					console.log("head");
 					console.log(head);

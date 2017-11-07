@@ -8,7 +8,7 @@
         	<h4 class="modal-title">Order / Billing Tracking</h4>
         </div>
       </div>
-      
+
       <div class="modal-body">
         <div class="row inv-header">
           <div class="col-sm-8">
@@ -90,12 +90,13 @@
               </table>
               </div>
 
-       
-         
-         
+
+
+
 
       </div>
     </div>
 
   </div>
+</div>
 </div>

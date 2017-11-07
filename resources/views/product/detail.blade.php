@@ -62,7 +62,7 @@
                 				<div class="form-group" ng-show="productSelect.productId">
 			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคา(บาท)</label>
 			                        <div class="pdprice col-md-9 col-sm-9 col-xs-12">
-			                         	<font color="red"><strong>{{productSelect.productPrice | number:2 }}</strong></font>
+			                         	<font color="red"><strong>{{productPrice | number:2 }}</strong></font>
 			                        </div>
 			                      </div>
 

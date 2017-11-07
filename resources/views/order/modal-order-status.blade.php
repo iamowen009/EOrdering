@@ -1,3 +1,22 @@
+<div id="OrderStatusModalx" class="modal" role="dialog">
+  <div class="modal-dialog-invoice modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content inv-content">
+      <div class="modal-header info">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    	 	<div class="col-sm-12 text-center">
+        	<h4 class="modal-title">ใบสั่งซื้อ</h4>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row inv-header">
+          <div class="col-sm-8">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="OrderStatusModal" class="modal" role="dialog">
   <div class="modal-dialog-invoice modal-lg">
 
@@ -78,7 +97,7 @@
           <div class="row">
             <div class="col-sm-6 text-danger"> <strong>หัก </strong></div>
             <div class="col-sm-6 text-right">
-               
+
             </div>
             <div class="col-sm-6 text-danger"> Description หัก </div>
             <div class="col-sm-6 text-right">
@@ -90,7 +109,7 @@
           <div class="row">
             <div class="col-sm-6 text-danger"><strong>บวก </strong></div>
             <div class="col-sm-6 text-right">
-               
+
             </div>
             <div class="col-sm-6 text-danger"> Description บวก </div>
             <div class="col-sm-6 text-right">
@@ -128,4 +147,5 @@
     </div>
 
   </div>
+</div>
 </div>

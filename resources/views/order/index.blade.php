@@ -117,7 +117,7 @@
         $('#nestable1').nestable();
 
 	});
-	
+
 	$('#OrderTrackingModal').each(function(){
 	  var modalWidth = $(this).width(),
 	      modalMargin = '-' + (modalWidth/2) + 'px!important';

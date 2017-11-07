@@ -235,6 +235,7 @@ app.controller('ProductDetailController',
         $scope.loading = true;
         $scope.promotions = {};
         $scope.products = {};
+        $scope.boms = {};
         $scope.sizes = [];
         $scope.colors = [];
         $scope.listColors = [];
@@ -246,7 +247,7 @@ app.controller('ProductDetailController',
         $scope.partImgProduct = Config.partImgProduct();
         $scope.btfId = window.location.href.split('/').pop();
         // fetch
-        console.log('product detail user ' + $scope.usersId + ' | ' + Auth.genId() + ' | ' + Auth.userTypeDesc() );
+        // console.log('product detail user ' + $scope.usersId + ' | ' + Auth.genId() + ' | ' + Auth.userTypeDesc() );
         fetchOneProduct($scope.btfId);
         fetchAllPromotions($scope.usersId, [], [], []);
         fetchAllProducts($scope.usersId, [], [], [],true);
@@ -254,10 +255,10 @@ app.controller('ProductDetailController',
         function fetchOneProduct(btf){
             Products.fetchOne(btf).then(function (response) {
                 if(response.data.result=='SUCCESS'){
-                    $scope.btf = response.data.data.btfInfo;
-                    $scope.product = response.data.data.productList;
-                    console.log('scope product');
-                    console.log( $scope.product);
+                    $scope.btf      = response.data.data.btfInfo;
+                    $scope.product  = response.data.data.productList;
+                    $scope.boms     = response.data.data.productInBOMList;
+                    //  console.log('scope boms',$scope.boms);
                     for(var key in $scope.product){
                       //  console.log('key is ' + key );
                         if($scope.sizes.indexOf($scope.product[key]['sizeCode'])==-1){
@@ -281,8 +282,8 @@ app.controller('ProductDetailController',
                 $scope.loading = false;
             });
         }
-        console.log( 'scope colors ');
-        console.log( $scope.colors );
+        // console.log( 'scope colors ');
+        // console.log( $scope.colors );
 
         var hasDupsObjects = function(array,value,field) {
             for(var key in array){
@@ -317,8 +318,9 @@ app.controller('ProductDetailController',
             Products.fetchAll(customerId, marketingCodeList, brandCodeList, typeCodeList,isBTFView).then(function (response) {
                 if(response.data.result=='SUCCESS'){
                     $scope.products = response.data.data.productList;
-                    console.log('scope products');
-                    console.log($scope.products);                }
+                    // console.log('scope products');
+                    // console.log($scope.products);
+                   }
                 $scope.loading = false;
             });
         }
@@ -327,7 +329,7 @@ app.controller('ProductDetailController',
             $scope.listColors = [];
 
             for(var kr in $scope.colors){
-              console.log('kr ', $scope.colors[kr].sizeCode , ' cartSize ', $scope.cartSize);
+              // console.log('kr ', $scope.colors[kr].sizeCode , ' cartSize ', $scope.cartSize);
 
               if( $scope.colors[kr].sizeCode == $scope.cartSize){
                 $scope.listColors.push({'colorCode':$scope.colors[kr]['colorCode'],'colorNameTh':$scope.colors[kr]['colorNameTh'],'cartrgbColor':$scope.colors[kr]['rgbCode'],'sizeCode' : $scope.colors[kr]['sizeCode'] });
@@ -342,9 +344,21 @@ app.controller('ProductDetailController',
                     //$scope.cartrgbColor = $scope.product[key]['rgbCode'];
                 }
             }
+            var bomPrice = 0;
+            for(var kx in $scope.boms){
+            //  if($scope.boms[kx]['productRefToCode'] == $scope.productSelect.productCode){
+                bomPrice += $scope.boms[kx]['productPrice'];
+            //  }
+            }
+            if( $scope.boms.length > 0 ){
+              $scope.productPrice = bomPrice;
+            }else{
+              $scope.productPrice = $scope.productSelect.productPrice;
+            }
+            console.log('bom price is ', bomPrice ,' boms ', $scope.boms ,' scope product select ', $scope.productSelect );
 
             //$scope.setProduct( $scope.listColors[0]['colorCode'] );
-            console.log( 'listColors : ', $scope.listColors );
+            // console.log( 'listColors : ', $scope.listColors );
         }
 
 
@@ -375,7 +389,7 @@ app.controller('ProductDetailController',
                     $scope.productId = $scope.product[key]['productId'];
                 }
             }
-            console.log( $scope.cartProductQty ,'<', $scope.productSelect.altUnit1Amount);
+            // console.log( $scope.cartProductQty ,'<', $scope.productSelect.altUnit1Amount);
             var cqty = true;
             if( $scope.cartProductQty < $scope.productSelect.altUnit1Amount){
               swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
@@ -390,7 +404,7 @@ app.controller('ProductDetailController',
 
             var promotionList = [];
             var inCart = checkCartId($scope.onCart,$scope.productId,'productId');
-            console.log('in cart val ' ,  inCart );
+            // console.log('in cart val ' ,  inCart );
           if(cqty === true){
 
           if( inCart === false ){
@@ -411,12 +425,12 @@ app.controller('ProductDetailController',
                       });
 
                     }else{
-                        console.log('cartList ', cartList );
+                        // console.log('cartList ', cartList );
                         swal('เพิ่มสินค้าไม่สำเร็จ');
                     }
             }, function (response) {
 
-                    console.log(response);
+                    console.info(response);
             });
           }else{
             var cartList = [{
@@ -437,7 +451,7 @@ app.controller('ProductDetailController',
                       });
 
                     }else{
-                        console.log('cartList ', cartList );
+                        // console.log('cartList ', cartList );
                         swal('เพิ่มสินค้าไม่สำเร็จ');
                     }
                 //fetchCart(Customers.customerId());
@@ -457,7 +471,7 @@ app.controller('ProductDetailController',
         }
 
         $scope.setProduct = function(val){
-            console.log('set product ' , val);
+            // console.log('set product ' , val);
             $scope.cartColor = val;
             $scope.colorCodeName = val;
             for(var key in $scope.product){
@@ -467,10 +481,22 @@ app.controller('ProductDetailController',
                     //$scope.cartrgbColor = $scope.product[key]['rgbCode'];
                 }
             }
+            var bomPrice = 0;
+            for(var kx in $scope.boms){
+            //  if($scope.boms[kx]['productRefToCode'] == $scope.productSelect.productCode){
+                bomPrice += $scope.boms[kx]['productPrice'];
+            //  }
+            }
+            console.log('price ', $scope.productSelect.productPrice);
+            if( $scope.boms.length > 0 ){
+              $scope.productPrice = bomPrice;
+            }else{
+              $scope.productPrice = $scope.productSelect.productPrice;
+            }
 
           //  $scope.getProduct();
         }
-        console.log('product : ' , $scope.product );
+        // console.log('product : ' , $scope.product );
         $scope.addFav = function(btfCode){
 
             var favoriteInfo = {
