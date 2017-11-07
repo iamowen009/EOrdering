@@ -338,6 +338,7 @@ app.controller('ProductDetailController',
                 if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']==$scope.colorCodeName){
                     $scope.productSelect = $scope.product[key];
                     $scope.productId = $scope.product[key]['productId'];
+                    $scope.cartProductQty = $scope.productSelect.altUnit1Amount > 0 ? $scope.productSelect.altUnit1Amount : 1;
                     //$scope.cartrgbColor = $scope.product[key]['rgbCode'];
                 }
             }
@@ -378,6 +379,11 @@ app.controller('ProductDetailController',
             var cqty = true;
             if( $scope.cartProductQty < $scope.productSelect.altUnit1Amount){
               swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
+               cqty = false;
+            }else if( $scope.cartProductQty % $scope.productSelect.altUnit1Amount){
+              swal('ผลิตภัฑณ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ/nระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
+              var un = parseInt($scope.cartProductQty / $scope.productSelect.altUnit1Amount);
+               $scope.cartProductQty = $scope.productSelect.altUnit1Amount * un;
                cqty = false;
             }
 
@@ -457,6 +463,7 @@ app.controller('ProductDetailController',
             for(var key in $scope.product){
                 if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']== val){
                     $scope.productSelect = $scope.product[key];
+                    $scope.cartProductQty = $scope.productSelect.altUnit1Amount > 0 ? $scope.productSelect.altUnit1Amount : 1;
                     //$scope.cartrgbColor = $scope.product[key]['rgbCode'];
                 }
             }

@@ -248,13 +248,56 @@
                           </div>
                         </div>
                         </div>
-                        <div class="col-md-12"><hr></div>
+                        <!--
+                        :: start bom list
+                        =======================================================================================================
+                        -->
+                        <div class="col-sm-12" ng-repeat="bom in boms" ng-if="bom.productRefCode == item.productCode" style="margin-left:10px; margin-top:20px;">
+
+                            <label class="text-left col-sm-1" >
+                                <a href="#" ><i class="fa fa-trash"></i></a></label>
+                            <label class="col-sm-11 text-left">{{bom.productCode}}</label>
+                            <label class="text-left col-sm-1" ></label>
+                            <label class="col-md-11">{{bom.productNameTh}}</label>
+                            <div class="col-md-4 text-right"><img src="{{partImgProduct}}/{{bom.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
+                            <div class="col-md-8">
+                              <div class="col-md-12">
+                                ราคา: {{bom.price | number:2}}
+                              </div>
+                              <div class="form-group">
+
+
+                              <div class="col-md-4">
+                                จำนวน :
+                              </div>
+                              <div class="col-md-3">
+
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default disabled" >-</button>
+                                    </span>
+                                    <input type="text" class="form-controle text-center disabled" disabled style="width:80px; padding:5px;" value="{{ bom.qty === null ? 0 : bom.qty }}" >
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-defaul disabledt" disabled>+</button>
+                                    </span>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                หน่วย:{{bom.unitNameTh}} <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
+                              </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!--
+                        :: End bom list
+                        =======================================================================================================
+                        -->
                     </div>
+
                     <div class="col-sm-12" >
                         <label class="col-md-6">จำนวนเงินสุทธิ(ไม่รวม VAT)</label>
                         <label class="col-md-6 text-right" >{{totalAmount| number:2}} บาท</label>
                     </div>
-
                 </div>
             </div>
             <div class="modal-footer text-center">
