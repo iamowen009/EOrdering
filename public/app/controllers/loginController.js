@@ -100,9 +100,9 @@ app.controller('LoginController',
                     Config.setHomeImage(response.data.data.configList[0].imgHomeA1,
                         response.data.data.configList[0].imgHomeA2,
                         response.data.data.configList[0].imgHomeA3);
-                    $scope.slide1 = response.data.data.configList[0].partImgHome +'/' + response.data.data.configList[0].imgHomeA1;
-                    $scope.slide2 = response.data.data.configList[0].partImgHome +'/' + response.data.data.configList[0].imgHomeA2;
-                    $scope.slide3 = response.data.data.configList[0].partImgHome +'/' + response.data.data.configList[0].imgHomeA3;
+                    $scope.slide1 = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeA1;
+                    $scope.slide2 = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeA2;
+                    $scope.slide3 = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeA3;
                     fetchSlideshow();
                 }
             });
