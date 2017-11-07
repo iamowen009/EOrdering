@@ -8,6 +8,7 @@
 
 @section('content')
 <section class="page-content" ng-controller="OrderController" >
+<<<<<<< HEAD
 
 	<div class="content">
 
@@ -57,6 +58,8 @@
 											</ul>
 										</div>
 									</div>
+=======
+>>>>>>> parent of eed212e0... แก้ไข Modal
 <div class="content">
 
 	<div class="row ">
@@ -139,51 +142,28 @@
 	                        </div>
 	                    </div>
 					</div>
+                </div>
 
-					</form>
-
-					<div class="row">
-						<div class="col-md-12">
-							<div class="cui-ecommerce--product--info">
-								<div class="nav-tabs-horizontal">
-									<ul class="nav nav-tabs tab-order" role="tablist">
-										<li class="nav-item active">
-											<a class="nav-link tab1" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link tab2" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">ประวัติการสั่งซื้อ<br/>(History Process)</a>
-										</li>
-									</ul>
-									<div class="tab-content padding-vertical-20">
-										<div class="tab-pane active" id="tab1" role="tabpanel">
-
-											<div class="dd" id="nestable1">
-																					<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
-											@include('order.inc-order-process')
-												</div>
-										</div>
-										<div class="tab-pane" id="tab2" role="tabpanel">
-											<div class="dd" id="nestable1">
-																					<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
-																					@include('order.inc-history-process')
-														</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				</div>
-			</div>
+             </div>
+            </div>
 		</div>
 	</div>
+</div>
 
-	@include('order.modal-invoice')
-	@include('order.modal-order-detail')
-	@include('order.modal-order-history')
-	@include('order.modal-order-status2')
+<!-- Modal -->
+@include('order.modal-invoice')
+
+
+@include('order.modal-order-detail')
+
+<!-- Modal -->
+@include('order.modal-order-status')
+
+<!-- Modal -->
+@include('order.modal-order-tracking')
+
+<!-- Modal -->
+<!-- @include('order.modal-tax') -->
 
 </section>
 @stop
