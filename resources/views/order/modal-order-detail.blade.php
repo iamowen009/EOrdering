@@ -12,9 +12,10 @@
       <div class="modal-body">
 			<div class="row inv-header">
           <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong>  @{{ inv.customerName }}</p>
-              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber }} / @{{ inv.customerPO}}</p>
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong></p>
+              <p><strong>ร้านค้า :</strong> @{{ inv.payerNo  }}  @{{ inv.payerName }}</p>
+              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
+              <!-- <p><strong>เลขที่เอกสารอ้างอิง : </strong></p> -->
+              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
           </div>
           <div class="col-sm-4">
               <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
@@ -41,13 +42,13 @@
 
                   <tbody>
                   <tr ng-repeat="item in detail">
-                      <td class="text-left"> @{{item.productCode}} @{{ item.productNameTh }}</td>
-                      <td class="text-center">@{{ item.qty | number }}</td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center text-danger"></td>
-                      <td class="text-center">@{{item.unitNameTh}}</td>
+                      <td class="text-left"> @{{item.material}} @{{ item.materialDes }}</td>
+                      <td class="text-center">@{{ item.targetQty | number }}</td>
+                      <td class="text-center">@{{ item.billQty | number }}</td>
+                      <td class="text-center">@{{ item.deliQty | number }}</td>
+                      <td class="text-center">@{{ item.balaQty | number }}</td>
+                      <td class="text-center text-danger">@{{ item.rejeQty | number }}</td>
+                      <td class="text-center">@{{item.unit}}</td>
                   </tr>
                   </tbody>
 
