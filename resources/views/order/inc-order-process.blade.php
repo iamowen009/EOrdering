@@ -14,23 +14,23 @@
                           <table class="table table-striped">
         											<thead>
         													<tr class="info">
-        													<th>วันที่-เวลา</th>
-        													<th>ผู้ดำเนินการ</th>
-        													<th>เลขที่ใบสั่งซื้อ</th>
-        													<th>เลขที่เอกสารอ้างอิง<br />หลังหักส่วนลด</th>
-        													<th>จำนวนเงินสุทธิ <br/>(ไม่รวม VAT)</th>
-        													<th style="width:110px;">สถานะสั่งซื้อ</th>
-        													<th style="width:110px;">Order / <br/>Bill Tracking</th>
+        													<th class="text-center">วันที่-เวลา</th>
+        													<th class="text-center">ผู้ดำเนินการ</th>
+        													<th class="text-center">เลขที่ใบสั่งซื้อ</th>
+        													<th class="text-center">เลขที่เอกสารอ้างอิง<br />หลังหักส่วนลด</th>
+        													<th class="text-center">จำนวนเงินสุทธิ <br/>(ไม่รวม VAT)</th>
+        													<th style="width:100px;" class="text-center">สถานะสั่งซื้อ</th>
+        													<th style="width:110px;" class="text-center">Order / <br/>Bill Tracking</th>
         													</tr>
                               </thead>
         											<tbody>
         													<tr ng-repeat="list in ordersList | orderBy:'-docDate'" ng-if="list.month === m.month && list.percentComplete < 100">
-        															<td>@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
-        															<td>@{{ list.docName}}</td>
-        															<td><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
-                                      <td><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
-        															<td>@{{ list.netAmount}}</td>
-        															<td>
+        															<td class="text-center">@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
+        															<td class="text-left">@{{ list.docName}}</td>
+        															<td class="text-center"><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
+                                      <td class="text-center"><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
+        															<td class="text-right">@{{ list.netAmount |number:2}}</td>
+        															<td class="text-left">
                                         <a ng-click="OrderDetailModal(list.orderId)" href="javascript:void(0)">
                                         <div class="progress">
                                           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
