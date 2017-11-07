@@ -111,10 +111,15 @@ app.controller('ProductCheckoutController',
                     }
                     $scope.carts        = response.data.data.cartProductList;
                   //  if( $scope.transports.length > 0)
-                    $scope.ddlTransport = $scope.transports[0];//.transportZone +' ' + $scope.transports[0].transportZoneDesc;
+                    //.transportZone +' ' + $scope.transports[0].transportZoneDesc;
                     $scope.ddlShipTo    = $scope.ships[0];
+                    if( $scope.ddlShipTo.shipCondition == '08'){
+                      $scope.ddlTransport =  $scope.ddlShipTo.transportZone;
+                    }else{
+                      $scope.ddlTransport =  $scope.transports[0];
+                    }
                     $scope.ddlDate      = $scope.requests[0];
-                    $scope.paymentTerm  = $scope.customer.paymentTerm !== 'CASH' ? $scope.customer.paymentTerm : 'CASH';//$scope.paymentTerm;
+                    // $scope.paymentTerm  = $scope.customer.paymentTerm !== 'CASH' ? $scope.customer.paymentTerm : 'CASH';//$scope.paymentTerm;
                     //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
                     $scope.shipaddress  = $scope.ships.length > 0 ? ($scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName ) : '';
                    var shipper = angular.toJson($scope.ddlShipTo);
@@ -140,8 +145,9 @@ app.controller('ProductCheckoutController',
 
        $scope.shippingType = 'show';
        $scope.shipCondition = false;
-       $scope.pickUp = function(){
-          if( $scope.shipCondition ){
+       $scope.pickUp = function(shipCondition){
+          console.log('$scope.shipCondition : ', shipCondition );
+          if( shipCondition === true ){
             $scope.shippingType = 'hide';
           }else{
             $scope.shippingType = 'show';
@@ -157,6 +163,9 @@ app.controller('ProductCheckoutController',
           //console.log(sel);
           $scope.ship = getFilter($scope.ships,sel);
           $scope.shipaddress = $scope.ship[0].address+' '+$scope.ship[0].street+' '+$scope.ship[0].subdistrict+' '+$scope.ship[0].districtName+' '+$scope.ship[0].cityName;
+
+          if( $scope.ship[0].shipCondition == '08')
+            $scope.ddlTransport =  $scope.ship[0].transportZone;
         }
        }
 

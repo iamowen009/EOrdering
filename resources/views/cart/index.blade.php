@@ -123,7 +123,6 @@ select.form-control{
                         <ngcart-cart></ngcart-cart>-->
 
                     </section>
-
                     <h3>
                         <i class="fa fa-credit-card cui-wizard--steps--icon"></i>
                         <span class="cui-wizard--steps--title">Shipment / Billing Info</span>
@@ -160,7 +159,7 @@ select.form-control{
                                 <div class="form-group col-md-6" ng-if="customer.shipCondition=='01'">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนส่งโดย :  </label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="checkbox-inline"><input type="checkbox" ng-click="pickUp()"  ng-model="shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-click="pickUp(shipCondition)"  ng-model="shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
                                   </div>
 
                                 </div>
@@ -197,7 +196,7 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}</label>
 
                                 </div>
-                                <div class="form-group col-md-6" ng-show="shippingType=='show'" ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
+                                <div class="form-group col-md-6" ng-show="shippingType=='show' " ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
 
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
                                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -211,6 +210,7 @@ select.form-control{
                                         <option value=''>Select</option>
                                         -->
                                       </select>
+<!-- {{ ddlShipTo.shipCondition }} -->
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
                                 </div>
@@ -237,11 +237,23 @@ select.form-control{
                                   <div class="col-md-6 col-sm-6 col-xs-12">
 
                                     <select
+                                        ng-if="ddlShipTo.shipCondition == '03'"
                                         name="trans_id" id="trans_id"
                                         class="form-control"
                                         ng-model="ddlTransport"
                                         ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone">
 
+                                      </select>
+
+                                    <select
+                                        ng-if="ddlShipTo.shipCondition == '08' || ddlShipTo.shipCondition == '09'"
+                                        name="trans_id" id="trans_id"
+                                        class="form-control"
+                                        ng-model="ddlTransport"
+                                        >
+                                        <option value="{{ddlShipTo.transportZone}}">
+                                          {{ddlShipTo.transportZone +' ' + ddlShipTo.transportZoneDesc}}
+                                        </option>
                                       </select>
                                   </div>
                                   <div class="col-md-3 col-sm-3 col-xs-12"><!-- <span ng-show="formcart.trans_id.$error.required"><font color="red" size="2px">Required Field</font></span> --></div>
@@ -402,7 +414,7 @@ select.form-control{
                                 </div>
                                 <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">บริษัทขนส่ง :</label>
-                                  <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZone}} {{ddlTransport.transportZoneDesc}}</label>
+                                  <label class="col-md-9 col-sm-9 col-xs-12">{{ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : ddlTransport.transportZone}} {{ddlTransport.transportZoneDesc}}</label>
                                 </div>
                               </div>
                             </form>

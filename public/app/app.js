@@ -31,8 +31,6 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                 $('ul[role="menu"] > li:nth-child(1)')
                   .removeClass('disabled')
                   .attr('aria-disabled','false');
-                $('ul[role="menu"] > li:nth-child(1) > a').attr('href', _base + '/product/0');//('goShop');
-                var prv = $('ul[role="menu"] > li:nth-child(1) > a').attr('href');
                 $('.li-btn').show();
               }else if( currentIndex == 1){
                 $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');
@@ -53,9 +51,25 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                 $(document).find(".actions").prepend(ul)
                 $(document).find('.actions ul[role="menu"]').addClass('pull-right');
                 //$(document).find(".actions ul").prepend(cleareBtn)
+              }else if( currentIndex == 1 ){
+                $('ul[role="menu"] a[href="#next"]').on('click',function(e){
+                  e.preventDefault();
+
+
+                });
               }else{
                 $('.li-btn').hide();
               }
+            },
+            onStepChanging: function(e, currentIndex, newIndex) {
+              console.log('ckecked is ' + $('input[name="optradio"]:checked').length);
+              if( newIndex > currentIndex && currentIndex == 1 ){
+                if($('input[name="optradio"]:checked').length == 0){
+                      swal('Error!!','กรุณาเลือก รูปแบบการชำระเงิน','error');
+                      return false;
+                }
+              }
+              return true;
             },
             onFinished: function () {
                 console.log('add order');
@@ -77,7 +91,8 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         var appElement = document.querySelector('[ng-controller=ProductCheckoutController]');
                         var appScope = angular.element(appElement).scope();
                         //swal('Loading');
-                        var appShipCondition = false;
+                        var appShipCondition = '';
+                        var checkedShip = false;
                         var shipId = 0;
                         var shipCode = '';
                         var shipName = '';
@@ -100,6 +115,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
                             shipName = appScope.ddlShipTo.shipName;
+
                             console.log('not undefined ship shipId ' + shipId + ' shipCode ' + shipCode + ' shipName ' + shipName + ' shipCondition ' + appShipCondition );
                         }
 
@@ -108,10 +124,11 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         var transportZone='';
                         var transportZoneDesc='';
                         if(typeof appScope.ddlTransport !== 'undefined'){
-                            transportId = appScope.ddlTransport.transportId;
-                            transportZone = appScope.ddlTransport.transportZone;
-                            transportZoneDesc = appScope.ddlTransport.transportZoneDesc;
+                            transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
+                            transportZone = appShipCondition == '08' ? appScope.ddlShipTo.transportZone : appScope.ddlTransport.transportZone;
+                            transportZoneDesc = appShipCondition == '08' ? appScope.ddlShipTo.transportZoneDesc : appScope.ddlTransport.transportZoneDesc;
                         }
+                        console.log('appScope.ddlTransport : ', appScope.ddlTransport );
                         var customerPO='';
                         if(typeof appScope.customerPO !== 'undefined'){
                             customerPO = appScope.customerPO;
@@ -136,10 +153,10 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             customerCode    : appScope.carts[0].customerCode,
                             customerName    : appScope.carts[0].customerName,
                             paymentTerm     : appPaymentTerm,
-                            shipCondition   : appShipCondition === true ? 'มารับเอง' : '01',
-                            shipId          : (shipId === undefined || shipId == '' || appShipCondition === true ) ? 0 : shipId,
-                            shipCode    : (shipCode === undefined || shipCode ==='' || appShipCondition === true ) ? '00' : shipCode,
-                            shipName    : (shipName === undefined || shipName === '' || appShipCondition === true ) ? 'รับสินค้าเอง' : shipName,
+                            shipCondition   : checkedShip  === true ? '01' : appShipCondition,
+                            shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? 0 : shipId,
+                            shipCode    : (shipCode === undefined || shipCode ==='' || checkedShip === true ) ? '00' : shipCode,
+                            shipName    : (shipName === undefined || shipName === '' || checkedShip === true ) ? 'รับสินค้าเอง' : shipName,
                             requestDate : reqDate,
                             customerPO  : customerPO,
                             transportId : (transportId !== '' && transportId !== 0 )? transportId : 0,
@@ -147,7 +164,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             transportZoneDesc   : transportZoneDesc !== '' ? transportZoneDesc : '00',
 
                         };
-                        console.log( order );
+                        console.log( 'order : ',order );
 
                         Orders.addOrder(order).then(function (response) {
                             //$scope.loading = false;
@@ -193,6 +210,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                                 console.log(response);
                         });
+
 
                     } else {
                         //swal.close();
