@@ -100,9 +100,8 @@
 
 @include('order.modal-invoice')
 @include('order.modal-order-detail')
-@include('order.modal-order-status2')
 @include('order.modal-order-history')
-
+@include('order.modal-order-status')
 
 </section>
 @stop

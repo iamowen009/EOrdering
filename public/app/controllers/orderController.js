@@ -196,7 +196,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 							// 				$scope.totalAmount += $scope.detail[key]['totalAmount'];
 							// 				$scope.totalQty += $scope.detail[key]['qty'];
 							// 		}
-							$('#OrderStatusModal2').modal('show');
+							$('#OrderStatusModal').modal('show');
 					}else{
 
 					}

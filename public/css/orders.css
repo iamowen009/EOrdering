@@ -79,35 +79,36 @@ tfoot > tr > td{
 @media print {
   .page-content > .content,
   #invoiceModal ,
-  #orderModal,
-  #taxModal,
+  #OrderHistoryModal,
   .bg-toa{
     display: none;
   }
   .modal-lg {
       max-width: 100% !important;
       margin: 0 auto;
-  }
+  };
 }
-
-#OrderTrackingModal .modal-title{
+#OrderHistoryModal .modal-title{
   margin:0;
 }
-
-#OrderTrackingModal .modal-header{
+#OrderHistoryModal .modal-header{
   /*padding:4px 10px;*/
   background: #c4fffd;
   color:#000;
 }
-#OrderTrackingModal .inv-header{
+#OrderHistoryModal .inv-header{
   background: #fbfbbe;
   padding:10px;
   margin-bottom: 10px;
 }
-#OrderTrackingModal .modal-footer{
+#OrderHistoryModal .modal-footer{
   display:block;
   text-align: center;
 }
-#OrderTrackingModal .modal-footer > button{
+#OrderHistoryModal .modal-footer > button{
   margin:auto;
+}
+#OrderHistoryModal .modal .modal-body,
+#OrderHistoryModal .modal .modal-body{
+  padding:10px;
 }

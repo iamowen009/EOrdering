@@ -55,7 +55,7 @@
                           @{{item.productCode}}
                       </td>
                       <td class="text-left"> @{{ item.productNameTh }}</td>
-                      <td class="text-right">@{{ item.qty | number }} @{{item.unitNameTh}}</td>
+                      <td class="text-center">@{{ item.qty | number }}</td>
                       <td class="text-center">@{{item.unitNameTh}}</td>
                       <td class="text-right">@{{ item.amount | number:2}}</td>
                       <td class="text-right">@{{ +item.amount*+item.qty | number:2 }}</td>
@@ -175,7 +175,7 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">ผลิตภัณฑ์</th>
-                        <th class="text-right">จำนวน</th>
+                        <th class="text-center">จำนวน</th>
                         <!-- <th class="text-center">หน่วย</th> -->
                         <th class="text-right">ราคาหน่วย</th>
                         <th class="text-right">ราคารวม</th>
@@ -187,7 +187,7 @@
                     <td class="text-center">@{{$index+1}}</td>
                     <!-- <td class="text-center"><img class="img-product" src="@{{partImgProduct +'/'+ item.btfCode}}.jpg" err-SRC="@{{partImgProduct}}/Noimage.jpg"> </td> -->
                     <td class="text-left">@{{item.productCode}} @{{ item.productNameTh }}</td>
-                    <td class="text-right">@{{ item.qty | number }} @{{item.unitNameTh}}</td>
+                    <td class="text-center">@{{ item.qty | number }}</td>
                     <!-- <td class="text-center">@{{item.unitNameTh}}</td> -->
                     <td class="text-right">@{{ item.amount | number:2}}</td>
 

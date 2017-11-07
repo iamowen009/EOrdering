@@ -44,7 +44,7 @@
                       <tr>
                           <th colspan="2" class="text-center">รหัสสินค้า</th>
                           <th class="text-center">สินค้า</th>
-                          <th class="text-right">จำนวน</th>
+                          <th class="text-center">จำนวน</th>
                           <th class="text-center">หน่วย</th>
                           <th class="text-right">ราคา/หน่วย</th>
                           <th class="text-right">ส่วนลด</th>
@@ -62,7 +62,7 @@
                           @{{item.material}}
                       </td>
                       <td class="text-left"> @{{ item.materialDes }}</td>
-                      <td class="text-right">@{{ item.targetQty | number }}</td>
+                      <td class="text-center">@{{ item.targetQty | number }}</td>
                       <td class="text-center">@{{item.salesUnit}}</td>
                       <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
                       <td class="text-right">@{{item.discount | number:2}}</td>
