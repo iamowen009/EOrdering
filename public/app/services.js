@@ -823,6 +823,7 @@ angular.module('app')
             // TODO: remove the use of futures
             var deferred = $q.defer();
             var url = API_URL + 'OrderProcessTracking?saleOrderNumber='+saleOrderNumber;
+
             $http.get( url ).then(function (data) {
                 deferred.resolve(data);
             },function (error){

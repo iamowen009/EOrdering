@@ -203,21 +203,14 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 			});
 	}
 
-	$scope.OrderDetailModal = function(saleOrderNumber){
-		
-		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
-			var head = response.data.data.orderProcessInfo;
-			$scope.inv = head;
-			console.log(head);
-			console.log("head");
-		});
-
-		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
+	$scope.OrderDetailModal = function(orderId){
+		Orders.fetchOne(orderId).then(function (response) {
 				if(response.data.result=='SUCCESS'){
-						console.log(response);
-						//var head = response.data.data.orderProcessHeaderList
-
-						var	detail = response.data.data.orderProcessOrderItemList;
+						var head = response.data.data.order,
+								detail = response.data.data.orderDetailList;
+								$scope.inv = head;
+								console.log("Sale Order");
+								console.log($scope.inv);
 								$scope.detail = detail;
 								$scope.totalAmount=0;
 								$scope.totalQty=0;
@@ -232,17 +225,14 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		});
 	}
 
-	$scope.OrderTrackingModal = function(salesOrderNumber){
-		console.log("OrderTrackingModal");
-		console.log(salesOrderNumber);
-		OrderProcessTracking.fetchOne(salesOrderNumber).then(function (response) {
+	$scope.OrderTrackingModal = function(orderId){
+		Orders.fetchOne(orderId).then(function (response) {
 				if(response.data.result=='SUCCESS'){
-						var head = response.data.data.order,
-								detail = response.data.data.orderDetailList;
-								console.log(response);
-								$scope.inv = head;
-								console.log("OrderTrackingModal");
-
+						// var head = response.data.data.order,
+								// detail = response.data.data.orderDetailList;
+								// $scope.inv = head;
+								// console.log("OrderTrackingModal");
+								// console.log($scope.inv);
 								// $scope.detail = detail;
 								// $scope.totalAmount=0;
 								// $scope.totalQty=0;
@@ -250,6 +240,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 								// 		$scope.totalAmount += $scope.detail[key]['totalAmount'];
 								// 		$scope.totalQty += $scope.detail[key]['qty'];
 								// }
+								console.log("OrderTrackingModal IF");
 						$('#OrderTrackingModal').modal('show');
 				}else{
 					console.log("OrderTrackingModal ELSE");
