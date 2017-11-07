@@ -31,7 +31,7 @@
                                       <td><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
         															<td>@{{ list.netAmount}}</td>
         															<td>
-                                        <a ng-click="OrderDetailModal(list.orderId)" href="javascript:void(0)">
+                                        <a ng-click="OrderDetailModal(list.salesOrderNumber)" href="javascript:void(0)">
                                         <div class="progress">
                                           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
                                             @{{ list.percentComplete }}%
