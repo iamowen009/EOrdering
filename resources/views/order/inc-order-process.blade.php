@@ -44,9 +44,24 @@
                                       
         															<td class="text-center">
                                         <a href="javascript:void(0)" class="text-success" ng-click="OrderHistoryModal(list.salesOrderNumber)"><i class="fa fa-newspaper-o"></i></a>
-                                        <a href="javascript:void(0)" class="text-success" ng-click="OrderTrackingModalAAA(list.salesOrderNumber)"><i class="fa fa-newspaper-o" style="color:orange"></i></a>
+
+                                        <a class="text-success" data-toggle="collapse" href="#collapse-@{{list.orderId}}" aria-expanded="false"><i class="fa fa-newspaper-o" style="color:orange"></i></a>
+                                        <!-- <div class="collapse" id="collapseExample"> -->
+                                        <ul id="collapse-@{{list.orderId}}">
+                                          <li >1. Test </li>
+                                          <li >2. Test </li>
+                                        </ul>
+                                        <!-- <a id="collapse-@{{list.orderId}}">Anim pariatur cliche reprehenderit.</a> -->
+                                          <!-- <div class="card card-block">
+                                            Anim pariatur cliche reprehenderit.
+                                          </div> -->
+                                        <!-- </div> -->
+
                                       </td>
-        													</tr>
+                                  </tr>
+                                  
+                                  
+
         											</tbody>
                           </table>
                       </li>

@@ -68,7 +68,7 @@
 	                                <li class="nav-item active">
 	                                    <a class="nav-link tab1" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
 	                                </li>
-	                                <li class="nav-item">
+	                                <li class="nav-item" style="display:none">
 	                                    <a class="nav-link tab2" href="javascript: void(0);" data-toggle="tab" data-target="#tab2" role="tab">ประวัติการสั่งซื้อ<br/>(History Process)</a>
 	                                </li>
 	                            </ul>
