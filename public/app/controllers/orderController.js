@@ -226,21 +226,22 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 	$scope.OrderTrackingModal = function(orderId){
 		Orders.fetchOne(orderId).then(function (response) {
 				if(response.data.result=='SUCCESS'){
-						var head = response.data.data.order,
-								detail = response.data.data.orderDetailList;
-								$scope.inv = head;
+						// var head = response.data.data.order,
+								// detail = response.data.data.orderDetailList;
+								// $scope.inv = head;
 								// console.log("OrderTrackingModal");
 								// console.log($scope.inv);
-								$scope.detail = detail;
-								$scope.totalAmount=0;
-								$scope.totalQty=0;
-								for(var key in $scope.detail){
-										$scope.totalAmount += $scope.detail[key]['totalAmount'];
-										$scope.totalQty += $scope.detail[key]['qty'];
-								}
+								// $scope.detail = detail;
+								// $scope.totalAmount=0;
+								// $scope.totalQty=0;
+								// for(var key in $scope.detail){
+								// 		$scope.totalAmount += $scope.detail[key]['totalAmount'];
+								// 		$scope.totalQty += $scope.detail[key]['qty'];
+								// }
+								console.log("OrderTrackingModal IF");
 						$('#OrderTrackingModal').modal('show');
 				}else{
-
+					console.log("OrderTrackingModal ELSE");
 				}
 		});
 	}

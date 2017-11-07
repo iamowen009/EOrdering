@@ -111,7 +111,7 @@
 @include('order.modal-order-tracking')
 
 <!-- Modal -->
-@include('order.modal-tax')
+<!-- @include('order.modal-tax') -->
 
 </section>
 @stop
@@ -126,7 +126,13 @@
 
         $('#nestable1').nestable();
 
-    });
+	});
+	
+	$('#OrderTrackingModal').each(function(){
+	  var modalWidth = $(this).width(),
+	      modalMargin = '-' + (modalWidth/2) + 'px!important';
+	  $(this).css('margin-left',modalMargin);
+	});
 
     $('#invoiceModal').each(function(){
 	  var modalWidth = $(this).width(),
@@ -141,12 +147,6 @@
 	});
 
 	$('#OrderStatusModal').each(function(){
-	  var modalWidth = $(this).width(),
-	      modalMargin = '-' + (modalWidth/2) + 'px!important';
-	  $(this).css('margin-left',modalMargin);
-	});
-
-	$('#OrderTrackingModal').each(function(){
 	  var modalWidth = $(this).width(),
 	      modalMargin = '-' + (modalWidth/2) + 'px!important';
 	  $(this).css('margin-left',modalMargin);
