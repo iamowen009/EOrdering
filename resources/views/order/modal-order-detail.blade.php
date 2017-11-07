@@ -12,9 +12,10 @@
       <div class="modal-body">
 			<div class="row inv-header">
           <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong>  @{{ inv.customerName }}</p>
-              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber }} / @{{ inv.customerPO}}</p>
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong></p>
+              <p><strong>ร้านค้า :</strong> @{{ inv.payerNo  }}  @{{ inv.payerName }}</p>
+              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
+              <!-- <p><strong>เลขที่เอกสารอ้างอิง : </strong></p> -->
+              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
           </div>
           <div class="col-sm-4">
               <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
@@ -41,13 +42,13 @@
 
                   <tbody>
                   <tr ng-repeat="item in detail">
-                      <td class="text-left"> @{{item.productCode}} @{{ item.productNameTh }}</td>
-                      <td class="text-center">@{{ item.qty | number }}</td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center text-danger"></td>
-                      <td class="text-center">@{{item.unitNameTh}}</td>
+                      <td class="text-left"> @{{item.material}} @{{ item.materialDes }}</td>
+                      <td class="text-center">@{{ item.targetQty | number }}</td>
+                      <td class="text-center">@{{ item.billQty | number }}</td>
+                      <td class="text-center">@{{ item.deliQty | number }}</td>
+                      <td class="text-center">@{{ item.balaQty | number }}</td>
+                      <td class="text-center text-danger">@{{ item.rejeQty | number }}</td>
+                      <td class="text-center">@{{item.unit}}</td>
                   </tr>
                   </tbody>
 
@@ -91,49 +92,3 @@
   </div>
 </div>
 </div>
-
-        <!-- <table class="table table-borderd">
-			<thead>
-				<tr class="info">
-					<th>รายการสินค้า</th>
-					<th>จำนวนสั่งซื้อ</th>
-					<th>จำนวนออกบิล</th>
-					<th>จำนวนการจอง</th>
-					<th>จำนวนคงค้าง</th>
-					<th>จำนวนยกเลอก</th>
-					<th>หน่วย</th>
-				</tr></thead>
-			<tbody>
-				<tr>
-					<td>F100200300 ซุปเปอร์ชิลด์ สีน้ำกึ่งเงา ภายนอก 1 กล #G100</td>
-					<td>8</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>8</td>
-					<td>GL</td>
-				</tr>
-				<tr>
-					<td>F100200300 ซุปเปอร์ชิลด์ สีน้ำกึ่งเงา ภายนอก 1 กล #G100</td>
-					<td>8</td>
-					<td>0</td>
-					<td>0</td>
-					<td>0</td>
-					<td>8</td>
-					<td>GL</td>
-				</tr>
-			</tbody>
-    	</table>
-    	<br/>
-    	<p>Note: <br/>จำนวนสั่งซื้อ : จำนวนสินค้าที่สั่งซื้อ<br/>จำนวนออกบิล : จำนวนสินค้าที่เปิดบิลแล้ว
-    	<br/>จำนวนการจอง : จำนวนสินค้าที่ได้รับการจองและรอการเปิดบิล<br/>จำนวนคงค้าง : จำนวนสินค้ารอดำเนินการ<br/>
-    	จำนวนยกเลิก : จำนวนสินค้าที่ทำการยกเลิก</p>
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn btn-info" data-dismiss="modal">พิมพ์</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
-      </div>
-    </div> -->
-
-  <!-- </div>
-</div> -->
