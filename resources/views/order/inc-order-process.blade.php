@@ -28,7 +28,7 @@
         															<td>@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
         															<td>@{{ list.docName}}</td>
         															<td><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
-                                      <td><a ng-click="OrderStatusModal(list.orderId)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
+                                      <td><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
         															<td>@{{ list.netAmount}}</td>
         															<td>
                                         <a ng-click="OrderDetailModal(list.orderId)" href="javascript:void(0)">

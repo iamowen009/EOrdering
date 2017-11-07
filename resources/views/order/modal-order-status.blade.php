@@ -12,9 +12,9 @@
       <div class="modal-body">
         <div class="row inv-header">
           <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong>  @{{ inv.customerName }}</p>
-              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber }} / @{{ inv.customerPO}}</p>
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong></p>
+              <p><strong>ร้านค้า :</strong>  @{{ inv.payerNo }} @{{ inv.payerName }}</p>
+              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
+              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
 
               <!-- <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</p>
               <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
@@ -59,15 +59,15 @@
                          <img class="img-product" src="@{{ partImgProduct +'/'+ item.btf }}.jpg" err-SRC="@{{partImgProduct}}/Noimage.jpg" style="height:40px;">
                       </td>
                       <td>
-                          @{{item.productCode}}
+                          @{{item.material}}
                       </td>
-                      <td class="text-left"> @{{ item.productNameTh }}</td>
-                      <td class="text-right">@{{ item.qty | number }} @{{item.unitNameTh}}</td>
-                      <td class="text-center">@{{item.unitNameTh}}</td>
-                      <td class="text-right">@{{ item.amount | number:2}}</td>
-                      <td class="text-right"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
+                      <td class="text-left"> @{{ item.materialDes }}</td>
+                      <td class="text-right">@{{ item.targetQty | number }}</td>
+                      <td class="text-center">@{{item.salesUnit}}</td>
+                      <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
+                      <td class="text-right">@{{item.discount | number:2}}</td>
+                      <td class="text-right">@{{item.netwrPerUnit | number:2}}</td>
+                      <td class="text-right">@{{item.amount | number:2}}</td>
                   </tr>
                   </tbody>
               </table>

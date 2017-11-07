@@ -179,21 +179,23 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		// 	});
 		// }
 
-		$scope.OrderStatusModal = function(orderId){
-			Orders.fetchOne(orderId).then(function (response) {
+		$scope.OrderStatusModal = function(saleOrderNumber){
+			OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 					if(response.data.result=='SUCCESS'){
-							var head = response.data.data.order,
-									detail = response.data.data.orderDetailList;
-									$scope.inv = head;
-									console.log("Sale Order");
-									console.log($scope.inv);
-									$scope.detail = detail;
-									$scope.totalAmount=0;
-									$scope.totalQty=0;
-									for(var key in $scope.detail){
-											$scope.totalAmount += $scope.detail[key]['totalAmount'];
-											$scope.totalQty += $scope.detail[key]['qty'];
-									}
+							console.log("OrderPrecessInfo");
+							console.log(response);
+							var head = response.data.data.orderProcessInfo,
+							 		detail = response.data.data.orderProcessItemList;
+							 		$scope.inv = head;
+							// 		console.log("Sale Order");
+							// 		console.log($scope.inv);
+							 		$scope.detail = detail;
+							// 		$scope.totalAmount=0;
+							// 		$scope.totalQty=0;
+							// 		for(var key in $scope.detail){
+							// 				$scope.totalAmount += $scope.detail[key]['totalAmount'];
+							// 				$scope.totalQty += $scope.detail[key]['qty'];
+							// 		}
 							$('#OrderStatusModal').modal('show');
 					}else{
 
