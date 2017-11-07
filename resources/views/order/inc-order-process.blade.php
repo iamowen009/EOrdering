@@ -25,12 +25,21 @@
                               </thead>
         											<tbody>
         													<tr ng-repeat="list in ordersList | orderBy:'-docDate'" ng-if="list.month === m.month && list.percentComplete < 100">
+<<<<<<< HEAD
         															<td class="text-center">@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
         															<td class="text-left">@{{ list.docName}}</td>
         															<td class="text-center"><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
                                       <td class="text-center"><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
         															<td class="text-right">@{{ list.netAmount |number:2}}</td>
         															<td class="text-left">
+=======
+        															<td>@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
+        															<td>@{{ list.docName}}</td>
+        															<td><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
+                                      <td><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
+        															<td>@{{ list.netAmount}}</td>
+        															<td>
+>>>>>>> parent of 2f5926a5... update สถานะคำสั่งซื้อ
                                         <a ng-click="OrderDetailModal(list.orderId)" href="javascript:void(0)">
                                         <div class="progress">
                                           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
