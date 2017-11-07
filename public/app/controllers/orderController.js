@@ -277,7 +277,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 	}
 
 	$scope.OrderBillHistory = function(saleOrderNumber){
-		$scope.Bill = '';
+		//$scope.Bill = '';
 		$scope.detail = '';
 		$scope.descountdetail = '';
 		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
@@ -290,6 +290,30 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 					$scope.Bill = head;
 					$scope.detail = detail;
 					$scope.descountdetail = descountdetail;
+			}else{
+			}
+		});
+	}
+
+	$scope.OrderBillHistoryModal = function(saleOrderNumber){
+		$scope.Bill = '';
+		$scope.detail = '';
+		$scope.descountdetail = '';
+		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
+			console.log(response.data.result);
+			if(response.data.result=='SUCCESS'){
+				console.log(response);
+				var head = response.data.data.orderHistoryHeaderList,
+						detail = response.data.data.orderHistoryDetailList,
+						descountdetail = response.data.data.prderHistoryDiscountList;
+					
+					$scope.Bill = head;
+					console.log("head");
+					console.log(head);
+					$scope.detail = detail;
+					$scope.descountdetail = descountdetail;
+					// $('#OrderDetailModal').modal('show');
+					$('#TaxModal').modal('show');
 			}else{
 			}
 		});
