@@ -16,7 +16,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		$scope.ordersList = [];
 		$scope.haveBill = [];
 		$scope.haveNoBill = [];
-
+		
+		$scope.ItemAll = [];
 		$scope.Customer = {};
 
     var arr = [];
@@ -171,15 +172,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 							var head = response.data.data.orderProcessInfo,
 							 		detail = response.data.data.orderProcessItemList;
 							 		$scope.inv = head;
-							// 		console.log("Sale Order");
-							// 		console.log($scope.inv);
 							 		$scope.detail = detail;
-							// 		$scope.totalAmount=0;
-							// 		$scope.totalQty=0;
-							// 		for(var key in $scope.detail){
-							// 				$scope.totalAmount += $scope.detail[key]['totalAmount'];
-							// 				$scope.totalQty += $scope.detail[key]['qty'];
-							// 		}
 							$('#OrderStatusModal').modal('show');
 					}else{
 
@@ -196,9 +189,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			if(response.data.result=='SUCCESS'){
-				//console.log(response);
-				//var head = response.data.data.orderProcessHeaderList
-
+				console.log(response);
 				var detail = response.data.data.orderProcessOrderItemList;
 				var orderProcessShipmentList = response.data.data.orderProcessShipmentList;
 					$scope.detail = detail;
@@ -211,9 +202,23 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 					}
 					$scope.haveNoBill =[];
 					$scope.haveBill = [];
-					for(var k in $scope.orderProcessShipmentList){
-						console.log($scope.orderProcessShipmentList[k].billNo);
-						arr = {
+
+					$scope.ItemAll = [];
+					for(var k in $scope.detail){
+						var arr_sum = {
+							'balaQty':$scope.detail[k].balaQty,
+							'billQty':$scope.detail[k].billQty,
+							'deliQty':$scope.detail[k].deliQty,
+							'freeGoods':$scope.detail[k].freeGoods,
+							'itmNumber':$scope.detail[k].itmNumber,
+							'material':$scope.detail[k].material,
+							'materialDes':$scope.detail[k].materialDes,
+							'netwr2':$scope.detail[k].netwr2,
+							'rejeQty':$scope.detail[k].rejeQty,
+							'salesdocument':$scope.detail[k].salesdocument,
+							'targetQty':$scope.detail[k].targetQty,
+							'unit':$scope.detail[k].unit,
+
 							'billDate':$scope.orderProcessShipmentList[k].billDate,
 							'billNo':$scope.orderProcessShipmentList[k].billNo,
 							'billQty':$scope.orderProcessShipmentList[k].billQty,
@@ -231,15 +236,46 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 							'telDrive':$scope.orderProcessShipmentList[k].telDrive
 						};
 
-						if($scope.orderProcessShipmentList[k].billNo === "")
-						$scope.haveNoBill.push(arr);
-						else
-						$scope.haveBill.push(arr);
+						$scope.ItemAll.push(arr_sum);
 					}
 
-					console.log($scope.haveNoBill);
-					console.log($scope.haveBill);
+					for(var k in $scope.ItemAll){
+						var arr_b = {
+							'balaQty':$scope.ItemAll[k].balaQty,
+							'billQty':$scope.ItemAll[k].billQty,
+							'deliQty':$scope.ItemAll[k].deliQty,
+							'freeGoods':$scope.ItemAll[k].freeGoods,
+							'itmNumber':$scope.ItemAll[k].itmNumber,
+							'material':$scope.ItemAll[k].material,
+							'materialDes':$scope.ItemAll[k].materialDes,
+							'netwr2':$scope.ItemAll[k].netwr2,
+							'rejeQty':$scope.ItemAll[k].rejeQty,
+							'salesdocument':$scope.ItemAll[k].salesdocument,
+							'targetQty':$scope.ItemAll[k].targetQty,
+							'unit':$scope.ItemAll[k].unit,
 
+							'billDate':$scope.ItemAll[k].billDate,
+							'billNo':$scope.ItemAll[k].billNo,
+							'custRecDate':$scope.ItemAll[k].custRecDate,
+							'custRecTime':$scope.ItemAll[k].custRecTime,
+							'driveName':$scope.ItemAll[k].driveName,
+							'foragt':$scope.ItemAll[k].foragt,
+							'itmNumber':$scope.ItemAll[k].itmNumber,
+							'lisense':$scope.ItemAll[k].lisense,
+							'runno':$scope.ItemAll[k].runno,
+							'salesdocument':$scope.ItemAll[k].salesdocument,
+							'shipmentDoc':$scope.ItemAll[k].shipmentDoc,
+							'startDat':$scope.ItemAll[k].startDat,
+							'startTime':$scope.ItemAll[k].startTime,
+							'telDrive':$scope.ItemAll[k].telDrive
+						};
+
+						if($scope.ItemAll[k].billNo === "")
+						$scope.haveNoBill.push(arr_b);
+						else
+						$scope.haveBill.push(arr_b);
+					}
+					
 				$('#OrderHistoryModal').modal('show');
 			}else{
 

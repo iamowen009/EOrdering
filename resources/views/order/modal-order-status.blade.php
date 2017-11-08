@@ -84,7 +84,7 @@
                       <td class="text-center">@{{ item.targetQty | number }}</td>
                       <td class="text-center">@{{item.salesUnit}}</td>
                       <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
-                      <td class="text-right">@{{item.discount | number:2}}</td>
+                      <td class="text-right">@{{item.discount }}</td>
                       <td class="text-right">@{{item.netwrPerUnit | number:2}}</td>
                       <td class="text-right">@{{item.amount | number:2}}</td>
                   </tr>

@@ -48,14 +48,14 @@
                   <tr ng-repeat="item in haveBill">
                       <td class="text-left"> @{{ item.billNo }} @{{item.billDate | date:'dd/MM/yy'}}</td>
                       <td class="text-center">@{{ item.startDat | date:'dd/MM/yy' }} <br> @{{ item.startTime}}</td>
-                      <td class="text-center">@{{item.custRecDate | date:'dd/MM/yy'}}  <br> @{{item.custRecTime}} </td>
+                      <td class="text-center">@{{item.foragt}}  </td>
                       <td class="text-right">@{{ item.driveName}} <br> @{{ item.telDrive}}</td>
                       <td class="text-right">@{{item.custRecDate | date:'dd/MM/yy'}}</td>
                       <td class="text-right">@{{item.material}}</td>
                       <td class="text-right">@{{item.materialDes}}</td>
-                      <td class="text-right">@{{item.targetQty}}</td>
-                      <td class="text-right">@{{item.billQty}}</td>
-                      <td class="text-right">@{{item.netwr2}}</td>
+                      <td class="text-center">@{{item.targetQty | number}}</td>
+                      <td class="text-center">@{{item.billQty | number}}</td>
+                      <td class="text-right">@{{item.netwr2 | number}}</td>
                   </tr>
                   </tbody>
               </table>
@@ -82,9 +82,9 @@
                   <tr ng-repeat="item in haveNoBill">
                       <td class="text-left"> @{{ item.material }}</td>
                       <td class="text-center">@{{ item.materialDes }}</td>
-                      <td class="text-center">@{{item.targetQty}}</td>
-                      <td class="text-right">@{{ item.billQty}}</td>
-                      <td class="text-right">@{{item.netwr2}}</td>
+                      <td class="text-center">@{{item.targetQty | number}}</td>
+                      <td class="text-center">@{{ item.billQty | number}}</td>
+                      <td class="text-right">@{{item.netwr2 | number}}</td>
                   </tr>
                   </tbody>
               </table>
