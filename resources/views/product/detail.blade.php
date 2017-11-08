@@ -75,7 +75,7 @@
 		                        </div>
 		                      </div>
 
-		                      <div class="form-group" ng-if="colors.length > 0 ">
+		                      <div class="form-group" ng-if="listColors.length > 0 ">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี</label>
 		                        <div class="col-md-4 col-sm-4 col-xs-6" >
 															<div class="dropdown color-element">
