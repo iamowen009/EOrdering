@@ -28,7 +28,7 @@ select.form-control{
 <section class="page-content" ng-controller="ProductCheckoutController" data-ng-init="init()">
 @verbatim
 <div class="page-content-inner">
-
+  <input type="hidden" ng-model="customers" />
     <!-- Ecommerce Cart / Checkout -->
     <section class="panel panel-with-borders">
         <div class="panel-heading">
@@ -169,19 +169,22 @@ select.form-control{
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">การชำระเงิน :</label>
 
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="radio-inline"><input type="radio" name="optradio" ng-model="paymentTerm" value="CASH">เงินสด</label>
-                                    <label class="radio-inline" ng-if="customer.paymentTerm !== 'CASH'"><input type="radio" name="optradio" ng-model="paymentTerm" value="{{ customer.paymentTerm }}">เครดิต</label>
+                                    <label class="radio-inline">
+                                      <input type="radio" name="optradio" ng-model="paymentTerm" ng-change="changePay(customer.paymentTerm)" value="{{ ( customer.paymentTerm == 'CA02' || customer.paymentTerm =='CASH') ? customer.paymentTerm : 'CASH'}}">เงินสด</label>
+                                    <label class="radio-inline" ng-if="customer.paymentTerm !== 'CASH' && customer.paymentTerm !='CA02'">
+                                      <input type="radio" name="optradio" ng-model="paymentTerm" value="{{ customer.paymentTerm }}" ng-change="changePay(customer.paymentTerm)">เครดิต</label>
                                   </div>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่ต้องการ :</label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <div class="col-md-8 col-sm-8 col-xs-12">
 
                                     <select
                                         name="date_id" id="date_id"
                                         class="form-control"
                                         ng-model="ddlDate"
                                         ng-options="i as i.reqDate for i in requests track by i.reqDate | date:'dd/mm/yy'">
+                                        <option></option>
                                       </select>
 
 
@@ -199,7 +202,7 @@ select.form-control{
                                 <div class="form-group col-md-6" ng-show="shippingType=='show' " ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
 
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <div class="col-md-8 col-sm-8 col-xs-12">
                                     <select
                                         name="ship_id" id="ship_id"
                                         class="form-control"
@@ -234,7 +237,7 @@ select.form-control{
 
                                 <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง : </label>
-                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                  <div class="col-md-8 col-sm-8 col-xs-12">
 
                                     <select
                                         ng-if="ddlShipTo.shipCondition == '03'"

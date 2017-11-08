@@ -120,7 +120,7 @@
 							  <div class="form-group" ng-show="productSelect.productId">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคารวม(บาท)</label>
 		                        <div class="pdprice col-md-9 col-sm-9 col-xs-12">
-		                         	<font color="#00BFFF"><strong>{{+productSelect.productPrice * +cartProductQty | number:2}}</strong></font>
+		                         	<font color="#00BFFF"><strong>{{+productPrice * +cartProductQty | number:2}}</strong></font>
 		                        </div>
 		                      </div>
 		                      <div>

@@ -65,7 +65,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
               console.log('ckecked is ' + $('input[name="optradio"]:checked').length);
               if( newIndex > currentIndex && currentIndex == 1 ){
                 if($('input[name="optradio"]:checked').length == 0){
-                      swal('Error!!','กรุณาเลือก รูปแบบการชำระเงิน','error');
+                      swal('Error!!','กรุณาเลือก รูปแบบการชำระเงิน');
                       return false;
                 }
               }
@@ -104,19 +104,27 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                              var dateStr2 = `${moment(date2).get('year')}-${moment(date2).format('MM-DD')}`;
                               return new Date(dateStr2);
                          }
-                         console.log(appScope);
+                         console.log('newLocalDate : ', newLocalDate() ,' appscope ' , appScope);
 
                         if(typeof appScope.paymentTerm !== 'undefined'){
                           appPaymentTerm = appScope.paymentTerm;
                         }
                         console.log('appPaymentTerm : ' + appPaymentTerm );
-                        if(typeof appScope.ddlShipTo !== 'undefined'){
+                        //if(appScope.ddlShipTo.length > 0 ){
+                        if(appScope.ddlShipTo.length > 0 && typeof appScope.ddlShipTo !== 'undefined'){
                             appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
                             shipName = appScope.ddlShipTo.shipName;
 
                             console.log('not undefined ship shipId ' + shipId + ' shipCode ' + shipCode + ' shipName ' + shipName + ' shipCondition ' + appShipCondition );
+                        }else{
+                            console.log('customer info : ' , appScope.customer );
+                            appShipCondition = appScope.customer.shipCondition;
+                            shipId   = 0;
+                            shipCode = Customers.customerId();
+                            shipName = appScope.customer.shipConditionDesc;
+
                         }
 
                         console.log('appScope.ddlShipTo : ', appScope.ddlShipTo );
@@ -124,26 +132,54 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         var transportZone='';
                         var transportZoneDesc='';
                         if(typeof appScope.ddlTransport !== 'undefined'){
+                        // if( appScope.ddlTransport.length > 0){
                             transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
                             transportZone = appShipCondition == '08' ? appScope.ddlShipTo.transportZone : appScope.ddlTransport.transportZone;
                             transportZoneDesc = appShipCondition == '08' ? appScope.ddlShipTo.transportZoneDesc : appScope.ddlTransport.transportZoneDesc;
+                        }else{
+                          transportId = 0;
+                          transportZone =  appScope.customer.transportZone;
+                          transportZoneDesc =  appScope.customer.transportZoneDesc;
                         }
                         console.log('appScope.ddlTransport : ', appScope.ddlTransport );
                         var customerPO='';
                         if(typeof appScope.customerPO !== 'undefined'){
                             customerPO = appScope.customerPO;
                         }
-                        var reqDate =newLocalDate();
-                        if(typeof appScope.ddlDate !== 'undefined'){
+                        // var reqDate =newLocalDate();
+                        // if(typeof appScope.ddlDate !== 'undefined'){
                           function LocalDate(date) {
                               console.log('date : ', date);
-                              // var date = new Date();
-                               var dx = date.split('/');
+                              // ;
+
+                              if(!date || date === undefined ){
+                                var today = new Date();
+                                var hh = today.getHours();
+                                if( hh >= 17 && hh <= 23){
+                                  var dd = today.getDate()+1;
+                                }else{
+                                  var dd = today.getDate();
+                                }
+
+                                var mm = today.getMonth()+1; //January is 0!
+
+                                var yyyy = today.getFullYear();
+
+                                if(dd<10){
+                                    dd='0'+dd;
+                                }
+                                if(mm<10){
+                                    mm='0'+mm;
+                                }
+                                return yyyy +'-'+mm+'-'+dd + 'T00:00:00';
+                              }else{
+                                var dx = date.split('/');
                                 return dx[2] + '-' + dx[1] + '-' + dx[0] + 'T00:00:00';
+                              }
                            }
-                            reqDate = appScope.ddlDate.reqDate;
-                            reqDate = LocalDate(reqDate);//.replace('/','-') + ' 00:00:00T';
-                        }
+                            var eqDate = appScope.ddlDate.reqDate;
+                            var reqDate = LocalDate(eqDate);//.replace('/','-') + ' 00:00:00T';
+                        // }
 
                         console.log('reqDate ' + reqDate );
                         var order =  {
@@ -152,7 +188,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             customerId      : Customers.customerId(),
                             customerCode    : appScope.carts[0].customerCode,
                             customerName    : appScope.carts[0].customerName,
-                            paymentTerm     : appPaymentTerm,
+                            paymentTerm     : appPaymentTerm != 'CASH' ? appPaymentTerm : 'CASH',
                             shipCondition   : checkedShip  === true ? '01' : appShipCondition,
                             shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? 0 : shipId,
                             shipCode    : (shipCode === undefined || shipCode ==='' || checkedShip === true ) ? '00' : shipCode,

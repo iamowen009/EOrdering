@@ -43,7 +43,7 @@ app.controller('ProductCheckoutController',
        $scope.transports=[];
        $scope.ddlShipTo = {};
        $scope.paymentTerm = {};
-       $scope.ddlDate = {};
+       $scope.ddlDate = '';
        $scope.ddlTransport = {};
        $scope.shipper = {};
        $scope.loadingcart = [];
@@ -112,16 +112,19 @@ app.controller('ProductCheckoutController',
                     $scope.carts        = response.data.data.cartProductList;
                   //  if( $scope.transports.length > 0)
                     //.transportZone +' ' + $scope.transports[0].transportZoneDesc;
-                    $scope.ddlShipTo    = $scope.ships[0];
+                    //$scope.ddlShipTo    = $scope.ships[0];
                     if( $scope.ddlShipTo.shipCondition == '08'){
                       $scope.ddlTransport =  $scope.ddlShipTo.transportZone;
                     }else{
                       $scope.ddlTransport =  $scope.transports[0];
                     }
-                    $scope.ddlDate      = $scope.requests[0];
-                    // $scope.paymentTerm  = $scope.customer.paymentTerm !== 'CASH' ? $scope.customer.paymentTerm : 'CASH';//$scope.paymentTerm;
+                  //  $scope.ddlDate      = $scope.requests[0];
+                    $scope.paymentTerm  = ($scope.customer.paymentTerm !== 'CASH' && $scope.customer.paymentTerm !== 'CA02') ? '' : 'CASH';
+                    //$scope.paymentTerm;
                     //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
-                    $scope.shipaddress  = $scope.ships.length > 0 ? ($scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName ) : '';
+                    console.log('scope ddl ship to ', $scope.ddlShipTo);
+                    // if($scope.ddlShipTo)
+                    $scope.shipaddress  = ($scope.ships.length && $scope.ddlShipTo ) > 0 ? ($scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName ) : '';
                    var shipper = angular.toJson($scope.ddlShipTo);
                    console.log('shipper',$scope.ddlShipTo);
 /*
@@ -152,6 +155,10 @@ app.controller('ProductCheckoutController',
           }else{
             $scope.shippingType = 'show';
           }
+       }
+
+       $scope.changePay = function(val){
+         $scope.paymentTerm = val;
        }
 
         $scope.removeNull = function(itm) {
