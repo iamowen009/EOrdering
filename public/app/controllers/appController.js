@@ -183,6 +183,10 @@ app.controller('AppController',
         $scope.username = Auth.username();
         $scope.usertype = Auth.userTypeDesc();
         $scope.customerName = Customers.customerName();
+
+        var customerId = Customers.customerId();
+        fetchCustomer(customerId);
+
         console.log( 'customer name : ' + $scope.customerName + ' | '+Customers.customerId() + 'Autn : ' + Auth.genId() , Customers );
         function fetchCart(customerId) {
             console.log('cart');
@@ -296,4 +300,14 @@ app.controller('AppController',
           $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
           };
+
+          function fetchCustomer(customerId) {
+            Customers.fetchOne(customerId).then(function (response) {
+                if(response.data.result=='SUCCESS'){
+                    $scope.customer = response.data.data.customerInfo;
+                    $scope.customerCode = $scope.customer.customerCode;
+                }
+                $scope.loading = false;
+            });
+          }
  });
