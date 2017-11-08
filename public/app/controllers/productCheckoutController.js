@@ -42,6 +42,7 @@ app.controller('ProductCheckoutController',
        $scope.ships=[];
        $scope.transportss={};
        $scope.transports=[];
+       $scope.transports0=[];
        $scope.ddlShipTo = {};
        $scope.paymentTerm = {};
        $scope.ddlDate = '';
@@ -116,17 +117,17 @@ app.controller('ProductCheckoutController',
                     $scope.transportss   = response.data.data.transportList;
                     for( var k in $scope.transportss ){
                       if($scope.transportss[k]['transportId'] != 0)
-                          $scope.transports.push($scope.transportss[k]);
+                          $scope.transports0.push($scope.transportss[k]);
                     }
                     $scope.carts        = response.data.data.cartProductList;
                   //  if( $scope.transports.length > 0)
                     //.transportZone +' ' + $scope.transports[0].transportZoneDesc;
                     //$scope.ddlShipTo    = $scope.ships[0];
-                    if( $scope.ddlShipTo.shipCondition == '08'){
-                      $scope.ddlTransport =  $scope.ddlShipTo.transportZone;
-                    }else{
-                      $scope.ddlTransport =  $scope.transports[0];
-                    }
+                    // if( $scope.ddlShipTo.shipCondition == '08'){
+                    //   $scope.ddlTransport =  $scope.ddlShipTo.transportZone;
+                    // }else{
+                    //   $scope.ddlTransport =  $scope.transports[0];
+                    // }
                   //  $scope.ddlDate      = $scope.requests[0];
                     $scope.paymentTerm  = ($scope.customer.paymentTerm !== 'CASH' && $scope.customer.paymentTerm !== 'CA02') ? '' :  $scope.customer.paymentTerm ;
                     //$scope.paymentTerm;
@@ -181,8 +182,10 @@ app.controller('ProductCheckoutController',
           $scope.ship = getFilter($scope.ships,sel);
           $scope.shipaddress = $scope.ship[0].address+' '+$scope.ship[0].street+' '+$scope.ship[0].subdistrict+' '+$scope.ship[0].districtName+' '+$scope.ship[0].cityName;
 
-          if( $scope.ship[0].shipCondition == '08')
-            $scope.ddlTransport =  $scope.ship[0].transportZone;
+          $scope.transports = getTransport($scope.transports0,$scope.ship[0].cityCode)
+
+          // if( $scope.ship[0].shipCondition == '08')
+            //$scope.ddlTransport =  $scope.ship[0].transportZone;
         }
        }
 
@@ -192,7 +195,16 @@ app.controller('ProductCheckoutController',
         }
 
       var getTransport = function(results, valueStartsWith){
-            return _.filter(results, function(d){ return d['transportId'] == valueStartsWith; })
+            var trans = [];
+            for(var ts in results){
+              var num1 = results[ts]['transportCity'].substr(-2);
+              var num2 = valueStartsWith.substr(-2);
+              console.log('num1 : ', num1 , ' num2 : ', num2);
+              if( num1 == num2)
+                trans.push(results[ts]);
+            }
+            return trans;
+          //  return _.filter(results, function(d){ return d['transportCity'] == valueStartsWith; })
         }
 
        $scope.removeCart = function(productId){
