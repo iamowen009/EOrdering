@@ -120,6 +120,7 @@ app.controller('ProductCheckoutController',
                           $scope.transports0.push($scope.transportss[k]);
                     }
                     $scope.carts        = response.data.data.cartProductList;
+                    $scope.transports = getTransport($scope.transports0,$scope.customer.cityCode);
                   //  if( $scope.transports.length > 0)
                     //.transportZone +' ' + $scope.transports[0].transportZoneDesc;
                     //$scope.ddlShipTo    = $scope.ships[0];
