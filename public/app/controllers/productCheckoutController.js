@@ -119,7 +119,7 @@ app.controller('ProductCheckoutController',
                       $scope.ddlTransport =  $scope.transports[0];
                     }
                   //  $scope.ddlDate      = $scope.requests[0];
-                    $scope.paymentTerm  = ($scope.customer.paymentTerm !== 'CASH' && $scope.customer.paymentTerm !== 'CA02') ? '' : 'CASH';
+                    $scope.paymentTerm  = ($scope.customer.paymentTerm !== 'CASH' && $scope.customer.paymentTerm !== 'CA02') ? '' :  $scope.customer.paymentTerm ;
                     //$scope.paymentTerm;
                     //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
                     console.log('scope ddl ship to ', $scope.ddlShipTo);

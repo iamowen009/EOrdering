@@ -377,8 +377,8 @@ select.form-control{
                               <div class="col-md-12">
                                 <div class="form-group col-md-6">
                                   <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">การชำระเงิน :</label>
-                                  <label ng-show="paymentTerm==='CASH'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
-                                  <label ng-show="paymentTerm!=='CASH'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
+                                  <label ng-show="paymentTerm==='CASH' || paymentTerm ==='CA02'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
+                                  <label ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่ต้องการ :</label>
