@@ -60,7 +60,7 @@
                                               <tbody>
                                                 <tr ng-repeat="Bills in Bill">
                                                   <td>@{{ Bills.billno}}</td>
-                                                  <td>@{{ Bills.taxNum}}</td>
+                                                  <td><a ng-click="OrderBillHistoryModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ Bills.taxNum}}</a></td>
                                                 </tr>
                                               </tbody>
 

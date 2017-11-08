@@ -12,14 +12,14 @@
       <div class="modal-body">
 			<div class="row inv-header">
           <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong> @{{ Bill.payer  }} </p>
-              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ Bill.woNumber }} / @{{ Bill.poNumber}}</p>
+              <p><strong>ร้านค้า :</strong> @{{MBill.payer}} </p>
+              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{MBill.woNumber}} / @{{MBill.poNumber}}</p>
               <!-- <p><strong>เลขที่เอกสารอ้างอิง : </strong></p> -->
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{Bill.salesDocument}}  วันที่ : @{{Bill.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
+              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{MBill.salesDocument}}  วันที่ : @{{MBill.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
           </div>
           <div class="col-sm-4">
-              <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
-              <p><strong>จัดส่ง : </strong>@{{ Bill.transportZoneDesc }}</p>
+              <p><strong>สถานที่ส่ง : </strong>@{{ MBill.shipName }}</p>
+              <p><strong>จัดส่ง : </strong>@{{ MBill.transportZoneDesc }}</p>
           </div>
         </div>
 				<div>

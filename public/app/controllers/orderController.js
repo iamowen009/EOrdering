@@ -277,7 +277,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 	}
 
 	$scope.OrderBillHistory = function(saleOrderNumber){
-		//$scope.Bill = '';
+		$scope.Bill = '';
 		$scope.detail = '';
 		$scope.descountdetail = '';
 		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
@@ -296,7 +296,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 	}
 
 	$scope.OrderBillHistoryModal = function(saleOrderNumber){
-		$scope.Bill = '';
+		$scope.MBill = '';
 		$scope.detail = '';
 		$scope.descountdetail = '';
 		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
@@ -307,12 +307,11 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 						detail = response.data.data.orderHistoryDetailList,
 						descountdetail = response.data.data.prderHistoryDiscountList;
 
-					$scope.Bill = head;
-					console.log("head");
-					console.log(head);
+					$scope.MBill = head;
+					console.log("M Bill");
+					console.log($scope.MBill);
 					$scope.detail = detail;
 					$scope.descountdetail = descountdetail;
-					// $('#OrderDetailModal').modal('show');
 					$('#TaxModal').modal('show');
 			}else{
 			}

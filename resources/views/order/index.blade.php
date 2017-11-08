@@ -102,6 +102,7 @@
 @include('order.modal-order-detail')
 @include('order.modal-order-history')
 @include('order.modal-order-status')
+@include('order.modal-order-taxno')
 
 </section>
 @stop
