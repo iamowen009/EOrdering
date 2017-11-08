@@ -94,7 +94,37 @@
           </div>
           </br>
 
-          <div class="row">
+
+
+          <!-- <div class="invoice-block row">
+            <div class="col-sm-6"> <strong>หัก </strong></div>
+            <div class="col-sm-6 text-right">
+          </div> -->
+
+          <div class="invoice-block row">
+              <table class="table table-hover table-bordered">
+                  <thead class="thead-default">
+                      <tr>
+                          <th class="text-center">ประเภท</th>
+                          <th class="text-center">รายละเอียด</th>
+                          <th class="text-center">ราคา</th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                  <tr ng-repeat="item in discountSub">
+                      <td class="text-center">@{{item.type}}</td>
+                      <td class="text-left">@{{item.description}}</td>
+                      <td class="text-right">@{{item.kwert | number:2}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+
+
+
+
+          <!-- <div class="row">
             <div class="col-sm-6 text-danger"> <strong>หัก </strong></div>
             <div class="col-sm-6 text-right">
 
@@ -103,8 +133,11 @@
             <div class="col-sm-6 text-right">
                 @{{ totalAmount | number:2 }}
             </div>
-          </div>
-          </br>
+          </div> -->
+
+
+
+          <!-- </br>
 
           <div class="row">
             <div class="col-sm-6 text-danger"><strong>บวก </strong></div>
@@ -116,29 +149,31 @@
                 @{{ totalAmount | number:2 }}
             </div>
           </div>
-          </br>
+          </br> -->
 
           <div class="row">
             <div class="col-sm-6 text-danger"></div>
             <div class="col-sm-6 text-right">
               <strong>รวมมูลค่าสินค้า :</strong>
-                @{{ totalAmount | number:2 }}
-              <strong>บาท</strong>
+                @{{ inv.netValue2 }}
+              <strong> บาท</strong>
             </div>
           </div>
+
           <div class="row">
             <div class="col-sm-6 text-danger"> </div>
             <div class="col-sm-6 text-right">
               <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
-                <!-- @{{ totalAmount | number:2 }} -->
+                  @{{ inv.vatAmount | number}}
               <strong>บาท</strong>
             </div>
           </div>
+
           <div class="row">
             <div class="col-sm-6 text-danger"> </div>
             <div class="col-sm-6 text-right">
               <strong>ยอดรวม :</strong>
-                <!-- @{{ totalAmount | number:2 }} -->
+              @{{ inv.netValue2 + inv.vatAmount | number}}
               <strong>บาท</strong>
             </div>
           </div>

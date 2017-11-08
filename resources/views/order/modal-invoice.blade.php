@@ -11,7 +11,7 @@
       <div class="modal-body">
         <div class="row inv-header">
           <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong>  @{{ inv.customerName }}</p>
+              <p><strong>ร้านค้า :</strong> @{{ inv.customerCode }}  @{{ inv.customerName }}</p>
               <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber }}</p>
               <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</p>
               <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
@@ -38,11 +38,11 @@
                       <tr>
                           <th colspan="2" class="text-center">รหัสสินค้า</th>
                           <th class="text-center">สินค้า</th>
-                          <th class="text-right">จำนวน</th>
+                          <th class="text-center">จำนวน</th>
                           <th class="text-center">หน่วย</th>
-                          <th class="text-right">ราคาหน่วย</th>
-                          <th class="text-right">ราคารวม</th>
-                          <th class="text-right">ชื่อโปรโมชั่น</th>
+                          <th class="text-center">ราคาหน่วย</th>
+                          <th class="text-center">ราคารวม</th>
+                          <th class="text-center  ">ชื่อโปรโมชั่น</th>
                       </tr>
                   </thead>
 

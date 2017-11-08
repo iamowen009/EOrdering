@@ -16,7 +16,9 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		$scope.ordersList = [];
 		$scope.haveBill = [];
 		$scope.haveNoBill = [];
-		
+		$scope.discountAdd = [];
+		$scope.discountSub = [];
+
 		$scope.ItemAll = [];
 		$scope.Customer = {};
 
@@ -110,6 +112,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 
 		$scope.OrderInfo = function(orderId){
 				Orders.fetchOne(orderId).then(function (response) {
+					console.log(response);
             if(response.data.result=='SUCCESS'){
 								var head = response.data.data.order,
 										detail = response.data.data.orderDetailList;
@@ -165,14 +168,45 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		}
 
 		$scope.OrderStatusModal = function(saleOrderNumber){
+			$scope.discountSub = [];
+			$scope.discountAdd = [];
+
 			OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 					if(response.data.result=='SUCCESS'){
 							console.log("OrderPrecessInfo");
 							console.log(response);
 							var head = response.data.data.orderProcessInfo,
-							 		detail = response.data.data.orderProcessItemList;
+									 detail = response.data.data.orderProcessItemList,
+									 discountList = response.data.data.orderProcessDiscountList;
 							 		$scope.inv = head;
-							 		$scope.detail = detail;
+									$scope.detail = detail;
+									$scope.discount = discountList;	  
+									console.log("discount-->>", $scope.discount);
+
+									for(var k in $scope.discount){
+										var arr_temp = {
+											'description':$scope.discount[k].description,
+											'fkimg':$scope.discount[k].fkimg,
+											'kwert':$scope.discount[k].kwert,
+											'per':$scope.discount[k].per,
+											'perTx':$scope.discount[k].perTx,
+											'saledocument':$scope.discount[k].saledocument,
+											'type':$scope.discount[k].type
+										}
+
+										
+
+										if($scope.discount[k].type === "หัก")
+										$scope.discountSub.push(arr_temp);
+										else
+										$scope.discountAdd.push(arr_temp);
+
+										// console.log("$scope.discountSub-->",$scope.discountSub);
+										// console.log("$scope.discountAdd-->",$scope.discountAdd);
+									}
+
+										
+									
 							$('#OrderStatusModal').modal('show');
 					}else{
 
