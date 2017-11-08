@@ -158,6 +158,7 @@ app.controller('ProductCheckoutController',
        }
 
        $scope.changePay = function(val){
+         console.log('change pay val ' , val);
          $scope.paymentTerm = val;
        }
 

@@ -170,7 +170,7 @@ select.form-control{
 
                                   <div class="col-md-9 col-sm-9 col-xs-12">
                                     <label class="radio-inline">
-                                      <input type="radio" name="optradio" ng-model="paymentTerm" ng-change="changePay(customer.paymentTerm)" value="{{ ( customer.paymentTerm == 'CA02' || customer.paymentTerm =='CASH') ? customer.paymentTerm : 'CASH'}}">เงินสด</label>
+                                      <input type="radio" name="optradio" ng-model="paymentTerm" ng-change="changePay( ( customer.paymentTerm == 'CA02' || customer.paymentTerm =='CASH') ? customer.paymentTerm : 'CASH')" value="{{ ( customer.paymentTerm == 'CA02' || customer.paymentTerm =='CASH') ? customer.paymentTerm : 'CASH'}}">เงินสด</label>
                                     <label class="radio-inline" ng-if="customer.paymentTerm !== 'CASH' && customer.paymentTerm !='CA02'">
                                       <input type="radio" name="optradio" ng-model="paymentTerm" value="{{ customer.paymentTerm }}" ng-change="changePay(customer.paymentTerm)">เครดิต</label>
                                   </div>
