@@ -263,16 +263,30 @@ app.controller('ProductDetailController',
                       //  console.log('key is ' + key );
                         if($scope.sizes.indexOf($scope.product[key]['sizeCode'])==-1){
                             if(hasDupsObjects($scope.sizes,$scope.product[key]['sizeCode'],'sizeCode')==false)
-                                $scope.sizes.push({'sizeCode':$scope.product[key]['sizeCode'],'sizeName':$scope.product[key]['sizeName']});
+                                $scope.sizes.push({'sizeCode':$scope.product[key]['sizeCode'],
+                                                  'sizeName':$scope.product[key]['sizeName'],
+                                                  'productCode':$scope.product[key]['productCode']
+                                                });
                         }
-                        if($scope.product[key]['colorCode'] && $scope.colors.indexOf($scope.product[key]['colorCode'])==-1)
-                            if(hasDupsObjects($scope.colors,$scope.product[key]['colorCode'],'colorCode')==false  ){
-                                $scope.colors.push({'colorCode':$scope.product[key]['colorCode'],'colorNameTh':$scope.product[key]['colorNameTh'],'cartrgbColor':$scope.product[key]['rgbCode'],'sizeCode' : $scope.product[key]['sizeCode'] })
+                        if($scope.product[key]['colorCode'] && $scope.colors.indexOf($scope.product[key]['colorCode'])==-1 && $scope.colors.indexOf($scope.product[key]['productCode'])==-1){
+                          console.log('check duplicate : ', hasDupsObjects($scope.colors,$scope.product[key]['colorCode'],'colorCode') +'&&' + hasDupsObjects($scope.colors,$scope.product[key]['productCode'],'productCode'));
+                            // if( hasDupsObjects($scope.colors,$scope.product[key]['colorCode'],'colorCode')===false &&  hasDupsObjects($scope.colors,$scope.product[key]['productCode'],'productCode')===false ){
+                            if(  hasDupsObjects($scope.colors,$scope.product[key]['productCode'],'productCode')===false ){
+
+                                $scope.colors.push({'colorCode':$scope.product[key]['colorCode'],
+                                                    'colorNameTh':$scope.product[key]['colorNameTh'],
+                                                    'cartrgbColor':$scope.product[key]['rgbCode'],
+                                                    'sizeCode' : $scope.product[key]['sizeCode'],
+                                                    'productCode' : $scope.product[key]['productCode'] });
 
                             }
+                          }
                     }
                     colorval();
+                    console.log('scope size : ', $scope.sizes );
+                    console.log('scope colors : ', $scope.colors );
                     $scope.cartSize= $scope.sizes[0]['sizeCode'];
+                    $scope.cartCode= $scope.sizes[0]['productCode'];
                     $scope.cartColor = $scope.colors[0] ? $scope.colors[0]['colorCode'] : {};
                     $scope.cartrgbColor = $scope.colors[0] ? $scope.colors[0]['rgbCode'] : {};
                     $scope.colorCodeName = $scope.colors[0] ? $scope.colors[0]['colorCode'] : '';
@@ -329,12 +343,12 @@ app.controller('ProductDetailController',
             $scope.listColors = [];
 
             for(var kr in $scope.colors){
-              // console.log('kr ', $scope.colors[kr].sizeCode , ' cartSize ', $scope.cartSize);
-
-              if( $scope.colors[kr].sizeCode == $scope.cartSize){
-                $scope.listColors.push({'colorCode':$scope.colors[kr]['colorCode'],'colorNameTh':$scope.colors[kr]['colorNameTh'],'cartrgbColor':$scope.colors[kr]['rgbCode'],'sizeCode' : $scope.colors[kr]['sizeCode'] });
+                console.log('size code : ', $scope.colors[kr].sizeCode ,' | ', $scope.cartSize , ' product colorval code : ', $scope.cartCode ,' | ', $scope.colors[kr].productCode );
+              if( $scope.colors[kr].sizeCode == $scope.cartSize  ){
+                $scope.listColors.push({'colorCode':$scope.colors[kr]['colorCode'],'colorNameTh':$scope.colors[kr]['colorNameTh'],'cartrgbColor':$scope.colors[kr]['rgbCode'],'sizeCode' : $scope.colors[kr]['sizeCode'],'productCode' : $scope.colors[kr]['productCode'] });
               }
             }
+            console.log('$scope.listColors : ' , $scope.listColors );
             $scope.colorCodeName = $scope.listColors[0] ? $scope.listColors[0]['colorCode'] : '';
             for(var key in $scope.product){
                 if($scope.product[key]['sizeCode']==$scope.cartSize && $scope.product[key]['colorCode']==$scope.colorCodeName){
@@ -395,7 +409,7 @@ app.controller('ProductDetailController',
               swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
                cqty = false;
             }else if( $scope.cartProductQty % $scope.productSelect.altUnit1Amount){
-              swal('ผลิตภัฑณ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ/nระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
+              swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ/nระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
               var un = parseInt($scope.cartProductQty / $scope.productSelect.altUnit1Amount);
                $scope.cartProductQty = $scope.productSelect.altUnit1Amount * un;
                cqty = false;

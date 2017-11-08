@@ -32,3 +32,16 @@
 .login-description span{
   color:#01b0f1;
 }
+.login-description .panel{
+  padding:0;
+
+}
+.login-description .panel-body{
+  padding:10px;
+}
+.login-description .panel-heading{
+  background:#169bd4;
+  padding:10px;
+  color:#fff;
+  font-weight: bold;
+}
