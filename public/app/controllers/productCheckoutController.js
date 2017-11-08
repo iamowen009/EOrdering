@@ -34,6 +34,7 @@ app.controller('ProductCheckoutController',
        $scope.totalAmount = 0;
        $scope.totalQty = 0;
        $scope.carts={};
+       $scope.boms={};
        //$scope.itemQty = [];
       //  $scope.cartProductQty =[];
        $scope.customer={};
@@ -56,6 +57,7 @@ app.controller('ProductCheckoutController',
             Carts.fetchAll(customerId).then(function (response) {
                 if(response.data.result=='SUCCESS'){
                     $scope.carts = response.data.data.cartList;
+                    $scope.boms = response.data.data.cartBOMItems;
                     $scope.totalAmount=0;
                     $scope.totalQty=0;
                     for(var key in $scope.carts){
@@ -66,9 +68,16 @@ app.controller('ProductCheckoutController',
                         var split_date = list_date[0].split('-');
                         $scope.cartDate = split_date[2]+'/'+split_date[1]+'/'+split_date[0];
                         $scope.loadingcart[key] = false;
+                        for(var bm in $scope.boms){
+                          if( $scope.boms[bm]['productRefCode'] == $scope.carts[key]['productCode'] )
+                            $scope.totalAmount += $scope.boms[bm]['price'] * $scope.carts[key]['qty'];
+
+                        }
 
                     }
+
                 }
+
                 $scope.loading = false;
             });
        }

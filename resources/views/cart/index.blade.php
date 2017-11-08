@@ -68,8 +68,8 @@ select.form-control{
                                 <tfoot>
 
                                 </tfoot>
-                                <tbody>
-                                <tr ng-repeat="item in carts track by $index">
+                                <tbody ng-repeat="item in carts track by $index">
+                                <tr>
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
@@ -95,6 +95,27 @@ select.form-control{
                                     <td>{{item.unitNameTh}}</td>
                                     <td>{{ item.price | number:2}}</td>
                                     <td>{{ +item.price*+item.qty | number:2 }}</td>
+                                    <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
+                                </tr>
+                                <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                                    <td class="text-center">{{$index+1}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                                    <td class="text-center">{{ bom.productNameTh }}</td>
+                                    <td class="text-right">
+                                      <div class="input-group">
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default disabled">-</button>
+                                          </span>
+                                          <input class="form-control ng-pristine ng-untouched ng-valid ng-empty disabled"  type="text" value="{{ item.qty }}" disabled ng-model="item.qty" numbers-only >
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default disabled">+</button>
+                                          </span>
+                                          <p class="text-center" ng-show="loadingcart[$index]"><span class="fa fa-refresh  fa-spin"></span></p>
+                                      </div>
+                                    </td>
+                                    <td>{{item.unitNameTh}}</td>
+                                    <td>{{ bom.price | number:2}}</td>
+                                    <td>{{ +bom.price*+item.qty | number:2 }}</td>
                                     <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
                                 </tr>
                                 </tbody>
@@ -303,8 +324,8 @@ select.form-control{
                                 <tfoot>
 
                                 </tfoot>
-                                <tbody>
-                                <tr ng-repeat="item in carts track by $index">
+                                <tbody ng-repeat="item in carts track by $index">
+                                <tr>
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
@@ -315,6 +336,18 @@ select.form-control{
                                     <td>{{ +item.price*+item.qty | number:2 }}</td>
 
                                 </tr>
+                                <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                                    <td class="text-center">{{$index+1}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                                    <td class="text-center">{{ bom.productNameTh }}</td>
+                                    <td class="text-right">{{ item.qty }}</div>
+                                    </td>
+                                    <td>{{item.unitNameTh}}</td>
+                                    <td>{{ bom.price | number:2}}</td>
+                                    <td>{{ +bom.price*+item.qty | number:2 }}</td>
+                                    <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
+                                </tr>
+
                                 </tbody>
                             </table>
 
@@ -459,8 +492,8 @@ select.form-control{
                                 <tfoot>
 
                                 </tfoot>
-                                <tbody>
-                                <tr ng-repeat="item in carts track by $index">
+                                <tbody ng-repeat="item in carts track by $index">
+                                <tr>
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
@@ -471,6 +504,17 @@ select.form-control{
                                     <td>{{ +item.price*+item.qty | number:2 }}</td>
 
                                 </tr>
+                                <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                                    <td class="text-center">{{$index+1}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                                    <td class="text-center">{{ bom.productNameTh }}</td>
+                                    <td class="text-right">{{ item.qty }}</td>
+                                    <td>{{item.unitNameTh}}</td>
+                                    <td>{{ bom.price | number:2}}</td>
+                                    <td>{{ +bom.price*+item.qty | number:2 }}</td>
+                                    <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
+                                </tr>
+
                                 </tbody>
                             </table>
 

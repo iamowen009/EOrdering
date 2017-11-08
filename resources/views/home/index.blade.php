@@ -113,14 +113,16 @@
                          <br/>
 
 						<div class="row" >
-					            <div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions">
-								    <span class="media-left">
-								    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;cursor: pointer;">
-								        <!--<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionHdId)" style="width:70%;">-->
-								    </span>
-								    <div class="media-body" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
-								        <h4 class="media-heading">{{ promotion.promotionName }}</h4>
-								        <!-- <div ng-bind-html="promotion.promotionDesc"></div> -->
+					            <div class=" col-lg-4 col-md-4" ng-repeat="promotion in promotions">
+								    	<div class="" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
+										    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;cursor: pointer;">
+										        <!--<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionHdId)" style="width:70%;">-->
+
+														<div style="padding:4px; height:86px; overflow:hidden;">
+															{{ promotion.promotionName }}
+														</div>
+
+										        <!-- <div ng-bind-html="promotion.promotionDesc"></div> -->
 								    </div>
 								</div>
 						</div>

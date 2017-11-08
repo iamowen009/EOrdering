@@ -159,6 +159,12 @@ $scope.bomxs = {};
                   $scope.totalQty += $scope.items[key].qty;
                   console.log('total amount : ' + $scope.totalAmount + ' total qty : ' + $scope.totalQty );
                 //  $('.bellnumbers').text($scope.totalQty);
+                for(var bm in $scope.bomxs){
+                  console.log('check ref id ', $scope.bomxs[bm]['productRefCode'],' > ', $scope.items[key]['productCode'])
+                  if( $scope.bomxs[bm]['productRefCode'] == $scope.items[key]['productCode'] )
+                    $scope.totalAmount += $scope.bomxs[bm]['price'] * $scope.items[key]['qty'];
+
+                }
 
               }
               $('.bellnumbers').text($scope.items.length);
@@ -199,6 +205,12 @@ app.controller('AppController',
                     for(var key in $scope.carts){
                         $scope.totalAmount += $scope.carts[key]['totalAmount'];
                         $scope.totalQty += $scope.carts[key]['qty']+'ss';
+                        for(var bm in $scope.bomxs){
+                          console.log('check ref id ', $scope.bomxs[bm]['productRefCode'],' > ', $scope.carts[key]['productCode'])
+                          if( $scope.bomxs[bm]['productRefCode'] == $scope.carts[key]['productCode'] )
+                            $scope.totalAmount += $scope.bomxs[bm]['price'] * $scope.carts[key]['qty'];
+
+                        }
                     }
                 }
                 $scope.loading = false;
