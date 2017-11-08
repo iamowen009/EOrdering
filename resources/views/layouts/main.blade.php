@@ -276,7 +276,7 @@
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default disabled" >-</button>
                                     </span>
-                                    <input type="text" class="form-controle text-center disabled" disabled style="width:80px; padding:5px;" value="{{ bom.qty === null ? 0 : bom.qty }}" >
+                                    <input type="text" class="form-controle text-center disabled" disabled style="width:80px; padding:5px;" value="{{ item.qty }}" >
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-defaul disabledt" disabled>+</button>
                                     </span>

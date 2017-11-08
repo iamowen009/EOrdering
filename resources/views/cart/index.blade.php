@@ -156,7 +156,7 @@ select.form-control{
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่สั่งซื้อ :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ cartDate }}</label>
                                 </div>
-                                <div class="form-group col-md-6" ng-if="customer.shipCondition=='01'">
+                                <div class="form-group col-md-6" ng-if="customer.isReceive=='true'">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนส่งโดย :  </label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
                                     <label class="checkbox-inline"><input type="checkbox" ng-click="pickUp(shipCondition)"  ng-model="shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>

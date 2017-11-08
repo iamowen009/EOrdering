@@ -150,7 +150,7 @@ app.controller('ProductCheckoutController',
        $scope.shipCondition = false;
        $scope.pickUp = function(shipCondition){
           console.log('$scope.shipCondition : ', shipCondition );
-          if( shipCondition === true ){
+          if( shipCondition === true || $scope.customers.shipCondition == '01'){
             $scope.shippingType = 'hide';
           }else{
             $scope.shippingType = 'show';
