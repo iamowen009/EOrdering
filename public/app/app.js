@@ -207,13 +207,13 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             console.log( response );
                             if(response.data.result=='SUCCESS'){
 
-                                     var order = response.data.data.order;
-                                    console.log(order);
-                                    console.log(order.orderId);
+                                     var orders = response.data.data.order;
+                                    console.log(orders);
+                                    console.log(orders.orderId);
                                     //swal.close();
 
                                     swal({
-                                        title: "ระบบดำเนินการสร้างใบสั่งซื้อ เลขที่ " + order.documentNumber + " เรียบร้อยแล้ว ท่านต้องการ",
+                                        title: "ระบบดำเนินการสร้างใบสั่งซื้อ เลขที่ " + orders.documentNumber + " เรียบร้อยแล้ว ท่านต้องการ",
                                         //text: "ระบบดำเนินการสร้างใบสั่งซื้อเรียบร้อยแล้ว ท่านต้องการ?",
                                         //type: "warning",
                                         showCancelButton: true,
@@ -231,7 +231,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                                             window.location=_base + '/home/'+Customers.customerId();
                                         }
                                       }else{
-                                        window.location=_base + '/cart-summary/'+order.orderId;
+                                        window.location=_base + '/cart-summary/'+orders.orderId;
                                       }
 
                                     });
