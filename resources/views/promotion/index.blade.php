@@ -248,7 +248,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr ng-repeat="p in promotionDT_Sel" ng-show="p.selected" ng-if="p.promotionHdId==promotionCode">
+													<tr ng-repeat="p in promotionDT_Sel | orderBy:'-productNoSelected'" ng-show="p.selected" ng-if="p.promotionHdId==promotionCode">
 														<td>
 															<img class="img" src="{{p.partImgProduct}}/{{p.btf}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg" width="50px"> {{p.productNoSelected}}
 														</td>
@@ -285,14 +285,14 @@
 								<label class="form-control text-center">{{totalPrice() | number }}</label>
 							</div>
 						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="col-md-12 col-sm-12 col-xs-12" ng-hide="promotionHD[0].promotionType == 'Discount'">
 							<div class="form-group col-md-2">
 								<button type="button" class="btn btn-icon btn-info btn-sm" ng-click="callCalFreeGoods()">
 									คำนวนของแถม
 								</button>
 							</div>
 						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="col-md-12 col-sm-12 col-xs-12" ng-hide="promotionHD[0].promotionType == 'Discount'">
 							<div class="form-group col-md-6">
 								<div class="panel panel-info">
 									<div class="panel-heading">เลือกของแถม</div>
@@ -383,7 +383,7 @@
 															<span ng-bind-html="f.productNameSelected"></span>
 														</td>
 														<td>{{f.freeQty}}</td>
-														<td>{{f.unitSelected| number}}</td>
+														<td>{{f.unitSelected}}</td>
 														<!--<td>{{f.priceSelected}}</td>
 														<td>{{f.totalPrice}}</td>-->
 														<td>
