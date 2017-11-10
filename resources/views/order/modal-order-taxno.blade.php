@@ -20,16 +20,24 @@
         <div class="col-sm-4">
             <div class="row">
             <p><strong>No. : </strong>@{{ MBill.taxNum }}</p>
-            <p><strong>วันที่  </strong>@{{ MBill.billDate | date:'dd/MM/yy' }} เวลา @{{MBill.billCreTim }}</p>
+            <p><strong>&nbsp;&nbsp;วันที่  </strong>@{{ MBill.billDate | date:'dd/MM/yy' }} เวลา @{{MBill.billCreTim }}</p>
             </div>
             <div class="row">
             <!-- <p><strong>สถานที่ส่ง : </strong>  @{{MBill.pName}}</p><p>  &nbsp;@{{MBill.pSubDistrict}}</p><p>  &nbsp;@{{MBill.pDistrict}}</p> -->
             </div>
             <div class="row">
             <p><strong>สถานที่จัดส่ง : </strong>
-            <p></p>
-            <p>&nbsp;</p>
+            <p>@{{MBill.pHouseNum}} &nbsp; @{{MBill.pName}} </p>
             </div>
+            
+            <div class="row">
+            <p>@{{MBill.pSubDistrict}} &nbsp; @{{MBill.pDistrict}} </p>
+            </div>
+
+            <div class="row">
+            <p>@{{MBill.pStreet}} &nbsp; @{{MBill.pPostCode}} </p>
+            </div>
+            
             
             
             <p><strong>จัดส่ง : </strong>@{{ MBill.transportZoneDesc }}</p>
@@ -96,35 +104,78 @@
                     <td class="text-center">@{{ item.targetQty | number }}</td>
                     <td class="text-center">@{{ item.netwrPerUnit | number}}</td>
                     <td class="text-center">@{{ item.discount }}</td>
-                    <td class="text-center">@{{ item.pricePerUnit | number:2}}</td>
-                    <td class="text-center">@{{ item.amount | number }}</td>
+                    <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
+                    <td class="text-right">@{{ item.amount | number }}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td class="text-right" colspan="6">รวมมูลค่าสินค้า</td>
                   <td class="text-right" colspan="1">@{{totalsum_manual | number:2}}</td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <td class="text-right" colspan="6">ภาษีมูลค่าเพิ่ม 7%</td>
                   <td class="text-right" colspan="1"> @{{ MBill.headVat | number:2}} </td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <td class="text-right" colspan="6">ยอดรวม</td>
                   <td class="text-right" colspan="1">@{{ MBill.headNetwr2 | number:2}} </td>
-                </tr>
+                </tr> -->
                 </tbody>
-
-                  <!-- <thead class="thead-default">
-                    <tr>
-                        <th class="text-left">รวม</th>
-                        <th class="text-center"></th>
-                        <th class="text-center"></th>
-                        <th class="text-center"></th>
-                        <th class="text-center"></th>
-                    </tr>
-                  </thead> -->
             </table>
         </div>
         </br>
+
+        <div class="invoice-block row-12">
+            <table class="table table-hover table-bordered">
+                <thead class="thead-default ">
+                      <!-- <tr>
+                          <th class="text-center">ประเภท</th>
+                          <th class="text-center">รายละเอียด</th>
+                          <th class="text-center">ราคา</th>
+                      </tr> -->
+                  </thead>
+
+                  <tbody>
+                  <tr ng-repeat="item in descountdetail">
+                      <td class="text-center">@{{item.type}}</td>
+                      <td class="text-left">@{{item.descp}}</td>
+                      <td class="text-right">@{{item.kwert | number:2}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-sm-6 text-danger"></div>
+            <div class="col-sm-6 text-right">
+              <strong>รวมมูลค่าสินค้า :</strong>
+                @{{ MBill.headNetwr2 | number:2}}
+              <strong> บาท</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-danger"> </div>
+            <div class="col-sm-6 text-right">
+              <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
+                  @{{ MBill.headVat | number:2}}
+              <strong>บาท</strong>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 text-danger"> </div>
+            <div class="col-sm-6 text-right">
+              <strong>ยอดรวม :</strong>
+              @{{ MBill.headVat + MBill.headNetwr2| number}}
+              <strong>บาท</strong>
+            </div>
+          </div>
+
+      </div>
+
+
+
 
    
        

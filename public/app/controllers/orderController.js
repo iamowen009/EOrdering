@@ -369,8 +369,6 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 		$scope.MBill = '';
 		$scope.detail = '';
 		$scope.descountdetail = '';
-		//$scope.totalsum_manual = '';
-		//nook
 		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
 			console.log(response.data.result);
 			if(response.data.result=='SUCCESS'){
@@ -381,17 +379,14 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				 
 					$scope.MBill = head[0];	
 					$scope.totalsum_manual = 0.0;
-					$scope.totalQty
+					$scope.totalQty;
 					for(var e in detail)
 					{
 						detail[e].amount;
-						// totalsum_manual += detail[e].amount;
 						$scope.totalsum_manual += detail[e].amount;
 					}
-					
-					$scope.detail = detail;
 
-					// $scope.totalsum_manual=totalsum_manual;
+					$scope.detail = detail;
 					$scope.descountdetail = descountdetail;
 					$('#TaxModal').modal('show');
 			}else{
