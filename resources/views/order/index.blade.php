@@ -65,7 +65,7 @@
 						<div class="cui-ecommerce--product--info">
 	                        <div class="nav-tabs-horizontal">
 	                            <ul class="nav nav-tabs tab-order" role="tablist">
-	                                <li class="nav-item active">
+	                                <li class="nav-item active" style="display:none">
 	                                    <a class="nav-link tab1" href="javascript: void(0);" data-toggle="tab" data-target="#tab1" role="tab">รับคำสั่งซื้อแล้ว<br/>(Order Process)</a>
 	                                </li>
 	                                <li class="nav-item" style="display:none">

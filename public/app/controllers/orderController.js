@@ -376,10 +376,16 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				var head = response.data.data.orderHistoryHeaderList,
 						detail = response.data.data.orderHistoryDetailList,
 						descountdetail = response.data.data.prderHistoryDiscountList;
+				 
+					$scope.MBill = head[0];	
+					$scope.totalsum_manual = 0.0;
+					$scope.totalQty;
+					for(var e in detail)
+					{
+						detail[e].amount;
+						$scope.totalsum_manual += detail[e].amount;
+					}
 
-					$scope.MBill = head;
-					console.log("M Bill");
-					console.log($scope.MBill);
 					$scope.detail = detail;
 					$scope.descountdetail = descountdetail;
 					$('#TaxModal').modal('show');
