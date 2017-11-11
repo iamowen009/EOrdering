@@ -148,37 +148,34 @@
 
           <div class="row">
             <div class="col-sm-6 text-danger"></div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-4 text-right">
               <strong>รวมมูลค่าสินค้า :</strong>
-                @{{ MBill.headNetwr2 | number:2}}
-              <strong> บาท</strong>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 text-danger"> </div>
-            <div class="col-sm-6 text-right">
-              <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
-                  @{{ MBill.headVat | number:2}}
-              <strong>บาท</strong>
+            <div class="col-sm-2 text-right">
+              @{{ MBill.headNetwr2 | number}}<strong> บาท</strong>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-sm-6 text-danger"> </div>
-            <div class="col-sm-6 text-right">
-              <strong>ยอดรวม :</strong>
-              @{{ MBill.headVat + MBill.headNetwr2| number}}
-              <strong>บาท</strong>
+            <div class="col-sm-6 text-danger"></div>
+            <div class="col-sm-4 text-right">
+            <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
+            </div>
+            <div class="col-sm-2 text-right">
+            @{{ MBill.headVat | number:2}}<strong> บาท</strong>
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-sm-6 text-danger"></div>
+            <div class="col-sm-4 text-right">
+            <strong>ยอดรวม :</strong>
+            </div>
+            <div class="col-sm-2 text-right">
+            @{{ MBill.headVat + MBill.headNetwr2| number}}<strong> บาท</strong>
+            </div>
+          </div>
       </div>
-
-
-
-
-   
-       
     </div>
   </div>
 

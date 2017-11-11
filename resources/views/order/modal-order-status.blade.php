@@ -153,28 +153,32 @@
 
           <div class="row">
             <div class="col-sm-6 text-danger"></div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-4 text-right">
               <strong>รวมมูลค่าสินค้า :</strong>
-                @{{ inv.netValue2 | number:2}}
-              <strong> บาท</strong>
+            </div>
+            <div class="col-sm-2 text-right">
+                @{{ inv.netValue2 | number:2}} <strong> บาท</strong>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 text-danger"> </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-4 text-right">
               <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
-                  @{{ inv.vatAmount | number}}
-              <strong>บาท</strong>
+            </div>
+
+            <div class="col-sm-2 text-right">
+              @{{ inv.vatAmount | number}}<strong> บาท</strong>
             </div>
           </div>
 
           <div class="row">
             <div class="col-sm-6 text-danger"> </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-4 text-right">
               <strong>ยอดรวม :</strong>
-              @{{ inv.netValue2 + inv.vatAmount | number}}
-              <strong>บาท</strong>
+            </div>
+            <div class="col-sm-2 text-right">
+            @{{ inv.netValue2 + inv.vatAmount | number}}<strong> บาท</strong>
             </div>
           </div>
 
