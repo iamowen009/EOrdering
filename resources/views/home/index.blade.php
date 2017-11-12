@@ -10,7 +10,7 @@
 		<!-- LOADING ICON =============================================== -->
     	<!-- show loading icon if the loading variable is set to true -->
 		<div class="row " ng-controller="HomeController">
-			<div class="col-md-2 col-sm-2 sidedata">
+			<div class="col-md-2 col-sm-3 sidedata">
 				<div>
                   <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
                   <div class="category-home">
@@ -30,7 +30,7 @@
 			</div>
 
 			</div>
-			<div class="col-md-10">
+			<div class="col-md-10 col-sm-9">
 
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			            <ol class="carousel-indicators">
