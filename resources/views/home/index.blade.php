@@ -10,7 +10,7 @@
 		<!-- LOADING ICON =============================================== -->
     	<!-- show loading icon if the loading variable is set to true -->
 		<div class="row " ng-controller="HomeController">
-			<div class="col-md-2 col-sm-2 col-xs-12 sidedata">
+			<div class="col-md-2 col-sm-2 sidedata">
 				<div>
                   <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
                   <div class="category-home">
@@ -30,7 +30,7 @@
 			</div>
 
 			</div>
-			<div class="col-md-10 col-sm-10 col-xs-9">
+			<div class="col-md-10">
 
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			            <ol class="carousel-indicators">
@@ -84,7 +84,7 @@
 		                         พบโปรโมชั่นจำนวน {{totalPromotion}} รายการ
 		                        </div>
 		                      </div>
-+
+
 							 <div class="clearfix"></div>
 		                     <div class="form-group">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">กลุ่มผลิตภัณฑ์</label>
@@ -113,7 +113,7 @@
                          <br/>
 
 						<div class="row" >
-					            <div class=" col-lg-4 col-md-4" ng-repeat="promotion in promotions">
+					            <div id="carousel-01" class=" col-lg-4 col-md-4" ng-repeat="promotion in promotions">
 								    	<div class="" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
 										    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;cursor: pointer;">
 										        <!--<img src="{{partImgPromotion}}/{{promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionHdId)" style="width:70%;">-->
@@ -130,7 +130,7 @@
 						<div ng-repeat="marketing in marketings" >
 	              <h6><span class="fa fa-arrow-down"></span> {{ marketing.marketingDesc }}</h6>
                	<div class="row" >
-					          <div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions" ng-show="promotion.marketingCode==marketing.marketingCode">
+					          <div id="carousel-02" class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions" ng-show="promotion.marketingCode==marketing.marketingCode">
 										    <span class="media-left">
 										        <img src="http://placehold.it/250x150" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
 										    </span>

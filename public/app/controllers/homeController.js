@@ -2,7 +2,7 @@
 app.controller('HomeController',
     function ($scope, $http, $filter,Marketings,Promotions,Config,Customers,Carts,$uibModal,$log,sharedService,Auth) {
         //retrieve customers listing from API
-        
+
         $scope.marketings = {};
         $scope.promotions_all = {};
         $scope.promotions = {};
@@ -136,3 +136,10 @@ app.controller('HomeController',
             Config.logout();
         }
  });
+// Start Juefy //
+(function($){
+  console.log('carousel');
+  $('#carousel-01').carousel({
+        interval: 5000
+  });
+}(jQuery));

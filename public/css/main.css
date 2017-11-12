@@ -56,7 +56,16 @@ img.mainlogo{
     left: 14px;
     top: -12px;
 }
-
+.ul-top-menu > li{
+  padding-left:28px;
+  position:relative;
+  display:inline-block;
+  height: 32px;
+}
+.ul-top-menu > li img{
+  position:absolute;
+  left:0;
+}
 @media (min-width:768px){
   body{
     padding-top:120px;
@@ -78,10 +87,6 @@ img.mainlogo{
   .navbar.top-menu .navbar-header .navbar-brand {
     height: auto;
   }
-  .navbar-expand-lg .navbar-nav {
-    padding-bottom: 0;
-    margin-top: 10px;
-  }
   .navbar.top-menu .input-group {
     display: inline-block;
   }
@@ -95,6 +100,36 @@ img.mainlogo{
 
 }
 
+@media (max-width:991px){
+  .ul-search,
+  .ul.member,
+  .ul-top-menu{
+    width: 100%;
+    display:block !important;
+  }
+  .ul-search > li,
+  .ul-member > li{
+    width: 95%;
+    text-align: left;
+    display: block;
+  }
+  .ul-member.navbar-right{
+    width:100%;
+    width:100%;
+    margin:0;
+    padding:4px;
+  }
+  .ul-top-menu > li{
+    width: 100%;
+  }
+  .bell {
+    left:-26px;
+  }
+  a:hover .bell{
+    left:0;
+  }
+
+}
 @media (max-width: 767px) {
     .navbar.top-menu .navbar-header {
       width:100%;
