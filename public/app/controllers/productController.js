@@ -16,8 +16,10 @@ app.controller('ProductController',
         $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
+        $scope.partImgProductList = Config.partImgProductList();
+        $scope.partImgProductDetail = Config.partImgProductDetail();
         console.log('usersId xx = ' + $scope.usersId);
-
+        Config.fetchAll();
         // fetch
         fetchAllMarketings($scope.usersId);
         //fetchAllProducts($scope.usersId, [$scope.marketingCode], ['01', '18'], ['003', '006'],true)
@@ -245,13 +247,17 @@ app.controller('ProductDetailController',
         $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
         $scope.partImgProduct = Config.partImgProduct();
+        $scope.partImgProductList = Config.partImgProductList();
+        $scope.partImgProductDetail = Config.partImgProductDetail();
         $scope.btfId = window.location.href.split('/').pop();
         // fetch
         // console.log('product detail user ' + $scope.usersId + ' | ' + Auth.genId() + ' | ' + Auth.userTypeDesc() );
         fetchOneProduct($scope.btfId);
         fetchAllPromotions($scope.usersId, [], [], []);
         fetchAllProducts($scope.usersId, [], [], [],true);
-
+        $scope.promotionLink = function(){
+          $('#modal-promotion').modal('show');
+        }
         function fetchOneProduct(btf){
             Products.fetchOne(btf).then(function (response) {
                 if(response.data.result=='SUCCESS'){

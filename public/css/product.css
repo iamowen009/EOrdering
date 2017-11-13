@@ -3,7 +3,8 @@
 	overflow:auto;
 }
 .cui-ecommerce--catalog--item--img {
-    height: 20px !important;
+    height: 180px !important;
+		width:100%;
 		display: inline-block;
 		padding: 0px;
 }

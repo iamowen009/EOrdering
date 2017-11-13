@@ -12,7 +12,8 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
     boms: $scope.boms[0]
   };
   $scope.partImgProduct = Config.partImgProduct();
-
+  $scope.partImgProductOrder = Config.partImgProductOrder();
+  $scope.partImgProductList = Config.partImgProductList();
   $scope.order = function () {
     //$uibModalInstance.close($scope.selected.item);
     window.location= _base + '/cart';

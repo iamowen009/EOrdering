@@ -27,6 +27,7 @@
 		                            <div class="cui-ecommerce--catalog--item--status">
 		                                <span class="cui-ecommerce--catalog--item--status--title">New</span>
 		                            </div>
+																<span class="favorite-icon"><i class="fa fa-star"></i></span>
 																<!--
 		                            <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected" ng-show="productSelect.productId">
 		                            	<i class="fa fa-star-o" aria-hidden="true" style="text-shadow: 1px 1px 1px;font-size: 1.5em;cursor:pointer;" ng-click="addFav(btfId)" ng-show="productSelect.isFavorite==false"></i>
@@ -36,7 +37,7 @@
 																<span class="favorite-icon"><i class="fa fa-star"></i></span>
 															-->
 		                            <a href="javascript: void(0);">
-		                                <img class="img" src="{{partImgProduct}}/{{btf.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+		                                <img class="img" src="{{partImgProductDetail}}/{{btf.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
 		                            </a>
 		                        </div>
 		                    </div>
@@ -53,7 +54,9 @@
 		                            <i class="icmn-star-empty"></i>
 		                        </div>
 		                    </div>
-		                    <h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}</h4>
+		                    <h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}
+													<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกที่นี้เพื่อซื้อรายการโปรโมชั่น"</a>
+												</h4>
 		                    <div class="cui-ecommerce--product--price">
 		                    </div>
 		                    <form action="/cart/add" name="add_to_cart" method="post" class="form-horizontal form-label-left" accept-charset="UTF-8">
@@ -224,9 +227,11 @@
 					                <div class="row">
 					                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12" dir-paginate="product in products | itemsPerPage: 6" pagination-id="product.id">
 					                        <div class="cui-ecommerce--catalog--item" ng-click="toProductDetail(product.btf)">
+																		<!--
 					                            <div class="ribbon-wrapper">
 																					<div class="ribbon">NEW</div>
 																			</div>
+																			 -->
 																			<div class="cui-ecommerce--catalog--item--img-thumb">
 					                                <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected">
 					                                    <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked"><!-- --></i>
@@ -234,7 +239,7 @@
 					                                </div>
 																					<span class="favorite-icon"><i class="fa fa-star"></i></span>
 					                                <a href="javascript: void(0);">
-					                                    <img src="{{partImgProduct}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"  class="img-responsive img-product">
+					                                    <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"  class="img-responsive img-product product-list">
 					                                </a>
 					                            </div>
 					                            <div class="text-center  product-desc">
@@ -267,9 +272,14 @@
 			</div>
 
 		</div>
-	</div>
+		<!-- Start Modal -->
+
+		<!-- /End Modal -->
+
 
 	@endverbatim
+</div>
+@include('product.modal-promotion')
 	<div class="row"><div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div></div>
 
 
