@@ -2,7 +2,7 @@
 
 @section('head')
 <style>
-.total_price{color:#00BFFF;}
+.total_price{color:#00BFFF;font-size: 18px;}
 
 select.form-control{
   height:auto !important;
@@ -71,7 +71,7 @@ select.form-control{
                                 <tbody ng-repeat="item in carts track by $index">
                                 <tr>
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
                                     <td class="text-right">
                                       <div class="input-group">
@@ -99,7 +99,7 @@ select.form-control{
                                 </tr>
                                 <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                                     <td class="text-center">{{ bom.productNameTh }}</td>
                                     <td class="text-right">
                                       <div class="input-group">
@@ -197,7 +197,7 @@ select.form-control{
                                   </div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่ต้องการ :</label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date :</label>
                                   <div class="col-md-8 col-sm-8 col-xs-12">
 
                                     <select
@@ -330,7 +330,7 @@ select.form-control{
                                 <tbody ng-repeat="item in carts track by $index">
                                 <tr>
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
                                     <td class="text-right">{{ item.qty | number }}
                                     </td>
@@ -341,7 +341,7 @@ select.form-control{
                                 </tr>
                                 <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                                     <td class="text-center">{{ bom.productNameTh }}</td>
                                     <td class="text-right">{{ item.qty }}</div>
                                     </td>
@@ -417,7 +417,7 @@ select.form-control{
                                   <label ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่ต้องการ :</label>
+                                  <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">Request Date :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ddlDate.reqDate}}</label>
 
                                 </div>
@@ -498,7 +498,7 @@ select.form-control{
                                 <tbody ng-repeat="item in carts track by $index">
                                 <tr>
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
                                     <td class="text-right">{{ item.qty | number }}
                                     </td>
@@ -509,7 +509,7 @@ select.form-control{
                                 </tr>
                                 <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
                                     <td class="text-center">{{$index+1}}</td>
-                                    <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                                    <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                                     <td class="text-center">{{ bom.productNameTh }}</td>
                                     <td class="text-right">{{ item.qty }}</td>
                                     <td>{{item.unitNameTh}}</td>

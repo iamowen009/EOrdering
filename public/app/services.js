@@ -174,6 +174,18 @@ angular.module('app')
         partImgProduct : function(){
             return window.localStorage.getItem('partImgProduct');
         },
+        partImgProductList : function(){
+            return window.localStorage.getItem('partImgProduct') + '/ProductList';
+        },
+        partImgProductDetail : function(){
+            return window.localStorage.getItem('partImgProduct') + '/ProductDetail';
+        },
+        partImgProductCard : function(){
+            return window.localStorage.getItem('partImgProduct') + '/ProductCard';
+        },
+        partImgProductOrder : function(){
+            return window.localStorage.getItem('partImgProduct') + '/OrderDetail';
+        },
         partImgPromotion : function(){
             return window.localStorage.getItem('partImgPromotion');
         },

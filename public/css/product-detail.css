@@ -19,6 +19,17 @@ select.form-control{
     -webkit-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
 }
+.cui-ecommerce--catalog--item--img-thumb a img{
+	height: 180px !important;
+	max-width: 100%;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+.cui-ecommerce--catalog--item--img-thumb a:hover img {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
 
 .colorpicker-element .input-group-addon i {
     display: inline-block;
@@ -41,9 +52,36 @@ select.form-control{
 	height:20px;
 }
 .cui-ecommerce--catalog--item--img a img {
-	min-height: 100px;
+	max-height: 100px;
 }
 button.dropdown-toggle.ng-binding.btn.btn-default {
     width: 100%;
     text-align: left;
+}
+a.link-promotion,
+a.link-promotion:hover{
+	color:#f00;
+	text-decoration: underline;
+	font-size: 16px;
+	margin-left:40px;
+}
+
+button.close{
+	position:absolute;
+	right: 24px;
+}
+
+
+.modal-lg {
+    max-width: 1000px!important;
+    margin: 0 auto;
+}
+
+.modal .modal-dialog-promotion {
+    position: relative;
+    width: auto;
+    margin: 10px;
+    width: 1000px;
+		margin: 30px auto;
+		height: 350px;
 }

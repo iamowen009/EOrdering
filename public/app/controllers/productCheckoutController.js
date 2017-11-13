@@ -51,6 +51,8 @@ app.controller('ProductCheckoutController',
        $scope.loadingcart = [];
        //$scope.pay = {'name':'CASH','name':'CREDIT'};
        $scope.partImgProduct = Config.partImgProduct();
+       $scope.partImgProductOrder = Config.partImgProductOrder();
+       $scope.partImgProductList = Config.partImgProductList();
        $scope.shipaddress = '-';
        console.log('$scope.partImgProduct' + $scope.partImgProduct );
        function fetchCart(customerId) {

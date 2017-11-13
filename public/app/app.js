@@ -65,7 +65,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
               console.log('ckecked is ' + $('input[name="optradio"]:checked').length);
               if( newIndex > currentIndex && currentIndex == 1 ){
                 if($('input[name="optradio"]:checked').length == 0){
-                      swal('Error!!','กรุณาเลือก รูปแบบการชำระเงิน');
+                      swal('กรุณาเลือก รูปแบบการชำระเงิน');
                       return false;
                 }
               }
