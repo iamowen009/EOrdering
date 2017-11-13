@@ -1,4 +1,5 @@
-#nestable1 a{color:#00BFFF !important;}
+/* #nestable1 a{color:#00BFFF !important;} */
+#nestable1 a{color:#5500ff !important;}
 .modal-lg {
     max-width: 1000px!important;
     margin: 0 auto;

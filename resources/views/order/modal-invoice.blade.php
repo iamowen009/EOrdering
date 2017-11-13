@@ -10,6 +10,78 @@
       </div>
       <div class="modal-body">
         <div class="row inv-header">
+
+          <div class="row col-sm-12">
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>ร้านค้า :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.customerCode }}  @{{ inv.customerName }}</div>
+            </div>
+
+            <div class="col-sm-4">
+            <div class="col-sm-6"><p><strong>วันที่ต้องการ :</strong></p></div>
+            <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.requestDate |  date:'dd/MM/yyyy' }}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+            <div class="col-sm-6"><p><strong>เลขที่ PO :</strong></p></div>
+            <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.customerPO }}</p></div>
+            </div>
+          </div>
+
+
+
+          <div class="row col-sm-12">
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>เลขที่ใบสั่งซื้อ :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.documentNumber }}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>วันทีสั่งซื่้อ :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.documentDate | date:'dd/MM/yyyy'  }}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+            <div class="col-sm-6"><p><strong>การชำระเงิน :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p></div>
+            </div>
+          </div>
+
+          <div class="row col-sm-12">
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>ที่อยู่ :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{inv.districtCode}} <br> @{{ inv.address }} &nbsp;@{{inv.street}}  &nbsp;@{{inv.subDistrictName}} &nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>อีเมล์ :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.customerEmail }}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>เบอร์โทรศัพท์ :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.customerTelNo }}</p></div>
+            </div>
+          </div>
+
+          <div class="row col-sm-12">
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>สถานที่ส่ง :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.shipName  }}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>ที่อยู่สถานที่ส่ง :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p></div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="col-sm-6"><p><strong>บริษัทขนส่ง :</strong></p></div>
+              <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.transportZoneDesc }}</p></div>
+            </div>
+          </div>
+
+<!-- 
           <div class="col-sm-8">
               <div class="row">
               <div class="col-sm-3"><p><strong>ร้านค้า :</strong></p></div>
@@ -45,8 +117,8 @@
               <div class="col-sm-3"><p><strong>เบอร์โทรศัพท์ :</strong></p></div>
               <div class="col-sm-9 nonpaddingleft"><p>@{{ inv.customerTelNo }}</p></div>
               </div>
-          </div>
-          <div class="col-sm-4">
+          </div> -->
+          <!-- <div class="col-sm-4">
               <div class="row">
               <div class="col-sm-6"><p><strong>เลขที่ PO :</strong></p></div>
               <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.customerPO }}</p></div>
@@ -71,7 +143,9 @@
               <div class="col-sm-6"><p><strong>บริษัทขนส่ง :</strong></p></div>
               <div class="col-sm-6 nonpaddingleft"><p>@{{ inv.transportZoneDesc }}</p></div>
               </div>
-          </div>
+          </div> -->
+
+
         </div>
         <div>
           <p>
@@ -87,7 +161,7 @@
                           <th class="text-center">หน่วย</th>
                           <th class="text-center">ราคาหน่วย</th>
                           <th class="text-center">ราคารวม</th>
-                          <th class="text-center  ">ชื่อโปรโมชั่น</th>
+                          <th class="text-center" style="display:none">ชื่อโปรโมชั่น</th>
                       </tr>
                   </thead>
 
@@ -104,7 +178,7 @@
                       <td class="text-center">@{{item.unitNameTh}}</td>
                       <td class="text-right">@{{ item.amount | number:2}}</td>
                       <td class="text-right">@{{ +item.amount*+item.qty | number:2 }}</td>
-                      <td class="text-center">@{{item.promotionName}}</td>
+                      <td class="text-center" style="display:none">@{{item.promotionName}}</td>
                   </tr>
                   </tbody>
               </table>

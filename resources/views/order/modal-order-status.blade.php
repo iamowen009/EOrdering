@@ -25,7 +25,7 @@
       <div class="modal-header info">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
     	 	<div class="col-sm-12 text-center">
-        	<h4 class="modal-title">รายละเอียดสถานะการสั่งซื้อ</h4>
+        	<h4 class="modal-title">รายละเอียดการสั่งซื้อ</h4>
         </div>
       </div>
       <div class="modal-body">
@@ -54,9 +54,7 @@
           </div>
         </div>
         <div>
-          <p>
-            <strong>รายละเอียดสินค้า</strong>
-          </p>
+          
           <div class="invoice-block row">
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">
@@ -90,10 +88,10 @@
                   </tr>
                   </tbody>
               </table>
-
           </div>
+          
+          <p align="right"><strong>@{{inv.sumAmount | number:2}}&nbsp;</strong></p>
           </br>
-
 
 
           <!-- <div class="invoice-block row">
@@ -113,7 +111,8 @@
 
                   <tbody>
                   <tr ng-repeat="item in discount">
-                      <td class="text-center">@{{item.type}}</td>
+                      <!-- <td class="text-center">@{{item.type}}</td> -->
+                      <td class="text-center" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
                       <td class="text-left">@{{item.description}}</td>
                       <td class="text-right">@{{item.kwert | number:2}}</td>
                   </tr>

@@ -17,8 +17,8 @@
         													<th class="text-center" style="width:120px;">วันที่-เวลา</th>
         													<th class="text-center" style="width:120px;" >ผู้ดำเนินการ</th>
         													<th class="text-center" style="width:100px;">เลขที่ใบสั่งซื้อ</th>
-        													<th class="text-center" style="width:100px;">เลขที่เอกสารอ้างอิง<br />หลังหักส่วนลด</th>
-        													<th class="text-center" style="width:120px;">จำนวนเงินสุทธิ <br/>(ไม่รวม VAT)</th>
+        													<th class="text-center" style="width:100px;">เลขที่เอกสาร<br />(หลังหักส่วนลด)</th>
+        													<th class="text-center" style="width:120px;">จำนวนเงินสุทธิ* <br/>(ไม่รวม VAT)</th>
         													<th style="width:100px;" class="text-center">สถานะสั่งซื้อ</th>
         													<th style="width:200px;" class="text-center">Order / <br/>Bill Tracking</th>
         													</tr>
@@ -44,9 +44,9 @@
                                       <!-- <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td> -->
                                       
         															<td class="text-center">
-                                        <a href="javascript:void(0);" class="text-success" ng-click="OrderHistoryModal(list.salesOrderNumber)"><i class="fa fa-newspaper-o" style="font-size:24px;"></i></a>
+                                        <a href="javascript:void(0);" class="text-success" ng-click="OrderHistoryModal(list.salesOrderNumber)" data-toggle="tooltip" title="Order"><i class="fa fa-newspaper-o" style="font-size:24px;"></i></a>
 
-                                        <a href="javascript:void(0);"  ng-click="OrderBillHistory(list.salesOrderNumber)" class="text-success" data-toggle="collapse" data-target="#collapse-@{{list.orderId}}" aria-expanded="false"><i class="fa fa-newspaper-o" style="color:orange;font-size:24px;"></i></a>
+                                        <a href="javascript:void(0);"  ng-click="OrderBillHistory(list.salesOrderNumber)" class="text-success" data-toggle="collapse" title="Bill Tracking" data-target="#collapse-@{{list.orderId}}" aria-expanded="false"><i class="fa fa-newspaper-o" style="color:orange;font-size:24px;"></i></a>
                                         <!-- <div class="collapse" id="collapseExample"> -->
                                         <ul id="collapse-@{{list.orderId}}" style="display:none" >
                                           <li >
