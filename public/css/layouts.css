@@ -192,3 +192,7 @@
     padding-top:132px;
   }
 }
+
+.nonpaddingleft{
+  padding-left: 0px;
+}
