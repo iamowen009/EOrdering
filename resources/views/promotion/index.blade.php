@@ -76,39 +76,42 @@
 				<div class="panel-body">
 					<br>
 					<form>
-						<div class="form-group col-md-12">
-							<div class="form-group col-md-6">
-								<div class="form-group col-md-12">
-									<div class="col-md-4">
-										<label>รหัสโปรโมชั่น : &nbsp;</label>
+						<div class="form-group col-md-12" style="line-height:5px;">
+							<div class="form-group col-md-1"></div>
+							<div class="form-group col-md-10">
+								<div class="form-group col-md-6">
+									<div class="form-group col-md-12">
+										<div class="col-md-4">
+											<label>รหัสโปรโมชั่น : &nbsp;</label>
+										</div>
+										<div class="col-md-8">
+											{{promotionHD[0].promotionCode}}
+										</div>
 									</div>
-									<div class="col-md-8">
-										{{promotionHD[0].promotionCode}}
+									<div class="form-group col-md-12">
+										<div class="col-md-4">
+											<label>ชื่อโปรโมชั่น : &nbsp;</label>
+										</div>
+										<div class="col-md-8">
+											{{promotionHD[0].promotionName}}
+										</div>
+									</div>
+									<div class="form-group col-md-12">
+										<div class="col-md-4">
+											<label>วันที่โปรโมชั่น : &nbsp;</label>
+										</div>
+										<div class="col-md-8">
+											{{promotionHD[0].validFrom | date:'dd/MM/yyyy' }} - {{promotionHD[0].validTo | date:'dd/MM/yyyy' }}
+										</div>
 									</div>
 								</div>
-								<div class="form-group col-md-12">
-									<div class="col-md-4">
-										<label>ชื่อโปรโมชั่น : &nbsp;</label>
+								<div class="form-group col-md-6">
+									<div class="col-md-5">
+										<label>รายละเอียดโปรโมชั่น : &nbsp;</label>
 									</div>
-									<div class="col-md-8">
-										{{promotionHD[0].promotionName}}
+									<div class="col-md-7">
+										<span ng-bind-html="promotionHD[0].promotionDesc"></span>
 									</div>
-								</div>
-								<div class="form-group col-md-12">
-									<div class="col-md-4">
-										<label>วันที่โปรโมชั่น : &nbsp;</label>
-									</div>
-									<div class="col-md-8">
-										{{promotionHD[0].validFrom | date:'dd/MM/yyyy' }} - {{promotionHD[0].validTo | date:'dd/MM/yyyy' }}
-									</div>
-								</div>
-							</div>
-							<div class="form-group col-md-6">
-								<div class="col-md-4">
-									<label>รายละเอียดโปรโมชั่น : &nbsp;</label>
-								</div>
-								<div class="col-md-8">
-									<span ng-bind-html="promotionHD[0].promotionDesc"></span>
 								</div>
 							</div>
 						</div>
@@ -134,7 +137,9 @@
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-1">
+							</div>
+							<div class="form-group col-md-10">
 								<div class="panel panel-info">
 									<div class="panel-heading">เลือกสินค้า</div>
 									<div class="menu-body">
@@ -147,10 +152,10 @@
 														<th>Type</th>
 														<th>Function</th>-->
 														<th style="text-align : center;">สินค้า</th>
-														<th style="text-align : center;">ขนาด</th>
-														<th style="width:22%;text-align : center;">สี</th>
-														<th style="width:27%;text-align : center;">จำนวน</th>
-														<th ng-hide="promotionHD[0].isPromotionSet"></th>
+														<th style="width:15%;text-align : center;">ขนาด</th>
+														<th style="width:18%;text-align : center;">สี</th>
+														<th style="width:18%;text-align : center;">จำนวน</th>
+														<th style="width:5%;text-align : center;" ng-hide="promotionHD[0].isPromotionSet"></th>
 													</tr>
 												</thead>
 												<tbody>
@@ -166,11 +171,13 @@
 																	    aria-expanded="true">
 																		<!--<span class="frame-color" ng-show="p.btfCode!=''" style="background-image: url({{p.partImgProduct}}/{{p.btfCode}}.jpg);"></span>-->
 																		<img class="frame-color" ng-show="p.btfCode!=''" src="{{p.partImgProduct}}/{{p.btfCode}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg">
-																		<img class="frame-color" ng-show="p.btfCode==''" src="{{p.partImgProduct}}/Noimage.jpg">{{ p.btfDesc}}
+																		<img class="frame-color" ng-show="p.btfCode==''" src="{{p.partImgProduct}}/Noimage.jpg">
+																		<p style="word-wrap: break-word; width: 4em;">{{ p.btfDesc}}</p>
 																	</button>
 																	<ul class="dropdown-menu" style="width:500px;">
 																		<li ng-repeat="s in btfList[p.listNo]">
-																			<a ng-click="findSize(p.promotionDtId,s.btfCode,p.listNo,p.format)" ng-model="p.btfCode" value="{{ s.btfCode }}" style="height:60px;">
+																			<a ng-click="findSize(p.promotionDtId,s.btfCode,p.listNo,p.format,s.btfDesc)" ng-model="p.btfCode" value="{{ s.btfCode }}"
+																			    style="height:60px;">
 																				<img ng-show="s.btfCode!=''" class="frame-color" src="{{p.partImgProduct}}/{{s.btfCode}}.jpg" style="width:60px;" err-SRC="{{p.partImgProduct}}/Noimage.jpg">
 																				<img ng-show="s.btfCode==''" class="frame-color" src="{{p.partImgProduct}}/Noimage.jpg" style="width:60px;">{{ s.btfDesc}}</a>
 																		</li>
@@ -229,7 +236,13 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-1">
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="form-group col-md-1">
+							</div>
+							<div class="form-group col-md-10">
 								<div class="panel panel-info">
 									<div class="panel-heading" style="background-color: #b2e686;">รายการสินค้า</div>
 									<div class="menu-body">
@@ -253,10 +266,10 @@
 															<img class="img" src="{{p.partImgProduct}}/{{p.btf}}.jpg" err-SRC="{{p.partImgProduct}}/Noimage.jpg" width="50px"> {{p.productNoSelected}}
 														</td>
 														<td>{{p.productNameSelected}}</td>
-														<td>{{p.salesqty_sel | number}}</td>
-														<td>{{p.unitSelected }}</td>
-														<td>{{p.priceSelected | number}}</td>
-														<td>{{p.totalPrice | number }}</td>
+														<td style="text-align : center;">{{p.salesqty_sel | number}}</td>
+														<td style="text-align : center;">{{p.unitSelected }}</td>
+														<td style="text-align : center;">{{p.priceSelected | number}}</td>
+														<td style="text-align : center;">{{p.totalPrice | number }}</td>
 														<td ng-hide="promotionHD[0].isPromotionSet">
 															<i class="fa fa-trash fa-2x" ng-click="deletedProduct(p.listNo)"></i>
 														</td>
@@ -269,23 +282,28 @@
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="form-group col-md-6">
-
-							</div>
-							<div class="form-group col-md-2">
-								จำนวนรวมทั้งหมด
-							</div>
 							<div class="form-group col-md-1">
-								<label class="form-control text-center">{{totalQty() | number }}</label>
 							</div>
-							<div class="form-group col-md-2">
-								ราคารวมทั้งหมด
-							</div>
-							<div class="form-group col-md-1">
-								<label class="form-control text-center">{{totalPrice() | number }}</label>
+							<div class="form-group col-md-10">
+								<div class="form-group col-md-4">
+								</div>
+								<div class="form-group col-md-2">
+									จำนวนรวมทั้งหมด
+								</div>
+								<div class="form-group col-md-2">
+									<label class="form-control text-center">{{totalQty() | number }}</label>
+								</div>
+								<div class="form-group col-md-2">
+									ราคารวมทั้งหมด
+								</div>
+								<div class="form-group col-md-2">
+									<label class="form-control text-center">{{totalPrice() | number }}</label>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12" ng-hide="promotionHD[0].promotionType == 'Discount'">
+							<div class="form-group col-md-1">
+							</div>
 							<div class="form-group col-md-2">
 								<button type="button" class="btn btn-icon btn-info btn-sm" ng-click="callCalFreeGoods()">
 									คำนวนของแถม
@@ -293,7 +311,9 @@
 							</div>
 						</div>
 						<div class="col-md-12 col-sm-12 col-xs-12" ng-hide="promotionHD[0].promotionType == 'Discount'">
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-1">
+							</div>
+							<div class="form-group col-md-10">
 								<div class="panel panel-info">
 									<div class="panel-heading">เลือกของแถม</div>
 									<div class="menu-body">
@@ -305,12 +325,12 @@
 														<th style="text-align : center;">สินค้า</th>
 														<th style="text-align : center;">ขนาด</th>
 														<th style="text-align : center;">สี</th>
-														<th style="width:15%;text-align : center;">จำนวน</th>
+														<th style="width:25%;text-align : center;" colspan="2">จำนวน</th>
 														<th></th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr ng-repeat="f in freeGoods">
+													<tr ng-repeat="f in freeGoods" ng-show="f.selected">
 														<td>
 															<img class="img" src="{{f.partImgProduct}}/{{f.btfWeb}}.jpg" err-SRC="{{f.partImgProduct}}/Noimage.jpg" width="50px">
 															<label ng-hide="f.btfFreegoodsEdit">{{ f.btfDesc }}</label>
@@ -344,11 +364,14 @@
 															</div>
 														</td>
 														<td>
+															<input class="form-control text-center" type="text" ng-model="f.freeGoodsQty_Edit"  ng-change="maxminFG(f.freeGoodsId,f.listNo,f.freeGoodsQty_Rt)" ng-readonly="f.freeGoodsQty_Rt == 0">
+														</td>
+														<td>
 															<input class="form-control text-center" type="text" ng-model="f.freeGoodsQty_Rt" ng-readonly="true">
 														</td>
 														<td>
-															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProductFreegoods(f.freeGoodsId,f.listNo,f.format)" ng-show="isCallFreegoods"></i>
-															<i class="fa fa-arrow-right fa-2x" style="color:#bab2b2;" ng-show="!isCallFreegoods"></i>
+															<i class="fa fa-arrow-right fa-2x" ng-click="selectedProductFreegoods(f.freeGoodsId,f.listNo,f.format)" ng-show="f.isAllowFG"></i>
+															<i class="fa fa-arrow-right fa-2x" style="color:#bab2b2;" ng-show="!f.isAllowFG"></i>
 														</td>
 													</tr>
 												</tbody>
@@ -358,7 +381,10 @@
 								</div>
 								<label style="color:red;">หมายเหตุ : เลือกของแถมได้ {{promotionHD[0].numFreeGoods}} รายการ</label>
 							</div>
-							<div class="form-group col-md-6">
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12" ng-hide="promotionHD[0].promotionType == 'Discount'">
+							<div class="form-group col-md-1"></div>
+							<div class="form-group col-md-10">
 								<div class="panel panel-info">
 									<div class="panel-heading" style="background-color: #b2e686;">รายการแถม</div>
 									<div class="menu-body">
@@ -382,11 +408,11 @@
 														<td>
 															<span ng-bind-html="f.productNameSelected"></span>
 														</td>
-														<td>{{f.freeQty}}</td>
-														<td>{{f.unitSelected}}</td>
+														<td style="text-align : center;">{{f.freeQty}}</td>
+														<td style="text-align : center;">{{f.unitSelected}}</td>
 														<!--<td>{{f.priceSelected}}</td>
 														<td>{{f.totalPrice}}</td>-->
-														<td>
+														<td style="text-align : center;">
 															<i class="fa fa-trash fa-2x" ng-click="deletedFreegoods(f.freeGoodsId,f.listNo)"></i>
 														</td>
 													</tr>

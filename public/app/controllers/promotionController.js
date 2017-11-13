@@ -111,12 +111,17 @@ app.controller('PromotionController',
                         $scope.freeGoods[key].colorFreegoodsEdit = false;
                         $scope.freeGoods[key].btfFreegoodsEdit = false;
                         $scope.freeGoods[key].colorCode = "";
+                        $scope.freeGoods[key].selected = true;
+                        $scope.freeGoods[key].freeGoodsQty_Edit = 0;
+                        $scope.freeGoods[key].freeGoodsQty_Rt = 0;
+                        $scope.freeGoods[key].isAllowFG = false;
 
                         // $scope.freeGoods[key].freeQty = $scope.freeGoods[key].freeGoodsQty;
 
                         $scope.freeGoods_Sel[key].listNo = index + 1;
                         $scope.freeGoods_Sel[key].freeQty = 0;
                         $scope.freeGoods_Sel[key].partImgProduct = Config.partImgProduct();
+
                         index++;
 
                         var log = [];
@@ -126,8 +131,6 @@ app.controller('PromotionController',
                             }
                         });
                     }
-
-
 
                     //Sales Product
                     setPromotionProduct($scope.promotionDT);
@@ -229,8 +232,6 @@ app.controller('PromotionController',
                                 $scope.freeGoods[value1.listNo - 1].btfDesc = value1.skuDesc;
                             }
                         }, log);
-
-
 
                         $scope.freeGoods[value1.listNo - 1].sizeFreegoodsEdit = false;
                         $scope.freeGoods[value1.listNo - 1].colorFreegoodsEdit = false;
@@ -730,65 +731,179 @@ app.controller('PromotionController',
 
             if (
                 chkValid
-                // $scope.freeGoods[listNo - 1].brandCode != "" &&
-                // $scope.freeGoods[listNo - 1].typeCode != "" &&
-                // $scope.freeGoods[listNo - 1].functionCode != "" &&
-                // $scope.freeGoods[listNo - 1].sizeCode != "" &&
-                // $scope.freeGoods[listNo - 1].colorCode != "" &&
-                // $scope.freeGoods[listNo - 1].freeGoodsQty_Rt > 0
             ) {
                 //Count freegoods
                 $scope.countFreegoods++;
 
-                angular.forEach($scope.freeGoods, function (value1, key1) {
-                    //console.log(value1.listNo);
-                    if (value1.freeGoodsId == freeGoodsId) {
-                        angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
-                            if (value2.listNo == value1.listNo) {
-                                value2.freeQty = value1.freeGoodsQty_Rt;
-                                value2.selected = true;
-                            }
-                        }, log);
+                var isStop = false;
+                var isFoundSameSKU = false;
+                var lineNoSel = listNo
+                angular.forEach($scope.freeGoods_Sel, function (value, key) {
+                    if (!isStop) {
+                        if ($scope.freeGoods[listNo - 1].brandCode == value.brandCode &&
+                            $scope.freeGoods[listNo - 1].typeCode == value.typeCode &&
+                            $scope.freeGoods[listNo - 1].functionCode == value.functionCode &&
+                            $scope.freeGoods[listNo - 1].sizeCode == value.sizeCode &&
+                            $scope.freeGoods[listNo - 1].colorCode == value.colorCode
+                        ) {
+                            lineNoSel = value.listNo;
+                            isStop = true;
+                            isFoundSameSKU = true;
+                            console.log("Found same sku no = " + lineNoSel);
+                        }
+                    }
+                });
 
-                        angular.forEach($scope.productInFreeGoods, function (value3, key3) {
-                            if ((value3.freeGoodsId == freeGoodsId &&
-                                    value3.sizeCode == $scope.freeGoods[listNo - 1].sizeCode &&
-                                    value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) ||
-                                (exceptSKU)
-                            ) {
-                                // console.log($scope.freeGoods_Sel);
-                                if (value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) {
-                                    $scope.freeGoods_Sel[listNo - 1].productNoSelected = value3.productCode;
-                                    $scope.freeGoods_Sel[listNo - 1].productNameSelected = value3.productNameTh + "<font color='red'>(ของแถม)</font>";
-                                    $scope.freeGoods_Sel[listNo - 1].unitSelected = value3.unitNameTh;
-                                    $scope.freeGoods_Sel[listNo - 1].priceSelected = value3.productPrice;
-                                    $scope.freeGoods_Sel[listNo - 1].totalPrice = $scope.freeGoods_Sel[listNo - 1].freeQty * value3.productPrice;
-                                    $scope.freeGoods_Sel[listNo - 1].btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
-                                    $scope.freeGoods_Sel[listNo - 1].productId = value3.productId;
-                                    $scope.freeGoods_Sel[listNo - 1].btfWeb = value3.btfWeb;
+                if (!$scope.freeGoods_Sel[listNo - 1].selected || isFoundSameSKU) {
 
-                                } else {
-                                    if (value3.productCode == $scope.freeGoods_Sel[listNo - 1].productNo) {
-                                        $scope.freeGoods_Sel[listNo - 1].productNoSelected = value3.productCode;
-                                        $scope.freeGoods_Sel[listNo - 1].productNameSelected = value3.productNameTh;
-                                        $scope.freeGoods_Sel[listNo - 1].unitSelected = value3.unitNameTh;
-                                        $scope.freeGoods_Sel[listNo - 1].priceSelected = value3.productPrice;
-                                        $scope.freeGoods_Sel[listNo - 1].totalPrice = $scope.freeGoods_Sel[listNo - 1].freeQty * value3.productPrice;
-                                        $scope.freeGoods_Sel[listNo - 1].btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
-                                        $scope.freeGoods_Sel[listNo - 1].productId = value3.productId;
-                                        $scope.freeGoods_Sel[listNo - 1].btfWeb = value3.btfWeb;
+                    angular.forEach($scope.freeGoods, function (value1, key1) {
+                        //console.log(value1.listNo);
+                        if (value1.freeGoodsId == freeGoodsId) {
+                            angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
+                                if (value2.listNo == lineNoSel) {
+                                    if (value1.freeGoodsQty_Edit > 0) {
+                                        value2.freeQty = value1.freeGoodsQty_Edit;
+                                    } else {
+                                        value2.freeQty = value1.freeGoodsQty_Rt;
                                     }
+                                    value2.selected = true;
+                                }
+                            }, log);
+
+                            angular.forEach($scope.productInFreeGoods, function (value3, key3) {
+                                if ((value3.freeGoodsId == freeGoodsId &&
+                                        value3.sizeCode == $scope.freeGoods[listNo - 1].sizeCode &&
+                                        value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) ||
+                                    (exceptSKU)
+                                ) {
+                                    // console.log($scope.freeGoods_Sel);
+                                    if (value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) {
+                                        $scope.freeGoods_Sel[lineNoSel - 1].productNoSelected = value3.productCode;
+                                        $scope.freeGoods_Sel[lineNoSel - 1].productNameSelected = value3.productNameTh + "<font color='red'>(ของแถม)</font>";
+                                        $scope.freeGoods_Sel[lineNoSel - 1].unitSelected = value3.unitNameTh;
+                                        $scope.freeGoods_Sel[lineNoSel - 1].priceSelected = value3.productPrice;
+                                        $scope.freeGoods_Sel[lineNoSel - 1].totalPrice = $scope.freeGoods_Sel[lineNoSel - 1].freeQty * value3.productPrice;
+                                        $scope.freeGoods_Sel[lineNoSel - 1].btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
+                                        $scope.freeGoods_Sel[lineNoSel - 1].productId = value3.productId;
+                                        $scope.freeGoods_Sel[lineNoSel - 1].btfWeb = value3.btfWeb;
+
+                                    } else {
+                                        if (value3.productCode == $scope.freeGoods_Sel[lineNoSel - 1].productNo) {
+                                            $scope.freeGoods_Sel[lineNoSel - 1].productNoSelected = value3.productCode;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].productNameSelected = value3.productNameTh;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].unitSelected = value3.unitNameTh;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].priceSelected = value3.productPrice;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].totalPrice = $scope.freeGoods_Sel[lineNoSel - 1].freeQty * value3.productPrice;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].productId = value3.productId;
+                                            $scope.freeGoods_Sel[lineNoSel - 1].btfWeb = value3.btfWeb;
+                                        }
+                                    }
+
+                                    $scope.freeGoods_Sel[lineNoSel - 1].brandCode = $scope.freeGoods[listNo - 1].brandCode;
+                                    $scope.freeGoods_Sel[lineNoSel - 1].typeCode = $scope.freeGoods[listNo - 1].typeCode;
+                                    $scope.freeGoods_Sel[lineNoSel - 1].functionCode = $scope.freeGoods[listNo - 1].functionCode;
+                                    $scope.freeGoods_Sel[lineNoSel - 1].sizeCode = $scope.freeGoods[listNo - 1].sizeCode;
+                                    $scope.freeGoods_Sel[lineNoSel - 1].colorCode = $scope.freeGoods[listNo - 1].colorCode;
+                                }
+                            }, log);
+                        }
+                    }, log);
+                } else {
+
+                    $scope.tmpFGSel = {};
+
+                    angular.copy($scope.freeGoods_Sel[listNo - 1], $scope.tmpFGSel)
+
+                    angular.forEach($scope.freeGoods, function (value1, key1) {
+                        if (value1.freeGoodsId == freeGoodsId) {
+                            if (value1.freeGoodsQty_Edit > 0) {
+                                $scope.tmpFGSel.freeQty = value1.freeGoodsQty_Edit;
+                            } else {
+                                $scope.tmpFGSel.freeQty = value1.freeGoodsQty_Rt;
+                            }
+                        }
+                    });
+
+                    angular.forEach($scope.productInFreeGoods, function (value3, key3) {
+                        if ((value3.freeGoodsId == freeGoodsId &&
+                                value3.sizeCode == $scope.freeGoods[listNo - 1].sizeCode &&
+                                value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) ||
+                            (exceptSKU)
+                        ) {
+                            // console.log($scope.freeGoods_Sel);
+                            if (value3.colorCode == $scope.freeGoods[listNo - 1].colorCode) {
+                                $scope.tmpFGSel.productNoSelected = value3.productCode;
+                                $scope.tmpFGSel.productNameSelected = value3.productNameTh + "<font color='red'>(ของแถม)</font>";
+                                $scope.tmpFGSel.unitSelected = value3.unitNameTh;
+                                $scope.tmpFGSel.priceSelected = value3.productPrice;
+                                $scope.tmpFGSel.totalPrice = $scope.tmpFGSel.freeQty * value3.productPrice;
+                                $scope.tmpFGSel.btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
+                                $scope.tmpFGSel.productId = value3.productId;
+                                $scope.tmpFGSel.btfWeb = value3.btfWeb;
+
+                            } else {
+                                if (value3.productCode == $scope.tmpFGSel.productNo) {
+                                    $scope.tmpFGSel.productNoSelected = value3.productCode;
+                                    $scope.tmpFGSel.productNameSelected = value3.productNameTh;
+                                    $scope.tmpFGSel.unitSelected = value3.unitNameTh;
+                                    $scope.tmpFGSel.priceSelected = value3.productPrice;
+                                    $scope.tmpFGSel.totalPrice = $scope.tmpFGSel.freeQty * value3.productPrice;
+                                    $scope.tmpFGSel.btf = $scope.freeGoods[listNo - 1].brandCode + $scope.freeGoods[listNo - 1].typeCode + $scope.freeGoods[listNo - 1].functionCode;
+                                    $scope.tmpFGSel.productId = value3.productId;
+                                    $scope.tmpFGSel.btfWeb = value3.btfWeb;
                                 }
                             }
-                        }, log);
+
+                            $scope.tmpFGSel.brandCode = $scope.freeGoods[listNo - 1].brandCode;
+                            $scope.tmpFGSel.typeCode = $scope.freeGoods[listNo - 1].typeCode;
+                            $scope.tmpFGSel.functionCode = $scope.freeGoods[listNo - 1].functionCode;
+                            $scope.tmpFGSel.sizeCode = $scope.freeGoods[listNo - 1].sizeCode;
+                            $scope.tmpFGSel.colorCode = $scope.freeGoods[listNo - 1].colorCode;
+                        }
+                    }, log);
+
+                    $scope.tmpFGSel.listNo = $scope.freeGoods_Sel.length + 1;
+                    $scope.freeGoods_Sel[$scope.freeGoods_Sel.length] = $scope.tmpFGSel;
+                }
+            }
+
+            var $totalFGBySKU = 0;
+            var $totalFG = 0;
+            // console.log($scope.freeGoods);
+            // console.log($scope.freeGoods_Sel);
+            angular.forEach($scope.freeGoods, function (value1, key1) {
+                if (value1.selected) {
+                    $totalFGBySKU = 0;
+                    angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
+                        if (value1.freeGoodId == value2.freeGoodId) {
+                            if (value2.selected) {
+                                $totalFGBySKU = $totalFGBySKU + parseInt(value2.freeQty, 10);
+                            }
+                        }
+                    }, log);
+                    // console.log("$totalFGBySKU = " + $totalFGBySKU);
+                    if ($totalFGBySKU >= value1.freeGoodsQty_Rt) {
+                        // console.log("over = " + value1.freeGoodId);
+                        value1.isAllowFG = false;
+                        $totalFG = $totalFG + 1;
                     }
+                }
+            }, log);
+
+            if ($totalFG >= $scope.promotionHD[0].numFreeGoods) {
+                angular.forEach($scope.freeGoods, function (value1, key1) {
+                    value1.isAllowFG = false;
                 }, log);
-
             }
 
-            if ($scope.countFreegoods >= $scope.promotionHD[0].numFreeGoods) {
-                $scope.isCallFreegoods = false;
-            }
+            // if ($scope.countFreegoods >= $scope.promotionHD[0].numFreeGoods &&
+            //     $scope.freeGoods[listNo - 1].freeGoodsQty_Edit >= $scope.freeGoods[listNo - 1].freeGoodsQty_Rt
+            // ) {
+            //     $scope.isCallFreegoods = false;
+            // }
+
+            // console.log($scope.freeGoods[listNo - 1].freeGoodsQty_Edit);
         }
 
         $scope.deletedProduct = function (no) {
@@ -824,14 +939,27 @@ app.controller('PromotionController',
 
         $scope.deletedFreegoods = function (freeGoodsId, no) {
             var log = [];
+            // angular.forEach($scope.freeGoods, function (value1, key1) {
+            //     if (value1.listNo == no) {
+            //         angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
+            //             if (value2.listNo == value1.listNo) {
+            //                 value2.selected = false;
+            //                 $scope.isCallFreegoods = false;
+            //             }
+            //         }, log);
+            //     }
+            // }, log);
+
+            angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
+                if (value2.listNo == no) {
+                    value2.selected = false;
+                    // $scope.isCallFreegoods = false;
+                }
+            }, log);
+
             angular.forEach($scope.freeGoods, function (value1, key1) {
-                if (value1.listNo == no) {
-                    angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
-                        if (value2.listNo == value1.listNo) {
-                            value2.selected = false;
-                            $scope.isCallFreegoods = false;
-                        }
-                    }, log);
+                if (value1.freeGoodsId == freeGoodsId) {
+                    value1.isAllowFG = true;
                 }
             }, log);
         }
@@ -905,9 +1033,10 @@ app.controller('PromotionController',
         }
 
         //
-        $scope.findSize = function (promotionDtId, btfCode, no, format) {
+        $scope.findSize = function (promotionDtId, btfCode, no, format, btfDesc) {
 
             $scope.promotionDT[no - 1].btfCode = btfCode;
+            $scope.promotionDT[no - 1].btfDesc = btfDesc;
 
             $scope.promotionDT[no - 1].sizeCode = "";
             $scope.promotionDT[no - 1].colorCode = "";
@@ -1015,10 +1144,46 @@ app.controller('PromotionController',
             }
         }
 
+        $scope.maxminFG = function (freeGoodsId, listNo, max) {
+            var log = [];
+            var $sum = 0;
+
+            angular.forEach($scope.freeGoods_Sel, function (value, key) {
+                if (value.selected) {
+                    if (value.freeGoodsId == freeGoodsId) {
+                        $sum = $sum + parseInt(value.freeQty, 10);
+                    }
+                }
+            }, log);
+
+            angular.forEach($scope.freeGoods, function (value, key) {
+                if (listNo == value.listNo) {
+                    if (value.freeGoodsQty_Edit > max) {
+                        value.freeGoodsQty_Edit = max;
+                    }
+
+                    if (parseInt(value.freeGoodsQty_Edit, 10) + $sum > max &&
+                        $scope.freeGoods_Sel[listNo - 1].brandCode != value.brandCode &&
+                        $scope.freeGoods_Sel[listNo - 1].typeCode != value.typeCode &&
+                        $scope.freeGoods_Sel[listNo - 1].functionCode != value.functionCode &&
+                        $scope.freeGoods_Sel[listNo - 1].sizeCode != value.sizeCode &&
+                        $scope.freeGoods_Sel[listNo - 1].colorCode != value.colorCode
+                    ) {
+                        value.freeGoodsQty_Edit = max - $sum;
+                    }
+
+                    if (value.freeGoodsQty_Edit < 0) {
+                        value.freeGoodsQty_Edit = 0;
+                    }
+                }
+            }, log);
+        }
+
         $scope.callCalFreeGoods = function () {
             var log = [];
             $scope.cartList = [];
             var index = 0;
+            var countFG = 0;
 
             angular.forEach($scope.promotionDT_Sel, function (value2, key2) {
                 if (value2.selected) {
@@ -1053,15 +1218,20 @@ app.controller('PromotionController',
 
                         angular.forEach($scope.freeGoods, function (value1, key1) {
                             angular.forEach(freeGoodsList, function (value2, key2) {
+                                value1.selected = false;
                                 if (value1.freeGoodsId == value2.freeGoodsId) {
                                     value1.freeGoodsQty_Rt = value2.freeGoodsQty;
+                                    value1.selected = true;
+                                    value1.isAllowFG = true;
+                                    countFG = countFG + 1;
                                     // value1.freeQty = value2.freeGoodsQty;
                                     //freeQty ดั้งเดิม
                                 }
                             }, log);
                         }, log);
 
-                        $scope.isCallFreegoods = true;
+                        // $scope.isCallFreegoods = true;
+                        $scope.promotionHD[0].numFreeGoods = countFG;
 
                     } else if (response.data.result == 'WARINIG') {
                         var invalidList = response.data.invalidList;
