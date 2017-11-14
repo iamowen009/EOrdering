@@ -111,7 +111,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         }
                         console.log('appPaymentTerm : ' + appPaymentTerm );
                         //if(appScope.ddlShipTo.length > 0 ){
-                        if(appScope.ddlShipTo.length > 0 && typeof appScope.ddlShipTo !== 'undefined'){
+                        if(typeof appScope.ddlShipTo !== undefined && appScope.ddlShipTo.length > 0){
                             appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
@@ -126,6 +126,8 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             shipName = appScope.customer.shipConditionDesc;
 
                         }
+                        checkedShip = appScope.shipCondition;
+                        console.log('appScope.shipCondition ' + appScope.shipCondition);
 
                         console.log('appScope.ddlShipTo : ', appScope.ddlShipTo );
                         var transportId=0;
@@ -182,6 +184,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         // }
 
                         console.log('reqDate ' + reqDate );
+
                         var order =  {
                             documentDate    : appScope.carts[0].cartDate,
                             userName        : Auth.username(),
@@ -189,15 +192,15 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             customerCode    : appScope.carts[0].customerCode,
                             customerName    : appScope.carts[0].customerName,
                             paymentTerm     : appPaymentTerm != 'CASH' ? appPaymentTerm : 'CASH',
-                            shipCondition   : checkedShip  === true ? '01' : appShipCondition,
+                            shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appShipCondition ),
                             shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? 0 : shipId,
                             shipCode    : (shipCode === undefined || shipCode ==='' || checkedShip === true ) ? '00' : shipCode,
                             shipName    : (shipName === undefined || shipName === '' || checkedShip === true ) ? 'รับสินค้าเอง' : shipName,
                             requestDate : reqDate,
                             customerPO  : customerPO,
-                            transportId : (transportId !== '' && transportId !== 0 )? transportId : 0,
-                            transportZone   : transportZone !== '' ? transportZone : '00',
-                            transportZoneDesc   : transportZoneDesc !== '' ? transportZoneDesc : '00',
+                            transportId : (transportId !== '' && transportId !== 0 && transportId !== undefined )? transportId : 0,
+                            transportZone   : (transportZone !== '' && transportZone !== undefined ) ? transportZone : '00',
+                            transportZoneDesc   : (transportZoneDesc !== '' && transportZoneDesc !== undefined ) ? transportZoneDesc : '00',
 
                         };
                         console.log( 'order : ',order );
