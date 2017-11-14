@@ -5,6 +5,7 @@ app.controller('ProductHistoryController',
        $scope.products = {};
        $scope.loading = true;
        $scope.partImgProduct = Config.partImgProduct();
+       $scope.partImgProductList = Config.partImgProductList();
 
        fetchHistory(Customers.customerId());
 

@@ -35,7 +35,7 @@
                                     <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
                                 </div>
                                 <a href="javascript: void(0);">
-                                    <img class="img-prod" src="{{partImgProduct}}/{{fav.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+                                    <img class="img-prod" src="{{partImgProductList}}/{{fav.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
                                 </a>
                             </div>
                             <div class="text-center">
