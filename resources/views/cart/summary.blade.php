@@ -56,7 +56,7 @@ select.form-control{
                               </div>
                               <div class="form-group col-md-6">
                               <label for="pwd" class="col-md-4 text-right">เลขที่ PO :</label>
-                              <label class="col-md-8 text-left">{{customer.customerPO}}</label>
+                              <label class="col-md-8 text-left">{{order.customerPO}}</label>
                               </div>
 
 
