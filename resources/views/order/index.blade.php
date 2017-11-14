@@ -13,7 +13,8 @@
 	<div class="row ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
-				<div class="panel-heading text-center" style="background-color:#000e85;color:#fff">สถานะคำสั่งซื้อ </div>
+				<!-- background-color:#000e85;color:#fff -->
+				<div class="panel-heading text-center" style="background-color:#BFEBEE">สถานะคำสั่งซื้อ </div>
               <div class="panel-body">
               	<br>
 

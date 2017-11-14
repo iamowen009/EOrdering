@@ -1,12 +1,17 @@
+<style>
+    .table > thead > tr.info > th {
+      background-color:#D2C9E2;
+    }
+</style>
 <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-heading" style="background-color:#FFF8AA">
         <h4 class="panel-title">ปี</h4>
     </div>
     <div class="panel-body order-precess">
           <ul class="bar-year">
             <li class="title-year"  ng-repeat="y in ordersYear">
               <a href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-@{{y}}"><i class="fa fa-plus"></i></a> <strong>@{{y}}</strong>
-              <ul class="bar-month" >
+              <ul class="bar-month">
                 <li id="collapse-@{{y}}" ng-repeat="m in ordersYm | orderBy:'-month' " ng-if="m.year == y">
                   @{{ txtmonth(m.month) }}
                     <ul class="bar-list">
