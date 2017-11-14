@@ -1,10 +1,10 @@
-<div id="OrderHistoryModal" class="modal" role="dialog">
+<div id="OrderHistoryModal" class="modal" role="dialog" tabindex="-1">
 <div class="modal-dialog-invoice modal-lg">
 
     <div class="modal-content inv-content">
       <div class="modal-header info">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-12 text-center">
+    	 	<div class="col-sm-6 text-center">
         	<h4 class="modal-title">Order / Billing Tracking</h4>
         </div>
       </div>

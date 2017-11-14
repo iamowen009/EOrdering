@@ -23,6 +23,11 @@ a.nav-link.tab1:active{
   background: #868e96 !important;
 }
 
+button.close{
+	position:absolute;
+	right: 24px;
+}
+
 a.nav-link.tab2 {
     background: orange;
 }
