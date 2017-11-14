@@ -58,7 +58,7 @@
                       <label class="col-sm-11 text-left">{{item.productCode}}</label>
                       <label class="text-left col-sm-1" ></label>
                       <label class="col-md-11">{{item.productNameTh}}</label>
-                      <div class="col-md-4 text-right"><img src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
+                      <div class="col-md-4 text-right"><img src="{{partImgProductCard}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                       <div class="col-md-8">
                           <div class="col-md-12">
                             ราคา: {{item.price | number:2}}
@@ -94,7 +94,7 @@
                             <label class="col-sm-11 text-left">{{bom.productCode}}</label>
                             <label class="text-left col-sm-1" ></label>
                             <label class="col-md-11">{{bom.productNameTh}}</label>
-                            <div class="col-md-4 text-right"><img src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
+                            <div class="col-md-4 text-right"><img src="{{partImgProductCard}}/{{bom.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                             <div class="col-md-8">
                               <div class="col-md-12">
                                 ราคา: {{bom.price | number:2}}
