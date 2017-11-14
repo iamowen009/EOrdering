@@ -263,7 +263,7 @@
                       <td>
                           @{{item.productCode}}
                       </td>
-                      <td class="text-left"> @{{ item.productNameTh }}</td>
+                      <td class="text-left"> @{{ item.productNameTh }} <p  class="text-danger" ng-style="item.isFreeGoods == '0' &&  {'display': 'none'}">(ของแถม)</p></td>
                       <td class="text-center">@{{ item.qty | number }}</td>
                       <td class="text-center">@{{item.unitNameTh}}</td>
                       <td class="text-right">@{{ item.amount | number:2}}</td>
