@@ -53,30 +53,62 @@ tfoot > tr > td{
   vertical-align: middle;
   color:#000;
 }
-#invoiceModal .modal-title{
+#invoiceModal .modal-title,
+#OrderStatusModal .modal-title,
+#OrderDetailModal .modal-title,
+#OrderHistoryModal .modal-title,
+#TaxModal .modal-title,
+{
   margin:0;
 }
-#invoiceModal .modal-header{
+#invoiceModal .modal-header,
+#OrderStatusModal .modal-header,
+#OrderDetailModal .modal-header,
+#OrderHistoryModal .modal-header,
+#TaxModal .modal-header{
   /*padding:4px 10px;*/
-  background: #c4fffd;
+  /* background: #c4fffd; */
+  background: #BFEBEE;
   color:#000;
 }
-#invoiceModal .inv-header{
-  background: #fbfbbe;
+
+#invoiceModal .inv-header,
+#OrderStatusModal .inv-header,
+#OrderDetailModal .inv-header,
+#OrderHistoryModal .inv-header,
+#TaxModal .inv-header
+{
+  /* background: #fbfbbe; */
+  background: #FFF8AA;
   padding:10px;
   margin-bottom: 10px;
 }
-#invoiceModal .modal-footer{
+#invoiceModal .modal-footer,
+#OrderStatusModal .modal-footer,
+#OrderDetailModal .modal-footer,
+#OrderHistoryModal .modal-footer,
+#TaxModal .modal-footer
+{
   display:block;
   text-align: center;
 }
-#invoiceModal .modal-footer > button{
+#invoiceModal .modal-footer > button,
+#OrderStatusModal .modal-footer > button,
+#OrderDetailModal .modal-footer > button,
+#OrderHistoryModal .modal-footer > button,
+#TaxModal .modal-footer > button
+{
   margin:auto;
 }
+
 #invoiceModal .modal .modal-body,
-#invoiceModal .modal .modal-body{
+#OrderStatusModal .modal .modal-body,
+#OrderDetailModal .modal .modal-body,
+#OrderHistoryModal .modal .modal-body,
+#TaxModal .modal .modal-body{
   padding:10px;
 }
+
 @media print {
   .page-content > .content,
   #invoiceModal ,
@@ -92,24 +124,12 @@ tfoot > tr > td{
 #OrderHistoryModal .modal-title{
   margin:0;
 }
-#OrderHistoryModal .modal-header{
-  /*padding:4px 10px;*/
-  background: #c4fffd;
-  color:#000;
-}
-#OrderHistoryModal .inv-header{
-  background: #fbfbbe;
-  padding:10px;
-  margin-bottom: 10px;
-}
-#OrderHistoryModal .modal-footer{
-  display:block;
-  text-align: center;
-}
-#OrderHistoryModal .modal-footer > button{
-  margin:auto;
-}
-#OrderHistoryModal .modal .modal-body,
-#OrderHistoryModal .modal .modal-body{
-  padding:10px;
+
+#invoiceModal .table > thead > tr > th,
+#OrderStatusModal .table > thead > tr > th,
+#OrderDetailModal .table > thead > tr > th,
+#OrderHistoryModal .table > thead > tr > th,
+#TaxModal .table > thead > tr > th
+{
+  background: #D2C9E2;
 }

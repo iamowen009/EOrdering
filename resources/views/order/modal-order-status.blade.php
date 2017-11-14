@@ -17,6 +17,7 @@
     </div>
   </div>
 </div>
+
 <div id="OrderStatusModal" class="modal" role="dialog">
   <div class="modal-dialog-invoice modal-lg">
 
@@ -64,7 +65,7 @@
                           <th class="text-center">จำนวน</th>
                           <th class="text-center">หน่วย</th>
                           <th class="text-center">ราคา/หน่วย</th>
-                          <th class="text-center">ส่วนลด</th>
+                          <th class="text-center" style="width:5px">ส่วนลด</th>
                           <th class="text-center">ราคาหลังหักส่วนลด</th>
                           <th class="text-center">ราคารวม</th>
                       </tr>
