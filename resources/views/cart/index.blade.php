@@ -177,10 +177,10 @@ select.form-control{
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่สั่งซื้อ :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ cartDate }}</label>
                                 </div>
-                                <div class="form-group col-md-6" ng-if="customer.isReceive=='true'">
+                                <div class="form-group col-md-6" ng-if="customer.isReceive ===true">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">ขนส่งโดย :  </label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <label class="checkbox-inline"><input type="checkbox" ng-click="pickUp(shipCondition)"  ng-model="shipCondition" name="shipCondition" value="รับเอง"> มารับเอง</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-click="pickUp(shipCondition)"  ng-model="shipCondition" name="shipCondition" value="01"> มารับเอง</label>
                                   </div>
 
                                 </div>
@@ -229,10 +229,7 @@ select.form-control{
                                         class="form-control"
                                         ng-model="ddlShipTo"
                                         ng-change="changeShip(ddlShipTo.shipId)"
-                                        ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
-                                        <!--
-                                        <option value=''>Select</option>
-                                        -->
+                                        ng-options="i as i.shipCode +' ' + i.shipName + ' ' + i.shipCondition for i in ships track by i.shipCode">
                                         <option value=''></option>
                                       </select>
 <!-- {{ ddlShipTo.shipCondition }} -->
@@ -262,20 +259,21 @@ select.form-control{
                                   <div class="col-md-8 col-sm-8 col-xs-12">
 
                                     <select
-                                        ng-if="ddlShipTo.shipCondition == '03' || customer.shipCondition == '03'"
+                                        ng-if="( ddlShipTo.shipCondition == '03' || customer.shipCondition == '03' ) && transports.length > 0"
                                         name="trans_id" id="trans_id"
                                         class="form-control"
                                         ng-model="ddlTransport"
+                                        ng-change="changeTransport(ddlTransport)"
                                         ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone">
                                         <option value=''></option>
-
                                       </select>
 
                                     <select
-                                        ng-if="ddlShipTo.shipCondition == '08' || ddlShipTo.shipCondition == '09'"
+                                        ng-if="transports.length == 0 && ( ddlShipTo.shipCondition == '03' || customer.shipCondition == '03' )"
                                         name="trans_id" id="trans_id"
                                         class="form-control"
                                         ng-model="ddlTransport"
+                                        ng-change="changeTransport(ddlTransport)"
                                         >
                                         <option value=''></option>
                                         <option value="{{ddlShipTo.transportZone}}">

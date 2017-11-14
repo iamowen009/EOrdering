@@ -123,36 +123,13 @@ app.controller('ProductCheckoutController',
                     }
                     $scope.carts        = response.data.data.cartProductList;
                     $scope.transports = getTransport($scope.transports0,$scope.customer.cityCode);
-                  //  if( $scope.transports.length > 0)
-                    //.transportZone +' ' + $scope.transports[0].transportZoneDesc;
-                    //$scope.ddlShipTo    = $scope.ships[0];
-                    // if( $scope.ddlShipTo.shipCondition == '08'){
-                    //   $scope.ddlTransport =  $scope.ddlShipTo.transportZone;
-                    // }else{
-                    //   $scope.ddlTransport =  $scope.transports[0];
-                    // }
-                  //  $scope.ddlDate      = $scope.requests[0];
+                    $scope.ddlShipTo    = '';//$scope.ships[0];
+                    $scope.ddlTransport =  '';//$scope.transports[0];
+                    $scope.ddlDate      = '';//$scope.requests[0];
                     $scope.paymentTerm  = ($scope.customer.paymentTerm !== 'CASH' && $scope.customer.paymentTerm !== 'CA02') ? '' :  $scope.customer.paymentTerm ;
-                    //$scope.paymentTerm;
-                    //console.log('ships : ' , $scope.ships,' $scope.paymentTerm ' , $scope.paymentTerm, ' shipto condition : ');// , $scope.ddlShipTo );
-                    console.log('scope ddl ship to ', $scope.ddlShipTo);
-                    // if($scope.ddlShipTo)
                     $scope.shipaddress  = ($scope.ships.length && $scope.ddlShipTo ) > 0 ? ($scope.ships[0].address+' '+$scope.ships[0].street+' '+$scope.ships[0].subdistrict+' '+$scope.ships[0].districtName+' '+$scope.ships[0].cityName ) : '';
                    var shipper = angular.toJson($scope.ddlShipTo);
                    console.log('shipper',$scope.ddlShipTo);
-/*
-                    if( ( $scope.ddlShipTo.shipCondition == '03' || $scope.ddlShipTo.shipCondition == '08') && $scope.transports.length == 0 )
-                    {
-                      $scope.transports = [{
-                        id : $scope.ddlShipTo.transportZone,
-                        label : $scope.ddlShipTo.transportZone,
-                        value : $scope.ddlShipTo.transportZone +' '+ shipper.transportZoneDesc,
-                        name : $scope.ddlShipTo.transportZone +' '+ shipper.transportZoneDesc
-                      }];
-                      //$scope.ddlTransport = $scope.shipLoop;
-                    }
-*/
-
                 }
                 console.log('ddlShipTo : ' , $scope.transports);
                 $scope.loading = false;
@@ -160,13 +137,16 @@ app.controller('ProductCheckoutController',
        }
 
        $scope.shippingType = 'show';
-       $scope.shipCondition = false;
+      // $scope.shipCondition = false;
        $scope.pickUp = function(shipCondition){
           console.log('$scope.shipCondition : ', shipCondition );
-          if( shipCondition === true || $scope.customers.shipCondition == '01'){
+          $scope.shipCondition = shipCondition;
+          if( shipCondition === true || $scope.customer.shipCondition == '01'){
             $scope.shippingType = 'hide';
           }else{
             $scope.shippingType = 'show';
+            $scope.ddlShipTo = '';
+            $scope.ddlTransport = '';
           }
        }
 
@@ -188,8 +168,11 @@ app.controller('ProductCheckoutController',
           $scope.transports = getTransport($scope.transports0,$scope.ship[0].cityCode)
 
           // if( $scope.ship[0].shipCondition == '08')
-            //$scope.ddlTransport =  $scope.ship[0].transportZone;
+            $scope.ddlTransport =  '';//$scope.ship[0].transportZone;
         }
+       }
+       $scope.changeTransport = function(ddlTransport){
+         $scope.ddlTransport = ddlTransport;
        }
 
 
