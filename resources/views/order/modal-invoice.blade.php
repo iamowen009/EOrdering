@@ -238,9 +238,6 @@
 
         </div>
         <div>
-          <p>
-            <strong>รายละเอียดสินค้า</strong>
-          </p>
           <div class="invoice-block row">
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">
@@ -270,7 +267,7 @@
                       </td>
                       <td class="text-center">@{{ item.qty | number }}</td>
                       <td class="text-center">@{{item.unitNameTh}}</td>
-                      <td class="text-right">@{{ item.amount | number:2}}</td>
+                      <td class="text-right">@{{ item.amount * 1 | number:2}}</td>
                       <td class="text-right">@{{ +item.amount*+item.qty | number:2 }}</td>
                       <td class="text-center" style="display:none">@{{item.promotionName}}</td>
                   </tr>

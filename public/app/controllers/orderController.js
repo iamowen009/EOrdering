@@ -24,7 +24,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 
     var arr = [];
     var Ym = [];
-		$scope.partImgProduct = Config.partImgProduct();
+		$scope.partImgProduct = Config.partImgProduct() + "/OrderDetail";
 		fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
 		prepareOrder(Customers.customerId());
 

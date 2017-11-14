@@ -44,7 +44,7 @@
         </div>
       </div>
               <div>
-        <p>
+        <p style="display:none">
           <strong>รายละเอียดสินค้า</strong>
         </p>
         <div class="invoice-block row">
