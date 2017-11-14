@@ -6,7 +6,7 @@
       <div class="modal-header info">
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
         <div class="col-sm-12 text-center">
-        	<h4 class="modal-title">รายละเอียดสถานะการสั่งซื้อ</h4>
+        	<h4 class="modal-title">สถานะการสั่งซื้อ</h4>
         </div>
       </div>
       <div class="modal-body">
@@ -23,9 +23,7 @@
           </div>
         </div>
 				<div>
-          <p>
-            <strong>รายละเอียดสินค้า</strong>
-          </p>
+         
           <div class="invoice-block row">
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">

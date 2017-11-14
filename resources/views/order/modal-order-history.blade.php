@@ -73,8 +73,8 @@
                         <th class="text-center">รหัสสินค้า</th>
                         <th class="text-center">ชื่อสินค้า</th>
                         <th class="text-center">จำนวนสั่งซื้อ</th>
-                        <th class="text-center">จำนวนออกบิล</th>
-                        <th class="text-center">จำนวนเงิน</th>
+                        <th class="text-center">จำนวนคงค้าง</th>
+                        <th class="text-center">หน่วย</th>
                       </tr>
                   </thead>
 
