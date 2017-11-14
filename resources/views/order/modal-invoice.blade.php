@@ -263,7 +263,11 @@
                       <td>
                           @{{item.productCode}}
                       </td>
-                      <td class="text-left"> @{{ item.productNameTh }} <p  class="text-danger" ng-style="item.isFreeGoods == '0' &&  {'display': 'none'}">(ของแถม)</p></td>
+                      <td class="text-left">
+                        <div class="row">
+                          @{{ item.productNameTh }} <div  class="text-danger" ng-style="item.isFreeGoods == '0' &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{ item.qty | number }}</td>
                       <td class="text-center">@{{item.unitNameTh}}</td>
                       <td class="text-right">@{{ item.amount | number:2}}</td>
@@ -285,8 +289,8 @@
 
       </div>
       <div class="modal-footer text-center">
-      	<button type="button" class="btn btn-info" ng-click="OrderPrint(inv.id)">พิมพ์</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+      	<button type="button" class="btn btn-info" style="width:63px;" ng-click="OrderPrint(inv.id)">พิมพ์</button>
+        <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">ปิด</button>
       </div>
     </div>
 

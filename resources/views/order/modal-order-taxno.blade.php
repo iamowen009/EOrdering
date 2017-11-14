@@ -100,7 +100,12 @@
                 <tbody>
                 <tr ng-repeat="item in detail">
                     <td class="text-center">@{{ item.material }}</td>
-                    <td class="text-center">@{{ item.materialDes }}</td>
+                    <!-- <td class="text-center">@{{ item.materialDes }}</td> -->
+                    <td class="text-left">
+                        <div class="row">
+                        @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                     <td class="text-center">@{{ item.targetQty | number }}</td>
                     <td class="text-center">@{{ item.netwrPerUnit | number}}</td>
                     <td class="text-center">@{{ item.discount }}</td>

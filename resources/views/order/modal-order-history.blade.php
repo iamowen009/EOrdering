@@ -52,7 +52,12 @@
                       <td class="text-right">@{{ item.driveName}} <br> @{{ item.telDrive}}</td>
                       <td class="text-right">@{{item.custRecDate | date:'dd/MM/yy'}}</td>
                       <td class="text-right">@{{item.material}}</td>
-                      <td class="text-right">@{{item.materialDes}}</td>
+                      <!-- <td class="text-right">@{{item.materialDes}}</td> -->
+                      <td class="text-left">
+                        <div class="row">
+                        @{{ item.freeGoods }} @{{ item.materialDes }}<div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{item.targetQty | number}}</td>
                       <td class="text-center">@{{item.billQty | number}}</td>
                       <td class="text-right">@{{item.netwr2 | number}}</td>
@@ -81,7 +86,11 @@
                   <tbody>
                   <tr ng-repeat="item in haveNoBill">
                       <td class="text-left"> @{{ item.material }}</td>
-                      <td class="text-center">@{{ item.materialDes }}</td>
+                      <td class="text-left">
+                        <div class="row">
+                          @{{ item.materialDes }}<div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{item.targetQty | number}}</td>
                       <td class="text-center">@{{ item.billQty | number}}</td>
                       <td class="text-right">@{{item.netwr2 | number}}</td>

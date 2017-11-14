@@ -28,7 +28,7 @@
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">
                       <tr>
-                          <th class="text-left">รายการสินค้า</th>
+                          <th class="text-center">รายการสินค้า</th>
                           <th class="text-center">สั่งซื้อ</th>
                           <th class="text-center">ออกบิล</th>
                           <th class="text-center">การจอง</th>
@@ -40,7 +40,11 @@
 
                   <tbody>
                   <tr ng-repeat="item in detail">
-                      <td class="text-left"> @{{item.material}} @{{ item.materialDes }}</td>
+                      <td class="text-left">
+                        <div class="row">
+                          @{{ item.material }} @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{ item.targetQty | number }}</td>
                       <td class="text-center">@{{ item.billQty | number }}</td>
                       <td class="text-center">@{{ item.deliQty | number }}</td>
