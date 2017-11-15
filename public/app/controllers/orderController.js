@@ -4,16 +4,16 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
         /* Bindable functions
 		 -----------------------------------------------*/
 		$scope.endDateBeforeRender = endDateBeforeRender;
-		$scope.endDateOnSetTime = endDateOnSetTime;
+		// $scope.endDateOnSetTime = endDateOnSetTime;
 		$scope.startDateBeforeRender = startDateBeforeRender;
-		$scope.startDateOnSetTime = startDateOnSetTime;
+		// $scope.startDateOnSetTime = startDateOnSetTime;
     $scope.orders = {};
 		$scope.inv = {};
 		//$scope.detail = {};
     $scope.ordersYear = [];
     $scope.ordersYearMonth = [];
     $scope.ordersYm = [];
-		$scope.ordersList = [];
+$scope.ordersList = [];
 		$scope.haveBill = [];
 		$scope.haveNoBill = [];
 		$scope.discountAdd = [];
@@ -42,7 +42,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
             if(response.data.result=='SUCCESS'){
               console.log('order precess success');
               $scope.orders = response.data.data.orderProcessList;
-
+							$scope.ordersList = [];
               for( var k in $scope.orders ){
 
                 var month = moment($scope.orders[k].docDate).format('YYYY-MM');
@@ -180,7 +180,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 									 discountList = response.data.data.orderProcessDiscountList;
 							 		$scope.inv = head;
 									$scope.detail = detail;
-									$scope.discount = discountList;	  
+									$scope.discount = discountList;
 									console.log("discount-->>", $scope.discount);
 
 									for(var k in $scope.discount){
@@ -194,7 +194,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 											'type':$scope.discount[k].type
 										}
 
-										
+
 
 										if($scope.discount[k].type === "หัก")
 										$scope.discountSub.push(arr_temp);
@@ -205,8 +205,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 										// console.log("$scope.discountAdd-->",$scope.discountAdd);
 									}
 
-										
-									
+
+
 							$('#OrderStatusModal').modal('show');
 					}else{
 
@@ -309,7 +309,7 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 						else
 						$scope.haveBill.push(arr_b);
 					}
-					
+
 				$('#OrderHistoryModal').modal('show');
 			}else{
 
@@ -376,8 +376,8 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
 				var head = response.data.data.orderHistoryHeaderList,
 						detail = response.data.data.orderHistoryDetailList,
 						descountdetail = response.data.data.prderHistoryDiscountList;
-				 
-					$scope.MBill = head[0];	
+
+					$scope.MBill = head[0];
 					$scope.totalsum_manual = 0.0;
 					$scope.totalQty;
 					for(var e in detail)
@@ -451,49 +451,42 @@ function ($scope, $http,Config, $filter,$timeout,Customers,Orders,OrderPrecess,O
       return moment(date).format('DD/MM/YY HH:mm');
     }
 
-		function startDateOnSetTime () {
-		  $scope.$broadcast('start-date-changed');
-		}
-
-		function endDateOnSetTime () {
-		  //$scope.$broadcast('end-date-changed');
+		function setFormat($date,type){
+			var dx = $date.split('/');
+			return dx[2] + '-' + dx[1] +'-' + dx[0] + ( type == 'end' ? ' 23:59:59' : ' 00:00:00');
 		}
 
 		function startDateBeforeRender ($dates) {
-		  if ($scope.dateRangeEnd) {
-		    var activeDate = moment($scope.dateRangeEnd);
-
-		    $dates.filter(function (date) {
-		      return date.localDateValue() >= activeDate.valueOf().format('YYYY-MM-DD HH:mm:ss').replace(' ','T')
-		    }).forEach(function (date) {
-		      date.selectable = false;
-		    })
-		  }else{
-        var startDate = moment().format('YYYY-01-01 00:00:00').replace(' ','T');
-        console.log('dateRangeStart false ');
-        console.log( startDate );
-        return '0000-00-00T00:00:00';
-
-      }
+			var today = new Date();
+			var setDate = $dates === undefined ? today.getFullYear() + '-01-01' : setFormat($dates,'start');
+		  var startDate = moment(setDate).format('YYYY-MM-DD 00:00:00').replace(' ','T');
+			return startDate;//'0000-00-00T00:00:00';
 		}
 
-		function endDateBeforeRender ($view, $dates) {
-		  if ($scope.dateRangeStart) {
-		    var activeDate = moment($scope.dateRangeStart).subtract(1, $view).add(1, 'minute');
-        console.log('dateRangeStart true');
-        //console.log(activeDate)
-		    $dates.filter(function (date) {
-		      return date.localDateValue() <= activeDate.valueOf().format('YYYY-MM-DD HH:mm:ss').replace(' ','T')
-		    }).forEach(function (date) {
-          console.log( 'date selectable false' );
-		      date.selectable = false;
-		    })
-		  }else{
-        //console.log('dateRangeStart false ');
-        //console.log( moment().format('YYYY-MM-DD HH:mm:ss').replace(' ','T') );
-        return moment().format('YYYY-MM-DD HH:mm:ss').replace(' ','T');
-
-      }
+		function endDateBeforeRender ($dates) {
+			var today = new Date();
+			var setDate = $dates === undefined ? moment().format('YYYY-MM-DD HH:mm:ss') : setFormat($dates,'end');
+			var startDate = moment(setDate).format('YYYY-MM-DD 23:59:59').replace(' ','T');
+			return startDate;//'0000-00-00T00:00:00';
 		}
+		$scope.filterOrder = function(){
+			var start = startDateBeforeRender( $scope.dateRangeStart ),
+					end 	= endDateBeforeRender( $scope.dateRangeEnd );
+					return fetchOrderPrecess(Customers.customerId(),start,end );
+					/*
+					console.log('start : ' , start , ' end : ', end);
+					if( start > end ){
+						swal('โปรดทำการเลือกวันเริ่มต้น เป็นวันที่ ที่น้อยกว่าวันสิ้นสุดด้วยค่ะ');
+						$scope.dateRangeStart = '';
+						return false;
+					}else if( end < start ){
+						swal('โปรดทำการเลือกวันเริ่มสิ้นสุด เป็นวันที่ ที่มากกว่าวันเริ่มต้นด้วยค่ะ');
+						$scope.dateRangeStart = '';
+							return false;
+					}else{
+							fetchOrderPrecess(Customers.customerId(),start,end );
+					}
+					*/
 
+		}
  })

@@ -26,6 +26,7 @@
 
     <link rel="stylesheet" href="<?= asset('node_modules/bootstrap/dist/css/bootstrap.css') ?>">
     <link rel="stylesheet" href="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css') ?>"/>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="<?= asset('css/layouts.css') ?>"/>
 
     <!--<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>-->
@@ -153,6 +154,7 @@
     <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="<?= asset('node_modules/angular/angular.min.js') ?>"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
 
     <script src="<?= asset('node_modules/angular-sweetalert/SweetAlert.min.js') ?>"></script>

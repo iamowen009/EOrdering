@@ -2,7 +2,6 @@
 
 @section('head')
 <link href="<?= asset('vendors/nestable/nestable.css') ?>" rel="stylesheet">
-<link href="<?= asset('node_modules/ng-flat-datepicker/dist/ng-flat-datepicker.css') ?>" rel="stylesheet">
 <link href="<?= asset('/css/orders.css') ?>" rel="stylesheet">
 @stop
 
@@ -21,40 +20,12 @@
             	<form class="form-inline">
                   <div class="form-group col-md-4">
                   	<label class="datelbl">วันที่ : &nbsp;</label>
-                        <div class="dropdown input-group dropdown-start-parent">
-          						    <a  id="dropdownStart" role="button" data-toggle="dropdown" data-target=".dropdown-start-parent"
-          						       href="#">
-          						        <div class="input-group date">
-          						            <input type="text" class="form-control" data-ng-model="dateRangeStart">
-          						            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-          						        </div>
-          						    </a>
-          						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          						        <datetimepicker data-ng-model="dateRangeStart"
-          						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed'}"
-          						                        data-on-set-time="startDateOnSetTime()"
-          						                        data-before-render="startDateBeforeRender($dates)"></datetimepicker>
-          						    </ul>
-          						</div>
+										<input type="text" class="form-control" ng-model="dateRangeStart" datepicker ng-change="filterOrder()" />
                   </div>
                   <div class="form-group col-md-4">
                       <label class="datelbl">ถึงวันที่ : &nbsp;</label>
                     <div class="col-md-9">
-                        <div class="dropdown input-group dropdown-end-parent">
-            						    <a  id="dropdownEnd" role="button" data-toggle="dropdown" data-target=".dropdown-end-parent"
-            						       href="#">
-            						        <div class="input-group date">
-            						            <input type="text" class="form-control" data-ng-model="dateRangeEnd">
-            						            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-            						        </div>
-            						    </a>
-            						    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            						        <datetimepicker data-ng-model="dateRangeEnd"
-            						                        data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
-            						                        data-on-set-time="endDateOnSetTime()"
-            						                        data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
-            						    </ul>
-            						</div>
+                        <input type="text" class="form-control" ng-model="dateRangeEnd" datepicker ng-change="filterOrder()">
             					</div>
                   </div>
 
@@ -111,8 +82,7 @@
 	<script src="<?= asset('app/controllers/orderController.js') ?>"></script>
 	<script src="<?= asset('node_modules/ng-flat-datepicker/dist/ng-flat-datepicker.js') ?>"></script>
 	<script src="<?= asset('vendors/nestable/jquery.nestable.js') ?>"></script>
-
-    <script>
+  <script>
     $(function(){
 
         $('#nestable1').nestable();
