@@ -229,7 +229,7 @@ select.form-control{
                                         class="form-control"
                                         ng-model="ddlShipTo"
                                         ng-change="changeShip(ddlShipTo.shipId)"
-                                        ng-options="i as i.shipCode +' ' + i.shipName + ' ' + i.shipCondition for i in ships track by i.shipCode">
+                                        ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
                                         <option value=''></option>
                                       </select>
 <!-- {{ ddlShipTo.shipCondition }} -->
