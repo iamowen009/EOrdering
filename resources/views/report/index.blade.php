@@ -12,7 +12,7 @@ select.form-control{
 		@verbatim
 		<div class="col-md-3 col-sm-3 col-xs-12">
 			<div class="panel">
-				<div class="panel-heading text-center" style="background-color:#000e85;color:#fff">รายงาน </div>
+				<div class="panel-heading text-center" style="background-color:#BFEBEE">รายงาน </div>
                   <!--<div class="panel-heading text-center">รายงาน</div>-->
                   <div >
 						<ul class="list-group" style="cursor:pointer;">
@@ -27,7 +27,7 @@ select.form-control{
 		</div>
 		<div class="col-md-9 col-sm-3 col-xs-12">
 			<div class="panel">
-				<div class="panel-heading text-center" style="background-color:#000e85;color:#fff">{{title_report}} </div>
+				<div class="panel-heading text-center" style="background-color:#BFEBEE;">{{title_report}} </div>
                   <!--<div class="panel-heading text-center">{{title_report}}</div>-->
                   <div class="panel-body">
 						<div class="col-md-3">

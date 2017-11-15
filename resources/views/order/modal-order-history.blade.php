@@ -1,10 +1,10 @@
-<div id="OrderHistoryModal" class="modal" role="dialog">
+<div id="OrderHistoryModal" class="modal" role="dialog" tabindex="-1">
 <div class="modal-dialog-invoice modal-lg">
 
     <div class="modal-content inv-content">
       <div class="modal-header info">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-12 text-center">
+    	 	<div class="col-sm-6 text-center">
         	<h4 class="modal-title">Order / Billing Tracking</h4>
         </div>
       </div>
@@ -52,7 +52,12 @@
                       <td class="text-right">@{{ item.driveName}} <br> @{{ item.telDrive}}</td>
                       <td class="text-right">@{{item.custRecDate | date:'dd/MM/yy'}}</td>
                       <td class="text-right">@{{item.material}}</td>
-                      <td class="text-right">@{{item.materialDes}}</td>
+                      <!-- <td class="text-right">@{{item.materialDes}}</td> -->
+                      <td class="text-left">
+                        <div class="row">
+                        @{{ item.freeGoods }} @{{ item.materialDes }}<div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{item.targetQty | number}}</td>
                       <td class="text-center">@{{item.billQty | number}}</td>
                       <td class="text-right">@{{item.netwr2 | number}}</td>
@@ -73,17 +78,21 @@
                         <th class="text-center">รหัสสินค้า</th>
                         <th class="text-center">ชื่อสินค้า</th>
                         <th class="text-center">จำนวนสั่งซื้อ</th>
-                        <th class="text-center">จำนวนออกบิล</th>
-                        <th class="text-center">จำนวนเงิน</th>
+                        <th class="text-center">จำนวนคงค้าง</th>
+                        <th class="text-center">หน่วย</th>
                       </tr>
                   </thead>
 
                   <tbody>
                   <tr ng-repeat="item in haveNoBill">
                       <td class="text-left"> @{{ item.material }}</td>
-                      <td class="text-center">@{{ item.materialDes }}</td>
+                      <td class="text-left">
+                        <div class="row">
+                          @{{ item.materialDes }}<div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{item.targetQty | number}}</td>
-                      <td class="text-center">@{{ item.billQty | number}}</td>
+                      <td class="text-center">@{{ item.targetQty -  item.billQty | number}}</td>
                       <td class="text-right">@{{item.netwr2 | number}}</td>
                   </tr>
                   </tbody>

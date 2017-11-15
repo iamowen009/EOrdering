@@ -1,4 +1,4 @@
-<div id="OrderStatusModalx" class="modal" role="dialog">
+<div id="OrderStatusModalx" class="modal" role="dialog" >
   <div class="modal-dialog-invoice modal-lg">
     <!-- Modal content-->
     <div class="modal-content inv-content">
@@ -17,15 +17,16 @@
     </div>
   </div>
 </div>
-<div id="OrderStatusModal" class="modal" role="dialog">
+
+<div id="OrderStatusModal" class="modal" role="dialog" tabindex="-1">
   <div class="modal-dialog-invoice modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content inv-content">
       <div class="modal-header info">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-12 text-center">
-        	<h4 class="modal-title">รายละเอียดสถานะการสั่งซื้อ</h4>
+    	 	<div class="col-sm-6 text-center">
+        	<h4 class="modal-title">รายละเอียดการสั่งซื้อ</h4>
         </div>
       </div>
       <div class="modal-body">
@@ -54,9 +55,7 @@
           </div>
         </div>
         <div>
-          <p>
-            <strong>รายละเอียดสินค้า</strong>
-          </p>
+          
           <div class="invoice-block row">
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">
@@ -66,7 +65,7 @@
                           <th class="text-center">จำนวน</th>
                           <th class="text-center">หน่วย</th>
                           <th class="text-center">ราคา/หน่วย</th>
-                          <th class="text-center">ส่วนลด</th>
+                          <th class="text-center" style="width:5px">ส่วนลด</th>
                           <th class="text-center">ราคาหลังหักส่วนลด</th>
                           <th class="text-center">ราคารวม</th>
                       </tr>
@@ -80,7 +79,14 @@
                       <td>
                           @{{item.material}}
                       </td>
-                      <td class="text-left"> @{{ item.materialDes }}</td>
+                      <!-- <td class="text-left"> @{{ item.materialDes }}</td> -->
+
+                      <td class="text-left">
+                        <div class="row">
+                          @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''  &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
+                      
                       <td class="text-center">@{{ item.targetQty | number }}</td>
                       <td class="text-center">@{{item.salesUnit}}</td>
                       <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
@@ -90,10 +96,10 @@
                   </tr>
                   </tbody>
               </table>
-
           </div>
+          
+          <p align="right"><strong>@{{inv.sumAmount | number:2}}&nbsp;</strong></p>
           </br>
-
 
 
           <!-- <div class="invoice-block row">
@@ -113,7 +119,8 @@
 
                   <tbody>
                   <tr ng-repeat="item in discount">
-                      <td class="text-center">@{{item.type}}</td>
+                      <!-- <td class="text-center">@{{item.type}}</td> -->
+                      <td class="text-center" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
                       <td class="text-left">@{{item.description}}</td>
                       <td class="text-right">@{{item.kwert | number:2}}</td>
                   </tr>

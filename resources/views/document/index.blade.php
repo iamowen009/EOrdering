@@ -7,7 +7,7 @@
 	@verbatim
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
-				<div class="panel-heading text-center" style="background-color:#000e85;color:#fff">เอกสารทั่วไป </div>
+				<div class="panel-heading text-center" style="background-color:#BFEBEE">เอกสารทั่วไป </div>
               <!--<div class="panel-heading text-center">เอกสารทั่วไป</div>-->
               <div class="panel-body">
               	<br>

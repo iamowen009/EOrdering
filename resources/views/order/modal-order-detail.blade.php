@@ -1,12 +1,12 @@
-<div id="OrderDetailModal" class="modal" role="dialog">
+<div id="OrderDetailModal" class="modal" role="dialog" tabindex="-1">
   <div class="modal-dialog-invoice modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header info">
         <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-        <div class="col-sm-12 text-center">
-        	<h4 class="modal-title">รายละเอียดสถานะการสั่งซื้อ</h4>
+        <div class="col-sm-6 text-center">
+        	<h4 class="modal-title">สถานะการสั่งซื้อ</h4>
         </div>
       </div>
       <div class="modal-body">
@@ -23,14 +23,12 @@
           </div>
         </div>
 				<div>
-          <p>
-            <strong>รายละเอียดสินค้า</strong>
-          </p>
+         
           <div class="invoice-block row">
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">
                       <tr>
-                          <th class="text-left">รายการสินค้า</th>
+                          <th class="text-center">รายการสินค้า</th>
                           <th class="text-center">สั่งซื้อ</th>
                           <th class="text-center">ออกบิล</th>
                           <th class="text-center">การจอง</th>
@@ -42,7 +40,11 @@
 
                   <tbody>
                   <tr ng-repeat="item in detail">
-                      <td class="text-left"> @{{item.material}} @{{ item.materialDes }}</td>
+                      <td class="text-left">
+                        <div class="row">
+                          @{{ item.material }} @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                        </div>
+                      </td>
                       <td class="text-center">@{{ item.targetQty | number }}</td>
                       <td class="text-center">@{{ item.billQty | number }}</td>
                       <td class="text-center">@{{ item.deliQty | number }}</td>

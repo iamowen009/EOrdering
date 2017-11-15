@@ -24,7 +24,7 @@ $scope.ordersList = [];
 
     var arr = [];
     var Ym = [];
-		$scope.partImgProduct = Config.partImgProduct();
+		$scope.partImgProduct = Config.partImgProduct() + "/OrderDetail";
 		fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
 		prepareOrder(Customers.customerId());
 
@@ -304,10 +304,21 @@ $scope.ordersList = [];
 							'telDrive':$scope.ItemAll[k].telDrive
 						};
 
+
 						if($scope.ItemAll[k].billNo === "")
-						$scope.haveNoBill.push(arr_b);
-						else
-						$scope.haveBill.push(arr_b);
+							$scope.haveNoBill.push(arr_b);
+						else{
+							$scope.haveBill.push(arr_b);
+							
+							//ถ้ายังเหลือ บิลที่ยังไม่ได้ออก ให้มาแสดงด้วย
+							if($scope.ItemAll[k].targetQty  -  $scope.ItemAll[k].billQty > 0)
+							{
+								arr_b.billQty = $scope.ItemAll[k].targetQty  -  $scope.ItemAll[k].billQty;
+								$scope.haveNoBill.push(arr_b);
+							}
+
+						}
+						
 					}
 
 				$('#OrderHistoryModal').modal('show');

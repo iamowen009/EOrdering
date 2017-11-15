@@ -17,7 +17,8 @@
 	<div class="row ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
-            <div class="panel-heading text-center" style="background-color:#000e85;color:#fff">สินค้าที่เคยสั่งซื้อ </div>
+            <!-- style="background-color:#000e85;color:#fff" -->
+            <div class="panel-heading text-center" style="background-color:#BFEBEE;">สินค้าที่เคยสั่งซื้อ </div>
               <!--<div class="panel-heading text-center">สินค้าที่เคยสั่งซื้อ</div>-->
               <div class="panel-body">
               	<br>
