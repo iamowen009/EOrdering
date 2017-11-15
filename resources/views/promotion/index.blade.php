@@ -76,7 +76,7 @@
 				<div class="panel-body">
 					<br>
 					<form>
-						<div class="form-group col-md-12" style="line-height:5px;">
+						<div class="form-group col-md-12" style="line-height:15px;">
 							<div class="form-group col-md-1"></div>
 							<div class="form-group col-md-10">
 								<div class="form-group col-md-6">
@@ -269,7 +269,7 @@
 														<td style="text-align : center;">{{p.salesqty_sel | number}}</td>
 														<td style="text-align : center;">{{p.unitSelected }}</td>
 														<td style="text-align : center;">{{p.priceSelected | number}}</td>
-														<td style="text-align : center;">{{p.totalPrice | number }}</td>
+														<td style="text-align : center;">{{p.totalPrice | number:2 }}</td>
 														<td ng-hide="promotionHD[0].isPromotionSet">
 															<i class="fa fa-trash fa-2x" ng-click="deletedProduct(p.listNo)"></i>
 														</td>
@@ -297,7 +297,7 @@
 									ราคารวมทั้งหมด
 								</div>
 								<div class="form-group col-md-2">
-									<label class="form-control text-center">{{totalPrice() | number }}</label>
+									<label class="form-control text-center">{{totalPrice() | number:2 }}</label>
 								</div>
 							</div>
 						</div>

@@ -876,26 +876,27 @@ app.controller('PromotionController',
                 if (value1.selected) {
                     $totalFGBySKU = 0;
                     angular.forEach($scope.freeGoods_Sel, function (value2, key2) {
-                        if (value1.freeGoodId == value2.freeGoodId) {
+                        if (value1.freeGoodsId == value2.freeGoodsId) {
                             if (value2.selected) {
                                 $totalFGBySKU = $totalFGBySKU + parseInt(value2.freeQty, 10);
                             }
                         }
                     }, log);
                     // console.log("$totalFGBySKU = " + $totalFGBySKU);
-                    if ($totalFGBySKU >= value1.freeGoodsQty_Rt) {
-                        // console.log("over = " + value1.freeGoodId);
+                    if ($totalFGBySKU >= value1.freeGoodsQty_Rt && value1.freeGoodsQty_Rt != 0) {
+                        // console.log("id="+value1.freeGoodsId);
+                        // console.log("over = " + value1.freeGoodsId);
                         value1.isAllowFG = false;
                         $totalFG = $totalFG + 1;
                     }
                 }
             }, log);
 
-            if ($totalFG >= $scope.promotionHD[0].numFreeGoods) {
-                angular.forEach($scope.freeGoods, function (value1, key1) {
-                    value1.isAllowFG = false;
-                }, log);
-            }
+            // if ($totalFG >= $scope.promotionHD[0].numFreeGoods) {
+            //     angular.forEach($scope.freeGoods, function (value1, key1) {
+            //         value1.isAllowFG = false;
+            //     }, log);
+            // }
 
             // if ($scope.countFreegoods >= $scope.promotionHD[0].numFreeGoods &&
             //     $scope.freeGoods[listNo - 1].freeGoodsQty_Edit >= $scope.freeGoods[listNo - 1].freeGoodsQty_Rt
@@ -1082,6 +1083,7 @@ app.controller('PromotionController',
             $scope.freeGoods[no - 1].rgbCode = "";
             $scope.freeGoods[no - 1].color = "";
             $scope.freeGoods[no - 1].colorEdit = false;
+            $scope.freeGoods[no - 1].freeGoodsQty_Edit = 0;
             // console.log("freeGoodsId = " + freeGoodsId);
             // console.log("listNo = " + no);
             // console.log("sizeCode = " + sizeCode);
@@ -1099,6 +1101,7 @@ app.controller('PromotionController',
             $scope.freeGoods[no - 1].color = color;
             $scope.freeGoods[no - 1].colorCode = color;
             $scope.freeGoods[no - 1].rgbCode = rgb;
+            $scope.freeGoods[no - 1].freeGoodsQty_Edit = 0;
         }
 
         var hasDupsObjects = function (array, value, field) {
@@ -1163,11 +1166,11 @@ app.controller('PromotionController',
                     }
 
                     if (parseInt(value.freeGoodsQty_Edit, 10) + $sum > max &&
-                        $scope.freeGoods_Sel[listNo - 1].brandCode != value.brandCode &&
-                        $scope.freeGoods_Sel[listNo - 1].typeCode != value.typeCode &&
-                        $scope.freeGoods_Sel[listNo - 1].functionCode != value.functionCode &&
-                        $scope.freeGoods_Sel[listNo - 1].sizeCode != value.sizeCode &&
-                        $scope.freeGoods_Sel[listNo - 1].colorCode != value.colorCode
+                        ($scope.freeGoods_Sel[listNo - 1].brandCode != value.brandCode ||
+                            $scope.freeGoods_Sel[listNo - 1].typeCode != value.typeCode ||
+                            $scope.freeGoods_Sel[listNo - 1].functionCode != value.functionCode ||
+                            $scope.freeGoods_Sel[listNo - 1].sizeCode != value.sizeCode ||
+                            $scope.freeGoods_Sel[listNo - 1].colorCode != value.colorCode)
                     ) {
                         value.freeGoodsQty_Edit = max - $sum;
                     }
@@ -1217,8 +1220,8 @@ app.controller('PromotionController',
                         var freeGoodsList = response.data.freeGoodsList;
 
                         angular.forEach($scope.freeGoods, function (value1, key1) {
+                            value1.selected = false;
                             angular.forEach(freeGoodsList, function (value2, key2) {
-                                value1.selected = false;
                                 if (value1.freeGoodsId == value2.freeGoodsId) {
                                     value1.freeGoodsQty_Rt = value2.freeGoodsQty;
                                     value1.selected = true;
