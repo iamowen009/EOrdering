@@ -111,7 +111,10 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         }
                         console.log('appPaymentTerm : ' + appPaymentTerm );
                         //if(appScope.ddlShipTo.length > 0 ){
-                        if(typeof appScope.ddlShipTo !== undefined && appScope.ddlShipTo.length > 0){
+
+
+                        
+                        if(typeof appScope.ddlShipTo !== undefined ){
                             appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
@@ -126,7 +129,12 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             shipName = appScope.customer.shipConditionDesc;
 
                         }
+
+                        //appShipCondition
                         checkedShip = appScope.shipCondition;
+                        
+                       
+
                         console.log('appScope.shipCondition ' + appScope.shipCondition);
 
                         console.log('appScope.ddlShipTo : ', appScope.ddlShipTo );
@@ -135,7 +143,9 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         var transportZoneDesc='';
                         if(typeof appScope.ddlTransport !== 'undefined'){
                         // if( appScope.ddlTransport.length > 0){
-                            transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
+                            //transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
+
+                            transportId =  appScope.ddlTransport.transportId;
                             transportZone = appShipCondition == '08' ? appScope.ddlShipTo.transportZone : appScope.ddlTransport.transportZone;
                             transportZoneDesc = appShipCondition == '08' ? appScope.ddlShipTo.transportZoneDesc : appScope.ddlTransport.transportZoneDesc;
                         }else{
@@ -184,7 +194,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         // }
 
                         console.log('reqDate ' + reqDate );
-
+                           
                         var order =  {
                             documentDate    : appScope.carts[0].cartDate,
                             userName        : Auth.username(),
@@ -192,15 +202,17 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             customerCode    : appScope.carts[0].customerCode,
                             customerName    : appScope.carts[0].customerName,
                             paymentTerm     : appPaymentTerm != 'CASH' ? appPaymentTerm : 'CASH',
-                            shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appShipCondition ),
+                            //shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appShipCondition ),
+
+                            shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appScope.customer.shipCondition ),
                             shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? 0 : shipId,
                             shipCode    : (shipCode === undefined || shipCode ==='' || checkedShip === true ) ? '00' : shipCode,
                             shipName    : (shipName === undefined || shipName === '' || checkedShip === true ) ? 'รับสินค้าเอง' : shipName,
                             requestDate : reqDate,
                             customerPO  : customerPO,
                             transportId : (transportId !== '' && transportId !== 0 && transportId !== undefined )? transportId : 0,
-                            transportZone   : (transportZone !== '' && transportZone !== undefined ) ? transportZone : '00',
-                            transportZoneDesc   : (transportZoneDesc !== '' && transportZoneDesc !== undefined ) ? transportZoneDesc : '00',
+                            transportZone   : (transportZone !== '' && transportZone !== undefined ) ? transportZone : '',
+                            transportZoneDesc   : (transportZoneDesc !== '' && transportZoneDesc !== undefined ) ? transportZoneDesc : '',
 
                         };
                         console.log( 'order : ',order );
