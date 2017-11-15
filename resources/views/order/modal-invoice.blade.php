@@ -199,7 +199,7 @@
 
           <!-- row 2 -->
           <div class="col-sm-8">
-            <p><strong>ที่อยู่ :</strong>@{{ inv.address }} &nbsp;@{{inv.street}}  &nbsp;@{{inv.subDistrictName}} &nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</p>
+            <p><strong>ที่อยู่ :</strong> @{{ inv.address }} &nbsp;@{{inv.street}}  &nbsp;@{{inv.subDistrictName}} &nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</p>
           </div>
           <div class="col-sm-4">
             <p><strong>วันทีสั่งซื่้อ :</strong> @{{ inv.documentDate | date:'dd/MM/yyyy'  }}</p>
@@ -207,10 +207,10 @@
 
           <!-- row 3 -->
           <div class="col-sm-4">
-            <p><strong>อีเมล์ :</strong>@{{ inv.customerEmail }}</p>
+            <p><strong>อีเมล์ :</strong> @{{ inv.customerEmail }}</p>
           </div>
           <div class="col-sm-4">
-            <p><strong>เบอร์โทรศัพท์ :</strong>@{{ inv.customerTelNo }}</p>
+            <p><strong>เบอร์โทรศัพท์ :</strong> @{{ inv.customerTelNo }}</p>
           </div>
           <div class="col-sm-4">
             <p><strong>เลขที่ PO :</strong> @{{ inv.customerPO }}</p>
@@ -221,7 +221,7 @@
             <p><strong>สถานที่ส่ง :</strong> @{{inv.shipCode}} : @{{ inv.shipName }}</p>
           </div>
           <div class="col-sm-4">
-            <p><strong>บริษัทขนส่ง :</strong>@{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}
+            <p><strong>บริษัทขนส่ง :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}
             </p>
           </div>
           <div class="col-sm-4">

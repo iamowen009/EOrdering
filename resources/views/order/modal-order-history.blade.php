@@ -92,7 +92,7 @@
                         </div>
                       </td>
                       <td class="text-center">@{{item.targetQty | number}}</td>
-                      <td class="text-center">@{{ item.billQty | number}}</td>
+                      <td class="text-center">@{{ item.targetQty -  item.billQty | number}}</td>
                       <td class="text-right">@{{item.netwr2 | number}}</td>
                   </tr>
                   </tbody>
