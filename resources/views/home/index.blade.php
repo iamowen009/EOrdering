@@ -15,7 +15,7 @@
               <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
               <div class="category-home">
                   <ul class="list-unstyled user_data" style="font-size:0.95em">
-                    	<li style="padding:20px 0 15px 0;"><strong>กลุ่มผลิตภัณฑ์</strong></li>
+                    	<li ><strong>กลุ่มผลิตภัณฑ์</strong></li>
 	                    <li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;">
 	                     		<p class="title"><input type="checkbox" ng-click="toProductList(marketing.marketingCode)"> {{ marketing.marketingDesc }}</p>
 											</li>
@@ -24,8 +24,10 @@
           </div>
           <div class="icon-left">
                 <img class="img-icon" src="../images/icon-news.jpg" alt="..." onclick="window.location='../news'">
-								<img class="img-icon" src="../images/icon-doc.jpg" alt="..." onclick="window.location='../documents'">
-								<img class="img-icon" src="../images/icon-report.jpg" alt="..." onclick="window.location='../report'">
+				<img class="img-icon" src="../images/icon-doc.jpg" alt="..." onclick="window.location='../documents'">
+				<img class="img-icon" src="../images/icon-report.jpg" alt="..." onclick="window.location='../report'">
+				<a href="../assets/UserManual.pdf" target="_blank"><img class="img-icon" src="../images/icon-Usermanual.jpg" alt="..."> </a>
+				
 					</div>
 			</div>
 			<div class="col-md-9">
@@ -67,28 +69,29 @@
 							=========================================================================================================
 				 	-->
 					<div class="panel-content panel panel-default">
-              <div class="panel-heading"></div>
+              <!-- <div class="panel-heading"></div> -->
               <div class="panel-body">
                   <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
 									<form class="form-horizontal form-label-left">
-	                    <div class="form-group">
-		                    	<label class="control-label col-md-3 col-sm-3 col-xs-12">โปรโมชั่น</label>
-		                    	<div class="col-md-9 col-sm-9 col-xs-12">
-		                     			พบโปรโมชั่นจำนวน {{totalPromotion}} รายการ
-		                    	</div>
-		                  </div>
-											<div class="clearfix"></div>
-		                  <div class="form-group">
-		                     	<label class="control-label col-md-3 col-sm-3 col-xs-12">กลุ่มผลิตภัณฑ์</label>
-		                     	<div class="col-md-3 col-sm-3 col-xs-9">
+						<div class="form-group">
+		                    <label class="control-label col-md-2 col-sm-2 col-xs-12">โปรโมชั่น</label>
+		                    <label class="control-label col-md-2 col-sm-2 col-xs-12">กลุ่มผลิตภัณฑ์</label>
+		                     	<div class="col-md-3 col-sm-3 col-xs-12">
 		                     			<div class="selectgroup" ng-dropdown-multiselect="" options="marketings" selected-model="marketingmodel" checkboxes="true" ></div>
 		                     	</div>
-		                      <div class="col-md-6 col-sm-6 col-xs-3"><input type="button" class="btn btn-info" value="refresh" ng-click="update()"></div>
-		                  </div>
-		                  <div class="form-group" ng-show="marketingmodel.length>0">
+		                     	<div class="col-md-3 col-sm-3 col-xs-3"><input type="button" class="btn btn-info" value="refresh" ng-click="update()"></div>
+		                    
+		                </div>
+						<div class="clearfix"></div>
+		                  <div class="form-group">
+		                     	<div class="form-group" ng-show="marketingmodel.length>0">
 		                    	<label class="control-label col-md-3 col-sm-3 col-xs-12">กรองจาก </label>
 		                    	<div class="col-md-9 col-sm-9 col-xs-12">
 		                    			<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getResult(m.id).length>0">{{m.marketingDesc}}  <a  ng-click="" calss="pull-right" style="color:white;" href=""><i class="fa fa-times"></i></a></span>
+		                    	</div>
+		                  		</div>
+		                    	<div class="col-md-3 col-sm-3 col-xs-12">
+		                     			พบโปรโมชั่นจำนวน {{totalPromotion}} รายการ
 		                    	</div>
 		                  </div>
                 	</form>
@@ -107,7 +110,7 @@
 											</div>
 									</div>
 									<div ng-repeat="marketing in marketings" >
-						          <h6><span class="fa fa-arrow-down"></span> {{ marketing.marketingDesc }}</h6>
+						         <!--  <h6><span class="fa fa-arrow-down"></span> {{ marketing.marketingDesc }}</h6> -->
 					            <div class="row" >
 										      <div id="carousel-02" class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions" ng-show="promotion.marketingCode==marketing.marketingCode">
 													    <span class="media-left">

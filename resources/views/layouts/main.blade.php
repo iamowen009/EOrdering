@@ -45,7 +45,7 @@
         @yield('content')
         @verbatim
         <script type="text/ng-template" id="myModalContent.html">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color:#bfebee;">
                 <label class="text-left col-sm-4" ><a href="#" ng-click="$event.preventDefault(); cancel()"><i class="fa fa-close"></i></a></label>
                 <label class="col-sm-8"><h4 class="modal-title" id="modal-title">ตะกร้าของฉัน</h4></label>
             </div>
@@ -72,7 +72,7 @@
                                       <span class="input-group-btn">
                                           <button type="button" class="btn btn-default" ng-click="mremoveQty($index)">-</button>
                                       </span>
-                                      <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:80px; padding:5px;" ng-blur="updateCart($index)">
+                                      <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:120px; padding:5px;" ng-blur="updateCart($index)">
                                       <span class="input-group-btn">
                                           <button type="button" class="btn btn-default" ng-click="maddQty($index)">+</button>
                                       </span>

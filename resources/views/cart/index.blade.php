@@ -5,7 +5,7 @@
 .total_price{color:#00BFFF;font-size: 18px;}
 
 select.form-control{
-  height:auto !important;
+  height: 34px !important;
 }
 .img-product{
   height: 50px;
@@ -31,11 +31,11 @@ select.form-control{
   <input type="hidden" ng-model="customers" />
     <!-- Ecommerce Cart / Checkout -->
     <section class="panel panel-with-borders">
-        <div class="panel-heading">
+        <!-- <div class="panel-heading">
             <h2>
                 Cart / Checkout
             </h2>
-        </div>
+        </div> -->
         <div class="panel-body">
             <div class="cui-ecommerce--cart">
 
@@ -297,12 +297,12 @@ select.form-control{
                         </div>-->
 
                         <br/>
-
-                        <h6>รายละเอียดสินค้าที่สั่งซื้อ</h6>
+                <div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ</h6></div>
+                        
 
                         <!--<ngcart-cart></ngcart-cart>-->
-
-                        <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6>
+                <div class="col-md-12"><h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div>
+                        
 
                       <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
                           Your cart is empty
