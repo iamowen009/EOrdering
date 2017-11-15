@@ -450,7 +450,7 @@ select.form-control{
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เบอร์โทรศัพท์ :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
                                 </div>
-                                <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
+                                <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03') && shippingType=='show'">
                                   <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">บริษัทขนส่ง :</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : ddlTransport.transportZone}} {{ddlTransport.transportZoneDesc}}</label>
                                 </div>
