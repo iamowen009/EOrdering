@@ -30,7 +30,7 @@
                               </thead>
         											<tbody>
         													<tr ng-repeat="list in ordersList | orderBy:'-docDate'" ng-if="list.month === m.month && list.percentComplete < 100">
-        															<td class="text-center">@{{ list.docDate  | date:'dd/MM/yyyy HH:mm'}}</td>
+        															<td class="text-center">@{{ list.docDate  | date:'dd/MM/yyyy'}}</td>
         															<td class="text-center">@{{ list.docName}}</td>
         															<td class="text-center"><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
                                       <td class="text-center"><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
