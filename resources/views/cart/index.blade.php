@@ -254,7 +254,8 @@ select.form-control{
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
                                 </div>
 
-                                <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08' || customer.shipCondition == '03') && shippingType=='show'">
+                                <!-- <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08' || customer.shipCondition == '03') && shippingType=='show'"> -->
+                                <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03'  || customer.shipCondition == '03') && shippingType=='show'">
                                   <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง : </label>
                                   <div class="col-md-8 col-sm-8 col-xs-12">
 
@@ -267,7 +268,7 @@ select.form-control{
                                         ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone">
                                         <option value=''></option>
                                       </select>
-
+                                    
                                     <select
                                         ng-if="transports.length == 0 && ( ddlShipTo.shipCondition == '03' || customer.shipCondition == '03' )"
                                         name="trans_id" id="trans_id"
