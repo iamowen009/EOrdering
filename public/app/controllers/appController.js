@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,totalAmount,totalQty,$scope,Carts,Auth,Customers,Config) {
+app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,totalAmount,totalQty,$scope,Carts,Auth,Customers,Products,Config) {
 
 
   $scope.items = items;
@@ -29,66 +29,80 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
   };
   $scope.editedItem = {};
   $scope.updateCart = function($index){
-    $scope.loadingcart = true;
-    angular.copy($scope.items[$index], $scope.editedItem);
-    //console.log($scope.editedItem);
-    var cartList = [{
-        customerId: Customers.customerId(),
-        productId: $scope.editedItem.productId,
-        qty: $scope.editedItem.qty,
-        userName: Auth.username()
-    }];
-    var promotionList = [];
-    Carts.updateCart(cartList,promotionList).then(function (response) {
-        $scope.loadingcart = false;
+        $scope.loadingcart = true;
+        angular.copy($scope.items[$index], $scope.editedItem);
+        console.log('$scope.editedItem : ', $scope.editedItem ,' | ',$scope.items[$index],' | ',  $scope.items[$index].altUnitAmount);
 
-        fetchCart(Customers.customerId());
-    }, function (response) {
+        if( $scope.editedItem.qty < $scope.items[$index].altUnitAmount){
+            swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.items[$index].altUnitAmount + ' ' + $scope.items[$index].unitNameTh + ' ค่ะ');
+            var $qty = $scope.items[$index].altUnitAmount;
+        }else if( $scope.editedItem.qty % $scope.items[$index].altUnitAmount){
+            swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.items[$index].altUnitAmount + ' ' + $scope.items[$index]['unitNameTh'] + ' ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
+            var un = parseInt($scope.editedItem.qty) / parseInt($scope.items[$index].altUnitAmount);
+           var $qty = $scope.items[$index].altUnitAmount * un.toFixed(0);
+           console.log('un : ', un ,'|',$qty);
+        }else{
+          var $qty = $scope.editedItem.qty;
+        }
+           console.log( '$scope.editedItem.qty : ', $scope.editedItem.qty ,' : ',  $qty );
 
-            console.log(response);
-    });
+        var cartList = [{
+                customerId: Customers.customerId(),
+                productId: $scope.editedItem.productId,
+                qty: $qty,
+                userName: Auth.username()
+            }];
+        var promotionList = [];
+        Carts.updateCart(cartList,promotionList).then(function (response) {
+              $scope.loadingcart = false;
+              fetchCart(Customers.customerId());
+        }, function (response) {
+                console.log(response);
+        });
+
   }
   $scope.maddQty = function($index){
-    $scope.loadingcart = true;
-    angular.copy($scope.items[$index], $scope.editedItem);
-    //console.log($scope.editedItem);
-    var cartList = [{
-        customerId: Customers.customerId(),
-        productId: $scope.editedItem.productId,
-        qty: parseInt($scope.editedItem.qty)+1,
-        userName: Auth.username()
-    }];
-    var promotionList = [];
-    Carts.updateCart(cartList,promotionList).then(function (response) {
-        $scope.loadingcart = false;
+        $scope.loadingcart = true;
+        angular.copy($scope.items[$index], $scope.editedItem);
 
-        fetchCart(Customers.customerId());
-    }, function (response) {
-            console.log('response');
-            console.log(response);
-    });
+        var cartList = [{
+                customerId: Customers.customerId(),
+                productId: $scope.editedItem.productId,
+                qty: parseInt($scope.editedItem.qty)+parseInt($scope.items[$index].altUnitAmount),
+                userName: Auth.username()
+            }];
+        var promotionList = [];
+        Carts.updateCart(cartList,promotionList).then(function (response) {
+              $scope.loadingcart = false;
+              fetchCart(Customers.customerId());
+        }, function (response) {
+              console.log('response');
+              console.log(response);
+        });
   }
+
 
   $scope.mremoveQty = function($index){
     $scope.loadingcart = true;
     angular.copy($scope.items[$index], $scope.editedItem);
-    //console.log($scope.editedItem);
-      if( $scope.editedItem.qty > 1)
-    var cartList = [{
-        customerId: Customers.customerId(),
-        productId: $scope.editedItem.productId,
-        qty: parseInt($scope.editedItem.qty)-1,
-        userName: Auth.username()
-    }];
-    var promotionList = [];
-    Carts.updateCart(cartList,promotionList).then(function (response) {
-        $scope.loadingcart = false;
+    if($scope.editedItem.qty > $scope.items[$index].altUnitAmount )
+            var cartList = [{
+                              customerId: Customers.customerId(),
+                              productId: $scope.editedItem.productId,
+                              qty: parseInt($scope.editedItem.qty)-parseInt($scope.items[$index].altUnitAmount),
+                              userName: Auth.username()
+                          }];
+            var promotionList = [];
 
-        fetchCart(Customers.customerId());
-    }, function (response) {
-            console.log('response');
-            console.log(response);
-    });
+                          Carts.updateCart(cartList,promotionList).then(function (response) {
+                              $scope.loadingcart = false;
+
+                              fetchCart(Customers.customerId());
+                          }, function (response) {
+                                  console.log('response');
+                                  console.log(response);
+                          });
+    
   }
 
   $scope.removeCart = function(productId){

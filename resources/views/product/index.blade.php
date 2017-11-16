@@ -82,7 +82,7 @@
 			                            	<span class="favorite-icon"><i class="fa fa-star"></i></span>
 																		<div class="cui-ecommerce--catalog--item--img">
 						                            <a href="javascript: void(0);">
-						                                <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" class="img-responsive img-product">
+						                                <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
 						                            </a>
 			                            	</div>
 			                            	<div class="text-center product-desc">

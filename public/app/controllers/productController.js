@@ -157,11 +157,25 @@ app.controller('ProductController',
             fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
           };
-
+console.log(' scope customer ' , $scope.customers );
 
         $scope.toProductDetail = function(productId){
         	var url =  _base +'/product-detail/'+productId;
-            window.location.href = url;
+          Customers.fetchOne( $scope.usersId ).then(function (response) {
+              if(response.data.result=='SUCCESS'){
+                console.log('customer info fetch')
+                  $scope.customer = response.data.data.customerInfo;
+                  console.log($scope.customer);
+                  if( $scope.customer.blockFlag == '01'){
+                    alert('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
+                    return false;
+                  }else{
+                    // Customers.setCustomer(id,cusInfo.customerName);
+                    window.location.href = url;
+                  }
+              }
+          });
+            // window.location.href = url;
         }
 
         $scope.toPromotionList = function(promotionId){

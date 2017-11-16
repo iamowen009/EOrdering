@@ -55,9 +55,30 @@ $('.top-search').attr('placeholder','ค้นหาร้านค้า');
             var url =  './home/'+id;
 
             var cusInfo = _.where($scope.customers, { customerId: id })[0];
+            fetchCustomer(id);
+
+            function fetchCustomer(customerId) {
+                Customers.fetchOne(customerId).then(function (response) {
+                    if(response.data.result=='SUCCESS'){
+                      console.log('customer info fetch')
+                        $scope.customer = response.data.data.customerInfo;
+                        console.log($scope.customer);
+                        if( $scope.customer.blockFlag == '01'){
+                          alert('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
+                          return false;
+                        }else{
+                          Customers.setCustomer(id,cusInfo.customerName);
+                          window.location.href = url;
+                        }
+                    }
+                    $scope.loading = false;
+                });
+            }
             console.log(cusInfo);
+            /*
             Customers.setCustomer(id,cusInfo.customerName);
             window.location.href = url;
+            */
           }
 
  })
