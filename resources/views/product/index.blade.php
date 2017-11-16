@@ -13,10 +13,10 @@
 
 				<div class="col-md-3 sidedata">
 			<div>
-                <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
+                <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
                 <div class="category-home">
                 		<ul class="list-unstyled user_data" style="font-size:0.95em">
-                				<li style="padding:20px 0 15px 0;"><strong>กลุ่มผลิตภัณฑ์</strong></li>
+                				<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>กลุ่มผลิตภัณฑ์</strong></li>
 	                 			<li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="marketingSelection(marketing.marketingCode)"> {{ marketing.marketingDesc }}</li>
                			</ul>
              		</div>
@@ -24,9 +24,9 @@
 						<hr>
             <div >
                 <!--<div class="panel-heading text-center">แบรนด์</div>-->
-                <div class="menu-body">
+                <div class="category-home menu-body">
                   	<ul class="list-unstyled user_data" style="font-size:0.95em">
-                    		<li style="padding:20px 0 15px 0;"><strong>แบรนด์</strong></li>
+                    		<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>แบรนด์</strong></li>
 	                    	<li ng-repeat="brand in brandsFilter" ng-if="brand.brandDesc != ''" value="{{brand.brandCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="brandCode.length > 0 && brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)"> {{ brand.brandDesc }}</li>
                  		</ul>
                 </div>
@@ -34,9 +34,9 @@
 						<hr />
             <div>
                 <!--<div class="panel-heading text-center">ประเภท</div>-->
-                <div class="menu-body">
+                <div class="category-home menu-body">
                     <ul class="list-unstyled user_data" style="font-size:0.95em">
-                    		<li style="padding:20px 0 15px 0;"><strong>ประเภท</strong></li>
+                    		<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>ประเภท</strong></li>
 	                    	<li ng-repeat="type in typesFilter" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> {{type.typeCode}} {{ type.typeDesc }}</li>
 	                 	</ul>
                 </div>

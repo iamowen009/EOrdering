@@ -7,7 +7,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
 			  <!-- style="background-color:#000e85;color:#fff" -->
-			  <div class="panel-heading text-center" style="background-color:#BFEBEE;">ข่าวสารและกิจกรรม </div>
+			  <div class="panel-heading text-center style-title">ข่าวสารและกิจกรรม </div>
               <!--<div class="panel-heading text-center">ข่าวสารและกิจกรรม</div>-->
               <div class="panel-body">
               	<br>

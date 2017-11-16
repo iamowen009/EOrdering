@@ -6,7 +6,7 @@
 	<div class="row ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
-            <div class="panel-heading text-center" style="background-color:#BFEBEE;">แจ้งเรื่องเปลี่ยนแปลงข้อมูล </div>
+            <div class="panel-heading text-center style-title">แจ้งเรื่องเปลี่ยนแปลงข้อมูล </div>
               
               <!--<div class="panel-heading text-center">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</div>-->
               <div class="panel-body">

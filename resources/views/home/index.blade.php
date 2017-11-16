@@ -12,7 +12,7 @@
 		<div class="row " ng-controller="HomeController">
 			<div class="col-md-3 sidedata">
 					<div>
-              <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
+              <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
               <div class="category-home">
                   <ul class="list-unstyled user_data" style="font-size:0.95em">
                     	<li ><strong>กลุ่มผลิตภัณฑ์</strong></li>
@@ -98,10 +98,10 @@
                   <div class="clearfix"></div>
                   <br/>
 									<div class="row" >
-					         		<div id="carousel-01" class="col-md-4" ng-repeat="promotion in promotions">
-										    	<div class="" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
-												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;cursor: pointer;">
-															<div style="padding:4px; height:86px; overflow:hidden;">
+					         		<div id="carousel-01" class="col-md-4 text-center" ng-repeat="promotion in promotions">
+										    	<div class="bd-pomo" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
+												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:290px; height:240px;cursor: pointer;">
+															<div style="padding:4px; height:86px; overflow:hidden; text-align:left;">
 																	{{ promotion.promotionCode }}
 																	<br />
 																	{{ promotion.promotionName }}

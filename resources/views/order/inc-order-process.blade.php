@@ -5,7 +5,7 @@
 </style>
 <div class="panel panel-default">
     <div class="panel-heading" style="background-color:#FFF8AA">
-        <h4 class="panel-title">ปี</h4>
+        <h4 class="panel-title" style="font-size:18px;">ปี</h4>
     </div>
     <div class="panel-body order-precess">
           <ul class="bar-year">
