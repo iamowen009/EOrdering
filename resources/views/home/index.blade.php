@@ -72,28 +72,30 @@
               <!-- <div class="panel-heading"></div> -->
               <div class="panel-body">
                   <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
-									<form class="form-horizontal form-label-left">
+						<form class="form-horizontal form-label-left">
+							<div class="panel-heading text-center style-title" style="margin-bottom:10px;">โปรโมชั่น</div>
 						<div class="form-group">
-		                    <label class="control-label col-md-2 col-sm-2 col-xs-12">โปรโมชั่น</label>
 		                    <label class="control-label col-md-2 col-sm-2 col-xs-12">กลุ่มผลิตภัณฑ์</label>
 		                     	<div class="col-md-3 col-sm-3 col-xs-12">
 		                     			<div class="selectgroup" ng-dropdown-multiselect="" options="marketings" selected-model="marketingmodel" checkboxes="true" ></div>
 		                     	</div>
-		                     	<div class="col-md-3 col-sm-3 col-xs-3"><input type="button" class="btn btn-info" value="refresh" ng-click="update()"></div>
+		                     	<div class="col-md-2 col-sm-2 col-xs-2"><input type="button" class="btn btn-info" value="refresh" ng-click="update()"></div>
+		                     	<div class="col-md-3 col-sm-3 col-xs-12">
+		                     			พบโปรโมชั่นจำนวน {{totalPromotion}} รายการ
+		                    	</div>
 		                    
 		                </div>
 						<div class="clearfix"></div>
 		                  <div class="form-group">
 		                     	<div class="form-group" ng-show="marketingmodel.length>0">
-		                    	<label class="control-label col-md-3 col-sm-3 col-xs-12">กรองจาก </label>
+		                    	<label class="control-label col-md-2 col-sm-2 col-xs-12">กรองจาก </label>
 		                    	<div class="col-md-9 col-sm-9 col-xs-12">
 		                    			<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getResult(m.id).length>0">{{m.marketingDesc}}  <a  ng-click="" calss="pull-right" style="color:white;" href=""><i class="fa fa-times"></i></a></span>
 		                    	</div>
 		                  		</div>
-		                    	<div class="col-md-3 col-sm-3 col-xs-12">
-		                     			พบโปรโมชั่นจำนวน {{totalPromotion}} รายการ
-		                    	</div>
+		                    	
 		                  </div>
+		                  
                 	</form>
                   <div class="clearfix"></div>
                   <br/>
