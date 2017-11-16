@@ -97,7 +97,7 @@
 									<div class="row" >
 					         		<div id="carousel-01" class="col-md-4" ng-repeat="promotion in promotions">
 										    	<div class="" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
-												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:250px; height:150px;cursor: pointer;">
+												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:290px; height:200px;cursor: pointer;">
 															<div style="padding:4px; height:86px; overflow:hidden;">
 																	{{ promotion.promotionCode }}
 																	<br />

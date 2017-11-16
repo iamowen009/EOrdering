@@ -118,7 +118,7 @@
               <div class="col-sm-3"><p><strong>เลขที่ใบสั่งซื้อ :</strong></p></div>
               <div class="col-sm-9 nonpaddingleft"><p>@{{inv.documentNumber  }}</p></div>
               </div>
-              
+
               <div class="row">
               <div class="col-sm-3"><p><strong>วันทีสั่งซื่้อ :</strong></p></div>
               <div class="col-sm-9 nonpaddingleft"><p>@{{ inv.documentDate | date:'dd/MM/yyyy'  }}</p></div>
@@ -143,7 +143,7 @@
               <div class="col-sm-3"><p><strong>เบอร์โทรศัพท์ :</strong></p></div>
               <div class="col-sm-9 nonpaddingleft"><p>@{{ inv.customerTelNo }}</p></div>
               </div>
-          </div> 
+          </div>
            <div class="col-sm-4">
               <div class="row">
               <div class="col-sm-6"><p><strong>เลขที่ PO :</strong></p></div>
@@ -179,7 +179,7 @@
               <p><strong>เบอร์โทรศัพท์ :</strong>@{{ inv.customerTelNo }}</p>
               <p><strong>สถานที่ส่ง :</strong> @{{ inv.shipName }}</p>
               <p><strong>ที่อยู่สถานที่ส่ง :</strong> @{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
-          </div> 
+          </div>
            <div class="col-sm-5">
               <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.documentNumber}}</p>
               <p><strong>วันทีสั่งซื่้อ :</strong> @{{ inv.documentDate | date:'dd/MM/yyyy'  }}</p>
@@ -255,7 +255,10 @@
                   <tbody>
                   <tr ng-repeat="item in detail">
                       <td class="text-center">
-                         <img class="img-product" src="@{{ partImgProduct +'/'+ item.btf }}.jpg" err-SRC="@{{partImgProduct}}/Noimage.jpg" style="height:40px;">
+                        @verbatim
+                         <img class="img-product" src="{{partImgProductOrder +'/' + item.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" style="height:50px;">
+                         {{partImgProductOrder +'/' + item.btf}}.jpg
+                         @endverbatim
                       </td>
                       <td>
                           @{{item.productCode}}
@@ -267,8 +270,8 @@
                       </td>
                       <td class="text-center">@{{ item.qty | number }}</td>
                       <td class="text-center">@{{item.unitNameTh}}</td>
-                      <td class="text-right">@{{ item.amount * 1 | number:2}}</td>
-                      <td class="text-right">@{{ +item.amount*+item.qty | number:2 }}</td>
+                      <td class="text-right">@{{ item.isFreeGoods === true ? 0 : item.amount * 1 | number:2}}</td>
+                      <td class="text-right">@{{ item.isFreeGoods === true ? 0 : +item.amount*+item.qty | number:2 }}</td>
                       <td class="text-center" style="display:none">@{{item.promotionName}}</td>
                   </tr>
                   </tbody>

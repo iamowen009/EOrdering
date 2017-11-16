@@ -24,7 +24,8 @@ $scope.ordersList = [];
 
     var arr = [];
     var Ym = [];
-		$scope.partImgProduct = Config.partImgProduct() + "/OrderDetail";
+		$scope.partImgProduct = Config.partImgProduct();
+		$scope.partImgProductOrder = Config.partImgProductOrder();
 		fetchOrderPrecess(Customers.customerId(),$scope.startDateBeforeRender(),$scope.endDateBeforeRender() );
 		prepareOrder(Customers.customerId());
 
@@ -122,8 +123,8 @@ $scope.ordersList = [];
 										$scope.totalAmount=0;
 										$scope.totalQty=0;
 										for(var key in $scope.detail){
-                        $scope.totalAmount += $scope.detail[key]['totalAmount'];
-                        $scope.totalQty += $scope.detail[key]['qty'];
+                        $scope.totalAmount 	+= $scope.detail[key]['isFreeGoods'] === true ? 0 : $scope.detail[key]['totalAmount'];
+                        $scope.totalQty 		+= $scope.detail[key]['qty'];
                     }
 								$('#invoiceModal').modal('show');
 						}else{
@@ -309,7 +310,7 @@ $scope.ordersList = [];
 							$scope.haveNoBill.push(arr_b);
 						else{
 							$scope.haveBill.push(arr_b);
-							
+
 							//ถ้ายังเหลือ บิลที่ยังไม่ได้ออก ให้มาแสดงด้วย
 							if($scope.ItemAll[k].targetQty  -  $scope.ItemAll[k].billQty > 0)
 							{
@@ -318,7 +319,7 @@ $scope.ordersList = [];
 							}
 
 						}
-						
+
 					}
 
 				$('#OrderHistoryModal').modal('show');

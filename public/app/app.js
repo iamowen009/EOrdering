@@ -113,7 +113,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         //if(appScope.ddlShipTo.length > 0 ){
 
 
-                        
+
                         if(typeof appScope.ddlShipTo !== undefined ){
                             appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
@@ -132,8 +132,8 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                         //appShipCondition
                         checkedShip = appScope.shipCondition;
-                        
-                       
+
+
 
                         console.log('appScope.shipCondition ' + appScope.shipCondition);
 
@@ -194,7 +194,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         // }
 
                         console.log('reqDate ' + reqDate );
-                           
+
                         var order =  {
                             documentDate    : appScope.carts[0].cartDate,
                             userName        : Auth.username(),
@@ -205,9 +205,9 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                             //shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appShipCondition ),
 
                             shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appScope.customer.shipCondition ),
-                            shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? 0 : shipId,
-                            shipCode    : (shipCode === undefined || shipCode ==='' || checkedShip === true ) ? '00' : shipCode,
-                            shipName    : (shipName === undefined || shipName === '' || checkedShip === true ) ? 'รับสินค้าเอง' : shipName,
+                            shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? Customers.customerId() : shipId,
+                            shipCode    : (shipCode === undefined ||  checkedShip === true ) ? '' : shipCode,
+                            shipName    : (shipName === undefined ||  checkedShip === true ) ? 'รับสินค้าเอง' : shipName,
                             requestDate : reqDate,
                             customerPO  : customerPO,
                             transportId : (transportId !== '' && transportId !== 0 && transportId !== undefined )? transportId : 0,
@@ -216,7 +216,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                         };
                         console.log( 'order : ',order );
-
+/*
                         Orders.addOrder(order).then(function (response) {
                             //$scope.loading = false;
                             console.log( response );
@@ -261,7 +261,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                                 console.log(response);
                         });
-
+*/
 
                     } else {
                         //swal.close();
