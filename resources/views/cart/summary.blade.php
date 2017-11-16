@@ -100,7 +100,7 @@ select.form-control{
                                 <label for="pwd" class="col-md-4 text-right">อีเมลล์ :</label>
                                 <label class="col-md-8 text-left">{{ customer.email}}</label>
                               </div>
-                              <div class="form-group col-md-6" ng-hide="order.shipAddress === 'null' || rder.shipAddress === '' ">
+                              <div class="form-group col-md-6" ng-hide="order.shipAddress === null || order.shipAddress === ''  ">
                                 <label for="email" class="col-md-4 text-right" >ที่อยู่สถานที่ส่ง :</label>
                                 <label class="col-md-8 text-left">{{order.shipAddress}}</label>
                               </div>
@@ -115,7 +115,7 @@ select.form-control{
                                 <label for="email" class="col-md-4 text-right">ขนส่งโดย :</label>
                                 <label class="col-md-8 text-left">มารับเอง</label>
                               </div>
-                              <div class="form-group col-md-6" ng-hide="order.transportZoneDesc === null || rder.transportZoneDesc === '' ">
+                              <div class="form-group col-md-6" ng-hide="order.transportZoneDesc === null || order.transportZoneDesc === '' ">
                                 <label for="pwd" class="col-md-4 text-right">บริษัทขนส่ง :</label>
                                 <label class="col-md-8 text-left">{{order.transportZoneDesc}}</label>
                               </div>
