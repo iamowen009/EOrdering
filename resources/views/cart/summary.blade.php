@@ -43,7 +43,7 @@ select.form-control{
                     <section>
                         <div class="x_panel">
                           <div class="x_title">
-                            <h4>{{order.customerCode}} {{order.customerName}}</h4>
+                            <h4>{{order.customerCode}} : {{order.customerName}}</h4>
 
                             <div class="clearfix"></div>
                           </div>
@@ -51,74 +51,101 @@ select.form-control{
                             <br>
                             <form class="form-horizontal">
                               <div class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">เลขที่ใบสั่งซื้อ : </label>
-                                <label class="col-md-8 text-left">{{order.documentNumber}}</label>
+                                <label for="email" class="col-md-3 text-right">เลขที่ใบสั่งซื้อ : </label>
+                                <label class="col-md-9 text-left">{{order.documentNumber}}</label>
                               </div>
                               <div class="form-group col-md-6">
-                              <label for="pwd" class="col-md-4 text-right">เลขที่ PO :</label>
-                              <label class="col-md-8 text-left">{{order.customerPO}}</label>
+                              <label for="pwd" class="col-md-3 text-right">เลขที่ PO :</label>
+                              <label class="col-md-9 text-left">{{order.customerPO}}</label>
                               </div>
 
 
 
                               <div class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">วันที่สั่งซื้อ :</label>
-                                <label class="col-md-8 text-left">{{ order.documentDate }}</label>
+                                <label for="email" class="col-md-3 text-right">วันที่สั่งซื้อ :</label>
+                                <label class="col-md-9 text-left">{{ order.documentDate }}</label>
                               </div>
 
+<<<<<<< HEAD
                               <div class="form-group col-md-6" ng-show="order.shipCondition == '01'">
                                 <label for="email" class="col-md-4 text-right">ขนส่งโดย :</label>
                                 <label class="col-md-8 text-left">{{order.shipCondition === "01" ? 'รับสินค้าเอง' : ''}}</label>
 
                               
+=======
 
-<!--                                 
+                              <div class="form-group col-md-6" ng-show="shipCondition">
+                                <label for="email" class="col-md-3 text-right">ขนส่งโดย :</label>
+                                <label class="col-md-9 text-left">{{shipCondition === true ? 'รับสินค้าเอง' : ''}}</label>
+                              </div>
+>>>>>>> jane
+
+                                
                               <div class="form-group col-md-6">
-                              <label for="email" class="col-md-4 text-right">&nbsp;</label>
-                                <label class="col-md-8 text-left"></label>
-                              </div> -->
+                              <label for="email" class="col-md-3 text-right">&nbsp;</label>
+                                <label class="col-md-9 text-left"></label>
+                              </div>
 
                               <div class="form-group col-md-6">
+<<<<<<< HEAD
                                 <label for="email" class="col-md-4 text-right">การชำระเงิน :</label>
                                 <label ng-show="order.paymentTerm==='CA02'" class="col-md-8 text-left">เงินสด</label>
                                 <label ng-show="order.paymentTerm!=='CA02'" class="col-md-8 text-left">เครดิต</label>
+=======
+                                <label for="email" class="col-md-3 text-right">การชำระเงิน :</label>
+                                <label ng-show="order.paymentTerm==='CASH'" class="col-md-9 text-left">เงินสด</label>
+                                <label ng-show="order.paymentTerm!=='CASH'" class="col-md-9 text-left">เครดิต</label>
+>>>>>>> jane
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="pwd" class="col-md-3 text-right">Request Date:</label>
+                                <label class="col-md-9 text-left">{{order.requestDate}}</label>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">วันที่ต้องการ :</label>
-                                <label class="col-md-8 text-left">{{order.requestDate}}</label>
+                                <label for="pwd" class="col-md-3 text-right">ที่อยู่ :</label>
+                                <label class="col-md-9 text-left">{{order.address}} {{order.street}} {{order.subDistrictName}} {{order.districtName}} {{order.cityName}}</label>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">ที่อยู่ :</label>
-                                <label class="col-md-8 text-left">{{order.address}} {{order.street}} {{order.subDistrictName}} {{order.districtName}} {{order.cityName}}</label>
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">สถานที่ส่ง :</label>
-                                <label class="col-md-8 text-left">{{order.shipName}}</label>
+                                <label for="email" class="col-md-3 text-right">สถานที่ส่ง :</label>
+                                <label class="col-md-9 text-left">{{order.shipName}}</label>
                               </div>
 
                               <div class="col-md-12">
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">อีเมลล์ :</label>
-                                <label class="col-md-8 text-left">{{ customer.email}}</label>
+                                <label for="pwd" class="col-md-3 text-right">อีเมลล์ :</label>
+                                <label class="col-md-9 text-left">{{ customer.email}}</label>
                               </div>
+<<<<<<< HEAD
                               <div class="form-group col-md-6" ng-hide="order.shipAddress === null || order.shipAddress === ''  ">
                                 <label for="email" class="col-md-4 text-right" >ที่อยู่สถานที่ส่ง :</label>
                                 <label class="col-md-8 text-left">{{order.shipAddress}}</label>
+=======
+                              <div class="form-group col-md-6">
+                                <label for="email" class="col-md-3 text-right">ที่อยู่สถานที่ส่ง :</label>
+                                <label class="col-md-9 text-left">{{customer.shipaddress}}</label>
+>>>>>>> jane
                               </div>
                               </div>
 
                               <div class="form-group col-md-6">
-                                <label for="pwd" class="col-md-4 text-right">เบอร์โทรศัพท์ :</label>
-                                <label class="col-md-8 text-left">{{ customer.telNo }}</label>
+                                <label for="pwd" class="col-md-3 text-right">เบอร์โทรศัพท์ :</label>
+                                <label class="col-md-9 text-left">{{ customer.telNo }}</label>
                               </div>
 
                               <div ng-show="customerInfo.isReceive==='1'" class="form-group col-md-6">
-                                <label for="email" class="col-md-4 text-right">ขนส่งโดย :</label>
-                                <label class="col-md-8 text-left">มารับเอง</label>
+                                <label for="email" class="col-md-3 text-right">ขนส่งโดย :</label>
+                                <label class="col-md-9 text-left">มารับเอง</label>
                               </div>
+<<<<<<< HEAD
                               <div class="form-group col-md-6" ng-hide="order.transportZoneDesc === null || order.transportZoneDesc === '' ">
                                 <label for="pwd" class="col-md-4 text-right">บริษัทขนส่ง :</label>
                                 <label class="col-md-8 text-left">{{order.transportZoneDesc}}</label>
+=======
+                              <div class="form-group col-md-6">
+                                <label for="pwd" class="col-md-3 text-right">บริษัทขนส่ง :</label>
+                                <label class="col-md-9 text-left">{{order.transportZoneDesc}}</label>
+>>>>>>> jane
                               </div>
                               
                             </form>
