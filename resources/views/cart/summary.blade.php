@@ -66,19 +66,11 @@ select.form-control{
                                 <label class="col-md-9 text-left">{{ order.documentDate }}</label>
                               </div>
 
-<<<<<<< HEAD
                               <div class="form-group col-md-6" ng-show="order.shipCondition == '01'">
-                                <label for="email" class="col-md-4 text-right">ขนส่งโดย :</label>
-                                <label class="col-md-8 text-left">{{order.shipCondition === "01" ? 'รับสินค้าเอง' : ''}}</label>
+                                <label for="email" class="col-md-3 text-right">ขนส่งโดย :</label>
+                                <label class="col-md-9 text-left">{{order.shipCondition === "01" ? 'รับสินค้าเอง' : ''}}</label>
 
                               
-=======
-
-                              <div class="form-group col-md-6" ng-show="shipCondition">
-                                <label for="email" class="col-md-3 text-right">ขนส่งโดย :</label>
-                                <label class="col-md-9 text-left">{{shipCondition === true ? 'รับสินค้าเอง' : ''}}</label>
-                              </div>
->>>>>>> jane
 
                                 
                               <div class="form-group col-md-6">
@@ -87,15 +79,9 @@ select.form-control{
                               </div>
 
                               <div class="form-group col-md-6">
-<<<<<<< HEAD
-                                <label for="email" class="col-md-4 text-right">การชำระเงิน :</label>
-                                <label ng-show="order.paymentTerm==='CA02'" class="col-md-8 text-left">เงินสด</label>
-                                <label ng-show="order.paymentTerm!=='CA02'" class="col-md-8 text-left">เครดิต</label>
-=======
                                 <label for="email" class="col-md-3 text-right">การชำระเงิน :</label>
-                                <label ng-show="order.paymentTerm==='CASH'" class="col-md-9 text-left">เงินสด</label>
-                                <label ng-show="order.paymentTerm!=='CASH'" class="col-md-9 text-left">เครดิต</label>
->>>>>>> jane
+                                <label ng-show="order.paymentTerm==='CA02'" class="col-md-9 text-left">เงินสด</label>
+                                <label ng-show="order.paymentTerm!=='CA02'" class="col-md-9 text-left">เครดิต</label>
                               </div>
 
                               <div class="form-group col-md-6">
@@ -116,15 +102,9 @@ select.form-control{
                                 <label for="pwd" class="col-md-3 text-right">อีเมลล์ :</label>
                                 <label class="col-md-9 text-left">{{ customer.email}}</label>
                               </div>
-<<<<<<< HEAD
                               <div class="form-group col-md-6" ng-hide="order.shipAddress === null || order.shipAddress === ''  ">
-                                <label for="email" class="col-md-4 text-right" >ที่อยู่สถานที่ส่ง :</label>
-                                <label class="col-md-8 text-left">{{order.shipAddress}}</label>
-=======
-                              <div class="form-group col-md-6">
-                                <label for="email" class="col-md-3 text-right">ที่อยู่สถานที่ส่ง :</label>
-                                <label class="col-md-9 text-left">{{customer.shipaddress}}</label>
->>>>>>> jane
+                                <label for="email" class="col-md-3 text-right" >ที่อยู่สถานที่ส่ง :</label>
+                                <label class="col-md-9 text-left">{{order.shipAddress}}</label>
                               </div>
                               </div>
 
@@ -137,15 +117,9 @@ select.form-control{
                                 <label for="email" class="col-md-3 text-right">ขนส่งโดย :</label>
                                 <label class="col-md-9 text-left">มารับเอง</label>
                               </div>
-<<<<<<< HEAD
                               <div class="form-group col-md-6" ng-hide="order.transportZoneDesc === null || order.transportZoneDesc === '' ">
-                                <label for="pwd" class="col-md-4 text-right">บริษัทขนส่ง :</label>
-                                <label class="col-md-8 text-left">{{order.transportZoneDesc}}</label>
-=======
-                              <div class="form-group col-md-6">
                                 <label for="pwd" class="col-md-3 text-right">บริษัทขนส่ง :</label>
                                 <label class="col-md-9 text-left">{{order.transportZoneDesc}}</label>
->>>>>>> jane
                               </div>
                               
                             </form>
