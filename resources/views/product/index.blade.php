@@ -10,10 +10,11 @@
 		<!-- LOADING ICON =============================================== -->
     	<!-- show loading icon if the loading variable is set to true -->
 		<div class="row " ng-controller="ProductController">
-				<div class="col-md-2 col-sm-2 col-xs-12">
-						<div>
-                <div class="panel-heading text-center" style="background-color:#000e85;color:#fff">รายการสินค้า </div>
-                <div class="menu-body">
+
+				<div class="col-md-3 sidedata">
+			<div>
+                <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff">รายการสินค้า </div>
+                <div class="category-home">
                 		<ul class="list-unstyled user_data" style="font-size:0.95em">
                 				<li style="padding:20px 0 15px 0;"><strong>กลุ่มผลิตภัณฑ์</strong></li>
 	                 			<li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="marketingSelection(marketing.marketingCode)"> {{ marketing.marketingDesc }}</li>
@@ -42,13 +43,13 @@
             </div>
 						<hr />
 				</div>
-				<div class="col-md-10 col-sm-10 col-xs-9">
+				<div class="col-md-9 col-sm-9 col-xs-9">
 						<div class="panel-content panel panel-default">
 								<form class="form-horizontal form-label-left">
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom:0px;margin-top:0px;">
 		                    <label class="col-md-12 col-sm-12 col-xs-12"><h4>{{marketingDesc}} <small>พบสินค้าจำนวน {{totalProduct}} รายการ</small></h4></label>
                     </div>
-										<div class="form-group">
+										<div class="form-group" style="margin-bottom:0px;margin-top:0px;">
 		                    <label class="col-md-1 col-sm-1 col-xs-12">กรองจาก </label>
 		                    <div class="col-md-10 col-sm-10 col-xs-12">
 	                        	<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getFilter(marketingCode,m.marketingCode).length>0">{{m.marketingDesc}} <a ng-if="m.marketingCode != marketingCode[0]" ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;" href=""><i class="fa fa-times text-danger"></i></a></span>
@@ -58,7 +59,7 @@
 		                </div>
 								</form>
 								<div>
-						  			<h4>โปรโมชั่น</h4>
+						  			<!-- <h4>โปรโมชั่น</h4> -->
                    	<div class="row" >
 				            		<div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions" ng-show="promotion.marketingCode==marketingCode">
 												    <span class="media-left">

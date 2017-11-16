@@ -119,7 +119,7 @@ header{
     min-height:100px;
 }
 .navbar-menu{
-    margin-right: 1rem;
+   /* margin-right: 1rem;*/
 }
 
 .navbar.navbar-default{
@@ -242,6 +242,7 @@ h2 small, h3 .small{
     margin-bottom: 10px;
 }
 .x_title {
+    background: #bfebee;
     border-bottom: 2px solid #E6E9ED;
     padding: 1px 5px 6px;
 }
@@ -470,7 +471,7 @@ ul.dropdown-menu.show {
 }
 
 .x_content {
-    background: #ffffcb !important;
+    background: #fff8aa !important;
 }
 button.cancel {
     margin-right:30px;
@@ -506,4 +507,10 @@ button.confirm {
 }
 .sweet-alert button.cancel {
     background-color: orange !important;
+}
+.modal-footer {
+    margin-right: 50px;
+}
+.thead-default th {
+    background: #d2c9e2;
 }
