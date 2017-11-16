@@ -514,9 +514,7 @@ button.confirm {
 .thead-default th {
     background: #d2c9e2;
 }
-.form-group {
-    margin-bottom: 0px !important;
-}
+
 .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
     border: none !important;
 }
