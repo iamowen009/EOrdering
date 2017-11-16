@@ -100,7 +100,7 @@
 									<div class="row" >
 					         		<div id="carousel-01" class="col-md-4 text-center" ng-repeat="promotion in promotions">
 										    	<div class="bd-pomo" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
-												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:290px; height:240px;cursor: pointer;">
+												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:285px; height:235px;cursor: pointer;border-radius:5px 5px 0px 0px;">
 															<div style="padding:4px; height:86px; overflow:hidden; text-align:left;">
 																	{{ promotion.promotionCode }}
 																	<br />

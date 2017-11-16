@@ -151,7 +151,7 @@ select.form-control{
                     <section>
                         <div class="x_panel">
                         <div class="x_title">
-                          <h4>{{customer.customerCode}} {{customer.customerName}}</h4>
+                          <h4>{{customer.customerCode}} : {{customer.customerName}}</h4>
 
                           <div class="clearfix"></div>
                         </div>
@@ -197,7 +197,7 @@ select.form-control{
                                   </div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date :</label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date xxx:</label>
                                   <div class="col-md-8 col-sm-8 col-xs-12">
 
                                     <select
@@ -380,7 +380,7 @@ select.form-control{
                     <section>
                       <div class="x_panel">
                         <div class="x_title">
-                          <h4>{{customer.customerCode}} {{customer.customerName}}</h4>
+                          <h4>{{customer.customerCode}} : {{customer.customerName}}</h4>
 
                           <div class="clearfix"></div>
                         </div>
@@ -416,7 +416,7 @@ select.form-control{
                                   <label ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">Request Date :</label>
+                                  <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">Request Date:</label>
                                   <label class="col-md-9 col-sm-9 col-xs-12">{{ddlDate.reqDate}}</label>
 
                                 </div>

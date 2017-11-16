@@ -24,9 +24,9 @@
 														<span class="favorite-icon"><i class="fa fa-star"></i></span>
 													-->
 		                        <div class="cui-ecommerce--catalog--item--img">
-		                            <div class="cui-ecommerce--catalog--item--status">
+		                            <!-- <div class="cui-ecommerce--catalog--item--status">
 		                                <span class="cui-ecommerce--catalog--item--status--title">New</span>
-		                            </div>
+		                            </div> -->
 																<span class="favorite-icon"><i class="fa fa-star"></i></span>
 																<!--
 		                            <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected" ng-show="productSelect.productId">
