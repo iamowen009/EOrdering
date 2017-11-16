@@ -21,10 +21,11 @@
     <!-- show loading icon if the loading variable is set to true -->
 		<div class="row " ng-controller="CustomerController">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-
+				<div class="panel-heading text-center style-title">ร้านค้าบนระบบ</div>
 				<div class="panel-content panel panel-default">
                       <!-- <div class="panel-heading">ร้านค้าบนระบบ</div> -->
-          <h2 class="text-center titlestore">ร้านค้าบนระบบ</h2><hr>
+
+          <!-- <h2 class="text-center titlestore">ร้านค้าบนระบบ</h2><hr> -->
           <div class="panel-body">
             <br/>
 						<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
