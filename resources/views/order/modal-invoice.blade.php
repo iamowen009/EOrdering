@@ -257,7 +257,6 @@
                       <td class="text-center">
                         @verbatim
                          <img class="img-product" src="{{partImgProductOrder +'/' + item.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" style="height:50px;">
-                         {{partImgProductOrder +'/' + item.btf}}.jpg
                          @endverbatim
                       </td>
                       <td>
