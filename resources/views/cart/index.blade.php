@@ -197,7 +197,7 @@ select.form-control{
                                   </div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date xxx:</label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date:</label>
                                   <div class="col-md-8 col-sm-8 col-xs-12">
 
                                     <select
