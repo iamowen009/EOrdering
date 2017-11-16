@@ -20,7 +20,7 @@
 
 
             	<form class="form-inline">
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-3">
                   	<label class="datelbl">วันที่ : &nbsp;</label>
                         <div class="dropdown input-group dropdown-start-parent">
           						    <a  id="dropdownStart" role="button" data-toggle="dropdown" data-target=".dropdown-start-parent"
@@ -38,7 +38,7 @@
           						    </ul>
           						</div>
                   </div>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-3" style="margin-left: -60px;">
                       <label class="datelbl">ถึงวันที่ : &nbsp;</label>
                     <div class="col-md-9">
                         <div class="dropdown input-group dropdown-end-parent">

@@ -46,8 +46,9 @@
         @verbatim
         <script type="text/ng-template" id="myModalContent.html">
             <div class="modal-header" style="background-color:#bfebee;">
-                <label class="text-left col-sm-4" ><a href="#" ng-click="$event.preventDefault(); cancel()"><i class="fa fa-close"></i></a></label>
-                <label class="col-sm-8"><h4 class="modal-title" id="modal-title">ตะกร้าของฉัน</h4></label>
+                
+                <label class="col-sm-8"><h4 class="modal-title text-right" id="modal-title">ตะกร้าของฉัน</h4></label>
+                <label class="text-right col-sm-4" ><a href="#" ng-click="$event.preventDefault(); cancel()"><i class="fa fa-close"></i></a></label>
             </div>
             <div class="modal-body" id="modal-body" style="padding:none;">
                 <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>

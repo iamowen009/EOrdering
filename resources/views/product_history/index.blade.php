@@ -6,8 +6,9 @@
     max-width: 100%;
 }
 .cui-ecommerce--catalog--item--img {
-    height: 220px !important;
+    height: 170px !important;
 }
+
 </style>
 @stop
 
