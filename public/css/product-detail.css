@@ -3,7 +3,8 @@ select.form-control{
 }
 .cui-ecommerce--product--controls .btn {
     padding: 4px 40px !important;
-		font-weight: bold;
+	font-weight: bold;
+    width: 150px;
 }
 
 .cui-ecommerce--catalog--item--img a .img {
@@ -20,7 +21,7 @@ select.form-control{
     transition: all 0.4s ease-in-out;
 }
 .cui-ecommerce--catalog--item--img-thumb a img{
-	height: 180px !important;
+	/*height: 180px !important;*/
 	max-width: 100%;
 	-webkit-transition: all 0.4s ease-in-out;
 	transition: all 0.4s ease-in-out;

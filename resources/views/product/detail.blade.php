@@ -14,7 +14,7 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 
 				<div class="panel-content panel panel-default">
-                  <div class="panel-heading"></div>
+                <!--   <div class="panel-heading"></div> -->
                   <div class="panel-body">
 
                     <div class="row">
@@ -44,7 +44,7 @@
 		                </div>
 		                <div class="col-lg-8">
 		                    <div class="cui-ecommerce--product--sku">
-		                        SKU: #{{btf.btf}}
+		                        <span style="display:none">SKU: #{{btf.btf}}</span>
 		                        <br>
 		                        <div class="cui-ecommerce--product--rating">
 		                            <i class="icmn-star-full"></i>
@@ -219,7 +219,7 @@
 					<div class="row">
 
 						<div class="panel-content panel panel-default">
-                      		<div class="panel-heading"><h4>สินค้าที่เกี่ยวข้อง</h4></div>
+                      		<div class="panel-heading text-center" style="background-color:#BFEBEE;padding: 2px 15px;"><h4>สินค้าที่เกี่ยวข้อง</h4></div>
                       		<div class="panel-body">
 
 
