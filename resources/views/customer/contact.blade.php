@@ -6,7 +6,8 @@
 	<div class="row " >
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-contact">
-            <div class="panel-heading" style="background-color:#BFEBEE;"><h3>ติดต่อ TOA</h3> </div>
+			<div class="panel-heading text-center style-title">ติดต่อ TOA</div>
+            <!-- <div class="panel-heading style-title"><h3>ติดต่อ TOA</h3> </div> -->
 
               <!--<div class="panel-heading text-center">ติดต่อเรา</div>-->
               <div class="panel-body ">
