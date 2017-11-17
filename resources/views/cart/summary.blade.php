@@ -69,7 +69,7 @@ select.form-control{
                               <div class="form-group col-md-6" ng-show="order.shipCondition == '01'">
                                 <label for="email" class="col-md-3 text-right">ขนส่งโดย :</label>
                                 <label class="col-md-9 text-left">{{order.shipCondition === "01" ? 'รับสินค้าเอง' : ''}}</label>
-
+							   </div>
                               
 
                                 
