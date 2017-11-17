@@ -167,7 +167,7 @@ console.log(' scope customer ' , $scope.customers );
                   $scope.customer = response.data.data.customerInfo;
                   console.log($scope.customer);
                   if( $scope.customer.blockFlag == '01'){
-                    alert('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
+                    swal('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
                     return false;
                   }else{
                     // Customers.setCustomer(id,cusInfo.customerName);
