@@ -1,6 +1,6 @@
 "use strict";
 app.controller('LoginController',
-    function ($scope, $http,$timeout, $filter,API_URL,SweetAlert,Auth,Config,vcRecaptchaService,Customers) {
+    function ($scope, $http,$timeout, $filter,API_URL,SweetAlert,Auth,Config,Customers) {
 
         console.log('Customers');
         console.log( Auth.username() );
@@ -65,7 +65,7 @@ app.controller('LoginController',
 
         $scope.cbExpiration = function() {
             console.info('Captcha expired. Resetting response object');
-            vcRecaptchaService.reload($scope.widgetId);
+            //vcRecaptchaService.reload($scope.widgetId);
             $scope.response = null;
          };
         /*fetchSlideshow();

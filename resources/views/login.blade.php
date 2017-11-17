@@ -127,7 +127,7 @@
                           <div class="ln_solid"></div>
 
                          <div ng-show="logintime>=3">
-                          <div class="g-recaptcha" data-sitekey="6LeZTjQUAAAAAJvXr2P_Acir9D5T8YwcBQTcCQyh"></div>
+                            <!-- <div class="g-recaptcha" data-sitekey="6LeZTjQUAAAAAJvXr2P_Acir9D5T8YwcBQTcCQyh"></div> -->
                           </div>
 
                           <div class="form-group">
@@ -186,6 +186,8 @@
     <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="<?= asset('node_modules/angular/angular.min.js') ?>"></script>
+    <script src="<?= asset('bower_components/angular-messages/angular-messages.min.js') ?>"></script>
+    <script src="<?= asset('bower_components/angular-validation-match/dist/angular-validation-match.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
 
     <script src="<?= asset('node_modules/angular-sweetalert/SweetAlert.min.js') ?>"></script>
