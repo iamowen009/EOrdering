@@ -47,7 +47,7 @@
         @verbatim
         <script type="text/ng-template" id="myModalContent.html">
             <div class="modal-header" style="background-color:#bfebee;">
-                
+
                 <label class="col-sm-8"><h4 class="modal-title text-right" id="modal-title">ตะกร้าของฉัน</h4></label>
                 <label class="text-right col-sm-4" ><a href="#" ng-click="$event.preventDefault(); cancel()"><i class="fa fa-close"></i></a></label>
             </div>
@@ -57,9 +57,9 @@
                       <label class="text-left col-sm-1" >
                           <a href="#" ng-click="$event.preventDefault(); removeCart(item.productId)"><i class="fa fa-trash"></i></a>
                       </label>
-                      <label class="col-sm-11 text-left">{{item.productCode}}</label>
+                      <label class="col-sm-11 text-left">{{item.productCode}}</label> <span class="blue-underline" ng-if="item.promotionId != 0">(ของแถม)</span>
                       <label class="text-left col-sm-1" ></label>
-                      <label class="col-md-11">{{item.productNameTh}}</label>
+                      <label class="col-md-11">{{item.productNameTh}}</label> <span class="text-danger" ng-if="item.isFreeGoodes === true">(ของแถม)</span>
                       <div class="col-md-4 text-right"><img src="{{partImgProductCard}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                       <div class="col-md-8">
                           <div class="col-md-12">
