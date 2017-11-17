@@ -897,3 +897,21 @@ angular.module('app')
     }
 
 }])
+
+.service('ChangePassword', ['$http', '$q', 'API_URL', function($http, $q, API_URL) 
+{
+    return {
+        save: function(formData) {
+            var deferred = $q.defer();
+            var url = API_URL + 'PostChangePassword';
+
+            $http.post(url, formData).then(function(data) {
+                deferred.resolve(data);
+            }, function(err) {
+                deferred.reject('An error occured while fetching all separations');
+            });
+
+            return deferred.promise;
+        }
+    }
+}]);

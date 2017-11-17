@@ -58,12 +58,24 @@ app.controller('HomeController',
             return _.filter(results, function(d){  return valueStartsWith.indexOf(parseInt(d[keyToFilter]))!=-1; })
         }
 
+        $scope.removeFilter = function(id) {
+            var index;
+
+            $scope.marketingmodel.forEach(function(x, i) {
+                if (x.id == id) {
+                    return index = i;
+                }
+            });
+
+            $scope.marketingmodel.splice(index, 1);
+        }
+
         $scope.update = function() {
             $scope.promotions = [];
             $scope.loading = true;
             var tmp=[];
-            for (var i = 0; i < $scope.marketingmodel.length; i++) {
-                tmp.push($scope.marketingmodel[i].id);
+            for (var i = 0; i < $scope.marketings.length; i++) {
+                tmp.push($scope.marketings[i].id);
             }
             $scope.promotions = getFilter($scope.promotions_all,'marketingCode', tmp);
             $scope.loading = false;

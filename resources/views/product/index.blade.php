@@ -16,8 +16,13 @@
                 <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
                 <div class="category-home">
                 		<ul class="list-unstyled user_data" style="font-size:0.95em">
-                				<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>กลุ่มผลิตภัณฑ์</strong></li>
-	                 			<li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="marketingSelection(marketing.marketingCode)"> {{ marketing.marketingDesc }}</li>
+                				<li style="padding:20px 0 15px 0;font-size:12pt;">
+									<strong>กลุ่มผลิตภัณฑ์</strong>
+								</li>
+	                 			<li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;">
+								 <input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="marketingSelection(marketing.marketingCode)"> 
+								 {{ marketing.marketingDesc }}
+								</li>
                			</ul>
              		</div>
             </div>
@@ -78,12 +83,14 @@
                     <div class="cui-ecommerce--catalog">
 			                	<div class="row">
 			                    	<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" dir-paginate="product in products | itemsPerPage: 12" pagination-id="product.id">
-			                        	<div class="cui-ecommerce--catalog--item" ng-click="toProductDetail(product.btf)">
-			                            	<span class="favorite-icon"><i class="fa fa-star"></i></span>
-																		<div class="cui-ecommerce--catalog--item--img">
-						                            <a href="javascript: void(0);">
-						                                <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
-						                            </a>
+			                        	<div class="cui-ecommerce--catalog--item">
+											<span class="favorite-icon" ng-click="(product.isFavorite) ? removeFav(product) : addFav(product)" ng-class="{'active': product.isFavorite}">
+												<i class="fa fa-star"></i>
+											</span>
+											<div class="cui-ecommerce--catalog--item--img">
+						                        <a href="javascript: void(0);" ng-click="toProductDetail(product.btf)">
+						                            <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
+						                        </a>
 			                            	</div>
 			                            	<div class="text-center product-desc">
 																				<h5 class="ng-binding">{{product.btfWebDescTh}}</h5>

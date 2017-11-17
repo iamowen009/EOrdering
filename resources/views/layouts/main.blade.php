@@ -157,7 +157,11 @@
     <script src="<?= asset('js/popper.min.js') ?>"></script>
     <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="<?= asset('node_modules/angular/angular.min.js') ?>"></script>
+    <script src="<?= asset('bower_components/angular/angular.min.js') ?>"></script>
+    <script src="<?= asset('bower_components/angular-messages/angular-messages.min.js') ?>"></script>
+    <script src="<?= asset('bower_components/angular-validation-match/dist/angular-validation-match.js') ?>"></script>
+    <script src="<?= asset('bower_components/purl/purl.js') ?>"></script>
+    
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
 
@@ -181,8 +185,6 @@
 
     <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js') ?>"></script>
-
-    <script type="text/javascript" src="<?= asset('node_modules/angular-recaptcha/release/angular-recaptcha.js') ?>"></script>
 
     <script src="<?= asset('node_modules/angular-utils-pagination/dirPagination.js') ?>"></script>
 

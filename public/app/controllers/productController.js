@@ -1,6 +1,6 @@
 "use strict";
 app.controller('ProductController',
-    function ($scope, $http, $filter,Marketings,Products,Config,Brands,Types,Promotions,Customers,sharedService,Auth) {
+    function ($scope, $http, $filter,Marketings,Products,Config,Brands,Types,Fav, Promotions,Customers,sharedService,Auth) {
 
         $scope.marketings = {};
         $scope.brands = {};
@@ -19,6 +19,7 @@ app.controller('ProductController',
         $scope.partImgProductList = Config.partImgProductList();
         $scope.partImgProductDetail = Config.partImgProductDetail();
         console.log('usersId xx = ' + $scope.usersId);
+
         Config.fetchAll();
         // fetch
         fetchAllMarketings($scope.usersId);
@@ -35,16 +36,24 @@ app.controller('ProductController',
                     $scope.marketings = response.data.data.marketingList;
                     $scope.brands = response.data.data.brandList;
                     $scope.types = response.data.data.typeList;
-                    for(var key in $scope.marketings){
+         
+                    if (purl().segment(2) == 'search') {
+                        $scope.marketings.forEach(function(value) {
+                            $scope.marketingSelection(value.marketingCode);
+                        });
 
+                        if (purl().param('q') != 'undefined') {
+                            $scope.searchstring = purl().param('q');                  
+                        }
+                    }
+
+                    for(var key in $scope.marketings){
                         if($scope.marketings[key]['marketingCode']==$scope.marketingCode)
                             $scope.marketingDesc = $scope.marketings[key]['marketingDesc']
                     }
 
                     $scope.brandsFilter = getFilterMarketing($scope.brands,$scope.marketingCode);
                     $scope.typesFilter = getFilterMarketing($scope.types,$scope.marketingCode);
-
-
                 }
                 $scope.loading = false;
             });
@@ -59,7 +68,8 @@ app.controller('ProductController',
                     $scope.products = response.data.data.productList;
                     $scope.products_all = $scope.products;
                     $scope.totalProduct = $scope.products.length;
-                    if(typeof $scope.searchstring != 'undefined'){
+         
+                    if (purl().segment(2) == 'search' && purl().param('q') != 'undefined') {
                         fetchProductsFilter();
                     }
                 }
@@ -91,6 +101,50 @@ app.controller('ProductController',
             });
         }
 
+        $scope.addFav = function(product) {
+            var favoriteInfo = {
+                customerId: $scope.usersId,
+                btfCode: product.btf,
+                userName: Auth.username()
+            };
+
+            Fav.addFav($scope.usersId, product.btf, Auth.username()).then(function (response) {
+                $scope.loading = false;
+                if(response.data.result=='SUCCESS'){
+                        product.isFavorite = true;
+                        swal('เพิ่ม Favorite เรียบร้อยแล้ว');
+                        //location.reload();
+                    }else{
+                        swal('เพิ่ม Favorite ไม่สำเร็จ');
+                    }
+            }, function (response) {
+
+                    console.log(response);
+            });
+        }
+
+        $scope.removeFav = function(product) {
+            var favoriteInfo = {
+                customerId: $scope.usersId,
+                btfCode: product.btf,
+                userName: Auth.username()
+            };
+            
+            Fav.removeFav(favoriteInfo).then(function (response) {
+                $scope.loading = false;
+                if(response.data.result=='SUCCESS'){
+                        product.isFavorite = false;
+                        swal('ลบ Favorite เรียบร้อยแล้ว');
+                        //location.reload();
+                    }else{
+                        swal('ลบ Favorite ไม่สำเร็จ');
+                    }
+                    console.log(response);
+            }, function (response) {
+
+                    console.log(response);
+            });
+        }
 
         // Toggle selection for a given fruit by name
           $scope.marketingSelection = function(code) {
@@ -199,16 +253,10 @@ console.log(' scope customer ' , $scope.customers );
             return _.filter(results, function(d){ return valueStartsWith.indexOf(d['marketingCode'])!=-1 && valueStartsWith2.indexOf(d['brandCode'])!=-1; })
         }
 
-
-        $scope.$on('dataPassed', function () {
-          $scope.searchstring = sharedService.values;
-          fetchProductsFilter();
-        });
-
         function fetchProductsFilter() {
             $scope.loading = true;
             $scope.products = {};
-            $scope.products = getResult($scope.products_all,'btfWebDescTh','promotionDesc',$scope.searchstring);
+            $scope.products = getResult($scope.products_all,'btfWebDescTh','promotionDesc', $scope.searchstring);            
             $scope.loading = false;
             $scope.totalProduct = $scope.products.length;
         }
@@ -592,6 +640,4 @@ app.controller('ProductDetailController',
             if( $scope.cartProductQty > 1)
             $scope.cartProductQty-=1;
         }
-
-
  });

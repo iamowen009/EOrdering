@@ -20,7 +20,7 @@
               <!--<div class="panel-heading text-center">ข้อมูลส่วนตัว</div>-->
               <div class="panel-body">
               		
-              		<form ng-submit="">
+              		<fieldset disabled>
                         
                       <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 						<label for="name">ชื่อร้านค้า:</label>
@@ -80,19 +80,21 @@
                       <div class="col-md-12 col-sm-12 col-xs-12">
                       	<div id="map"></div>
 					 </div>
-
-                      <div class="clearfix"></div>
+                    </fieldset>
+                    <div class="clearfix"></div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                          <button type="button" class="btn btn-info" >แจ้งเปลี่ยนแปลงข้อมูล</button>
-                          <button type="button" class="btn btn-default" >กลับสู่หน้าแรก</button>
-                          
+                          <!-- <button type="button" class="btn btn-info" >แจ้งเปลี่ยนแปลงข้อมูล</button>
+                          <button type="button" class="btn btn-default" >กลับสู่หน้าแรก</button> -->
+                          <a href="{{ url('/profile-update') }}" class="btn btn-info">
+                            แจ้งเปลี่ยนแปลงข้อมูล
+                          </a>
+                          <a href="{{ url('/home') }}" class="btn btn-default">
+                            กลับสู่หน้าแรก
+                          </a>
                         </div>
                       </div>
-
-                    </form>
-
               </div>
             </div>
          </div>

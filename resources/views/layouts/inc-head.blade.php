@@ -12,12 +12,16 @@
 							<div id="myNavbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav ul-search">
 									<li>
+										<form ng-submit="search()">
 											<div class="input-group">
 														<input class="form-control top-search" placeholder="ค้นหาสินค้า" type="text" ng-model="searchstring">
 														<span class="input-group-btn">
-															<button class="btn btn-default" type="button"  ng-click="search()"><span class="fa fa-search"></span></button>
+															<button class="btn btn-default" type="button" ng-click="search()">
+																<span class="fa fa-search"></span>
+															</button>
 														</span>
 											</div>
+										</form>
 									</li>
 
 								</ul>

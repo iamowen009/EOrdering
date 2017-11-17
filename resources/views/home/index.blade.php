@@ -90,7 +90,12 @@
 		                     	<div class="form-group" ng-show="marketingmodel.length>0">
 		                    	<label class="control-label col-md-2 col-sm-2 col-xs-12">กรองจาก </label>
 		                    	<div class="col-md-9 col-sm-9 col-xs-12">
-		                    			<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getResult(m.id).length>0">{{m.marketingDesc}}  <a  ng-click="" calss="pull-right" style="color:white;" href=""><i class="fa fa-times"></i></a></span>
+		                			<span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getResult(m.id).length>0">
+										{{m.marketingDesc}}  
+										<a ng-click="removeFilter(m.id)" style="color:white; cursor: pointer;">
+											<i class="fa fa-times"></i>
+										</a>
+									</span>
 		                    	</div>
 		                  		</div>
 

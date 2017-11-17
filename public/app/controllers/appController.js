@@ -249,8 +249,10 @@ app.controller('AppController',
           $scope.hidemenu = false;
         console.log($scope.hidemenu);
 
-        $scope.search = function(){
-            $scope.link = window.location.href;
+        $scope.search = function() {
+          window.location= _base + '/product/search?q=' + $scope.searchstring;
+          
+            //$scope.link = window.location.href;
             //window.location = $scope.link+'?searchstring='+$scope.searchstring;
             /*$scope.link = window.location.href.split('/').pop();
             console.log($scope.link);
@@ -258,10 +260,9 @@ app.controller('AppController',
               fetchAllCustomers(Auth.userId());
 
             }*/
-            sharedService.passData($scope.searchstring);
-
-
+            //sharedService.passData($scope.searchstring);
         }
+
         $scope.toPage = function(page){
           window.location.href = page;
         }
@@ -294,7 +295,7 @@ app.controller('AppController',
               templateUrl: 'myModalContent.html',
               controller: 'ModalInstanceCtrl',
               controllerAs: '$scope',
-              dialogClass:'modal_right',
+              windowClass:'fade right',
               size: size,
               appendTo: parentElem,
 

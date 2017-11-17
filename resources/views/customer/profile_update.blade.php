@@ -69,8 +69,9 @@
                       <div class="form-group">
                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                           <button type="button" class="btn btn-info" >แจ้งเปลี่ยนแปลงข้อมูล</button>
-                          <button type="button" class="btn btn-default" >กลับสู่หน้าแรก</button>
-                          
+                          <a href="{{ url('/home') }}" class="btn btn-default">
+                            กลับสู่หน้าแรก
+                          </a>
                         </div>
                       </div>
 

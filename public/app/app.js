@@ -2,7 +2,19 @@
 var currentUrl = window.location.origin;
 //var dataServicesUrl = "http://unicornsolution.ddns.net:8185";
 
-var app = angular.module('app', ['oitozero.ngSweetAlert','ngCart','ui.bootstrap.datetimepicker','angularUtils.directives.dirPagination','vcRecaptcha','ui.bootstrap','ngSanitize','angularjs-dropdown-multiselect','UserValidation']);
+var app = angular.module('app', [
+    'oitozero.ngSweetAlert',
+    'ngCart',
+    'ui.bootstrap.datetimepicker',
+    'angularUtils.directives.dirPagination',
+    //'vcRecaptcha',
+    'ngMessages',
+    'validation.match',
+    'ui.bootstrap',
+    'ngSanitize',
+    'angularjs-dropdown-multiselect',
+    'UserValidation',
+]);
 
 app.constant('API_URL', 'http://202.142.195.168:8010/API/');
 
