@@ -31,6 +31,7 @@
             </div>
             
             <div class="row">
+            <p><strong>ที่อยู่ : </strong>
             <p>@{{MBill.pSubDistrict}} &nbsp; @{{MBill.pDistrict}} </p>
             </div>
 
@@ -40,7 +41,7 @@
             
             
             
-            <p><strong>จัดส่ง : </strong>@{{ MBill.transportZoneDesc }}</p>
+            <p><strong>บริษัทขนส่ง : </strong>@{{ MBill.transportZoneDesc }}</p>
         </div>
       </div>
               <div>
