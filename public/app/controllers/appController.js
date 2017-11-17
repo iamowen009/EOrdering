@@ -113,7 +113,10 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
         productId: productId,
         userName: Auth.username()
     }];
-    console.log(cartList);
+    console.log('class cart product ', productId ,' | ', cartList);
+    if( $('.cart-product-' + productId ).length > 0){
+        $('.cart-product-' + productId ).remove();
+    }
 
     Carts.removeCart(cartList).then(function (response) {
         if(response.data.result=='SUCCESS'){

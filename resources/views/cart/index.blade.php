@@ -51,7 +51,7 @@
 
                                 </tfoot>
                                 <tbody ng-repeat="item in carts track by $index">
-                                <tr>
+                                <tr class="cart-product-{{ item.productId }}">
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
@@ -79,7 +79,7 @@
                                     <td>{{ +item.price*+item.qty | number:2 }}</td>
                                     <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
                                 </tr>
-                                <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                                <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                                     <td class="text-center">{{ bom.productNameTh }}</td>
@@ -309,7 +309,7 @@
 
                                 </tfoot>
                                 <tbody ng-repeat="item in carts track by $index">
-                                <tr>
+                                <tr class="cart-product-{{ item.productId }}">
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
@@ -320,7 +320,7 @@
                                     <td>{{ +item.price*+item.qty | number:2 }}</td>
 
                                 </tr>
-                                <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                                <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                                     <td class="text-center">{{ bom.productNameTh }}</td>
@@ -477,7 +477,7 @@
 
                                 </tfoot>
                                 <tbody ng-repeat="item in carts track by $index">
-                                <tr>
+                                <tr class="cart-product-{{ item.productId }}">
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                                     <td class="text-center">{{ item.productNameTh }}</td>
@@ -488,7 +488,7 @@
                                     <td>{{ +item.price*+item.qty | number:2 }}</td>
 
                                 </tr>
-                                <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                                <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
                                     <td class="text-center">{{$index+1}}</td>
                                     <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                                     <td class="text-center">{{ bom.productNameTh }}</td>
