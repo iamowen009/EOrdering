@@ -216,7 +216,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                         };
                         console.log( 'order : ',order );
-/*
+
                         Orders.addOrder(order).then(function (response) {
                             //$scope.loading = false;
                             console.log( response );
@@ -261,7 +261,7 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                                 console.log(response);
                         });
-*/
+
 
                     } else {
                         //swal.close();
