@@ -47,9 +47,6 @@
                                         <th class="text-center">ลบ</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-
-                                </tfoot>
                                 <tbody ng-repeat="item in carts track by $index">
                                 <tr class="cart-product-{{ item.productId }}">
                                     <td class="text-center">{{$index+1}}</td>
