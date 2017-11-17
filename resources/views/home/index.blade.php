@@ -23,9 +23,9 @@
                </div>
           </div>
           <div class="icon-left">
-                <img class="img-icon" src="../images/icon-news.jpg" alt="..." onclick="window.location='../news'">
-				<img class="img-icon" src="../images/icon-doc.jpg" alt="..." onclick="window.location='../documents'">
-				<img class="img-icon" src="../images/icon-report.jpg" alt="..." onclick="window.location='../report'">
+                <a href="javascript:void(0);"><img class="img-icon" src="../images/icon-news.jpg" alt="..." onclick="window.location='../news'"></a>
+				<a href="javascript:void(0);"><img class="img-icon" src="../images/icon-doc.jpg" alt="..." onclick="window.location='../documents'"></a>
+				<a href="javascript:void(0);"><img class="img-icon" src="../images/icon-report.jpg" alt="..." onclick="window.location='../report'"></a>
 				<a href="../assets/UserManual.pdf" target="_blank"><img class="img-icon" src="../images/icon-Usermanual.jpg" alt="..."> </a>
 
 					</div>
