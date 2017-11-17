@@ -1,26 +1,8 @@
 @extends('layouts.main')
 
 @section('head')
-<style>
-.total_price{color:#00BFFF;font-size: 18px;}
+<link rel="stylesheet" href="<?= asset('css/cart-index.css') ?>"/>
 
-select.form-control{
-  height: 34px !important;
-}
-.img-product{
-  height: 50px;
-  width: 50px;
-  margin: 0px 40px 0px -40px;
-}
-.wizard > .actions {
-    text-align: center;
-}
-.cui-wizard .actions li a:hover,
-.cui-wizard .actions li a {
-    background-color:#2184be;
-    border-color: #2184be;
-}
-</style>
 @stop
 
 @section('content')
@@ -268,7 +250,7 @@ select.form-control{
                                         ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone">
                                         <option value=''></option>
                                       </select>
-                                    
+
                                     <select
                                         ng-if="transports.length == 0 && ( ddlShipTo.shipCondition == '03' || customer.shipCondition == '03' )"
                                         name="trans_id" id="trans_id"
@@ -298,11 +280,11 @@ select.form-control{
 
                         <br/>
                 <div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ</h6></div>
-                        
+
 
                         <!--<ngcart-cart></ngcart-cart>-->
                 <div class="col-md-12"><h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div>
-                        
+
 
                       <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
                           Your cart is empty

@@ -1,0 +1,26 @@
+.cui-wizard .actions li a.btn-danger {
+    background-color: #f00 !important;
+    border-color: #f00 !important;
+}
+.cui-wizard .actions li a.btn-danger:hover{
+	background-color: #f23434 !important;
+	border-color: #f23434 !important;
+}
+.total_price{color:#00BFFF;font-size: 18px;}
+
+select.form-control{
+  height: 34px !important;
+}
+.img-product{
+  height: 50px;
+  width: 50px;
+  margin: 0px 40px 0px -40px;
+}
+.wizard > .actions {
+    text-align: center;
+}
+.cui-wizard .actions li a:hover,
+.cui-wizard .actions li a {
+    background-color:#2184be;
+    border-color: #2184be;
+}

@@ -69,6 +69,7 @@ $scope.ordersList = [];
                 $scope.ordersYear.push( year );
 
                  arr = {
+                        'createDate':$scope.orders[k].createDate,
                         'docDate':$scope.orders[k].docDate,
                         'docName':$scope.orders[k].docName,
                         'docNumber':$scope.orders[k].docNumber,

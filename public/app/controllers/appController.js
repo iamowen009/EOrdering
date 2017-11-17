@@ -39,7 +39,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
         }else if( $scope.editedItem.qty % $scope.items[$index].altUnitAmount){
             swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.items[$index].altUnitAmount + ' ' + $scope.items[$index]['unitNameTh'] + ' ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
             var un = parseInt($scope.editedItem.qty) / parseInt($scope.items[$index].altUnitAmount);
-           var $qty = $scope.items[$index].altUnitAmount * un.toFixed(0);
+           var $qty = $scope.items[$index].altUnitAmount *  parseInt(un);//.toFixed(0);
            console.log('un : ', un ,'|',$qty);
         }else{
           var $qty = $scope.editedItem.qty;
@@ -64,11 +64,11 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
   $scope.maddQty = function($index){
         $scope.loadingcart = true;
         angular.copy($scope.items[$index], $scope.editedItem);
-
+        var $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
         var cartList = [{
                 customerId: Customers.customerId(),
                 productId: $scope.editedItem.productId,
-                qty: parseInt($scope.editedItem.qty)+parseInt($scope.items[$index].altUnitAmount),
+                qty: parseInt($scope.editedItem.qty)+parseInt($mqty),
                 userName: Auth.username()
             }];
         var promotionList = [];
@@ -85,11 +85,12 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
   $scope.mremoveQty = function($index){
     $scope.loadingcart = true;
     angular.copy($scope.items[$index], $scope.editedItem);
-    if($scope.editedItem.qty > $scope.items[$index].altUnitAmount )
+    var $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
+    if($scope.editedItem.qty > $mqty )
             var cartList = [{
                               customerId: Customers.customerId(),
                               productId: $scope.editedItem.productId,
-                              qty: parseInt($scope.editedItem.qty)-parseInt($scope.items[$index].altUnitAmount),
+                              qty: parseInt($scope.editedItem.qty)-parseInt($mqty),
                               userName: Auth.username()
                           }];
             var promotionList = [];
@@ -102,7 +103,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance, boms,items,tota
                                   console.log('response');
                                   console.log(response);
                           });
-    
+
   }
 
   $scope.removeCart = function(productId){

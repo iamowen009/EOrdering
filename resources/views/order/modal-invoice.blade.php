@@ -207,7 +207,7 @@
 
           <!-- row 3 -->
           <div class="col-sm-4">
-            <p><strong>อีเมล์ :</strong> @{{ inv.customerEmail }}</p>
+            <p ng-if="inv.customerEmail"><strong>อีเมล์ :</strong> @{{ inv.customerEmail }}</p>
           </div>
           <div class="col-sm-4">
             <p><strong>เบอร์โทรศัพท์ :</strong> @{{ inv.customerTelNo }}</p>
@@ -218,10 +218,10 @@
 
           <!-- row 4 -->
           <div class="col-sm-4">
-            <p><strong>สถานที่ส่ง :</strong> @{{inv.shipCode}} : @{{ inv.shipName }}</p>
+            <p ng-if="inv.shipCode"><strong>สถานที่ส่ง :</strong> @{{inv.shipCode}} : @{{ inv.shipName }}</p>
           </div>
           <div class="col-sm-4">
-            <p><strong>บริษัทขนส่ง :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}
+            <p ng-if="inv.transportZone"><strong>บริษัทขนส่ง :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}
             </p>
           </div>
           <div class="col-sm-4">
@@ -230,7 +230,7 @@
 
           <!-- row 5 -->
           <div class="col-sm-8">
-          <p><strong>ที่อยู่สถานที่ส่ง :</strong> @{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
+          <p ng-if="inv.shipHouseNo"><strong>ที่อยู่สถานที่ส่ง :</strong> @{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
           </div>
           <div class="col-sm-4">
           <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
@@ -246,7 +246,7 @@
                           <th class="text-center">สินค้า</th>
                           <th class="text-center">จำนวน</th>
                           <th class="text-center">หน่วย</th>
-                          <th class="text-center">ราคาหน่วย</th>
+                          <th class="text-center">ราคาหน่วย*</th>
                           <th class="text-center">ราคารวม</th>
                           <th class="text-center" style="display:none">ชื่อโปรโมชั่น</th>
                       </tr>
@@ -278,7 +278,7 @@
 
           </div>
           <div class="row">
-            <div class="col-sm-6 text-danger">ราคาต่อหน่วยหลังหักราคามาตรฐานเท่านั้น </div>
+            <div class="col-sm-6 text-danger">*ราคาต่อหน่วยหลังหักส่วนลดมาตรฐานเท่านั้น </div>
             <div class="col-sm-6 text-right">
               <strong>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT):</strong>
                 @{{ totalAmount | number:2 }}

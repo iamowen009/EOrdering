@@ -82,7 +82,8 @@
                                   </div>
                               </div>
                               <div class="col-md-12">
-                                  หน่วย:{{item.unitNameTh}} <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
+                                  <strong>หน่วย : </strong>{{item.unitNameTh}} <span ng-if="item.altUnitAmount > 0">( 1 {{ item.altUnitNameTh }} : {{item.altUnitAmount }} {{ item.unitNameTh }})</span>
+                                  <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
                               </div>
                           </div>
                       </div>
@@ -120,7 +121,9 @@
                                 </div>
                               </div>
                               <div class="col-md-12">
-                                หน่วย:{{bom.unitNameTh}} <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
+                                <strong>หน่วย : </strong>{{bom.unitNameTh}} <span ng-if="bom.altUnitAmount > 0">( 1 {{ bom.altUnitNameTh }} : {{bom.altUnitAmount }} {{ bom.unitNameTh }})</span> {{ bom.unitNameTh }}
+
+                                 <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
                               </div>
                             </div>
                             </div>

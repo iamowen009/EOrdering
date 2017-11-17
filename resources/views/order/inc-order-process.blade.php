@@ -29,8 +29,8 @@
         													</tr>
                               </thead>
         											<tbody>
-        													<tr ng-repeat="list in ordersList | orderBy:'-docDate'" ng-if="list.month === m.month && list.percentComplete < 100">
-        															<td class="text-center">@{{ list.docDate  | date:'dd/MM/yyyy'}}</td>
+        													<tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month && list.percentComplete < 100">
+        															<td class="text-center">@{{ list.createDate  | date:'dd/MM/yyyy HH:mm'}}</td>
         															<td class="text-center">@{{ list.docName}}</td>
         															<td class="text-center"><a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a></td>
                                       <td class="text-center"><a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a></td>
@@ -47,7 +47,7 @@
                                         <a ng-show="(list.percentComplete===0  && list.rejectHStatus==='c')">Cancel</a>
                                       </td>
                                       <!-- <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td> -->
-                                      
+
         															<td class="text-center">
                                         <a href="javascript:void(0);" class="text-success" ng-click="OrderHistoryModal(list.salesOrderNumber)" data-toggle="tooltip" title="Order"><i class="fa fa-newspaper-o" style="font-size:24px;"></i></a>
 
@@ -81,8 +81,8 @@
 
                                       </td>
                                   </tr>
-                                  
-                                  
+
+
 
         											</tbody>
                           </table>

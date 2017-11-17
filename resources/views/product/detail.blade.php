@@ -116,7 +116,8 @@
 															<input type="hidden" ng-model="altUnit1Amount" value="{{ productSelect.altUnit1Amount }}"/>
 		                        </div>
 		                        <div class="col-md-3 col-sm-3 col-xs-12">
-		                        	<label ng-show="productSelect.productId"><span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span> {{ productSelect.unitNameTh }}</label>
+		                        	<div style="margin-top:10px; " ng-show="productSelect.productId">
+																<strong>หน่วย : </strong>{{productSelect.unitNameTh}} <span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span></div>
 		                    	</div>
 		                      </div>
 
