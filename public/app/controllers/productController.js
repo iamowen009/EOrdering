@@ -19,7 +19,7 @@ app.controller('ProductController',
         $scope.partImgProductList = Config.partImgProductList();
         $scope.partImgProductDetail = Config.partImgProductDetail();
         console.log('usersId xx = ' + $scope.usersId);
-
+    
         Config.fetchAll();
         // fetch
         fetchAllMarketings($scope.usersId);
@@ -36,8 +36,8 @@ app.controller('ProductController',
                     $scope.marketings = response.data.data.marketingList;
                     $scope.brands = response.data.data.brandList;
                     $scope.types = response.data.data.typeList;
-         
-                    if (purl().segment(2) == 'search') {
+                    
+                    if (window.location.href.search('search') >= 0) {
                         $scope.marketings.forEach(function(value) {
                             $scope.marketingSelection(value.marketingCode);
                         });
@@ -69,7 +69,7 @@ app.controller('ProductController',
                     $scope.products_all = $scope.products;
                     $scope.totalProduct = $scope.products.length;
          
-                    if (purl().segment(2) == 'search' && purl().param('q') != 'undefined') {
+                    if (window.location.href.search('search') >= 0 && purl().param('q') != 'undefined') {
                         fetchProductsFilter();
                     }
                 }
