@@ -218,14 +218,14 @@
 
           <!-- row 4 -->
           <div class="col-sm-4">
-            <p ng-if="inv.shipCode"><strong>สถานที่ส่ง :</strong> @{{inv.shipCode}} : @{{ inv.shipName }}</p>
+              <p ng-if="inv.shipCode"><strong>สถานที่ส่ง :</strong> @{{inv.shipCode}} : @{{ inv.shipName }}</p>
           </div>
           <div class="col-sm-4">
-            <p ng-if="inv.transportZone"><strong>บริษัทขนส่ง :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}
-            </p>
+              <p ng-if="inv.isReceive !== null"><strong>ขนส่งโดย :</strong> รับสินค้าเอง</p>
+              <p ng-if="inv.transportZone"><strong>บริษัทขนส่ง :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}</p>
           </div>
           <div class="col-sm-4">
-            <p><strong>Request Date :</strong> @{{ inv.requestDate |  date:'dd/MM/yyyy' }}</p>
+              <p><strong>Request Date :</strong> @{{ inv.requestDate |  date:'dd/MM/yyyy' }}</p>
           </div>
 
           <!-- row 5 -->
