@@ -267,10 +267,10 @@
                           @{{ item.productNameTh }} <div  class="text-danger" ng-style="item.isFreeGoods == '0' &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
                         </div>
                       </td>
-                      <td class="text-center">@{{ item.qty | number }}</td>
-                      <td class="text-center">@{{item.unitNameTh}}</td>
-                      <td class="text-right">@{{ item.isFreeGoods === true ? 0 : item.amount * 1 | number:2}}</td>
-                      <td class="text-right">@{{ item.isFreeGoods === true ? 0 : +item.amount*+item.qty | number:2 }}</td>
+                      <td class="text-center"><p ng-show="item.isBOM != true">@{{ item.qty | number }}</p></td>
+                      <td class="text-center"><p ng-show="item.isBOM != true">@{{item.unitNameTh}}</p></td>
+                      <td class="text-right"><p ng-show="item.isBOM != true">@{{ item.isFreeGoods === true ? 0 : item.amount * 1 | number:2}}</p></td>
+                      <td class="text-right" ><p ng-show="item.isBOM != true">@{{ item.isFreeGoods === true ? 0 : +item.amount*+item.qty | number:2 }}</p></td>
                       <td class="text-center" style="display:none">@{{item.promotionName}}</td>
                   </tr>
                   </tbody>
