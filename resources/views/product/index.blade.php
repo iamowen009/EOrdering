@@ -68,7 +68,7 @@
                    	<div class="row" >
 				            		<div class="media col-lg-6 col-md-6" ng-repeat="promotion in promotions" ng-show="promotion.marketingCode==marketingCode">
 												    <span class="media-left">
-												        <img src="http://placehold.it/250x150" alt="..." ng-click="toPromotionList(promotion.promotionHdId)">
+												        <img ng-src="http://placehold.it/250x150" alt="..." ng-click="toPromotionList(promotion.promotionHdId)">
 												    </span>
 												    <div class="media-body" ng-click="toPromotionList(promotion.promotionHdId)">
 												        <h6 class="media-heading">{{ promotion.promotionName }}</h6>
@@ -89,7 +89,7 @@
 											</span>
 											<div class="cui-ecommerce--catalog--item--img">
 						                        <a href="javascript: void(0);" ng-click="toProductDetail(product.btf)">
-						                            <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
+						                            <img ng-src="{{partImgProductList}}/{{product.btf}}.jpg" err-src="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
 						                        </a>
 			                            	</div>
 			                            	<div class="text-center product-desc">

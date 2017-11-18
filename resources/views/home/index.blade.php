@@ -107,7 +107,7 @@
 									<div class="row" >
 					         		<div id="carousel-01" class="col-md-4" ng-repeat="promotion in promotions">
 										    	<div class="bd-pomo" ng-click="toPromotionList(promotion.promotionId)" style="cursor: pointer;">
-												    	<img src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:290px; height:200px;cursor: pointer;">
+												    	<img ng-src="{{partImgPromotion + '/' + promotion.promotionImage}}" alt="..." ng-click="toPromotionList(promotion.promotionId)" style="width:100%; height:200px;cursor: pointer;">
 															<div style="padding:4px; height:86px; overflow:hidden;">
 																	{{ promotion.promotionCode }}
 																	<br />
@@ -135,24 +135,6 @@
           </div>
 			</div>
 	</div>
-	<!-- Modal -->
-  <div class="modal right fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-      <div class="modal-dialog" role="document">
-        	<div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel2">ตะกร้าของฉัน</h4>
-              </div>
-              <div class="modal-body">
-                  <ul>
-                      <li ng-repeat="cart in carts">
-                          <p>{{cart.productCode}}</p>
-                      </li>
-                  </ul>
-              </div>
-          </div><!-- modal-content -->
-      </div><!-- modal-dialog -->
-  </div><!-- modal -->
 	@endverbatim
 </div>
 <div class="row"><div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div></div>

@@ -45,7 +45,7 @@
     <div class="wrapper container-fluid">
         @yield('content')
         @verbatim
-        <script type="text/ng-template" id="myModalContent.html">
+        <script type="text/ng-template" id="cartModalContent.html">
             <div class="modal-header" style="background-color:#bfebee;">
 
                 <label class="col-sm-8"><h4 class="modal-title text-right" id="modal-title">ตะกร้าของฉัน</h4></label>
@@ -55,12 +55,12 @@
                 <p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
                 <div class="col-sm-12" ng-repeat="item in items" style="margin-left:-10px;">
                       <label class="text-left col-sm-1" >
-                          <a href="#" ng-click="$event.preventDefault(); removeCart(item.productId)"><i class="fa fa-trash"></i></a>
+                          <a style="cursor: pointer;" ng-click="removeCart(item)"><i class="fa fa-trash"></i></a>
                       </label>
                       <label class="col-sm-11 text-left">{{item.productCode}}</label> <span class="blue-underline" ng-if="item.promotionId != 0">(ของแถม)</span>
                       <label class="text-left col-sm-1" ></label>
                       <label class="col-md-11">{{item.productNameTh}}</label> <span class="text-danger" ng-if="item.isFreeGoodes === true">(ของแถม)</span>
-                      <div class="col-md-4 text-right"><img src="{{partImgProductCard}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
+                      <div class="col-md-4 text-right"><img ng-src="{{partImgProductCard}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                       <div class="col-md-8">
                           <div class="col-md-12">
                             ราคา: {{item.price | number:2}}
@@ -72,11 +72,11 @@
                               <div class="col-md-3">
                                   <div class="input-group">
                                       <span class="input-group-btn">
-                                          <button type="button" class="btn btn-default" ng-click="mremoveQty($index)">-</button>
+                                          <button type="button" class="btn btn-default" ng-click="removeQty($index)">-</button>
                                       </span>
                                       <input type="text" class="form-controle text-center"  ng-model="item.qty" style="width:120px; padding:5px;" ng-blur="updateCart($index)">
                                       <span class="input-group-btn">
-                                          <button type="button" class="btn btn-default" ng-click="maddQty($index)">+</button>
+                                          <button type="button" class="btn btn-default" ng-click="addQty($index)">+</button>
                                       </span>
                                       <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
                                   </div>
@@ -97,7 +97,7 @@
                             <label class="col-sm-11 text-left">{{bom.productCode}}</label>
                             <label class="text-left col-sm-1" ></label>
                             <label class="col-md-11">{{bom.productNameTh}}</label>
-                            <div class="col-md-4 text-right"><img src="{{partImgProductCard}}/{{bom.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
+                            <div class="col-md-4 text-right"><img ng-src="{{partImgProductCard}}/{{bom.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                             <div class="col-md-8">
                               <div class="col-md-12">
                                 ราคา: {{bom.price | number:2}}
@@ -135,12 +135,12 @@
                         <div class="col-md-12"><hr></div>
                   </div>
 
-                  <div class="col-sm-12" >
+                    <div style="margin-top: 15px;">
                         <label class="col-md-6">จำนวนเงินสุทธิ(ไม่รวม VAT)</label>
                         <label class="col-md-6 text-right" >{{totalAmount| number:2}} บาท</label>
-                  </div>
+                    </div>
             </div>
-            <div class="modal-footer text-center">
+            <div class="modal-footer" style="padding-right: 75px; margin-right: 0;">
                 <button class="col-md-3 btn btn-danger" type="button" ng-click="removeAll()">ลบทั้งหมด</button>
                 <button class="col-md-3 btn btn-primary" type="button" ng-click="toShop()">เลือกซื้อต่อ</button>
                 <button class=" col-md-3 btn btn-success" type="button" ng-click="order()">สั่งซื้อ</button>

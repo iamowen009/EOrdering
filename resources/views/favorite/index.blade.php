@@ -26,6 +26,9 @@
 				<div class="row">
 					<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 ng-scope" ng-repeat="fav in favorites">
                         <div class="cui-ecommerce--catalog--item"  ng-click="toProductDetail(fav.btf)">
+                            <span class="favorite-icon" ng-class="{'active': fav.isFavorite}">
+								<i class="fa fa-star"></i>
+							</span>
                             <div class="cui-ecommerce--catalog--item--img">
                                 <!--<div class="cui-ecommerce--catalog--item--status">
                                     <span class="cui-ecommerce--catalog--item--status--title">New</span>
@@ -35,13 +38,12 @@
                                     <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
                                 </div>
                                 <a href="javascript: void(0);">
-                                    <img class="img-prod" src="{{partImgProduct}}/{{fav.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+                                    <img class="img-prod" ng-src="{{partImgProductDetail}}/{{fav.btf}}.jpg" err-src="{{partImgProduct}}/Noimage.jpg">
                                 </a>
                             </div>
                             <div class="text-center">
 								<h6 class="ng-binding">{{fav.btfWebDescTh}}</h6>
 								<br>
-                                <!--<span class="price ng-binding">{{fav.productPrice | number:2}}</span>-->
                             </div>
                         </div>
                     </div>

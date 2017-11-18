@@ -35,13 +35,15 @@
 								</ul>
 									<ul class="navbar-nav ul-top-menu">
 											<li class="nav-item active " ng-hide="hidemenu">
-												 <a class="navbar-menu " href="#" ng-click="$event.preventDefault();toHome()">
+												@verbatim
+												 <a class="navbar-menu " href="#" ng-click="toHome()">
 															<img class="icon-in-home" src="<?= asset('images/home.png') ?>">
 															หน้าแรก
 													</a>
+													@endverbatim
 											</li>
 											<li class="nav-item item-cart" ng-hide="hidemenu">
-													<a class="navbar-menu  text-center"  href="#" ng-click="$event.preventDefault();open('lg')">
+													<a class="navbar-menu  text-center"  href="#" ng-click="open('lg')">
 															<span class="bell">
 																	<img class="icon-in-home" src="<?= asset('images/cart.png') ?>">
 																	@verbatim

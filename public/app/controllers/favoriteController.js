@@ -4,7 +4,7 @@ app.controller('FavoriteController',
         
        $scope.favorites = {};
        $scope.loading = true;
-       $scope.partImgProduct = Config.partImgProduct();
+       $scope.partImgProductDetail = Config.partImgProductDetail();
 
        fetchFavorite(Customers.customerId());
        
