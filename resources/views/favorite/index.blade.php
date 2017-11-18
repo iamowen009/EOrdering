@@ -14,7 +14,7 @@
 @stop
 @section('content')
 <div class="content" ng-Controller="FavoriteController">
-	@verbatim	
+	@verbatim
 	<div class="row ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel">
@@ -35,7 +35,7 @@
                                     <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
                                 </div>
                                 <a href="javascript: void(0);">
-                                    <img class="img-prod" src="{{partImgProduct}}/{{fav.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+                                    <img class="img-prod" src="{{partImgProductList}}/{{fav.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
                                 </a>
                             </div>
                             <div class="text-center">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
 				</div>
 			 </div>
 			</div>
@@ -56,7 +56,7 @@
 
 
 @section('footer')
-    
+
     <script src="<?= asset('app/controllers/favoriteController.js') ?>"></script>
 @stop
 
