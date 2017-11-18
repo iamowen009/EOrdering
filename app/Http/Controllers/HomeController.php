@@ -15,6 +15,10 @@ class HomeController extends Controller
         return view('home.index',compact('id'));
     }
 
+    public function layout($no = 0){
+      return view('home.inc-home-'. $no );
+    }
+
     public function mail(){
     	$data = array('name' => 'Jordan');
     	$sent = Mail::send('emails.mailExample', $data, function($message)

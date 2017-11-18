@@ -8,9 +8,11 @@ app.controller('HomeController',
         $scope.promotions = {};
         $scope.loading = true;
         $scope.totalPromotion = 0;
+        $scope.templateNo = 0;
         $scope.slideshows1 = '';
         $scope.slideshows2 = '';
         $scope.slideshows3 = '';
+        $scope.config={};
 
         $scope.carts = {};
         $scope.marketingmodel = [];
@@ -21,6 +23,28 @@ app.controller('HomeController',
         console.log('usersId xx = ' + $scope.usersId);
         // fetch
         fetchAllMarketings(Customers.customerId());
+        config(Customers.customerId());
+        function config(userid){
+          Config.fetchAll(userid).then(function(response){
+            if(response.data.result == 'SUCCESS'){
+              $scope.config = response.data.data.configList;
+              $scope.templateNo = $scope.config[0].homeTemplate;
+              if( $scope.templateNo == '1' ){
+                $scope.templateURL = _base + '/template/home-1.html';
+              }else if( $scope.templateNo == '2' ){
+                $scope.templateURL = _base + '/template/home-2.html';
+              }else if( $scope.templateNo == '3' ){
+                $scope.templateURL = _base + '/template/home-2.html';
+              }else{
+                $scope.templateURL = _base + '/template/home-1.html';
+              }
+
+
+            }
+          });
+        }
+
+
         //fetchAllPromotions(Customers.customerId(), ['10', '40'], ['01', '18'], ['003', '006']);
         fetchAllPromotions(Customers.customerId(), [], [], []);
         fetchSlideshow();
