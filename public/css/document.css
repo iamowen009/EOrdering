@@ -1,0 +1,137 @@
+.text-bold {
+  font-weight: bold;
+}
+
+.invoice__header {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.invoice__header--title {
+  margin: 3px !important;
+}
+
+.invoice__body {
+  padding-bottom: 3px !important;
+}
+
+.invoice__body--infomation:before, .invoice__body--infomation:after {
+  content: '';
+  display: table;
+}
+
+.invoice__body--infomation:after {
+  display: block;
+  clear: both;
+  height: 1px;
+  margin-top: -1px;
+  visibility: hidden;
+}
+
+.invoice__body--infomation {
+  *zoom: 1;
+}
+
+.invoice__body--infomation td {
+  padding: 6px 0;
+}
+
+.invoice__body--infomation hr {
+  margin-top: 10px;
+}
+
+.invoice__body--infomation .left, .invoice__body--infomation .right {
+  height: 230px;
+}
+
+.invoice__body--infomation .left {
+  width: 49%;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 10px 15px !important;
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 0px;
+}
+
+.invoice__body--infomation .right {
+  width: 49%;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 10px 15px !important;
+  font-size: 13px;
+  font-weight: 300;
+  padding-right: 0px;
+  float: right;
+}
+
+.invoice__body--table {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.invoice__body--table.scroll {
+  border-spacing: 0;
+}
+
+.invoice__body--table.scroll thead, .invoice__body--table.scroll tbody {
+  display: block;
+}
+
+.invoice__body--table.scroll tbody {
+  height: calc(100vh - 520px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.invoice__body--table thead {
+  background-color: #dadada;
+  font-size: 13px;
+}
+
+.invoice__body--table thead tr th {
+  padding: 5px 10px;
+}
+
+.invoice__body--table tbody tr td {
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.invoice__body--table tfoot tr td {
+  border-top: 2px double #000;
+  background-color: #ffffff;
+  padding: 5px 10px;
+}
+
+.invoice__body--table tfoot tr td:before, .invoice__body--table tfoot tr td:after {
+  content: '';
+  display: table;
+}
+
+.invoice__body--table tfoot tr td:after {
+  display: block;
+  clear: both;
+  height: 1px;
+  margin-top: -1px;
+  visibility: hidden;
+}
+
+.invoice__body--table tfoot tr td {
+  *zoom: 1;
+}
+
+.invoice__body--table tfoot tr td .left {
+  width: 50%;
+  float: left;
+}
+
+.invoice__body--table tfoot tr td .right {
+  width: 50%;
+  float: right;
+}
+
+.invoice__footer {
+  margin: 0px !important;
+}

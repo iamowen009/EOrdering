@@ -2,6 +2,8 @@
 
 @section('head')
 <link href="<?= asset('vendors/nestable/nestable.css') ?>" rel="stylesheet">
+
+<link href="<?= asset('/css/document.css') ?>" rel="stylesheet">
 <link href="<?= asset('/css/orders.css') ?>" rel="stylesheet">
 @stop
 
