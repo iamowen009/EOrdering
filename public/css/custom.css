@@ -6,12 +6,12 @@ body{
     color: #000 !important;
     margin-left: 0 !important;
 }
-
+/*
 .row{
     margin-right: 0px !important;
     margin-left: 0px !important;
-
 }
+*/
 .bg-toa{
 	background-color:rgb(232,241,254);
 }
@@ -535,5 +535,43 @@ button.confirm {
 }
 
 
+/** modal animate **/
+.modal.fade:not(.in).left .modal-dialog {
+	-webkit-transform: translate3d(-25%, 0, 0);
+	transform: translate3d(-25%, 0, 0);
+}
 
+.modal.fade:not(.in).right .modal-dialog {
+	-webkit-transform: translate3d(25%, 0, 0);
+	transform: translate3d(25%, 0, 0);
+}
 
+.modal.fade:not(.in).bottom .modal-dialog {
+	-webkit-transform: translate3d(0, 25%, 0);
+	transform: translate3d(0, 25%, 0);
+}
+
+.modal.fade:not(.in).top-left .modal-dialog {
+	-webkit-transform: translate3d(-25%, -25%, 0);
+	transform: translate3d(-25%, -25%, 0);
+}
+
+.modal.fade:not(.in).top-right .modal-dialog {
+	-webkit-transform: translate3d(25%, -25%, 0);
+	transform: translate3d(25%, -25%, 0);
+}
+
+.modal.fade:not(.in).bottom-left .modal-dialog {
+	-webkit-transform: translate3d(-25%, 25%, 0);
+	transform: translate3d(-25%, 25%, 0);
+}
+
+.modal.fade:not(.in).bottom-right .modal-dialog {
+	-webkit-transform: translate3d(25%, 25%, 0);
+	transform: translate3d(25%, 25%, 0);
+}
+
+.sweet-alert h2 {
+    font-size: 25px !important;
+    margin-bottom: 15px;
+}

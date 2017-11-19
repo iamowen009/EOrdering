@@ -18,13 +18,13 @@ app.controller('HomeController',
         $scope.slideshowsE = '';
         $scope.config={};
 
-        $scope.carts = {};
+        $scope.carts = [];
         $scope.marketingmodel = [];
         $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
         $scope.usersId;
         $scope.partImgPromotion = Config.partImgPromotion();
-        //Customers.setCustomer(window.location.href.split('/').pop());
-        console.log('usersId xx = ' + $scope.usersId);
+        // Customers.setCustomer(window.location.href.split('/').pop());
+        // console.log('usersId xx = ' + $scope.usersId);
         // fetch
         fetchAllMarketings(Customers.customerId());
         config(Customers.customerId());

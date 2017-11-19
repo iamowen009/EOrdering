@@ -19,86 +19,83 @@ var app = angular.module('app', [
 app.constant('API_URL', 'http://202.142.195.168:8010/API/');
 
 
-app.run(function($rootScope,Orders,Auth,Customers) {
-
+app.run(function ($rootScope, Orders, Auth, Customers) {
     $("#cart-checkout").steps({
-      //console.log("Step changed to: " + currentIndex);
-            headerTag: "h3",
-            bodyTag: "section",
-            transitionEffect: 0,
-            startIndex:1,
-            autoFocus: true,
-            labels: {
-
-                finish: "ยืนยัน",
-                previous: "ย้อนกลับ",
-                next: "ถัดไป"
-            },
-            onStepChanged:function (event, currentIndex, newIndex) {
-              console.log("Step changed to: " + currentIndex);
-              if( currentIndex == 0){
-                console.log('disabled nth-child(2)');
+        //console.log("Step changed to: " + currentIndex);
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: 0,
+        startIndex: 1,
+        autoFocus: true,
+        labels: {
+            finish: "ยืนยัน",
+            previous: "ย้อนกลับ",
+            next: "ถัดไป"
+        },
+        onStepChanged: function (event, currentIndex, newIndex) {
+            console.log("Step changed to: " + currentIndex);
+            if (currentIndex == 0) {
                 $('ul[role="tablist"] >li:nth-child(2)').removeClass('done').addClass('disabled');//('','#ddd');
                 $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');//('','#ddd');
                 $('ul[role="menu"] > li:nth-child(1)')
-                  .removeClass('disabled')
-                  .attr('aria-disabled','false');
+                    .removeClass('disabled')
+                    .attr('aria-disabled', 'false');
                 $('.li-btn').show();
-              }else if( currentIndex == 1){
+            } else if (currentIndex == 1) {
                 $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');
-                $('ul[role="menu"] > li:nth-child(1) > a').attr('href','#previous');
-              }else{
+                $('ul[role="menu"] > li:nth-child(1) > a').attr('href', '#previous');
+            } else {
                 $('.li-btn').hide();
-              }
-            },
+            }
+        },
 
-            onInit:function (event, currentIndex) {
-              if( currentIndex == 0 || currentIndex == 1){
-                var btnPrint  = $("<a>").attr({"href":"#","ng-click":"btnPrint"}).addClass("btn-print btn btn-primary").text("Print");
-                var btnClear  = $("<a>").attr({"href":"#","ng-click":"removeAll()"}).addClass("btn-clear btn btn-danger").text("ลบรายการสินค้าทั้งหมด");
-                var printeBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnPrint);
-                var cleareBtn = $("<li>").attr("aria-disabled",false).addClass('li-btn pull-left').append(btnClear);
-                var ul        = $("<ul>").addClass('pull-left').append(printeBtn).append(cleareBtn);
+        onInit: function (event, currentIndex) {
+            if (currentIndex == 0 || currentIndex == 1) {
+                var btnPrint = $("<a>").attr({ "href": "#", "ng-click": "btnPrint" }).addClass("btn-print btn btn-primary").text("Print");
+                var btnClear = $("<a>").attr({ "href": "#", "ng-click": "removeAll()" }).addClass("btn-clear btn btn-danger").text("ลบรายการสินค้าทั้งหมด");
+                var printeBtn = $("<li>").attr("aria-disabled", false).addClass('li-btn pull-left').append(btnPrint);
+                var cleareBtn = $("<li>").attr("aria-disabled", false).addClass('li-btn pull-left').append(btnClear);
+                var ul = $("<ul>").addClass('pull-left').append(printeBtn).append(cleareBtn);
 
                 $(document).find(".actions").prepend(ul)
                 $(document).find('.actions ul[role="menu"]').addClass('pull-right');
                 //$(document).find(".actions ul").prepend(cleareBtn)
-              }else if( currentIndex == 1 ){
-                $('ul[role="menu"] a[href="#next"]').on('click',function(e){
-                  e.preventDefault();
+            } else if (currentIndex == 1) {
+                $('ul[role="menu"] a[href="#next"]').on('click', function (e) {
+                    e.preventDefault();
 
 
                 });
-              }else{
+            } else {
                 $('.li-btn').hide();
-              }
-            },
-            onStepChanging: function(e, currentIndex, newIndex) {
-              console.log('ckecked is ' + $('input[name="optradio"]:checked').length);
-              if( newIndex > currentIndex && currentIndex == 1 ){
-                if($('input[name="optradio"]:checked').length == 0){
-                      swal('กรุณาเลือก รูปแบบการชำระเงิน');
-                      return false;
+            }
+        },
+        onStepChanging: function (e, currentIndex, newIndex) {
+            console.log('ckecked is ' + $('input[name="optradio"]:checked').length);
+            if (newIndex > currentIndex && currentIndex == 1) {
+                if ($('input[name="optradio"]:checked').length == 0) {
+                    swal('กรุณาเลือก รูปแบบการชำระเงิน');
+                    return false;
                 }
-              }
-              return true;
+            }
+            return true;
+        },
+        onFinished: function () {
+            console.log('add order');
+
+            swal({
+                title: "ยืนยัน?",
+                text: "ท่านต้องการยืนยันใบสั่งซื้อนี้หรือไม่",
+                //type: "warning",
+                showCancelButton: true,
+                //confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: "ยกเลิก",
+                closeOnConfirm: true,
+                closeOnCancel: true
             },
-            onFinished: function () {
-                console.log('add order');
 
-                swal({
-                    title: "ยืนยัน?",
-                    text: "ท่านต้องการยืนยันใบสั่งซื้อนี้หรือไม่",
-                    //type: "warning",
-                    showCancelButton: true,
-                    //confirmButtonColor: '#DD6B55',
-                    confirmButtonText: 'ยืนยัน',
-                    cancelButtonText: "ยกเลิก",
-                    closeOnConfirm: true,
-                    closeOnCancel: true
-                },
-
-                function(isConfirm) {
+                function (isConfirm) {
                     if (isConfirm) {
                         var appElement = document.querySelector('[ng-controller=ProductCheckoutController]');
                         var appScope = angular.element(appElement).scope();
@@ -110,33 +107,33 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         var shipName = '';
                         var appPaymentTerm = '';
                         function newLocalDate() {
-                             var date = new Date();
-                             var dateStr = `${moment(date).get('year')}-${moment(date).format('MM-DD')}`;
-                             var date2 = new Date(dateStr);
-                             var dateStr2 = `${moment(date2).get('year')}-${moment(date2).format('MM-DD')}`;
-                              return new Date(dateStr2);
-                         }
-                         console.log('newLocalDate : ', newLocalDate() ,' appscope ' , appScope);
-
-                        if(typeof appScope.paymentTerm !== 'undefined'){
-                          appPaymentTerm = appScope.paymentTerm;
+                            var date = new Date();
+                            var dateStr = `${moment(date).get('year')}-${moment(date).format('MM-DD')}`;
+                            var date2 = new Date(dateStr);
+                            var dateStr2 = `${moment(date2).get('year')}-${moment(date2).format('MM-DD')}`;
+                            return new Date(dateStr2);
                         }
-                        console.log('appPaymentTerm : ' + appPaymentTerm );
+                        console.log('newLocalDate : ', newLocalDate(), ' appscope ', appScope);
+
+                        if (typeof appScope.paymentTerm !== 'undefined') {
+                            appPaymentTerm = appScope.paymentTerm;
+                        }
+                        console.log('appPaymentTerm : ' + appPaymentTerm);
                         //if(appScope.ddlShipTo.length > 0 ){
 
 
 
-                        if(typeof appScope.ddlShipTo !== undefined ){
+                        if (typeof appScope.ddlShipTo !== undefined) {
                             appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
                             shipName = appScope.ddlShipTo.shipName;
 
-                            console.log('not undefined ship shipId ' + shipId + ' shipCode ' + shipCode + ' shipName ' + shipName + ' shipCondition ' + appShipCondition );
-                        }else{
-                            console.log('customer info : ' , appScope.customer );
+                            console.log('not undefined ship shipId ' + shipId + ' shipCode ' + shipCode + ' shipName ' + shipName + ' shipCondition ' + appShipCondition);
+                        } else {
+                            console.log('customer info : ', appScope.customer);
                             appShipCondition = appScope.customer.shipCondition;
-                            shipId   = 0;
+                            shipId = 0;
                             shipCode = Customers.customerId();
                             shipName = appScope.customer.shipConditionDesc;
 
@@ -149,129 +146,129 @@ app.run(function($rootScope,Orders,Auth,Customers) {
 
                         console.log('appScope.shipCondition ' + appScope.shipCondition);
 
-                        console.log('appScope.ddlShipTo : ', appScope.ddlShipTo );
-                        var transportId=0;
-                        var transportZone='';
-                        var transportZoneDesc='';
-                        if(typeof appScope.ddlTransport !== 'undefined'){
-                        // if( appScope.ddlTransport.length > 0){
+                        console.log('appScope.ddlShipTo : ', appScope.ddlShipTo);
+                        var transportId = 0;
+                        var transportZone = '';
+                        var transportZoneDesc = '';
+                        if (typeof appScope.ddlTransport !== 'undefined') {
+                            // if( appScope.ddlTransport.length > 0){
                             //transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
 
-                            transportId =  appScope.ddlTransport.transportId;
+                            transportId = appScope.ddlTransport.transportId;
                             transportZone = appShipCondition == '08' ? appScope.ddlShipTo.transportZone : appScope.ddlTransport.transportZone;
                             transportZoneDesc = appShipCondition == '08' ? appScope.ddlShipTo.transportZoneDesc : appScope.ddlTransport.transportZoneDesc;
-                        }else{
-                          transportId = 0;
-                          transportZone =  appScope.customer.transportZone;
-                          transportZoneDesc =  appScope.customer.transportZoneDesc;
+                        } else {
+                            transportId = 0;
+                            transportZone = appScope.customer.transportZone;
+                            transportZoneDesc = appScope.customer.transportZoneDesc;
                         }
-                        console.log('appScope.ddlTransport : ', appScope.ddlTransport );
-                        var customerPO='';
-                        if(typeof appScope.customerPO !== 'undefined'){
+                        console.log('appScope.ddlTransport : ', appScope.ddlTransport);
+                        var customerPO = '';
+                        if (typeof appScope.customerPO !== 'undefined') {
                             customerPO = appScope.customerPO;
                         }
                         // var reqDate =newLocalDate();
                         // if(typeof appScope.ddlDate !== 'undefined'){
-                          function LocalDate(date) {
-                              console.log('date : ', date);
-                              // ;
+                        function LocalDate(date) {
+                            console.log('date : ', date);
+                            // ;
 
-                              if(!date || date === undefined ){
+                            if (!date || date === undefined) {
                                 var today = new Date();
                                 var hh = today.getHours();
-                                if( hh >= 17 && hh <= 23){
-                                  var dd = today.getDate()+1;
-                                }else{
-                                  var dd = today.getDate();
+                                if (hh >= 17 && hh <= 23) {
+                                    var dd = today.getDate() + 1;
+                                } else {
+                                    var dd = today.getDate();
                                 }
 
-                                var mm = today.getMonth()+1; //January is 0!
+                                var mm = today.getMonth() + 1; //January is 0!
 
                                 var yyyy = today.getFullYear();
 
-                                if(dd<10){
-                                    dd='0'+dd;
+                                if (dd < 10) {
+                                    dd = '0' + dd;
                                 }
-                                if(mm<10){
-                                    mm='0'+mm;
+                                if (mm < 10) {
+                                    mm = '0' + mm;
                                 }
-                                return yyyy +'-'+mm+'-'+dd + 'T00:00:00';
-                              }else{
+                                return yyyy + '-' + mm + '-' + dd + 'T00:00:00';
+                            } else {
                                 var dx = date.split('/');
                                 return dx[2] + '-' + dx[1] + '-' + dx[0] + 'T00:00:00';
-                              }
-                           }
-                            var eqDate = appScope.ddlDate.reqDate;
-                            var reqDate = LocalDate(eqDate);//.replace('/','-') + ' 00:00:00T';
+                            }
+                        }
+                        var eqDate = appScope.ddlDate.reqDate;
+                        var reqDate = LocalDate(eqDate);//.replace('/','-') + ' 00:00:00T';
                         // }
 
-                        console.log('reqDate ' + reqDate );
+                        console.log('reqDate ' + reqDate);
 
-                        var order =  {
-                            documentDate    : appScope.carts[0].cartDate,
-                            userName        : Auth.username(),
-                            customerId      : Customers.customerId(),
-                            customerCode    : appScope.carts[0].customerCode,
-                            customerName    : appScope.carts[0].customerName,
-                            paymentTerm     : appPaymentTerm != 'CASH' ? appPaymentTerm : 'CASH',
+                        var order = {
+                            documentDate: appScope.carts[0].cartDate,
+                            userName: Auth.username(),
+                            customerId: Customers.customerId(),
+                            customerCode: appScope.carts[0].customerCode,
+                            customerName: appScope.carts[0].customerName,
+                            paymentTerm: appPaymentTerm != 'CASH' ? appPaymentTerm : 'CASH',
                             //shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appShipCondition ),
 
-                            shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appScope.customer.shipCondition ),
-                            shipId          : (shipId === undefined || shipId == '' || checkedShip === true ) ? Customers.customerId() : shipId,
-                            shipCode    : (shipCode === undefined ||  checkedShip === true ) ? '' : shipCode,
-                            shipName    : (shipName === undefined ||  checkedShip === true ) ? 'รับสินค้าเอง' : shipName,
-                            requestDate : reqDate,
-                            customerPO  : customerPO,
-                            transportId : (transportId !== '' && transportId !== 0 && transportId !== undefined )? transportId : 0,
-                            transportZone   : (transportZone !== '' && transportZone !== undefined ) ? transportZone : '',
-                            transportZoneDesc   : (transportZoneDesc !== '' && transportZoneDesc !== undefined ) ? transportZoneDesc : '',
+                            shipCondition: checkedShip === true ? '01' : (checkedShip === false ? '' : appScope.customer.shipCondition),
+                            shipId: (shipId === undefined || shipId == '' || checkedShip === true) ? Customers.customerId() : shipId,
+                            shipCode: (shipCode === undefined || checkedShip === true) ? '' : shipCode,
+                            shipName: (shipName === undefined || checkedShip === true) ? 'รับสินค้าเอง' : shipName,
+                            requestDate: reqDate,
+                            customerPO: customerPO,
+                            transportId: (transportId !== '' && transportId !== 0 && transportId !== undefined) ? transportId : 0,
+                            transportZone: (transportZone !== '' && transportZone !== undefined) ? transportZone : '',
+                            transportZoneDesc: (transportZoneDesc !== '' && transportZoneDesc !== undefined) ? transportZoneDesc : '',
 
                         };
-                        console.log( 'order : ',order );
+                        console.log('order : ', order);
 
                         Orders.addOrder(order).then(function (response) {
                             //$scope.loading = false;
-                            console.log( response );
-                            if(response.data.result=='SUCCESS'){
+                            console.log(response);
+                            if (response.data.result == 'SUCCESS') {
 
-                                     var orders = response.data.data.order;
-                                    console.log(orders);
-                                    console.log(orders.orderId);
-                                    //swal.close();
+                                var orders = response.data.data.order;
+                                console.log(orders);
+                                console.log(orders.orderId);
+                                //swal.close();
 
-                                    swal({
-                                        title: "ระบบดำเนินการสร้างใบสั่งซื้อ เลขที่ " + orders.documentNumber + " เรียบร้อยแล้ว ท่านต้องการ",
-                                        //text: "ระบบดำเนินการสร้างใบสั่งซื้อเรียบร้อยแล้ว ท่านต้องการ?",
-                                        //type: "warning",
-                                        showCancelButton: true,
-                                        //confirmButtonColor: '#DD6B55',
-                                        confirmButtonText: 'กลับสู่หน้าแรก',
-                                        cancelButtonText: "ดูรายละเอียดใบสั่งซื้อ",
-                                        closeOnConfirm: true,
-                                        closeOnCancel: true
-                                    },
-                                    function(isConfirm){
-                                      if(isConfirm){
-                                        if(Auth.userTypeDesc()=='Multi'){
-                                            window.location= _base + '/customer';
-                                        }else{
-                                            window.location=_base + '/home/'+Customers.customerId();
+                                swal({
+                                    title: "ระบบดำเนินการสร้างใบสั่งซื้อ เลขที่ " + orders.documentNumber + " เรียบร้อยแล้ว ท่านต้องการ",
+                                    //text: "ระบบดำเนินการสร้างใบสั่งซื้อเรียบร้อยแล้ว ท่านต้องการ?",
+                                    //type: "warning",
+                                    showCancelButton: true,
+                                    //confirmButtonColor: '#DD6B55',
+                                    confirmButtonText: 'กลับสู่หน้าแรก',
+                                    cancelButtonText: "ดูรายละเอียดใบสั่งซื้อ",
+                                    closeOnConfirm: true,
+                                    closeOnCancel: true
+                                },
+                                    function (isConfirm) {
+                                        if (isConfirm) {
+                                            if (Auth.userTypeDesc() == 'Multi') {
+                                                window.location = _base + '/customer';
+                                            } else {
+                                                window.location = _base + '/home/' + Customers.customerId();
+                                            }
+                                        } else {
+                                            window.location = _base + '/cart-summary/' + orders.orderId;
                                         }
-                                      }else{
-                                        window.location=_base + '/cart-summary/'+orders.orderId;
-                                      }
 
                                     });
 
-                                    //location.reload();
-                                }else{
-                                    console.log('error ');
-                                    console.log( response.data.result );
-                                    swal('เพิ่ม Order ไม่สำเร็จ');
-                                }
+                                //location.reload();
+                            } else {
+                                console.log('error ');
+                                console.log(response.data.result);
+                                swal('เพิ่ม Order ไม่สำเร็จ');
+                            }
                         }, function (response) {
 
-                                console.log(response);
+                            console.log(response);
                         });
 
 
@@ -279,44 +276,76 @@ app.run(function($rootScope,Orders,Auth,Customers) {
                         //swal.close();
                     }
                 });
+        }
+    });
+});
+
+app.service('cartService', function(Carts, $filter) {
+    var productList = [];
+
+    this.addProduct = function(obj) {
+        productList.push(obj);
+    };
+
+    this.getProducts = function() {
+        return productList;
+    };
+
+    this.removeProduct = function(index) {
+        productList.splice(index);
+    };
+
+    this.updateProduct = function(index, data) {
+        productList[index] = data;
+    }
+
+    this.checkCart = function(userId, productId) {
+        return Carts.fetchAll(userId).then(function(response) {
+            if (response.data.result == 'SUCCESS') {
+                var product = $filter('filter')(response.data.data.cartList, {
+                    productId: productId
+                })[0];
+
+                return (product != undefined) ? product : false;
             }
         });
+    };
+});
+
+app.factory("sharedService", function ($rootScope) {
+    var mySharedService = {};
+    mySharedService.values = {};
+
+    mySharedService.passData = function (newData) {
+        mySharedService.values = newData;
+        $rootScope.$broadcast('dataPassed');
+    }
+
+    mySharedService.updateTotalCart = function () {
+        $rootScope.$broadcast('updateTotalCart');
+    };
 
 
+    return mySharedService;
+});
+
+app.directive('errSrc', function () {
+    return {
+        link: function (scope, element, attrs) {
+            element.bind('error', function () {
+                if (attrs.src != attrs.errSrc) {
+                    attrs.$set('src', attrs.errSrc);
+                }
+            });
+
+            attrs.$observe('ngSrc', function (value) {
+                if (!value && attrs.errSrc) {
+                    attrs.$set('src', attrs.errSrc);
+                }
+            });
+        }
+    }
 })
-
-
-app.factory("sharedService", function($rootScope){
-
-        var mySharedService = {};
-
-        mySharedService.values = {};
-
-        mySharedService.passData = function(newData){
-            mySharedService.values = newData;
-            $rootScope.$broadcast('dataPassed');
-        }
-        return mySharedService;
-   });
-
-
-app.directive('errSrc', function() {
-      return {
-        link: function(scope, element, attrs) {
-          element.bind('error', function() {
-            if (attrs.src != attrs.errSrc) {
-              attrs.$set('src', attrs.errSrc);
-            }
-          });
-
-          attrs.$observe('ngSrc', function(value) {
-            if (!value && attrs.errSrc) {
-              attrs.$set('src', attrs.errSrc);
-            }
-          });
-        }
-      }
-    })
     .directive('numbersOnly', function () {
         return {
             require: 'ngModel',
@@ -338,25 +367,25 @@ app.directive('errSrc', function() {
         };
     })
     .directive("datepicker", function () {
-  return {
-    restrict: "A",
-    require: "ngModel",
-    link: function (scope, elem, attrs, ngModelCtrl) {
-      var updateModel = function (dateText) {
-        scope.$apply(function () {
-          ngModelCtrl.$setViewValue(dateText);
-        });
-      };
-      var options = {
-        dateFormat: "dd/mm/yy",
-        onSelect: function (dateText) {
-          updateModel(dateText);
+        return {
+            restrict: "A",
+            require: "ngModel",
+            link: function (scope, elem, attrs, ngModelCtrl) {
+                var updateModel = function (dateText) {
+                    scope.$apply(function () {
+                        ngModelCtrl.$setViewValue(dateText);
+                    });
+                };
+                var options = {
+                    dateFormat: "dd/mm/yy",
+                    onSelect: function (dateText) {
+                        updateModel(dateText);
+                    }
+                };
+                elem.datepicker(options);
+            }
         }
-      };
-      elem.datepicker(options);
-    }
-  }
-});
+    });
 
 angular.module('UserValidation', []).directive('validPasswordC', function () {
     return {

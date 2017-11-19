@@ -37,7 +37,7 @@
 																<span class="favorite-icon"><i class="fa fa-star"></i></span>
 															-->
 		                            <a href="javascript: void(0);">
-		                                <img class="img" src="{{partImgProductDetail}}/{{btf.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+		                                <img class="img" ng-src="{{partImgProductDetail}}/{{btf.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
 		                            </a>
 		                        </div>
 		                    </div>
@@ -194,7 +194,7 @@
 					                                </div>
 																					<span class="favorite-icon"><i class="fa fa-star"></i></span>
 					                                <a href="javascript: void(0);">
-					                                    <img src="../assets/common/img/temp/ecommerce/001.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+					                                    <img ng-src="{{ asset('common/img/temp/ecommerce/001.jpg') }}" err-SRC="{{partImgProduct}}/Noimage.jpg">
 					                                </a>
 					                            </div>
 					                            <div class="text-center">
@@ -240,7 +240,7 @@
 					                                </div>
 																					<span class="favorite-icon"><i class="fa fa-star"></i></span>
 					                                <a href="javascript: void(0);">
-					                                    <img src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"  class="img-responsive img-product product-list">
+					                                    <img ng-src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"  class="img-responsive img-product product-list">
 					                                </a>
 					                            </div>
 					                            <div class="text-center  product-desc">

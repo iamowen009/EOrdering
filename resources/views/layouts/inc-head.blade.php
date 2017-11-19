@@ -31,17 +31,35 @@
 											<span>ยินดีต้อนรับ {{username}} <span ng-show="!hidemenu">[{{customerCode}} : {{customerName}}]</span></span>
 										@endverbatim
 									</li>
-
+									<li class="nav-item" style="top: -10px; padding-left: 15px;">
+										<div class="dropdown">
+												<div class="navbar-menu" data-toggle="dropdown">
+														<img class="icon-in-home" src="<?= asset('images/account.png') ?>">
+														บัญชีของฉัน <span class="caret"></span></button>
+														<ul class="dropdown-menu">
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลส่วนตัว</a></li>
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อเรา</a></li>
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a></li>
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')">เปลี่ยนรหัสผ่าน</a></li>
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('faq')  ?>')">ปัญหาที่พบ</a></li>
+																<li><a ng-click="$event.preventDefault(); logout()">ออกจากระบบ</a></li>
+														</ul>
+												</div>
+										</div>
+									</li>
 								</ul>
 									<ul class="navbar-nav ul-top-menu">
 											<li class="nav-item active " ng-hide="hidemenu">
-												 <a class="navbar-menu " href="#" ng-click="$event.preventDefault();toHome()">
+												@verbatim
+												 <a class="navbar-menu " href="#" ng-click="toHome()">
 															<img class="icon-in-home" src="<?= asset('images/home.png') ?>">
 															หน้าแรก
 													</a>
+													@endverbatim
 											</li>
 											<li class="nav-item item-cart" ng-hide="hidemenu">
-													<a class="navbar-menu  text-center"  href="#" ng-click="$event.preventDefault();open('lg')">
+													<a class="navbar-menu  text-center"  href="#" ng-click="open('lg')">
 															<span class="bell">
 																	<img class="icon-in-home" src="<?= asset('images/cart.png') ?>">
 																	@verbatim
@@ -87,23 +105,6 @@
 															รายงาน
 													</a>
 											</li>
-											<li class="nav-item">
-													<div class="dropdown">
-															<div class="navbar-menu" data-toggle="dropdown">
-																	<img class="icon-in-home" src="<?= asset('images/account.png') ?>">
-																	บัญชีของฉัน <span class="caret"></span></button>
-																	<ul class="dropdown-menu">
-																			<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลส่วนตัว</a></li>
-																			<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อเรา</a></li>
-																			<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
-																			<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a></li>
-																			<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')">เปลี่ยนรหัสผ่าน</a></li>
-																			<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('faq')  ?>')">ปัญหาที่พบ</a></li>
-																			<li><a ng-click="$event.preventDefault(); logout()">ออกจากระบบ</a></li>
-																	</ul>
-															</div>
-													</div>
-												</li>
 									</ul>
 							</div>
 				</div>
