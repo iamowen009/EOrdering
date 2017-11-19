@@ -149,6 +149,7 @@ angular.module('app')
             partImgActivity = partImgActivity;
             partFileProduct = partFileProduct;
             partFilePromotion = partFilePromotion;
+            window.localStorage.setItem('partImgActivity',partImgActivity);
             window.localStorage.setItem('partImgLogin',partImgLogin);
             window.localStorage.setItem('partImgHome',partImgHome);
             window.localStorage.setItem('partFileDocument',partFileDocument);
@@ -160,10 +161,14 @@ angular.module('app')
             window.localStorage.setItem('imgLogin2',imgLogin2);
             window.localStorage.setItem('imgLogin3',imgLogin3);
         },
-        setHomeImage:function(imgHome1,imgHome2,imgHome3){
+        setHomeImage:function(imgHome1,imgHome2,imgHome3,imgHomeB,imgHomeC,imgHomeD,imgHomeE){
             window.localStorage.setItem('imgHome1',imgHome1);
             window.localStorage.setItem('imgHome2',imgHome2);
             window.localStorage.setItem('imgHome3',imgHome3);
+            window.localStorage.setItem('imgHomeB',imgHomeB);
+            window.localStorage.setItem('imgHomeC',imgHomeC);
+            window.localStorage.setItem('imgHomeD',imgHomeD);
+            window.localStorage.setItem('imgHomeE',imgHomeE);
         },
         partImgLogin : function(){
             return window.localStorage.getItem('partImgLogin');
@@ -190,7 +195,8 @@ angular.module('app')
             return window.localStorage.getItem('partImgPromotion');
         },
         partImgActivity : function(){
-            return partImgActivity;
+            // return partImgActivity;
+            return window.localStorage.getItem('partImgActivity');
         },
         partFileProduct : function(){
             return partFileProduct;
@@ -218,6 +224,18 @@ angular.module('app')
         },
         imgHome3 : function(){
             return window.localStorage.getItem('imgHome3');
+        },
+        imgHomeB : function(){
+            return window.localStorage.getItem('imgHomeB');
+        },
+        imgHomeC : function(){
+            return window.localStorage.getItem('imgHomeC');
+        },
+        imgHomeD : function(){
+            return window.localStorage.getItem('imgHomeD');
+        },
+        imgHomeE : function(){
+            return window.localStorage.getItem('imgHomeE');
         }
 
 	}
@@ -898,7 +916,7 @@ angular.module('app')
 
 }])
 
-.service('ChangePassword', ['$http', '$q', 'API_URL', function($http, $q, API_URL) 
+.service('ChangePassword', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {
         save: function(formData) {

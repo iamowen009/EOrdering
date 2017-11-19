@@ -1,0 +1,27 @@
+.news-title{
+  text-align: center;
+  padding-top:20px;
+}
+.news.title > p{
+  margin:10px 0 ;
+  line-height: 1.2;
+}
+.news-title > h1{
+  margin:0;
+  color:#3b76b5;
+
+}
+.news-title > p > .tag-gray{
+  border-radius: 2px;
+  background: #ccc;
+  color:#000;
+  padding:2px 10px;
+  display:inline-block;
+  margin-top:10px;
+}
+.news-content > img{
+  max-height: 350px;
+  display: block;
+  margin:20px auto;
+
+}

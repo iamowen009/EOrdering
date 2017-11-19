@@ -12,6 +12,10 @@ app.controller('HomeController',
         $scope.slideshows1 = '';
         $scope.slideshows2 = '';
         $scope.slideshows3 = '';
+        $scope.slideshowsB = '';
+        $scope.slideshowsC = '';
+        $scope.slideshowsD = '';
+        $scope.slideshowsE = '';
         $scope.config={};
 
         $scope.carts = {};
@@ -26,24 +30,21 @@ app.controller('HomeController',
         config(Customers.customerId());
         function config(userid){
           Config.fetchAll(userid).then(function(response){
-            if(response.data.result == 'SUCCESS'){
-              $scope.config = response.data.data.configList;
-              $scope.templateNo = $scope.config[0].homeTemplate;
-              if( $scope.templateNo == '1' ){
-                $scope.templateURL = _base + '/template/home-1.html';
-              }else if( $scope.templateNo == '2' ){
-                $scope.templateURL = _base + '/template/home-2.html';
-              }else if( $scope.templateNo == '3' ){
-                $scope.templateURL = _base + '/template/home-2.html';
-              }else{
-                $scope.templateURL = _base + '/template/home-1.html';
-              }
-
-
-            }
+                if(response.data.result == 'SUCCESS'){
+                      $scope.config = response.data.data.configList;
+                      $scope.templateNo = $scope.config[0].homeTemplate;
+                      if( $scope.templateNo == '1' ){
+                        $scope.templateURL = _base + '/template/home-1.html';
+                      }else if( $scope.templateNo == '2' ){
+                        $scope.templateURL = _base + '/template/home-2.html';
+                      }else if( $scope.templateNo == '3' ){
+                        $scope.templateURL = _base + '/template/home-2.html';
+                      }else{
+                        $scope.templateURL = _base + '/template/home-1.html';
+                      }
+                }
           });
         }
-
 
         //fetchAllPromotions(Customers.customerId(), ['10', '40'], ['01', '18'], ['003', '006']);
         fetchAllPromotions(Customers.customerId(), [], [], []);
@@ -53,6 +54,10 @@ app.controller('HomeController',
             $scope.slideshows1 = Config.partImgHome()+"/"+Config.imgHome1();
             $scope.slideshows2 = Config.partImgHome()+"/"+Config.imgHome2();
             $scope.slideshows3 = Config.partImgHome()+"/"+Config.imgHome3();
+            $scope.slideshowsB = Config.partImgHome()+"/"+Config.imgHomeB();
+            $scope.slideshowsC = Config.partImgHome()+"/"+Config.imgHomeC();
+            $scope.slideshowsD = Config.partImgHome()+"/"+Config.imgHomeD();
+            $scope.slideshowsE = Config.partImgHome()+"/"+Config.imgHomeE();
         }
 
         function fetchAllMarketings(customerId) {

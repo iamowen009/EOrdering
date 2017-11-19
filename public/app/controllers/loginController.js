@@ -99,10 +99,18 @@ app.controller('LoginController',
 
                     Config.setHomeImage(response.data.data.configList[0].imgHomeA1,
                         response.data.data.configList[0].imgHomeA2,
-                        response.data.data.configList[0].imgHomeA3);
+                        response.data.data.configList[0].imgHomeA3,
+                        response.data.data.configList[0].imgHomeB,
+                        response.data.data.configList[0].imgHomeC,
+                        response.data.data.configList[0].imgHomeD,
+                        response.data.data.configList[0].imgHomeE);
                     $scope.slide1 = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeA1;
                     $scope.slide2 = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeA2;
                     $scope.slide3 = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeA3;
+                    $scope.slideB = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeB;
+                    $scope.slideC = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeC;
+                    $scope.slideD = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeD;
+                    $scope.slideE = response.data.data.configList[0].imageLogin1 +'/' + response.data.data.configList[0].imgHomeE;
                     fetchSlideshow();
                 }
             });

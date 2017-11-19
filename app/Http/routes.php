@@ -39,8 +39,10 @@ Route::get('product-history','ProductHistoryController@index');
 Route::get('favorite','FavoriteController@index');
 
 Route::get('news','NewsController@index');
-
 Route::get('news/{id?}','NewsController@category');
+Route::get('news-detail/{id?}','NewsController@detail');
+
+
 
 Route::get('report','ReportController@index');
 
@@ -51,10 +53,10 @@ Route::get('promotion/{id?}','PromotionController@index');
 
 Route::get('mail', 'HomeController@mail');
 
-/*Route::get('/sendmail', function() 
+/*Route::get('/sendmail', function()
 {
 	$data = array('name' => 'Jordan');
-	
+
 	Mail::send('emails.mailExample', $data, function($message)
 	{
 		$message->to('piigabo.oc@gmail.com')

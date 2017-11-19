@@ -21,4 +21,8 @@ class NewsController extends Controller
         	return view('news.eordering',compact('id'));
 
     }
+
+    public function detail($id){
+      return view( 'news.detail',compact('id') );
+    }
 }

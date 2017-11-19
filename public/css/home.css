@@ -8,3 +8,25 @@ select.form-control{
 .sidedata{
 	margin-top:5px;
 }
+
+.item-one{
+	height: 300px;
+	padding:4px;
+	margin-bottom: 10px;
+}
+
+.item-two{
+	height: 300px;
+	padding:4px;
+	margin-bottom: 10px;
+	margin-right:10px;
+	width:48%;
+}
+
+.bd-pomo {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 290px;
+    margin: 10px auto;
+}

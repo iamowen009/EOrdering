@@ -17,28 +17,41 @@
 	    -o-transition: border .2s ease-in-out;
 	    transition: border .2s ease-in-out;
 	}
+	.news-list > a,
+	.news-list > a:hover{
+		color:#000;
+	}
+
 </style>
 @stop
 
 @section('content')
 <div class="content">
-		
-	<div class="row ">
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="panel panel-info">
-              <div class="panel-heading text-center">E-ordering</div>
-              <div class="panel-body">
-              	<br>
-				
-
-				<div class="row"> 
-					<div class="col-sm-6 col-md-4"> <div class="thumbnail-news"> <img alt="100%x200" data-src="holder.js/100%x200" style="height: 200px; width: 100%; display: block;" src="http://placehold.it/260x200" data-holder-rendered="true"> 
-					<div class="caption"> <p>04 กรกฎาคม 2560<br/>ทีโอเอมอบทุนการศึกษาแก่เยาวชนเรียนดี</p>  </div> </div> </div> 
-					<div class="col-sm-6 col-md-4"> <div class="thumbnail-news"> <img alt="100%x200" data-src="holder.js/100%x200" style="height: 200px; width: 100%; display: block;" src="http://placehold.it/242x200" data-holder-rendered="true"> <div class="caption">  <p>04 กรกฎาคม 2560<br/>ทีโอเอมอบทุนการศึกษาแก่เยาวชนเรียนดี</p>  </div> </div> </div>
-					 <div class="col-sm-6 col-md-4"> <div class="thumbnail-news"> <img alt="100%x200" data-src="holder.js/100%x200" style="height: 200px; width: 100%; display: block;" src="http://placehold.it/242x200" data-holder-rendered="true"> <div class="caption">  <p>04 กรกฎาคม 2560<br/>ทีโอเอมอบทุนการศึกษาแก่เยาวชนเรียนดี</p>  </div> </div> </div> </div>
-
-              </div>
-            </div>
-        </div>
-    </div>
+		<div ng-controller="NewsController" >
+				<div class="row ">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="panel panel-info">
+			          <!-- <div class="panel-heading text-center">E-ordering</div> -->
+			          <div class="panel-body">
+										@verbatim
+										<div class="row">
+												<div class="col-sm-6 col-md-4 news-list" ng-repeat="(i , new) in news | orderBy:'-newsDate'">
+														<a href="<?php echo url('news-detail'); ?>/{{ i+1 }}" title="{{ new.title }}">
+														<div class="thumbnail-news">
+																<img alt="{{ new.title}}" style="height: 200px; width: 100%; display: block;" src="{{partImgActivity +'/' + new.picture }}" err-SRC="{{partImgProduct}}/Noimage.jpg">
+																<div class="caption"> <p>{{ newsDate(new.newsDate) }}<br/><strong>{{ new.title}}</strong></p></div>
+														</div>
+														</a>
+												</div>
+										</div>
+										@endverbatim
+			          </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+</div>
 @stop
+@section('footer')
+	<script src="<?= asset('app/controllers/newsController.js') ?>"></script>
+@endsection
