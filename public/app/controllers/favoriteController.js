@@ -1,18 +1,20 @@
 "use strict";
 app.controller('FavoriteController',
     function ($scope, $http,Customers,Fav,Config) {
-        
+
        $scope.favorites = {};
        $scope.loading = true;
+       $scope.partImgProduct = Config.partImgProduct();
+       $scope.partImgProductList = Config.partImgProductList();
        $scope.partImgProductDetail = Config.partImgProductDetail();
 
        fetchFavorite(Customers.customerId());
-       
+
        function fetchFavorite(customerId){
           Fav.fetchAll(customerId).then(function (response) {
                 if(response.data.result=='SUCCESS'){
                     $scope.favorites = response.data.data.favoriteList;
-                    
+
 
                 }
                 $scope.loading = false;
@@ -23,6 +25,6 @@ app.controller('FavoriteController',
           var url =  '../../product-detail/'+productId;
             window.location.href = url;
         }
-       
+
 
  })
