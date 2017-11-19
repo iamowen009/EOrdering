@@ -309,14 +309,14 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     $scope.btfId = window.location.href.split('/').pop();
     // fetch
     // console.log('product detail user ' + $scope.usersId + ' | ' + Auth.genId() + ' | ' + Auth.userTypeDesc() );
-    fetchOneProduct($scope.btfId);
+    fetchOneProduct($scope.usersId, $scope.btfId);
     fetchAllPromotions($scope.usersId, [], [], []);
     fetchAllProducts($scope.usersId, [], [], [], true);
     $scope.promotionLink = function () {
         $('#modal-promotion').modal('show');
     }
-    function fetchOneProduct(btf) {
-        Products.fetchOne(btf).then(function (response) {
+    function fetchOneProduct(customerId, btf) {
+        Products.fetchOne(customerId, btf).then(function (response) {
             if (response.data.result == 'SUCCESS') {
                 $scope.btf = response.data.data.btfInfo;
                 $scope.product = response.data.data.productList;
@@ -483,8 +483,8 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
         }
 
         var promotionList = [];
-        
-        cartService.checkCart($scope.usersId, $scope.productId).then(function(res) {
+
+        cartService.checkCart($scope.usersId, $scope.productId).then(function (res) {
             if (res == false) {
                 var cartList = [{
                     customerId: $scope.usersId,
@@ -496,11 +496,11 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
                 Carts.addCart(cartList, promotionList).then(function (response) {
                     $scope.loading = false;
                     if (response.data.result == 'SUCCESS') {
-                        Carts.fetchAll($scope.usersId, $scope.productId).then(function(res) {
-                           var product = $filter('filter')(res.data.data.cartList, {
-                               productId: $scope.productId
-                           })[0];
-                           cartService.addProduct(product);
+                        Carts.fetchAll($scope.usersId, $scope.productId).then(function (res) {
+                            var product = $filter('filter')(res.data.data.cartList, {
+                                productId: $scope.productId
+                            })[0];
+                            cartService.addProduct(product);
                         });
 
                         swal('สำเร็จ', 'เพิ่มสินค้าเรียบร้อยแล้ว', 'success');
@@ -562,19 +562,17 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
         //  $scope.getProduct();
     }
     // console.log('product : ' , $scope.product );
-    $scope.addFav = function (btfCode) {
-
+    $scope.addFav = function (product) {
         var favoriteInfo = {
             customerId: $scope.usersId,
-            btfCode: btfCode,
+            btfCode: product.btf,
             userName: Auth.username()
         };
 
-
-        Fav.addFav($scope.usersId, btfCode, Auth.username()).then(function (response) {
+        Fav.addFav(favoriteInfo).then(function (response) {
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
-                $scope.productSelect.isFavorite = true;
+                product.isFavorite = true;
                 swal('เพิ่ม Favorite เรียบร้อยแล้ว');
                 //location.reload();
             } else {
@@ -587,28 +585,29 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 
     }
 
-    $scope.removeFav = function (productId) {
-
-        var favoriteInfo = [{
+    $scope.removeFav = function (product) {
+        var favoriteInfo = {
             customerId: $scope.usersId,
-            productId: productId,
+            btfCode: product.btf,
             userName: Auth.username()
-        }];
+        };
+
+        console.log(favoriteInfo);
 
         Fav.removeFav(favoriteInfo).then(function (response) {
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
-                $scope.productSelect.isFavorite = false;
+                product.isFavorite = false;
                 swal('ลบ Favorite เรียบร้อยแล้ว');
                 //location.reload();
             } else {
                 swal('ลบ Favorite ไม่สำเร็จ');
             }
+            console.log(response);
         }, function (response) {
 
             console.log(response);
         });
-
     }
 
     $scope.toHistory = function (marketingCode) {

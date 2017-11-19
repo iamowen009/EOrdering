@@ -6,7 +6,7 @@
         .controller('ChangePasswordController', ChangePasswordController);
 
     /** @ngInject */
-    function ChangePasswordController($scope, ChangePassword, Auth) {
+    function ChangePasswordController($scope, ChangePassword, Customers, Auth) {
         init();
 
         function init() {
@@ -16,22 +16,22 @@
 
         $scope.doChangePassword = function(isValid) {
             if (isValid) {
-                //$scope.btnLoading = true;
-
                 var formData = {
-                    userId: $scope.userId,
+                    //userId: $scope.userId,
+                    userName: Auth.username(),
                     password: $scope.input.oldpassword,
-                    new_password: $scope.input.newpassword,
+                    newPassword: $scope.input.newpassword,
                 };
 
                 ChangePassword.save(formData)
                     .then(function(res) {
-                        console.log(res);
+                        if (res.data.result == 'SUCCESS') {
+                            swal('สำเร็จ', 'เปลี่ยนรหัสผ่านสำเร็จ', 'success');
+                        } else {
+                            swal('เกิดข้อผิดพลาด', 'รหัสผ่านเก่าไม่ถูกต้อง', 'warning');
+                        }
                         clearForm();
-                    })
-                    .catch(function(err) {
-                        swal('ไม่สามารถแก้ไขรหัสผ่านได้');
-                    }); 
+                    });
             }
         }
 

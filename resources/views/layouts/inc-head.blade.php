@@ -31,7 +31,7 @@
 											<span>ยินดีต้อนรับ {{username}} <span ng-show="!hidemenu">[{{customerCode}} : {{customerName}}]</span></span>
 										@endverbatim
 									</li>
-									<li class="nav-item" style="top: -10px; padding-left: 15px;">
+									<li class="nav-item" style="top: -10px; padding-left: 15px; cursor: pointer;">
 										<div class="dropdown">
 												<div class="navbar-menu" data-toggle="dropdown">
 														<img class="icon-in-home" src="<?= asset('images/account.png') ?>">
@@ -42,7 +42,7 @@
 																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
 																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a></li>
 																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')">เปลี่ยนรหัสผ่าน</a></li>
-																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('faq')  ?>')">ปัญหาที่พบ</a></li>
+																<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('problem')  ?>')">ปัญหาที่พบ</a></li>
 																<li><a ng-click="$event.preventDefault(); logout()">ออกจากระบบ</a></li>
 														</ul>
 												</div>
@@ -109,3 +109,13 @@
 							</div>
 				</div>
 </nav>
+@verbatim
+<div class="cart-fab" ng-click="open('lg')">
+		<div class="cart-fab-content">
+			<span class="item-count">
+				{{carts.length}}
+			</span>
+			<img src="<?= asset('images/cart.png') ?>">
+	</div>
+</div>
+@endverbatim
