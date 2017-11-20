@@ -28,7 +28,12 @@
 								<ul class="nav navbar-nav ul-member navbar-right">
 									<li>
 										@verbatim
-											<span>ยินดีต้อนรับ {{username}} <span ng-show="!hidemenu">[{{customerCode}} : {{customerName}}]</span></span>
+											<!-- <span>ยินดีต้อนรับ {{username}} 
+											<span ng-show="!hidemenu">[{{customerCode}} : {{customerName}}]</span></span> -->
+											ยินดีต้อนรับ {{username}} {{customerCode}}
+											<span ng-show="!hidemenu">
+												[ {{username}} {{customerCode}} : {{customerName}}]
+											</span>
 										@endverbatim
 									</li>
 									<li class="nav-item" style="top: -10px; padding-left: 15px; cursor: pointer;">
@@ -115,7 +120,7 @@
 			<span class="item-count">
 				{{carts.length}}
 			</span>
-			<img src="<?= asset('images/cart.png') ?>">
+			<img src="<?= asset('images/Blue-Cart.png') ?>">
 	</div>
 </div>
 @endverbatim

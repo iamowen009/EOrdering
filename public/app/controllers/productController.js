@@ -174,6 +174,32 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
     };
 
+
+    $scope.clearMarketingFilter = function() {
+        $scope.marketingCode = [];
+        $scope.brandCode = [];
+        $scope.typeCode = [];
+
+        fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
+        fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+    }
+
+    $scope.clearBrandFilter = function() {
+        $scope.brandCode = [];
+        $scope.typeCode = [];
+
+        fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
+        fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+    }
+
+    $scope.clearTypeFilter = function() {
+        $scope.typeCode = [];
+        $scope.typesFilter = '';
+
+        fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
+        fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+    }
+
     $scope.brandSelection = function (code) {
         var idx = $scope.brandCode.indexOf(code);
         // Is currently selected
@@ -324,6 +350,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     $scope.promotionLink = function () {
         $('#modal-promotion').modal('show');
     }
+
     function fetchOneProduct(customerId, btf) {
         Products.fetchOne(customerId, btf).then(function (response) {
             if (response.data.result == 'SUCCESS') {
