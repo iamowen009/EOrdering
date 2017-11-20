@@ -300,6 +300,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     $scope.listColors = [];
     $scope.productId = {};
     $scope.cartProductQty = 1;
+    $scope.productPrice = 0;
     $scope.productSelect = {};
     $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 
@@ -427,9 +428,9 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
         }
         var bomPrice = 0;
         for (var kx in $scope.boms) {
-            //  if($scope.boms[kx]['productRefToCode'] == $scope.productSelect.productCode){
+           if($scope.boms[kx].productRefToCode == $scope.productSelect.productCode){
             bomPrice += $scope.boms[kx]['productPrice'];
-            //  }
+          }
         }
         if ($scope.boms.length > 0) {
             $scope.productPrice = bomPrice;
@@ -483,7 +484,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
         }
 
         var promotionList = [];
-        
+
         cartService.checkCart($scope.usersId, $scope.productId).then(function(res) {
             if (res == false) {
                 var cartList = [{

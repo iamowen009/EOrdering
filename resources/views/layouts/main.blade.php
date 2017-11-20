@@ -91,9 +91,8 @@
                         :: start bom list
                         =======================================================================================================
                         -->
-                        <div class="col-sm-12" ng-repeat="bom in boms" ng-if="bom.productRefCode == item.productCode" style="margin-left:10px; margin-top:20px;">
-                            <label class="text-left col-sm-1" >
-                                <a href="#" ><i class="fa fa-trash"></i></a></label>
+                        <div class="col-sm-12" ng-repeat="bom in bomxs" ng-if="bom.productRefCode == item.productCode" style="margin-left:10px; margin-top:20px;">
+                            <label class="text-left col-sm-1" ></label>
                             <label class="col-sm-11 text-left">{{bom.productCode}}</label>
                             <label class="text-left col-sm-1" ></label>
                             <label class="col-md-11">{{bom.productNameTh}}</label>
@@ -112,16 +111,16 @@
 
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default disabled" >-</button>
+                                        <button type="button" class="btn btn-default disabled" disabled>-</button>
                                     </span>
                                     <input type="text" class="form-controle text-center disabled" disabled style="width:80px; padding:5px;" value="{{ item.qty }}" >
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-defaul disabledt" disabled>+</button>
+                                        <button type="button" class="btn btn-default disabled" disabled>+</button>
                                     </span>
                                 </div>
                               </div>
                               <div class="col-md-12">
-                                <strong>หน่วย : </strong>{{bom.unitNameTh}} <span ng-if="bom.altUnitAmount > 0">( 1 {{ bom.altUnitNameTh }} : {{bom.altUnitAmount }} {{ bom.unitNameTh }})</span> {{ bom.unitNameTh }}
+                                <strong>หน่วย : </strong>{{bom.unitNameTh}} <span ng-if="bom.altUnitAmount > 0">( 1 {{ bom.altUnitNameTh }} : {{bom.altUnitAmount }} {{ bom.unitNameTh }})</span>
 
                                  <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
                               </div>
@@ -161,7 +160,7 @@
     <script src="<?= asset('bower_components/angular-messages/angular-messages.min.js') ?>"></script>
     <script src="<?= asset('bower_components/angular-validation-match/dist/angular-validation-match.js') ?>"></script>
     <script src="<?= asset('bower_components/purl/purl.js') ?>"></script>
-    
+
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
 

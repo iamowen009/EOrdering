@@ -74,7 +74,6 @@ app.controller('ProductCheckoutController',
                         for(var bm in $scope.boms){
                           if( $scope.boms[bm]['productRefCode'] == $scope.carts[key]['productCode'] )
                             $scope.totalAmount += $scope.boms[bm]['price'] * $scope.carts[key]['qty'];
-
                         }
 
                     }
@@ -83,6 +82,15 @@ app.controller('ProductCheckoutController',
 
                 $scope.loading = false;
             });
+       }
+
+       $scope.bomRows = function(productCode){
+         var len = 0;
+         for(var bm in $scope.boms){
+           if( $scope.boms[bm]['productRefCode'] == productCode )
+             len++;
+         }
+         return len;
        }
 
        $scope.cartProductQty = function(qty){
