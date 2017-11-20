@@ -260,7 +260,7 @@ angular.module('app')
 
         	return deferred.promise;
 		},
-        setCustomer: function(customerId, customerName){
+        setCustomer: function(customerId,customerName){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
 
@@ -271,33 +271,10 @@ angular.module('app')
         customerName: function(){
             return Auth.userTypeDesc() == 'Multi' ? window.localStorage.getItem('customerName') : Auth.customerName();
         },
-        customerUpdate: function(formData) {
-            var deferred = $q.defer();
-            var url = API_URL + 'CustomerUpdate';
-    
-            $http.post( url , formData).then(function (data) {
-                deferred.resolve(data);
-            },function (error){
-                deferred.reject('An error occured while fetching all products');
-            });
-
-            return deferred.promise;
-        },
-        customerProblem: function(formData) {
-            var deferred = $q.defer();
-            var url = API_URL + 'CustomerProblem';
-    
-            $http.post( url , formData).then(function (data) {
-                deferred.resolve(data);
-            },function (error){
-                deferred.reject('An error occured while fetching all products');
-            });
-
-            return deferred.promise;
-        }
 	}
 
 }])
+
 
 .service('Orders', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
@@ -525,11 +502,11 @@ angular.module('app')
 		/**
 		* Fetch one products
 		*/
-		fetchOne: function (customerId, btf)
+		fetchOne: function (btf)
 		{
 			// TODO: remove the use of futures
 			var deferred = $q.defer();
-			var url = API_URL + `ProductInBTF?customerId=${customerId}&btf=${btf}`
+			var url = API_URL + 'ProductInBTF?btf='+btf;
             $http.get( url).then(function (data) {
                 deferred.resolve(data);
             },function (error){
@@ -627,6 +604,7 @@ angular.module('app')
 
 }])
 
+
 .service('Fav', ['$http', '$q', 'API_URL', function($http, $q, API_URL)
 {
     return {
@@ -649,13 +627,16 @@ angular.module('app')
 
             return deferred.promise;
         },
-        addFav: function (favoriteInfo)
+        addFav: function (customerId,btf,userName)
         {
             // TODO: remove the use of futures
             var deferred = $q.defer();
             var url = API_URL + 'Favorites';
-
-            $http.post( url ,{favoriteInfo : favoriteInfo}).then(function (data) {
+            $http.post( url , {favoriteInfo: {
+                    customerId: customerId,
+                    btfCode: btf,
+                    userName: userName
+                }}).then(function (data) {
                 deferred.resolve(data);
             },function (error){
                 deferred.reject('An error occured while fetching all products');
@@ -922,7 +903,7 @@ angular.module('app')
     return {
         save: function(formData) {
             var deferred = $q.defer();
-            var url = API_URL + 'ChangePassword';
+            var url = API_URL + 'PostChangePassword';
 
             $http.post(url, formData).then(function(data) {
                 deferred.resolve(data);

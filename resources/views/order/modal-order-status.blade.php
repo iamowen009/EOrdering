@@ -29,7 +29,7 @@
         	<h4 class="modal-title">รายละเอียดการสั่งซื้อ</h4>
         </div>
       </div>
-      <div class="modal-body" style="padding-bottom: 0px;">
+      <div class="modal-body">
         <div class="row inv-header">
           <div class="col-sm-8">
               <p><strong>ร้านค้า :</strong>  @{{ inv.payerNo }} @{{ inv.payerName }}</p>
@@ -60,7 +60,7 @@
               <table class="table table-hover table-bordered">
                   <thead class="thead-default">
                       <tr>
-                          <th class="text-center">รหัสสินค้า</th>
+                          <th colspan="2" class="text-center">รหัสสินค้า</th>
                           <th class="text-center">สินค้า</th>
                           <th class="text-center">จำนวน</th>
                           <th class="text-center">หน่วย</th>
@@ -73,6 +73,9 @@
 
                   <tbody>
                   <tr ng-repeat="item in detail">
+                      <td class="text-center">
+                         <img class="img-product" src="@{{ partImgProduct +'/'+ item.btf }}.jpg" err-SRC="@{{partImgProduct}}/Noimage.jpg" style="height:40px;">
+                      </td>
                       <td>
                           @{{item.material}}
                       </td>
@@ -186,14 +189,6 @@
             </div>
           </div>
 
-      </div>
-      <div class="modal-footer invoice__footer">
-        <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
-          พิมพ์
-        </button>
-        <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
-          ปิด
-        </button>
       </div>
     </div>
 

@@ -530,38 +530,3 @@
 .order-precess ul{
   list-style: none;
 }
-
-.cart-fab {
-    cursor: pointer;
-    width: 55px;
-    height: 55px;
-    position: fixed;
-    left: auto;
-    right: 0;
-    margin-right: 50px;
-    bottom: 50px;
-    z-index: 1000;
-}
-
-.cart-fab-content {
-    position: relative;
-}
-
-.cart-fab-content img {
-    width: 55px;
-}
-
-.cart-fab-content  .item-count {
-    line-height: 20px;
-    font-size: 12px;
-    text-align: center;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    background: red;
-    color: #ffffff;
-    position: absolute;
-    display: block;
-    right: -3px;
-    top: -5px;
-}

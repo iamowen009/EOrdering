@@ -19,7 +19,6 @@ Route::get('customer','CustomerController@index');
 Route::get('profile','CustomerController@profile');
 Route::get('contact','CustomerController@contact');
 Route::get('profile-update','CustomerController@profile_update');
-Route::get('problem', 'CustomerController@problem');
 Route::get('store','CustomerController@store');
 Route::get('password-update','CustomerController@password_update');
 Route::get('forgot-password','CustomerController@forgot_password');

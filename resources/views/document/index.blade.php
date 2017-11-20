@@ -24,15 +24,8 @@
 							<div class="media-left" ng-show="{{$index+1%3 == 0}}"> 
 								<a href="#"> <i class="fa fa-clipboard fa-5x" style="color:orange;"></i> </a> 
 							</div> 
-							<div class="media-body"> 
-								<a style="cursor: pointer;"><small>หมวดหมู่ : {{document.categoryDesc}}</small><h4 class="media-heading">{{document.documentName}}</h4> {{document.description}} </a></div> 
-									<div class="media-right"> {{document.documentDate| date :  "dd/MM/y"}}<br/><br/><!--<a href="{{partFileDocument}}/{{document.fileName}}" tabget="_blank">  <i class="fa fa-file-pdf-o fa-2x" style="color:red;" ></i></a>-->
-									<a href="{{partFileDocument}}/{{document.fileName}}" download>  
-									&nbsp;&nbsp;
-									<i class="fa fa-download fa-2x" style="color:green;"></i>
-								</a> 
-							</div> 
-						</div>
+							<div class="media-body" ng-click="openDoc(partFileDocument,document.fileName)"> <a style="cursor: pointer;"><small>หมวดหมู่ : {{document.categoryDesc}}</small><h4 class="media-heading">{{document.documentName}}</h4> {{document.description}} </a></div> 
+							<div class="media-right"> {{document.documentDate| date :  "dd/MM/y"}}<br/><br/><!--<a href="{{partFileDocument}}/{{document.fileName}}" tabget="_blank">  <i class="fa fa-file-pdf-o fa-2x" style="color:red;" ></i></a>--><a href="{{partFileDocument}}/{{document.fileName}}">  &nbsp;&nbsp;<i class="fa fa-download fa-2x" style="color:green;"></i></a> </div> </div>
 
 						<!--<div class="media"> 
 							<div class="media-left"> 
@@ -61,5 +54,6 @@
 
 
 @section('footer')
-<script src="<?= asset('app/controllers/documentController.js') ?>"></script>
+	
+    <script src="<?= asset('app/controllers/documentController.js') ?>"></script>
 @stop

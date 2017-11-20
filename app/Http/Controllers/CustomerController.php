@@ -39,12 +39,7 @@ class CustomerController extends Controller
     public function forgotconf_password(){
         return view('forgotconf_password');
     }
-
     public function recover_password(){
         return view('recover_password');
-    }
-
-    public function problem() {
-        return view('customer.problem');
     }
 }

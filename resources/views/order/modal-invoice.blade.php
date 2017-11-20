@@ -250,19 +250,19 @@
                   <td class="text-bold">ที่อยู่</td>
                   <td>@{{ inv.address }} &nbsp;@{{inv.street}}  &nbsp;@{{inv.subDistrictName}} &nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</td>
                 </tr>
-                <tr ng-hide="inv.customerEmail == '' || inv.customerEmail == null">
+                <tr>
                   <td class="text-bold">อีเมล</td>
-                  <td>@{{ inv.customerEmail }}</td>
+                  <td>@{{ (inv.customerEmail == '') ? '-' : inv.customerEmail }}</td>
                 </tr>
                 <tr>
                   <td class="text-bold">เบอร์โทรศัพท์</td>
                   <td>@{{ inv.customerTelNo }}</td>
                 </tr>
-                <tr ng-hide="inv.shipHouseNo == '' || inv.shipHouseNo == null">
+                <tr>
                   <td class="text-bold">สถานที่ส่ง</td>
                   <td>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }} @{{ inv.shipPostCode }}</td>
                 </tr>
-                <tr ng-hide="inv.shipName == '' || inv.shipName == null">
+                <tr>
                   <td class="text-bold">ที่อยู่สถานที่ส่ง</td>
                   <td>@{{ inv.shipName }}</td>
                 </tr>
@@ -280,7 +280,7 @@
                   <td class="text-bold">วันที่สั่งซื้อ</td>
                   <td>@{{ inv.documentDate | date:'dd/MM/yyyy' }}</td>
                 </tr>
-                <tr ng-hide="inv.customerPO == '' || inv.customerPO == null">
+                <tr>
                   <td class="text-bold">เลขที่ใบสั่งซื้อ / PO</td>
                   <td>@{{ inv.customerPO }}</td>
                 </tr>
@@ -292,9 +292,9 @@
                   <td class="text-bold">การชำระเงิน</td>
                   <td>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</td>
                 </tr>
-                <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
+                <tr>
                   <td class="text-bold">บริษัทขนส่ง</td>
-                  <td>@{{ inv.transportZoneDesc }}</td>
+                  <td>@{{ (inv.transportZoneDesc == null) ? '-' : inv.transportZoneDesc }}</td>
                 </tr>
               </tbody>
             </table>
@@ -326,7 +326,7 @@
             <tr>
               <td>
                 <div class="left" style="color:red;">
-                  * ราคาต่อหน่วยหลังหักส่วนลดมาตรฐานเท่านั้น
+                  ราคาต่อหน่วยหลังหักราคามาตรฐานเท่านั้น
                 </div>
                 <div class="right text-right">
                   <b>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT) @{{ totalAmount | number:2 }}</b>

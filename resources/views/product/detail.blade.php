@@ -26,10 +26,8 @@
 		                        <div class="cui-ecommerce--catalog--item--img">
 		                            <!-- <div class="cui-ecommerce--catalog--item--status">
 		                                <span class="cui-ecommerce--catalog--item--status--title">New</span>
-									</div> -->
-									<span class="favorite-icon" ng-click="(btf.isFavorite) ? removeFav(btf) : addFav(btf)" ng-class="{'active': btf.isFavorite}">
-										<i class="fa fa-star"></i>
-									</span>
+		                            </div> -->
+																<span class="favorite-icon"><i class="fa fa-star"></i></span>
 																<!--
 		                            <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected" ng-show="productSelect.productId">
 		                            	<i class="fa fa-star-o" aria-hidden="true" style="text-shadow: 1px 1px 1px;font-size: 1.5em;cursor:pointer;" ng-click="addFav(btfId)" ng-show="productSelect.isFavorite==false"></i>

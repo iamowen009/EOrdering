@@ -8,9 +8,8 @@
         <div class="panel-heading text-center style-title">
           เปลี่ยนรหัสผ่าน 
         </div>
-
-        <form name="form" autocomplete="off" ng-submit="doChangePassword(form.$valid)" novalidate>
-          <div class="panel-body">
+        <div class="panel-body">
+          <form name="form" autocomplete="off" ng-submit="doChangePassword(form.$valid)" novalidate>
             <div class="col-md-8 col-md-offset-2">   
               <div class="row">
                 <div class="col-md-6">
@@ -91,24 +90,25 @@
                 </div>
               </div>
               <div class="clearfix"></div>
+              <div class="ln_solid"></div>
+              <div class="form-group">
+                <div class="text-center">
+                  <button type="submit" class="btn btn-info" ng-disabled="form.$invalid || btnLoading">
+                    <span ng-if="!btnLoading">
+                        บันทึก
+                    </span>
+                    <span ng-if="btnLoading">
+                        <i class="fa fa-circle-o-notch fa-spin"></i>
+                    </span>
+                  </button>
+                  <a href="{{ url('/home') }}" class="btn btn-default">
+                    กลับสู่หน้าแรก
+                   </a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="panel-footer">
-          <div class="text-center">
-            <button type="submit" class="btn btn-info" ng-disabled="form.$invalid || btnLoading">
-              <span ng-if="!btnLoading">
-                  บันทึก
-              </span>
-              <span ng-if="btnLoading">
-                  <i class="fa fa-circle-o-notch fa-spin"></i>
-              </span>
-            </button>
-            <a href="{{ url('/home') }}" class="btn btn-default">
-              กลับสู่หน้าแรก
-             </a>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

@@ -29,9 +29,11 @@
 										<div class="col-md-6 padding-right-0">
 											<div class="panel-address">
 													<h4>Sale Manager</h4>
-													<p>@{{ customer.salesMgrTel }}</p>
+													<p>@{{ customer.telNo }}</p>
+
 													<h4>Sale</h4>
-													<p>@{{ customer.salesMgrTel }}</p>
+													<p>@{{ customer.telNo }}</p>
+
 													<h4>AR</h4>
 													<p>02-335-2222</p>
 											</div>
