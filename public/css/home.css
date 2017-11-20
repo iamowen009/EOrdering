@@ -30,3 +30,6 @@ select.form-control{
     width: 290px;
     margin: 10px auto;
 }
+.home-3 > .carousel-item{
+	height: 610px;
+}

@@ -63,13 +63,15 @@ $('.top-search').attr('placeholder','ค้นหาร้านค้า');
                       console.log('customer info fetch')
                         $scope.customer = response.data.data.customerInfo;
                         console.log($scope.customer);
+                        /*
                         if( $scope.customer.blockFlag == '01'){
                           swal('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
                           return false;
                         }else{
-                          Customers.setCustomer(id,cusInfo.customerName);
+                        */
+                          Customers.setCustomer(id,cusInfo.customerName,cusInfo.customerCode);
                           window.location.href = url;
-                        }
+                        //}
                     }
                     $scope.loading = false;
                 });

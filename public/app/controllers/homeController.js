@@ -21,7 +21,7 @@ app.controller('HomeController',
         $scope.carts = [];
         $scope.marketingmodel = [];
         $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
-        $scope.usersId;
+        // $scope.usersId;
         $scope.partImgPromotion = Config.partImgPromotion();
         // Customers.setCustomer(window.location.href.split('/').pop());
         // console.log('usersId xx = ' + $scope.usersId);
@@ -38,7 +38,7 @@ app.controller('HomeController',
                       }else if( $scope.templateNo == '2' ){
                         $scope.templateURL = _base + '/template/home-2.html';
                       }else if( $scope.templateNo == '3' ){
-                        $scope.templateURL = _base + '/template/home-2.html';
+                        $scope.templateURL = _base + '/template/home-3.html';
                       }else{
                         $scope.templateURL = _base + '/template/home-1.html';
                       }

@@ -70,6 +70,11 @@ angular.module('app')
           var res = JSON.parse( customer );
           return res ? res.customerName : '';
         },
+        customerCode : function(){
+          var customer =  window.localStorage.getItem('custId');
+          var res = JSON.parse( customer );
+          return res ? res.customerCode : '';
+        },
         isAuthorized: function(){
             console.log('isAuthenticated',isAuthenticated);
             return window.localStorage.getItem('isAuthenticated');
@@ -278,9 +283,10 @@ angular.module('app')
 
         	return deferred.promise;
 		},
-        setCustomer: function(customerId,customerName){
+        setCustomer: function(customerId,customerName,customerCode){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
+            window.localStorage.setItem('customerCode',customerCode);
 
         },
         customerId: function(){
@@ -288,6 +294,9 @@ angular.module('app')
         },
         customerName: function(){
             return Auth.userTypeDesc() == 'Multi' ? window.localStorage.getItem('customerName') : Auth.customerName();
+        },
+        customerCode: function(){
+            return Auth.userTypeDesc() == 'Multi' ? window.localStorage.getItem('customerCode') : Auth.customerCode();
         },
 	}
 

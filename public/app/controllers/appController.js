@@ -8,7 +8,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
     $scope.partImgProductOrder = Config.partImgProductOrder();
     $scope.partImgProductList = Config.partImgProductList();
     $scope.partImgProductCard = Config.partImgProductCard();
-    
+
     fetchCart();
 
     $scope.items = cartService.getProducts();
@@ -26,7 +26,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
-  
+
   $scope.editedItem = {};
 
   $scope.updateCart = function ($index) {
@@ -41,7 +41,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
     } else if ($scope.editedItem.qty % $scope.items[$index].altUnitAmount) {
       var un = parseInt($scope.editedItem.qty) / parseInt($scope.items[$index].altUnitAmount);
       var $qty = $scope.items[$index].altUnitAmount * parseInt(un);
-      
+
       swal('แจ้งเตือน', `ผลิตภัณฑ์ต้องสั่งซื้อทีละ ${$scope.items[$index].altUnitAmount} ${$scope.items[$index]['unitNameTh']} ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ`, 'info');
       $scope.loadingcart = false;
     } else {
@@ -56,7 +56,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
     }];
 
     var promotionList = [];
- 
+
     Carts.updateCart(cartList, promotionList).then(function(res) {
       fetchCart();
       $scope.loadingcart = false;
@@ -112,7 +112,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
       productId: product.productId,
       userName: Auth.username()
     }];
-    
+
     Carts.removeCart(cartList).then(function (response) {
       if (response.data.result == 'SUCCESS') {
         cartService.getProducts().forEach(function(i, x) {
@@ -122,7 +122,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
         });
 
         fetchCart();
-        
+
         swal('สำเร็จ', 'ลบสินค้าเรียบร้อยแล้ว', 'success');
       } else {
         swal('เกิดข้อผิดพลาด', 'ไม่สามารถลบสินค้าได้', 'warning');
@@ -136,7 +136,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
       productId: 0,
       userName: Auth.username()
     }];
-    
+
     Carts.removeCart(cartList).then(function(response) {
       if (response.data.result == 'SUCCESS') {
         cartService.getProducts().forEach(function(i, x) {
@@ -144,7 +144,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
         });
 
         fetchCart();
-        
+
         swal('สำเร็จ', 'ลบสินค้าเรียบร้อยแล้ว', 'success');
       }
     });
@@ -188,6 +188,8 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
   $scope.username = Auth.username();
   $scope.usertype = Auth.userTypeDesc();
   $scope.customerName = Customers.customerName();
+  $scope.customerCode = Customers.customerCode();
+  $scope.currentPage = window.location.href;
 
   Carts.fetchAll(Customers.customerId()).then(function (response) {
     if (response.data.result == 'SUCCESS') {
@@ -196,7 +198,14 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
       });
     }
   });
-
+  console.log('current page ' + baseName(window.location.href) );
+  function baseName(str)
+  {
+     var base = new String(str).substring(str.lastIndexOf('/') + 1);
+      if(base.lastIndexOf(".") != -1)
+          base = base.substring(0, base.lastIndexOf("."));
+     return base;
+  }
   $scope.carts = cartService.getProducts();
 
   $scope.maddQty = function (field) {
@@ -211,7 +220,13 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
     $scope.hidemenu = false;
 
   $scope.search = function () {
-    window.location = _base + '/product/search?q=' + $scope.searchstring;
+    var cp = baseName( $scope.currentPage );
+    if( cp == 'customer'){
+      $scope.link = window.location.href;
+      sharedService.passData($scope.searchstring);
+    }else{
+        window.location = _base + '/product/search?q=' + $scope.searchstring;
+    }
   }
 
   $scope.toPage = function (page) {
