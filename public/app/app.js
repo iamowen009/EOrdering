@@ -20,6 +20,7 @@ app.constant('API_URL', 'http://202.142.195.168:8010/API/');
 
 
 app.run(function ($rootScope, Orders, Auth, Customers) {
+    //
     $("#cart-checkout").steps({
         //console.log("Step changed to: " + currentIndex);
         headerTag: "h3",
@@ -33,7 +34,6 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             next: "ถัดไป"
         },
         onStepChanged: function (event, currentIndex, newIndex) {
-            console.log("Step changed to: " + currentIndex);
             if (currentIndex == 0) {
                 $('ul[role="tablist"] >li:nth-child(2)').removeClass('done').addClass('disabled');//('','#ddd');
                 $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');//('','#ddd');
@@ -50,6 +50,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
         },
 
         onInit: function (event, currentIndex) {
+            
             if (currentIndex == 0 || currentIndex == 1) {
                 var btnPrint = $("<a>").attr({ "href": "#", "ng-click": "btnPrint" }).addClass("btn-print btn btn-primary").text("Print");
                 var btnClear = $("<a>").attr({ "href": "#", "ng-click": "removeAll()" }).addClass("btn-clear btn btn-danger").text("ลบรายการสินค้าทั้งหมด");
@@ -71,13 +72,32 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             }
         },
         onStepChanging: function (e, currentIndex, newIndex) {
-            console.log('ckecked is ' + $('input[name="optradio"]:checked').length);
+            var date_id = angular.element('#date_id').val();
+            var ship_id= angular.element('#ship_id').val();
+            var trans_id = angular.element('#trans_id').val();
+            
+            if (date_id == null | date_id == undefined) {
+                swal('กรุณาเลือก Request Date');
+                return false;
+            }
+            
+            if (ship_id == null | ship_id == undefined) {
+                swal('กรุณาเลือก สถานที่ส่ง');
+                return false;
+            }
+
+            if (trans_id == null | trans_id == undefined) {
+                swal('กรุณาเลือก บริษัทขนส่ง');
+                return false;
+            }
+            
             if (newIndex > currentIndex && currentIndex == 1) {
                 if ($('input[name="optradio"]:checked').length == 0) {
                     swal('กรุณาเลือก รูปแบบการชำระเงิน');
                     return false;
                 }
             }
+            
             return true;
         },
         onFinished: function () {

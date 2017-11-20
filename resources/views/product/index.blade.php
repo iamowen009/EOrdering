@@ -32,7 +32,11 @@
                 <div class="category-home menu-body">
                   	<ul class="list-unstyled user_data" style="font-size:0.95em">
                     		<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>แบรนด์</strong></li>
-	                    	<li ng-repeat="brand in brandsFilter" ng-if="brand.brandDesc != ''" value="{{brand.brandCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="brandCode.length > 0 && brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)"> {{ brand.brandDesc }}</li>
+	                    	<li ng-repeat="brand in brandsFilter" ng-if="brand.brandDesc != ''" value="{{brand.brandCode}}" style="padding-bottom:10px;">
+								<!-- <input type="checkbox" ng-checked="brandCode.length > 0 && brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)">  -->
+								<input type="checkbox" ng-checked="brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)"> 
+								{{ brand.brandDesc }}
+							</li>
                  		</ul>
                 </div>
             </div>
@@ -42,7 +46,10 @@
                 <div class="category-home menu-body">
                     <ul class="list-unstyled user_data" style="font-size:0.95em">
                     		<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>ประเภท</strong></li>
-	                    	<li ng-repeat="type in typesFilter" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;"><input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> {{type.typeCode}} {{ type.typeDesc }}</li>
+	                    	<li ng-repeat="type in typesFilter" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
+								<input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
+								{{type.typeCode}} {{ type.typeDesc }}
+							</li>
 	                 	</ul>
                 </div>
             </div>

@@ -24,7 +24,7 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
     //fetchAllProducts($scope.usersId, [$scope.marketingCode], ['01', '18'], ['003', '006'],true)
     fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
     //fetchBrands($scope.marketingCode,$scope.usersId);
-    //fetchTypes($scope.marketingCode,$scope.usersId,$scope.brandCode);
+    fetchTypes($scope.marketingCode,$scope.usersId,$scope.brandCode);
     //fetchAllPromotions($scope.usersId, [$scope.marketingCode], ['01', '18'], ['003', '006']);
     fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
@@ -52,6 +52,8 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
                 $scope.brandsFilter = getFilterMarketing($scope.brands, $scope.marketingCode);
                 $scope.typesFilter = getFilterMarketing($scope.types, $scope.marketingCode);
+
+                console.log($scope.typesFilter);
             }
             $scope.loading = false;
         });
@@ -84,6 +86,7 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
         Types.fetchAll(categoryId, customerId, brandId).then(function (response) {
             if (response.data.result == 'SUCCESS') {
                 $scope.types = response.data.data.typeList;
+                console.log($scope.types);
             }
             $scope.loading = false;
         });
@@ -150,6 +153,8 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
         //console.log(idx);
         // Is currently selected
         if (idx > -1) {
+            $scope.brandCode = [];
+            $scope.typeCode = [];
             $scope.marketingCode.splice(idx, 1);
         }
 
@@ -159,7 +164,7 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
         }
         //console.log($scope.marketingCode);
         $scope.brandsFilter = getFilterMarketing($scope.brands, $scope.marketingCode);
-        $scope.typesFilter = getFilterMarketing($scope.types, $scope.marketingCode);
+        //$scope.typesFilter = getFilterMarketing($scope.types, $scope.marketingCode);
 
         fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
         //fetchBrands($scope.marketingCode,$scope.usersId);
@@ -171,9 +176,9 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
     $scope.brandSelection = function (code) {
         var idx = $scope.brandCode.indexOf(code);
-
         // Is currently selected
         if (idx > -1) {
+            $scope.typeCode = [];
             $scope.brandCode.splice(idx, 1);
         }
 
@@ -186,6 +191,9 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
             $scope.typesFilter = getFilterMarketing($scope.types, $scope.marketingCode, $scope.brandCode);
         } else
             $scope.typesFilter = getFilterBrand($scope.types, $scope.marketingCode, $scope.brandCode);
+
+        //console.log($scope.typeCode);
+
         fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
         fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
@@ -193,7 +201,7 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
     $scope.typeSelection = function (code) {
         var idx = $scope.typeCode.indexOf(code);
-
+        console.log(code);
         // Is currently selected
         if (idx > -1) {
             $scope.typeCode.splice(idx, 1);
@@ -203,19 +211,20 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
         else {
             $scope.typeCode.push(code);
         }
+
         fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
         fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
     };
-    console.log(' scope customer ', $scope.customers);
+    //console.log(' scope customer ', $scope.customers);
 
     $scope.toProductDetail = function (productId) {
         var url = _base + '/product-detail/' + productId;
         Customers.fetchOne($scope.usersId).then(function (response) {
             if (response.data.result == 'SUCCESS') {
-                console.log('customer info fetch')
+                //console.log('customer info fetch')
                 $scope.customer = response.data.data.customerInfo;
-                console.log($scope.customer);
+                //console.log($scope.customer);
                 if ($scope.customer.blockFlag == '01') {
                     swal('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
                     return false;
