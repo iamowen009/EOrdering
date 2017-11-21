@@ -63,11 +63,12 @@
                 </thead>
 
                 <tbody>
-                <tr ng-repeat="item in detail">
+                <!-- <tr ng-repeat="item in detail"> -->
+                <tr>
                     <td class="text-left"> @{{MBill.purchNoC}}</td>
-                    <td class="text-center">@{{ item.custRecDate | date:'dd/MM/yy' }} </td>
-                    <td class="text-center">@{{ item.billVbeln }}</td>
-                    <td class="text-center"></td> <!-- ติดไม่มีข้อมูลรอพี่เปิ้ล ตาม SAP -->
+                    <td class="text-center">@{{ detail[0].custRecDate | date:'dd/MM/yy' }} </td>
+                    <td class="text-center">@{{ detail[0].billVbeln }}</td>
+                    <td class="text-center">@{{MBill.pmnttrms}}</td>
                 </tr>
                 </tbody>
 
