@@ -308,7 +308,7 @@
               <th width="100">จำนวน</th>
               <th width="100">
                 <span style="color:red">*</span>
-                ราคาหน่วย
+                ราคาต่อหน่วย
               </th>
               <th width="100">ราคารวม</th>
             </tr>

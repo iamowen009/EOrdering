@@ -88,7 +88,7 @@
                         <th class="text-center">ผลิตภัณฑ์</th>
                         <th class="text-right">จำนวน</th>
                         <!-- <th class="text-center">หน่วย</th> -->
-                        <th class="text-right">ราคาหน่วย</th>
+                        <th class="text-right">ราคาต่อหน่วย</th>
                         <th class="text-right">ราคารวม</th>
                     </tr>
                 </thead>
