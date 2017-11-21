@@ -229,7 +229,7 @@
 								<div class="cui-ecommerce--catalog">
 					                <div class="row">
 					                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12" dir-paginate="product in products | itemsPerPage: 6" pagination-id="product.id">
-					                        <div class="cui-ecommerce--catalog--item" ng-click="toProductDetail(product.btf)">
+					                        <div class="cui-ecommerce--catalog--item">
 																		<!--
 					                            <div class="ribbon-wrapper">
 																					<div class="ribbon">NEW</div>
@@ -240,8 +240,10 @@
 					                                    <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked"><!-- --></i>
 					                                    <i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked"><!-- --></i>
 					                                </div>
-																					<span class="favorite-icon"><i class="fa fa-star"></i></span>
-					                                <a href="javascript: void(0);">
+													<span class="favorite-icon" ng-click="(product.isFavorite) ? removeFav(product) : addFav(product)" ng-class="{'active': product.isFavorite}">
+														<i class="fa fa-star"></i>
+													</span>
+					                                <a href="javascript: void(0);" ng-click="toProductDetail(product.btf)">
 					                                    <img ng-src="{{partImgProductList}}/{{product.btf}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"  class="img-responsive img-product product-list">
 					                                </a>
 					                            </div>
