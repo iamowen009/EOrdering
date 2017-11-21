@@ -219,7 +219,7 @@
                     <th class="text-center">สินค้า</th>
                     <th class="text-center">จำนวน</th>
                     <th class="text-center">หน่วย</th>
-                    <th class="text-center">ราคาหน่วย</th>
+                    <th class="text-center">ราคาต่อหน่วย</th>
                     <th class="text-center">ราคารวม</th>
                     <th class="text-center">ลบ</th>
                 </tr>
