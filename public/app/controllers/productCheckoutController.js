@@ -98,6 +98,15 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
         });
     }
 
+    $scope.bomRows = function(productCode){
+        var len = 0;
+        for(var bm in $scope.boms){
+          if( $scope.boms[bm]['productRefCode'] == productCode )
+            len++;
+        }
+        return len;
+      }
+
     $scope.cartProductQty = function (qty) {
         return qty;
     }
@@ -186,6 +195,7 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
             $scope.ddlTransport = '';//$scope.ship[0].transportZone;
         }
     }
+
     $scope.changeTransport = function (ddlTransport) {
         $scope.ddlTransport = ddlTransport;
     }

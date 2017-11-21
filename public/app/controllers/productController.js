@@ -335,6 +335,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     $scope.listColors = [];
     $scope.productId = {};
     $scope.cartProductQty = 1;
+    $scope.productPrice = 0;
     $scope.productSelect = {};
     $scope.usersId = Auth.userTypeDesc() != 'Multi' ? Auth.genId() : Customers.customerId();
 

@@ -1,3 +1,4 @@
+@verbatim
 <h3>
     <i class="fa fa-check cui-wizard--steps--icon"></i>
     <span class="cui-wizard--steps--title">Confirmation</span>
@@ -5,7 +6,7 @@
 <section>
   <div class="x_panel">
     <div class="x_title">
-      <h4>{{customer.customerCode}} {{customer.customerName}}</h4>
+      <h4>{{customer.customerCode}} : {{customer.customerName}}</h4>
 
       <div class="clearfix"></div>
     </div>
@@ -37,11 +38,11 @@
           <div class="col-md-12">
             <div class="form-group col-md-6">
               <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">การชำระเงิน :</label>
-              <label ng-show="paymentTerm==='CASH'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
-              <label ng-show="paymentTerm!=='CASH'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
+              <label ng-show="paymentTerm==='CASH' || paymentTerm ==='CA02'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
+              <label ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
             </div>
             <div class="form-group col-md-6">
-              <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่ต้องการ :</label>
+              <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">Request Date:</label>
               <label class="col-md-9 col-sm-9 col-xs-12">{{ddlDate.reqDate}}</label>
 
             </div>
@@ -75,9 +76,9 @@
               <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เบอร์โทรศัพท์ :</label>
               <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
             </div>
-            <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08') && shippingType=='show'">
+            <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03') && shippingType=='show'">
               <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">บริษัทขนส่ง :</label>
-              <label class="col-md-9 col-sm-9 col-xs-12">{{ddlTransport.transportZoneDesc}}</label>
+              <label class="col-md-9 col-sm-9 col-xs-12">{{ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : ddlTransport.transportZone}} {{ddlTransport.transportZoneDesc}}</label>
             </div>
           </div>
         </form>
@@ -110,27 +111,38 @@
                     <th class="text-center">#</th>
                     <th class="text-center">รหัสสินค้า</th>
                     <th class="text-center">สินค้า</th>
-                    <th class="text-right">จำนวน</th>
+                    <th class="text-center">จำนวน</th>
                     <th class="text-center">หน่วย</th>
-                    <th class="text-right">ราคาหน่วย</th>
-                    <th class="text-right">ราคารวม</th>
+                    <th class="text-center">ราคาหน่วย</th>
+                    <th class="text-center">ราคารวม</th>
                 </tr>
             </thead>
             <tfoot>
 
             </tfoot>
-            <tbody>
-            <tr ng-repeat="item in carts track by $index">
+            <tbody ng-repeat="item in carts track by $index">
+            <tr class="cart-product-{{ item.productId }}">
                 <td class="text-center">{{$index+1}}</td>
-                <td class="text-center"><img class="img-product" src="{{partImgProduct}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
+                <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
                 <td class="text-center">{{ item.productNameTh }}</td>
-                <td class="text-right">{{ item.qty | number }}
-                </td>
-                <td class="text-center">{{item.unitNameTh}}</td>
-                <td>{{ item.price | number:2}}</td>
-                <td>{{ +item.price*+item.qty | number:2 }}</td>
+                <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span></td>
+                <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{item.unitNameTh}}</span></td>
+                <td><span ng-if="bomRows(item.productCode) == 0">{{ item.price | number:2}}</span></td>
+                <td><span ng-if="bomRows(item.productCode) == 0">{{ +item.price*+item.qty | number:2 }}</span></td>
+                <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
 
             </tr>
+            <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+                <td class="text-center">{{$index+1}}</td>
+                <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
+                <td class="text-center">{{ bom.productNameTh }}</td>
+                <td class="text-center">{{ item.qty }}</td>
+                <td class="text-center">{{item.unitNameTh}}</td>
+                <td>{{ bom.price | number:2}}</td>
+                <td>{{ +bom.price*+item.qty | number:2 }}</td>
+                <td></td>
+            </tr>
+
             </tbody>
         </table>
 
@@ -151,3 +163,4 @@
         </div>
 
 </section>
+@endverbatim
