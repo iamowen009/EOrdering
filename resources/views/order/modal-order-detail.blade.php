@@ -41,7 +41,7 @@
                   <tbody>
                   <tr ng-repeat="item in detail">
                       <td class="text-left">
-                        <div class="row">
+                        <div class="">
                           @{{ item.material }} @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
                         </div>
                       </td>
