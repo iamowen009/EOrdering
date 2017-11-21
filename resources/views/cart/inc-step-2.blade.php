@@ -54,7 +54,6 @@
             <div class="form-group col-md-6">
               <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date:</label>
               <div class="col-md-8 col-sm-8 col-xs-12">
-                <!--
                 <select
                     name="date_id" id="date_id"
                     class="form-control"
@@ -62,7 +61,7 @@
                     ng-options="i as i.reqDate for i in requests track by i.reqDate | date:'dd/mm/yy'">
                     <option value=''></option>
                   </select>
-                -->
+                <!--
                 <select name="date_id" id="date_id" class="form-control" ng-model="ddlDate">
                   <option value="" disabled>
                     = เลือก Request Date =
@@ -71,6 +70,7 @@
                     {{ i.reqDate | date:'dd/mm/yy' }}
                   </option>
                 </select>
+                -->
               </div>
               <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.date_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
 
@@ -83,18 +83,17 @@
 
             </div>
             <div class="form-group col-md-6" ng-show="shippingType=='show' " ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
-
               <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
               <div class="col-md-8 col-sm-8 col-xs-12">
-                <!-- <select
+               <select
                     name="ship_id" id="ship_id"
                     class="form-control"
                     ng-model="ddlShipTo"
                     ng-change="changeShip(ddlShipTo.shipId)"
                     ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
                     <option value=''></option>
-                  </select> -->
-<!-- {{ ddlShipTo.shipCondition }} -->
+                  </select>
+                  <!--
                 <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)">
                   <option value="" disabled>
                     = เลือกสถานที่ส่ง =
@@ -103,6 +102,7 @@
                     {{ i.shipCode + ' ' + i.shipName }}
                   </option>
                 </select>
+                -->
               </div>
               <div class="col-md-3 col-sm-3 col-xs-12"><!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>--></div>
             </div>
@@ -128,14 +128,13 @@
             <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03'  || customer.shipCondition == '03') && shippingType=='show'">
               <label class="control-label col-md-3 col-sm-3 col-xs-12">จัดส่งโดย : </label>
               <div class="col-md-8 col-sm-8 col-xs-12">
-                <!--
                 <select
                     ng-if="( ddlShipTo.shipCondition == '03' || customer.shipCondition == '03' ) && transports.length > 0"
                     name="trans_id" id="trans_id"
                     class="form-control"
                     ng-model="ddlTransport"
                     ng-change="changeTransport(ddlTransport)"
-                    ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone">
+                    ng-options="i.transportZone as i.transportZone +' ' + i.transportZoneDesc for i in transports">
                     <option value=''></option>
                   </select>
 
@@ -151,7 +150,7 @@
                       {{ddlShipTo.transportZone +' ' + ddlShipTo.transportZoneDesc}}
                     </option>
                   </select>
-                -->
+                <!--
                 <select 
                   ng-if="( ddlShipTo.shipCondition == '03' || customer.shipCondition == '03' ) && transports.length > 0" 
                   name="trans_id"
@@ -176,11 +175,11 @@
                   <option value="" disabled>
                     = เลือกบริษัทขนส่ง =
                   </option>
-                  <!-- ng-options="i as i.transportZone +' ' + i.transportZoneDesc for i in transports track by i.transportZone" -->
                   <option ng-repeat="i in transports" ng-value="i.transportZone" ng-selected="ddlTransport == i.transportZone ">
                     {{ i.transportZone + ' ' + i.transportZoneDesc }}
                   </option>
                 </select>
+                -->
               </div>
               <div class="col-md-3 col-sm-3 col-xs-12"><!-- <span ng-show="formcart.trans_id.$error.required"><font color="red" size="2px">Required Field</font></span> --></div>
             </div>

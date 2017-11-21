@@ -72,10 +72,8 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             }
         },
         onStepChanging: function (e, currentIndex, newIndex) {
-            var date_id = angular.element('#date_id').val();
-            var ship_id= angular.element('#ship_id').val();
             var trans_id = angular.element('#trans_id').val();
-            
+            /*
             if (date_id == null | date_id == undefined) {
                 swal('กรุณาเลือก Request Date');
                 return false;
@@ -85,8 +83,9 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                 swal('กรุณาเลือก สถานที่ส่ง');
                 return false;
             }
-
-            if (trans_id == null | trans_id == undefined) {
+            */
+            console.log(trans_id);
+            if ((trans_id == null || trans_id == '') && trans_id != undefined) {
                 swal('กรุณาเลือก บริษัทขนส่ง');
                 return false;
             }

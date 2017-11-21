@@ -570,6 +570,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
                 }
             });
         }
+        
     }
 
     $scope.getProduct = function () {

@@ -154,6 +154,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
   function fetchCart() {
     Carts.fetchAll(Customers.customerId()).then(function (response) {
       if (response.data.result == 'SUCCESS') {
+        console.log(response);
         $scope.carts = response.data.data.cartList;
         $scope.bomxs = response.data.data.cartBOMItems;
         $scope.totalAmount = 0;

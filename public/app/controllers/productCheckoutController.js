@@ -123,7 +123,7 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
             if (response.data.result == 'SUCCESS') {
                 $scope.customer = response.data.data.customerInfo;
                 $scope.requests = response.data.data.requestDateList;
-  
+
                 var ls = $scope.requests.length;
 
                 for (var key in $scope.requests) {
@@ -147,8 +147,13 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
                 }
                 $scope.carts = response.data.data.cartProductList;
                 $scope.transports = getTransport($scope.transports0, $scope.customer.cityCode);
+    
                 $scope.ddlShipTo = '';//$scope.ships[0];
-                $scope.ddlTransport = '';//$scope.transports[0];
+                $scope.ddlTransport = $scope.customer.transportZone;//$scope.transports[0];
+                $scope.objTransport = $filter('filter')($scope.transportss, {
+                    transportZone: $scope.customer.transportZone
+                })[0];
+                console.log($scope.objTransport);
                 $scope.ddlDate = '';//$scope.requests[0];
                 $scope.paymentTerm = ($scope.customer.paymentTerm !== 'CASH' && $scope.customer.paymentTerm !== 'CA02') ? '' : $scope.customer.paymentTerm;
                 $scope.shipaddress = ($scope.ships.length && $scope.ddlShipTo) > 0 ? ($scope.ships[0].address + ' ' + $scope.ships[0].street + ' ' + $scope.ships[0].subdistrict + ' ' + $scope.ships[0].districtName + ' ' + $scope.ships[0].cityName) : '';
@@ -192,12 +197,15 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
             $scope.transports = getTransport($scope.transports0, $scope.ship[0].cityCode)
 
             // if( $scope.ship[0].shipCondition == '08')
-            $scope.ddlTransport = '';//$scope.ship[0].transportZone;
+            $scope.ddlTransport = $scope.ship[0].transportZone;
         }
     }
 
     $scope.changeTransport = function (ddlTransport) {
         $scope.ddlTransport = ddlTransport;
+        $scope.objTransport = $filter('filter')($scope.transports, {
+            transportZone: ddlTransport
+        })[0];
     }
 
 
