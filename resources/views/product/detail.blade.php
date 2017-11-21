@@ -79,7 +79,6 @@
 		                         	</select>
 		                        </div>
 		                      </div>
-
 		                      <div class="form-group" ng-if="listColors.length > 0 ">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี / เบอร์ / รุ่น</label>
 		                        <div class="col-md-4 col-sm-4 col-xs-6" >
@@ -88,14 +87,15 @@
 																	<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
 																	<span class="frame-color" ng-show="cartrgbColor==''" style="background-color: #fff;"></span>
 																	{{ colorCodeName }}
-
+																	
 															  </button>
 															  <ul class="dropdown-menu">
-															    <li ng-repeat="p in listColors">
-																		<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
+															    <li ng-repeat="p in colors">
+																	<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
 																		<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 																		<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
-															      {{ p.colorCode}}</a>
+																		{{ p.colorCode}}
+																	</a>
 															    </li>
 															  </ul>
 															</div>

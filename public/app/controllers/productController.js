@@ -391,8 +391,12 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
                 $scope.cartSize = $scope.sizes[0]['sizeCode'];
                 $scope.cartCode = $scope.sizes[0]['productCode'];
                 $scope.cartColor = $scope.colors[0] ? $scope.colors[0]['colorCode'] : {};
-                $scope.cartrgbColor = $scope.colors[0] ? $scope.colors[0]['rgbCode'] : {};
+                //$scope.cartrgbColor = $scope.colors[0] ? $scope.colors[0]['rgbCode'] : {};
+                $scope.cartrgbColor = $scope.colors[0].cartrgbColor;
                 $scope.colorCodeName = $scope.colors[0] ? $scope.colors[0]['colorCode'] : '';
+                //$scope.isColor = $filter('filter')($scope.colors, { colorCode: $scope.cartColor });
+
+                
                 $scope.getProduct();
 
             }
@@ -575,8 +579,8 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     }
 
     $scope.setProduct = function (val) {
-        // console.log('set product ' , val);
         $scope.cartColor = val;
+        $scope.cartrgbColor = $filter('filter')($scope.colors, { colorCode: val })[0].cartrgbColor;
         $scope.colorCodeName = val;
         for (var key in $scope.product) {
             if ($scope.product[key]['sizeCode'] == $scope.cartSize && $scope.product[key]['colorCode'] == val) {
