@@ -221,7 +221,7 @@
           </div>
           <div class="col-sm-4">
               <p ng-if="inv.isReceive !== null"><strong>ขนส่งโดย :</strong> รับสินค้าเอง</p>
-              <p ng-if="inv.transportZone"><strong>บริษัทขนส่ง :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}</p>
+              <p ng-if="inv.transportZone"><strong>จัดส่งโดย :</strong> @{{ inv.transportZone }} :  @{{ inv.transportZoneDesc }}</p>
           </div>
           <div class="col-sm-4">
               <p><strong>Request Date :</strong> @{{ inv.requestDate |  date:'dd/MM/yyyy' }}</p>
@@ -293,7 +293,7 @@
                   <td>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</td>
                 </tr>
                 <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
-                  <td class="text-bold">บริษัทขนส่ง</td>
+                  <td class="text-bold">จัดส่งโดย</td>
                   <td>@{{ inv.transportZoneDesc }}</td>
                 </tr>
               </tbody>

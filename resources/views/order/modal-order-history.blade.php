@@ -19,7 +19,7 @@
 
           <div class="col-sm-4">
               <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
-              <p><strong>บริษัทขนส่ง : </strong>@{{ inv.transportZoneDesc }}</p>
+              <p><strong>จัดส่งโดย : </strong>@{{ inv.transportZoneDesc }}</p>
           </div>
         </div> <!-- .row inv-header-->
 

@@ -41,7 +41,7 @@
             
             
             
-            <p><strong>บริษัทขนส่ง : </strong>@{{ MBill.transportZoneDesc }}</p>
+            <p><strong>จัดส่งโดย : </strong>@{{ MBill.transportZoneDesc }}</p>
         </div>
       </div>
               <div>

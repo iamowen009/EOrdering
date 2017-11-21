@@ -126,7 +126,7 @@
 
             <!-- <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08' || customer.shipCondition == '03') && shippingType=='show'"> -->
             <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03'  || customer.shipCondition == '03') && shippingType=='show'">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">บริษัทขนส่ง : </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">จัดส่งโดย : </label>
               <div class="col-md-8 col-sm-8 col-xs-12">
                 <!--
                 <select
