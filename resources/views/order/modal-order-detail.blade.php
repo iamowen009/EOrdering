@@ -15,7 +15,7 @@
               <p><strong>ร้านค้า :</strong> @{{ inv.payerNo  }}  @{{ inv.payerName }}</p>
               <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
               <!-- <p><strong>เลขที่เอกสารอ้างอิง : </strong></p> -->
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
+              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yyyy'}}</p>
           </div>
           <div class="col-sm-4">
               <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>

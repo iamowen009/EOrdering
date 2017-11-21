@@ -14,7 +14,7 @@
           <div class="col-sm-8">
               <p><strong>ร้านค้า :</strong>  @{{ inv.payerNo }} @{{ inv.payerName }}</p>
               <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yy'}}</p>
+              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yyyy'}}</p>
           </div>
 
           <div class="col-sm-4">
@@ -46,11 +46,11 @@
 
                   <tbody>
                   <tr ng-repeat="item in haveBill">
-                      <td class="text-left"> @{{ item.billNo }} @{{item.billDate | date:'dd/MM/yy'}}</td>
-                      <td class="text-center">@{{ item.startDat | date:'dd/MM/yy' }} <br> @{{ item.startTime}}</td>
+                      <td class="text-left"> @{{ item.billNo }} @{{item.billDate | date:'dd/MM/yyyy'}}</td>
+                      <td class="text-center">@{{ item.startDat | date:'dd/MM/yyyy' }} <br> @{{ item.startTime}}</td>
                       <td class="text-center">@{{item.foragt}}  </td>
                       <td class="text-right">@{{ item.driveName}} <br> @{{ item.telDrive}}</td>
-                      <td class="text-right">@{{item.custRecDate | date:'dd/MM/yy'}}</td>
+                      <td class="text-right">@{{item.custRecDate | date:'dd/MM/yyyy'}}</td>
                       <td class="text-right">@{{item.material}}</td>
                       <!-- <td class="text-right">@{{item.materialDes}}</td> -->
                       <td class="text-left">
