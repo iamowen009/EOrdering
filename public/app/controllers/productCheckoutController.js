@@ -202,17 +202,24 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
                 transportZone: $scope.ship[0].transportZone
             })[0];
         } else {
+<<<<<<< HEAD
             $scope.shipaddress = '';
             $scope.ddlTransport = {};
             $scope.objTransport = {};
+=======
+            $scope.shipaddress = '-';
+            $scope.ddlTransport = undefined;
+>>>>>>> master
         }
     }
 
     $scope.changeTransport = function (ddlTransport) {
-        $scope.ddlTransport = ddlTransport;
         $scope.objTransport = $filter('filter')($scope.transports, {
             transportZone: ddlTransport
         })[0];
+
+        $scope.ddlTransport = $scope.objTransport;
+        
     }
 
 
