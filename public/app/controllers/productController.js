@@ -431,7 +431,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     function fetchAllPromotions(customerId, marketingCodeList, brandCodeList, typeCodeList) {
         Promotions.fetchAll(customerId, marketingCodeList, brandCodeList, typeCodeList).then(function (response) {
             if (response.data.result == 'SUCCESS') {
-                $scope.promotions = response.data.data.promotionDTList;
+                $scope.promotions = response.data.data.promotionHDList;
                 $scope.totalPromotion = $scope.promotions ? $scope.promotions.length : 0;
             }
             $scope.loading = false;
