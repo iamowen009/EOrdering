@@ -196,11 +196,11 @@
     </div>-->
 
     <br/>
-<div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ</h6></div>
+<div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div>
 
 
     <!--<ngcart-cart></ngcart-cart>-->
-<div class="col-md-12"><h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div>
+<!-- <div class="col-md-12"><h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div> -->
 
 
   <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
