@@ -63,7 +63,7 @@
                       <div class="col-md-4 text-right"><img ng-src="{{partImgProductCard}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                       <div class="col-md-8">
                           <div class="col-md-12">
-                            ราคา: {{item.price | number:2}}
+                            ราคาต่อหน่วย (บาท) : {{item.price | number:2}}
                           </div>
                           <div class="form-group">
                               <div class="col-md-4">
@@ -82,7 +82,7 @@
                                   </div>
                               </div>
                               <div class="col-md-12">
-                                  <strong>หน่วย : </strong>{{item.unitNameTh}} <span ng-if="item.altUnitAmount > 0">( 1 {{ item.altUnitNameTh }} : {{item.altUnitAmount }} {{ item.unitNameTh }})</span>
+                                  <!--strong>หน่วย : </strong-->{{item.unitNameTh}} <span ng-if="item.altUnitAmount > 0">(1 {{ item.altUnitNameTh }} : {{item.altUnitAmount }} {{ item.unitNameTh }})</span>
                                   <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
                               </div>
                           </div>
@@ -99,7 +99,7 @@
                             <div class="col-md-4 text-right"><img ng-src="{{partImgProductCard}}/{{bom.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                             <div class="col-md-8">
                               <div class="col-md-12">
-                                ราคา: {{bom.price | number:2}}
+                                ราคาต่อหน่วย (บาท) : {{bom.price | number:2}}
                               </div>
                               <div class="form-group">
 
@@ -120,7 +120,7 @@
                                 </div>
                               </div>
                               <div class="col-md-12">
-                                <strong>หน่วย : </strong>{{bom.unitNameTh}} <span ng-if="bom.altUnitAmount > 0">( 1 {{ bom.altUnitNameTh }} : {{bom.altUnitAmount }} {{ bom.unitNameTh }})</span>
+                                <!--strong>หน่วย : </strong-->{{bom.unitNameTh}} <span ng-if="bom.altUnitAmount > 0">(1 {{ bom.altUnitNameTh }} : {{bom.altUnitAmount }} {{ bom.unitNameTh }})</span>
 
                                  <p class="text-center" ng-show="loadingcart"><span class="fa fa-refresh  fa-spin"></span></p>
                               </div>
@@ -135,7 +135,7 @@
                   </div>
 
                     <div style="margin-top: 15px;">
-                        <label class="col-md-6">จำนวนเงินสุทธิ(ไม่รวม VAT)</label>
+                        <label class="col-md-6">จำนวนเงินสุทธิ (ไม่รวม VAT)</label>
                         <label class="col-md-6 text-right" >{{totalAmount| number:2}} บาท</label>
                     </div>
             </div>
