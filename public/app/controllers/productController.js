@@ -111,10 +111,10 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = true;
-                swal('เพิ่ม Favorite เรียบร้อยแล้ว');
+                swal('เพิ่ม รายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('เพิ่ม Favorite ไม่สำเร็จ');
+                swal('เพิ่ม รายการโปรด ไม่สำเร็จ');
             }
         }, function (response) {
 
@@ -133,10 +133,10 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = false;
-                swal('ลบ Favorite เรียบร้อยแล้ว');
+                swal('ลบ รายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('ลบ Favorite ไม่สำเร็จ');
+                swal('ลบ รายการโปรด ไม่สำเร็จ');
             }
             console.log(response);
         }, function (response) {
@@ -612,10 +612,10 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = true;
-                swal('เพิ่ม Favorite เรียบร้อยแล้ว');
+                swal('เพิ่ม รายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('เพิ่ม Favorite ไม่สำเร็จ');
+                swal('เพิ่ม รายการโปรด ไม่สำเร็จ');
             }
         }, function (response) {
 
@@ -637,10 +637,10 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = false;
-                swal('ลบ Favorite เรียบร้อยแล้ว');
+                swal('ลบ รายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('ลบ Favorite ไม่สำเร็จ');
+                swal('ลบ รายการโปรด ไม่สำเร็จ');
             }
             console.log(response);
         }, function (response) {
