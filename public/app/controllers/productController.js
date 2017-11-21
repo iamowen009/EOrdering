@@ -107,7 +107,7 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
             userName: Auth.username()
         };
 
-        Fav.addFav($scope.usersId, product.btf, Auth.username()).then(function (response) {
+        Fav.addFav(favoriteInfo).then(function (response) {
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = true;
