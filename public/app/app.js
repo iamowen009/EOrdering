@@ -73,18 +73,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
         },
         onStepChanging: function (e, currentIndex, newIndex) {
             var trans_id = angular.element('#trans_id').val();
-            /*
-            if (date_id == null | date_id == undefined) {
-                swal('กรุณาเลือก Request Date');
-                return false;
-            }
             
-            if (ship_id == null | ship_id == undefined) {
-                swal('กรุณาเลือก สถานที่ส่ง');
-                return false;
-            }
-            */
-            console.log(trans_id);
             if ((trans_id == null || trans_id == '') && trans_id != undefined) {
                 swal('กรุณาเลือก บริษัทขนส่ง');
                 return false;
@@ -118,6 +107,8 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                     if (isConfirm) {
                         var appElement = document.querySelector('[ng-controller=ProductCheckoutController]');
                         var appScope = angular.element(appElement).scope();
+                        
+                        console.log('123123123' + appScope.ddlShipTo);
                         //swal('Loading');
                         var appShipCondition = '';
                         var checkedShip = false;
@@ -125,6 +116,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                         var shipCode = '';
                         var shipName = '';
                         var appPaymentTerm = '';
+
                         function newLocalDate() {
                             var date = new Date();
                             var dateStr = `${moment(date).get('year')}-${moment(date).format('MM-DD')}`;
@@ -137,12 +129,10 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                         if (typeof appScope.paymentTerm !== 'undefined') {
                             appPaymentTerm = appScope.paymentTerm;
                         }
-                        console.log('appPaymentTerm : ' + appPaymentTerm);
-                        //if(appScope.ddlShipTo.length > 0 ){
-
-
-
-                        if (typeof appScope.ddlShipTo !== undefined) {
+                     
+                        //if (typeof appScope.ddlShipTo !== undefined || appScope.ddlShipTo !== null || appScope.ddlShipTo !== '') {
+                        console.log('===================>',appScope.ddlShipTo);
+                        if (appScope.ddlShipTo != null) {
                             appShipCondition = appScope.ddlShipTo.shipCondition;
                             shipId = appScope.ddlShipTo.shipId;
                             shipCode = appScope.ddlShipTo.shipCode;
@@ -161,15 +151,16 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                         //appShipCondition
                         checkedShip = appScope.shipCondition;
 
-
-
                         console.log('appScope.shipCondition ' + appScope.shipCondition);
 
                         console.log('appScope.ddlShipTo : ', appScope.ddlShipTo);
                         var transportId = 0;
                         var transportZone = '';
                         var transportZoneDesc = '';
-                        if (typeof appScope.ddlTransport !== 'undefined') {
+                        //if (typeof appScope.ddlTransport !== 'undefined') {
+                        console.log('ddlTransport =======>', appScope.ddlTransport);
+                        console.log('ddlTransport =======>',(appScope.ddlTransport != 'undefined') ? '1' : '0');
+                        if (appScope.ddlTransport != undefined) {
                             // if( appScope.ddlTransport.length > 0){
                             //transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
 
