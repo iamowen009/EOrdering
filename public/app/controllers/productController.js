@@ -182,6 +182,8 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
         fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
         fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
+
+        $scope.marketingCode.push($scope.marketings[0].marketingCode);
     }
 
     $scope.clearBrandFilter = function() {

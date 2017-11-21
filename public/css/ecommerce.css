@@ -538,7 +538,7 @@
     position: fixed;
     left: auto;
     right: 0;
-    margin-right: 50px;
+    margin-right: 10px;
     margin-top: 30px;
     z-index: 1031;
 }

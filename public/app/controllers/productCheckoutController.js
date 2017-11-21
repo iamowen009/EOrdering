@@ -308,7 +308,7 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
     $scope.removeQty = function (field) {
         $scope.editing = $scope.carts.indexOf(field);
         $scope.newField = angular.copy(field);
-        console.log('new qty ' + $scope.newField['qty']);
+        //console.log('new qty ' + $scope.newField['qty']);
         if ($scope.newField['qty'] > 1) {
             $scope.newField['qty'] -= 1;
             $scope.carts[$scope.editing] = $scope.newField;

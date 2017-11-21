@@ -82,23 +82,23 @@
 		                      <div class="form-group" ng-if="listColors.length > 0 ">
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี / เบอร์ / รุ่น</label>
 		                        <div class="col-md-4 col-sm-4 col-xs-6" >
-															<div class="dropdown color-element">
-															  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-																	<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
-																	<span class="frame-color" ng-show="cartrgbColor==''" style="background-color: #fff;"></span>
-																	{{ colorCodeName }}
-																	
-															  </button>
-															  <ul class="dropdown-menu">
-															    <li ng-repeat="p in colors">
-																	<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
-																		<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
-																		<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
-																		{{ p.colorCode}}
-																	</a>
-															    </li>
-															  </ul>
-															</div>
+									<div class="dropdown color-element">
+									  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+											<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
+											<span class="frame-color" ng-show="cartrgbColor==''" style="background-color: #fff;"></span>
+											{{ colorCodeName }}
+											
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li ng-repeat="p in colors">
+											<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}" >
+												<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
+												<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
+												{{ p.colorCode}}
+											</a>
+									    </li>
+									  </ul>
+									</div>
 		                        </div>
 		                      </div>
 
@@ -175,7 +175,6 @@
 					</div>
 
 					<div class="row">
-
 						<div class="panel-content panel panel-default" ng-if="promotions.length > 0">
                       		<div class="panel-heading"><h4>โปรโมชั่นที่เกี่ยวข้อง</h4></div>
                       		<div class="panel-body">
