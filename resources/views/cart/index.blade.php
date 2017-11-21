@@ -39,7 +39,7 @@
                         <th class="text-center">สินค้า</th>
                         <th class="text-center" width="15%">จำนวน</th>
                         <th class="text-center">หน่วย</th>
-                        <th class="text-right">ราคาหน่วย</th>
+                        <th class="text-right">ราคาต่อหน่วย</th>
                         <th class="text-right">ราคารวม</th>
                         <th class="text-center">ลบ</th>
                       </tr>
@@ -359,7 +359,7 @@
                         <th class="text-center">สินค้า</th>
                         <th class="text-right">จำนวน</th>
                         <th class="text-center">หน่วย</th>
-                        <th class="text-right">ราคาหน่วย</th>
+                        <th class="text-right">ราคาต่อหน่วย</th>
                         <th class="text-right">ราคารวม</th>
                       </tr>
                     </thead>
@@ -535,7 +535,7 @@
                         <th class="text-center">สินค้า</th>
                         <th class="text-right">จำนวน</th>
                         <th class="text-center">หน่วย</th>
-                        <th class="text-right">ราคาหน่วย</th>
+                        <th class="text-right">ราคาต่อหน่วย</th>
                         <th class="text-right">ราคารวม</th>
                       </tr>
                     </thead>

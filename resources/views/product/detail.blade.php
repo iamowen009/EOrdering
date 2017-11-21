@@ -57,7 +57,7 @@
 		                        </div>
 		                    </div>
 		                    <h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}
-													<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกที่นี้เพื่อซื้อรายการโปรโมชั่น"</a>
+													<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกสินค้าเพื่อดูรายการโปรโมชั่น"</a>
 												</h4>
 		                    <div class="cui-ecommerce--product--price">
 		                    </div>
@@ -65,7 +65,7 @@
 													<input type="hidden" ng-model="onCart" />
 
                 				<div class="form-group" ng-show="productSelect.productId">
-			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคา(บาท)</label>
+			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคาต่อหน่วย (บาท)</label>
 			                        <div class="pdprice col-md-9 col-sm-9 col-xs-12">
 			                         	<font color="red"><strong>{{productPrice | number:2 }}</strong></font>
 			                        </div>
@@ -81,7 +81,7 @@
 		                      </div>
 
 		                      <div class="form-group" ng-if="listColors.length > 0 ">
-		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี</label>
+		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">สี / เบอร์ / รุ่น</label>
 		                        <div class="col-md-4 col-sm-4 col-xs-6" >
 															<div class="dropdown color-element">
 															  <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -119,12 +119,12 @@
 		                        </div>
 		                        <div class="col-md-4">
 		                        	<div style="margin-top:10px; " ng-show="productSelect.productId">
-																<strong>หน่วย : </strong>{{productSelect.unitNameTh}} <span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span></div>
+																<!--<strong>หน่วย : </strong>-->{{productSelect.unitNameTh}} <span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span></div>
 		                    	</div>
 		                      </div>
 
 							  <div class="form-group" ng-show="productSelect.productId">
-		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคารวม(บาท)</label>
+		                        <label class="control-label col-md-3 col-sm-3 col-xs-12">ราคารวม (บาท)</label>
 		                        <div class="pdprice col-md-9 col-sm-9 col-xs-12">
 		                         	<font color="#00BFFF"><strong>{{+productPrice * +cartProductQty | number:2}}</strong></font>
 		                        </div>
@@ -140,7 +140,7 @@
 														<button type="button" class="btn btn-icon btn-info btn-sm" ng-click="addCart()">
 
 																<i class="fa fa-shopping-cart" style="font-size:18px;" aria-hidden="true"></i>
-		                           	<i>Add to Cart</i>
+		                           	<i>หยิบใส่ตะกร้า</i>
 		                        </button>
 
 		                        <button type="button" class="btn btn-icon btn-primary btn-sm margin-right-15" ng-click="toHome()">
