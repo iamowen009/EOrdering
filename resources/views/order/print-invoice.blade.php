@@ -17,7 +17,7 @@
             <p>ถนนบางนา-ตราด ตำบลบางเสาธง อ.บางเสาธง จ.สมุทรปราการ 10570</p>
           </div>
           <div class="col-md-4 text-right">
-            <p>วันที่ : <strong>@{{ inv.requestDate | date:'dd/MM/yy'  }}</strong></p>
+            <p>วันที่ : <strong>@{{ inv.requestDate | date:'dd/MM/yyyy'  }}</strong></p>
             <p>เลขที่ใบสั่งซื้อ : <strong>@{{ inv.documentNumber }}</strong></p>
           </div>
         </div>

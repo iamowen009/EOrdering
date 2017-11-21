@@ -15,12 +15,12 @@
             <p><strong>ร้านค้า :</strong> @{{MBill.soldTo}} @{{MBill.pName}}</p>
             <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{MBill.runno}} / @{{MBill.purchNoC}}</p>
             <!-- <p><strong>เลขที่เอกสารอ้างอิง : </strong></p> -->
-            <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{MBill.salesDocument}}  วันที่ : @{{MBill.billCreDte | date:'dd/MM/yy'}}</p>
+            <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{MBill.salesDocument}}  วันที่ : @{{MBill.billCreDte | date:'dd/MM/yyyy'}}</p>
         </div>
         <div class="col-sm-4">
             <div class="row">
             <p><strong>No. : </strong>@{{ MBill.taxNum }}</p>
-            <p><strong>&nbsp;&nbsp;วันที่  </strong>@{{ MBill.billDate | date:'dd/MM/yy' }} เวลา @{{MBill.billCreTim }}</p>
+            <p><strong>&nbsp;&nbsp;วันที่  </strong>@{{ MBill.billDate | date:'dd/MM/yyyy' }} เวลา @{{MBill.billCreTim }}</p>
             </div>
             <div class="row">
             <!-- <p><strong>สถานที่ส่ง : </strong>  @{{MBill.pName}}</p><p>  &nbsp;@{{MBill.pSubDistrict}}</p><p>  &nbsp;@{{MBill.pDistrict}}</p> -->
@@ -63,11 +63,12 @@
                 </thead>
 
                 <tbody>
-                <tr ng-repeat="item in detail">
+                <!-- <tr ng-repeat="item in detail"> -->
+                <tr>
                     <td class="text-left"> @{{MBill.purchNoC}}</td>
-                    <td class="text-center">@{{ item.custRecDate | date:'dd/MM/yy' }} </td>
-                    <td class="text-center">@{{ item.billVbeln }}</td>
-                    <td class="text-center"></td> <!-- ติดไม่มีข้อมูลรอพี่เปิ้ล ตาม SAP -->
+                    <td class="text-center">@{{ detail[0].custRecDate | date:'dd/MM/yyyy' }} </td>
+                    <td class="text-center">@{{ detail[0].billVbeln }}</td>
+                    <td class="text-center">@{{MBill.pmnttrms}}</td>
                 </tr>
                 </tbody>
 
