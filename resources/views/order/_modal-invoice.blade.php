@@ -248,7 +248,7 @@
                           <th class="text-center">หน่วย</th>
                           <th class="text-center">
                             <span style="color: red;">*</span>
-                            ราคาหน่วย
+                            ราคาต่อหน่วย
                           </th>
                           <th class="text-center">ราคารวม</th>
                           <th class="text-center" style="display:none">ชื่อโปรโมชั่น</th>
