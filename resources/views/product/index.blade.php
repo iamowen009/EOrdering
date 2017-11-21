@@ -16,19 +16,18 @@
                 <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
                 <div class="category-home">
                 		<ul class="list-unstyled user_data" style="font-size:0.95em">
-                				<li style="padding:20px 0 15px 0;font-size:12pt;">
-									<strong>กลุ่มผลิตภัณฑ์</strong>
+                				<li >
+									<strong style="padding:20px 0 15px 0;font-size:12pt;">กลุ่มผลิตภัณฑ์</strong>
+									<a ng-click="clearMarketingFilter()" style="cursor: pointer;float:right;color:blue;">
+							   	ล้างทั้งหมด
+							   </a>
 								</li>
 	                 			<li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;">
 								 <input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="marketingSelection(marketing.marketingCode)"> 
 								 {{ marketing.marketingDesc }}
 								</li>
 						   </ul>
-						   <div class="text-right">
-							   <a ng-click="clearMarketingFilter()" style="cursor: pointer;">
-							   	เคลียข้อมูลทั้งหมด
-							   </a>
-						   </div>
+						  
              		</div>
             </div>
 						<hr>
@@ -36,18 +35,18 @@
                 <!--<div class="panel-heading text-center">แบรนด์</div>-->
                 <div class="category-home menu-body">
                   	<ul class="list-unstyled user_data" style="font-size:0.95em">
-                    		<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>แบรนด์</strong></li>
+							<li ><strong style="padding:20px 0 15px 0;font-size:12pt;">แบรนด์</strong>
+							<a ng-click="clearBrandFilter()" style="cursor: pointer;float:right;color:blue;">
+							   	ล้างทั้งหมด
+							   </a>
+						</li>
 	                    	<li ng-repeat="brand in brandsFilter" ng-if="brand.brandDesc != ''" value="{{brand.brandCode}}" style="padding-bottom:10px;">
 								<!-- <input type="checkbox" ng-checked="brandCode.length > 0 && brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)">  -->
 								<input type="checkbox" ng-checked="brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)"> 
 								{{ brand.brandDesc }}
 							</li>
 						 </ul>
-						 <div class="text-right">
-							   <a ng-click="clearBrandFilter()" style="cursor: pointer;">
-							   	เคลียข้อมูลทั้งหมด
-							   </a>
-						   </div>
+						
                 </div>
             </div>
 						<hr />
@@ -55,17 +54,17 @@
                 <!--<div class="panel-heading text-center">ประเภท</div>-->
                 <div class="category-home menu-body">
                     <ul class="list-unstyled user_data" style="font-size:0.95em">
-                    		<li style="padding:20px 0 15px 0;font-size:12pt;"><strong>ประเภท</strong></li>
+							<li ><strong style="padding:20px 0 15px 0;font-size:12pt;">ประเภท</strong>
+							<a ng-click="clearTypeFilter()" style="cursor: pointer;float:right;color:blue;">
+							   	ล้างทั้งหมด
+							   </a>
+						</li>
 	                    	<li ng-repeat="type in typesFilter" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
 								<input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
 								{{type.typeCode}} {{ type.typeDesc }}
 							</li>
 						 </ul>
-						 <div class="text-right">
-							   <a ng-click="clearTypeFilter()" style="cursor: pointer;">
-							   	เคลียข้อมูลทั้งหมด
-							   </a>
-						   </div>
+						 
                 </div>
             </div>
 						<hr />
