@@ -198,6 +198,9 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
 
             // if( $scope.ship[0].shipCondition == '08')
             $scope.ddlTransport = $scope.ship[0].transportZone;
+            $scope.objTransport = $filter('filter')($scope.transports, {
+                transportZone: $scope.ship[0].transportZone
+            })[0];
         }
     }
 
