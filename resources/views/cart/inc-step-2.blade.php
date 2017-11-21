@@ -115,7 +115,7 @@
             </div>
             <div class="form-group col-md-6" ng-show="shippingType=='show'">
               <label class="control-label col-md-3 col-sm-3 col-xs-12">ที่อยู่สถานที่ส่ง :</label>
-              <label class="col-md-9 col-sm-9 col-xs-12">{{shipaddress}}</label>
+              <label class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{shipaddress}}</label>
             </div>
           </div>
           <div class="col-md-12">

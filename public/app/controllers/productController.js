@@ -519,51 +519,53 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             cqty = false;
         }
 
-        var promotionList = [];
+        if (cqty) {
+            var promotionList = [];
 
-        cartService.checkCart($scope.usersId, $scope.productId).then(function (res) {
-            if (res == false) {
-                var cartList = [{
-                    customerId: $scope.usersId,
-                    productId: $scope.productId,
-                    qty: $scope.cartProductQty,
-                    userName: Auth.username()
-                }];
+            cartService.checkCart($scope.usersId, $scope.productId).then(function (res) {
+                if (res == false) {
+                    var cartList = [{
+                        customerId: $scope.usersId,
+                        productId: $scope.productId,
+                        qty: $scope.cartProductQty,
+                        userName: Auth.username()
+                    }];
 
-                Carts.addCart(cartList, promotionList).then(function (response) {
-                    $scope.loading = false;
-                    if (response.data.result == 'SUCCESS') {
-                        Carts.fetchAll($scope.usersId, $scope.productId).then(function (res) {
-                            var product = $filter('filter')(res.data.data.cartList, {
-                                productId: $scope.productId
-                            })[0];
-                            cartService.addProduct(product);
-                        });
+                    Carts.addCart(cartList, promotionList).then(function (response) {
+                        $scope.loading = false;
+                        if (response.data.result == 'SUCCESS') {
+                            Carts.fetchAll($scope.usersId, $scope.productId).then(function (res) {
+                                var product = $filter('filter')(res.data.data.cartList, {
+                                    productId: $scope.productId
+                                })[0];
+                                cartService.addProduct(product);
+                            });
 
-                        swal('สำเร็จ', 'เพิ่มสินค้าเรียบร้อยแล้ว', 'success');
-                    } else {
-                        swal('เกิดข้อผิดพลาด', 'เพิ่มสินค้าไม่สำเร็จ', 'warning');
-                    }
-                });
-            } else {
-                var cartList = [{
-                    customerId: $scope.usersId,
-                    productId: res.productId,
-                    qty: parseInt(res.qty) + parseInt($scope.cartProductQty),
-                    userName: Auth.username()
-                }];
+                            swal('สำเร็จ', 'เพิ่มสินค้าเรียบร้อยแล้ว', 'success');
+                        } else {
+                            swal('เกิดข้อผิดพลาด', 'เพิ่มสินค้าไม่สำเร็จ', 'warning');
+                        }
+                    });
+                } else {
+                    var cartList = [{
+                        customerId: $scope.usersId,
+                        productId: res.productId,
+                        qty: parseInt(res.qty) + parseInt($scope.cartProductQty),
+                        userName: Auth.username()
+                    }];
 
-                Carts.updateCart(cartList, promotionList).then(function (response) {
-                    $scope.loading = false;
+                    Carts.updateCart(cartList, promotionList).then(function (response) {
+                        $scope.loading = false;
 
-                    if (response.data.result == 'SUCCESS') {
-                        swal('สำเร็จ', 'เพิ่มสินค้าเรียบร้อยแล้ว', 'success');
-                    } else {
-                        swal('เกิดข้อผิดพลาด', 'เพิ่มสินค้าไม่สำเร็จ', 'warning');
-                    }
-                });
-            }
-        });
+                        if (response.data.result == 'SUCCESS') {
+                            swal('สำเร็จ', 'เพิ่มสินค้าเรียบร้อยแล้ว', 'success');
+                        } else {
+                            swal('เกิดข้อผิดพลาด', 'เพิ่มสินค้าไม่สำเร็จ', 'warning');
+                        }
+                    });
+                }
+            });
+        }
     }
 
     $scope.getProduct = function () {
