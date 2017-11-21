@@ -92,11 +92,11 @@
     </div>-->
 
     <br/>
-
-    <h6>รายละเอียดสินค้าที่สั่งซื้อ</h6>
+    <div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div>
+    <!-- <h6>รายละเอียดสินค้าที่สั่งซื้อ</h6> -->
 
     <!--<ngcart-cart></ngcart-cart>-->
-    <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6>
+    <!-- <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6> -->
 
   <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
       Your cart is empty
