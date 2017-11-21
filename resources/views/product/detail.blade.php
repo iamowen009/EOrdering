@@ -57,7 +57,7 @@
 		                        </div>
 		                    </div>
 		                    <h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}
-													<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกสินค้าเพื่อดูรายการโปรโมชั่น"</a>
+													<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกเพื่อดูรายการโปรโมชั่น"</a>
 												</h4>
 		                    <div class="cui-ecommerce--product--price">
 		                    </div>
@@ -140,7 +140,7 @@
 														<button type="button" class="btn btn-icon btn-info btn-sm" ng-click="addCart()">
 
 																<i class="fa fa-shopping-cart" style="font-size:18px;" aria-hidden="true"></i>
-		                           	<i>หยิบใส่ตะกร้า</i>
+		                           	หยิบใส่ตะกร้า
 		                        </button>
 
 		                        <button type="button" class="btn btn-icon btn-primary btn-sm margin-right-15" ng-click="toHome()">
@@ -153,7 +153,7 @@
 		                </div>
 
 		                <div class="col-lg-12 remarkpd">
-							<font color="red">หมายเหตุ: บริษัทสงวนสิทธิ์ในการเปลี่ยนแปลงรายการโดยมิต้องแจ้งให้ทราบล่วงหน้า ตลอดจนความผิดพลาดที่เกิดจากการพิมพ์</font>
+							<font color="red">หมายเหตุ: บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงรายการ โดยมิต้องแจ้งให้ทราบล่วงหน้า ตลอดจนความผิดพลาดที่เกิดจากการพิมพ์</font>
 		                </div>
 		            </div>
 
