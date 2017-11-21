@@ -23,12 +23,7 @@
 								 <input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="marketingSelection(marketing.marketingCode)"> 
 								 {{ marketing.marketingDesc }}
 								</li>
-						   </ul>
-						   <div class="text-right">
-							   <a ng-click="clearMarketingFilter()" style="cursor: pointer;">
-							   	เคลียข้อมูลทั้งหมด
-							   </a>
-						   </div>
+               			</ul>
              		</div>
             </div>
 						<hr>
@@ -42,12 +37,7 @@
 								<input type="checkbox" ng-checked="brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)"> 
 								{{ brand.brandDesc }}
 							</li>
-						 </ul>
-						 <div class="text-right">
-							   <a ng-click="clearBrandFilter()" style="cursor: pointer;">
-							   	เคลียข้อมูลทั้งหมด
-							   </a>
-						   </div>
+                 		</ul>
                 </div>
             </div>
 						<hr />
@@ -60,12 +50,7 @@
 								<input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
 								{{type.typeCode}} {{ type.typeDesc }}
 							</li>
-						 </ul>
-						 <div class="text-right">
-							   <a ng-click="clearTypeFilter()" style="cursor: pointer;">
-							   	เคลียข้อมูลทั้งหมด
-							   </a>
-						   </div>
+	                 	</ul>
                 </div>
             </div>
 						<hr />
