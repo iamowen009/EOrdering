@@ -121,7 +121,7 @@
 									<div class="col-md-4">
 										<div style="margin-top:10px; " ng-show="productSelect.productId">
 											<!--<strong>หน่วย : </strong>-->{{productSelect.unitNameTh}}
-											<span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span>
+											<span ng-if="productSelect.altUnit1Amount > 0">(1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span>
 										</div>
 									</div>
 								</div>

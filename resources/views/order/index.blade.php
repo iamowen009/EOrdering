@@ -58,9 +58,13 @@
 	                                    <div class="dd" id="nestable1">
 																				<p class="text-center" ng-show="loading"><span class="fa fa-refresh fa-3x fa-spin"></span></p>
 																				@include('order.inc-history-process')
-				                        			</div>
-	                                </div>
-	                            </div>
+																				
+											</div>
+										
+									</div>
+									<strong style="color:red;position: absolute;margin: -53px 0px 0px 145px;">* จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม Vat</strong>
+								</div>
+								
 	                        </div>
 	                    </div>
 					</div>
@@ -72,7 +76,7 @@
 	</div>
 </div>
 <footer>
-<strong style="color:red;">" *จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม Vat "</strong>
+
 </footer>
 
 @include('order.modal-invoice')
