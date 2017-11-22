@@ -19,6 +19,7 @@ class PrintController extends Controller
             $data['products'] = $json['data']['orderDetailList'];
             $pdf = PDF::loadView('print.invoice', $data);
             return @$pdf->stream();
+            //return $pdf->download();
             //print_r($data);
             //return view('print.invoice', $data);
         } else {
