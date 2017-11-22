@@ -519,7 +519,11 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
             cqty = false;
         } else if ($scope.cartProductQty % $scope.productSelect.altUnit1Amount) {
-            swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
+            //swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
+            swal({ html:true , 
+                title:'ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ <br> ระบบจะปรับจำนวนให้อัตโนมัติ <br>กรุณาตรวจสอบจำนวนสินค้า<br > ก่อนกดเพิ่มสินค้าค่ะ' , 
+                text:''});
+            
             var un = parseInt($scope.cartProductQty / $scope.productSelect.altUnit1Amount);
             $scope.cartProductQty = $scope.productSelect.altUnit1Amount * un;
             cqty = false;
