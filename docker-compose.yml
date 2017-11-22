@@ -15,4 +15,4 @@ services:
     volumes_from:
       - app
     ports:
-      - 8080:80
+      - 8001:80

@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-<head>
+        <title>E-Ordering System</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <!-- Bootstrap core CSS -->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+        <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet">
+        <link href="<?= asset('css/custom.min.css') ?>" rel="stylesheet">
+        <link href="<?= asset('./css/ecommerce.css') ?>" rel="stylesheet">
+        <link href="<?= asset('css/custom.css') ?>" rel="stylesheet">
 
-    <title>E-Ordering System</title>
+        <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link href="<?= asset('css/bootstrap.min.css') ?>" rel="stylesheet">
-    <link href="<?= asset('css/custom.min.css') ?>" rel="stylesheet">
-    <link href="<?= asset('./css/ecommerce.css') ?>" rel="stylesheet">
-    <link href="<?= asset('css/custom.css') ?>" rel="stylesheet">
+        <link href="<?= asset('node_modules/sweetalert/lib/sweet-alert.css') ?>" rel="stylesheet">
+        <link href="<?= asset('vendors/jquery-steps/demo/css/jquery.steps.css') ?>" rel="stylesheet">
 
-    <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-
-    <link href="<?= asset('node_modules/sweetalert/lib/sweet-alert.css') ?>" rel="stylesheet">
-    <link href="<?= asset('vendors/jquery-steps/demo/css/jquery.steps.css') ?>" rel="stylesheet">
-
-    <link href="<?= asset('node_modules/smartwizard/dist/css/smart_wizard.css') ?>" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:200,200i,300,300i,600,600i">
-    <link rel="stylesheet" href="<?= asset('node_modules/bootstrap/dist/css/bootstrap.css') ?>">
-    <link rel="stylesheet" href="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css') ?>"/>
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
-    <link rel="stylesheet" href="<?= asset('css/layouts.css') ?>"/>
-    
-    <!--<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>-->
-    <style>
-    body {
-        font-family: 'Prompt', sans-serif !important;
-    }
-    </style>
-    @yield('head')
-</head>
+        <link href="<?= asset('node_modules/smartwizard/dist/css/smart_wizard.css') ?>" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:200,200i,300,300i,600,600i">
+        <link rel="stylesheet" href="<?= asset('node_modules/bootstrap/dist/css/bootstrap.css') ?>">
+        <link rel="stylesheet" href="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css') ?>"/>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
+        <link rel="stylesheet" href="<?= asset('css/layouts.css') ?>"/>
+        
+        <!--<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>-->
+        <link rel="stylesheet" type="text/css"  href="{{ asset('css/style.css') }}">
+        <style>
+        body {
+            font-family: 'Prompt', sans-serif !important;
+        }
+        </style>
+        @yield('head')
+    </head>
 
 <body ng-app="app" ng-controller="AppController">
-
     <!-- Navigation -->
     @include('layouts.inc-head')
     <!-- Page Content -->
@@ -61,14 +59,14 @@
                       </label>
                       <label class="col-sm-11 text-left">{{item.productCode}}</label> <span class="blue-underline" ng-if="item.promotionId != 0">(ของแถม)</span>
                       <label class="text-left col-sm-1" ></label>
-                      <label class="col-md-11">{{item.productNameTh}}</label> <span class="text-danger" ng-if="item.isFreeGoodes === true">(ของแถม)</span>
+                      <label class="col-md-11" style="font-size: 15px;">{{item.productNameTh}}</label> <span class="text-danger" ng-if="item.isFreeGoodes === true">(ของแถม)</span>
                       <div class="col-md-4 text-right"><img ng-src="{{partImgProductCard}}/{{item.btfCode}}.jpg" style="width:60%;" err-SRC="{{partImgProduct}}/Noimage.jpg"></div>
                       <div class="col-md-8">
-                          <div class="col-md-12">
+                          <div class="col-md-12" style="margin-bottom: 6px; font-size: 16px">
                             ราคาต่อหน่วย (บาท) : {{item.price | number:2}}
                           </div>
                           <div class="form-group">
-                              <div class="col-md-4">
+                              <div class="col-md-4" style="margin-top: 9px;">
                                   จำนวน :
                               </div>
                               <div class="col-md-3">
@@ -151,45 +149,39 @@
     </div>
     <!-- Bootstrap core JavaScript -->
 
-        <script type="text/javascript">
-          var _base = "{{ url('/') }}";
-        </script>
+    <script type="text/javascript">
+      var _base = "{{ url('/') }}";
+    </script>
     <script src="<?= asset('js/jquery.min.js') ?>"></script>
     <script src="<?= asset('js/popper.min.js') ?>"></script>
     <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
     <script src="<?= asset('bower_components/angular/angular.min.js') ?>"></script>
     <script src="<?= asset('bower_components/angular-messages/angular-messages.min.js') ?>"></script>
     <script src="<?= asset('bower_components/angular-validation-match/dist/angular-validation-match.js') ?>"></script>
     <script src="<?= asset('bower_components/purl/purl.js') ?>"></script>
-
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
-
     <script src="<?= asset('node_modules/angular-sweetalert/SweetAlert.min.js') ?>"></script>
     <script src="<?= asset('node_modules/sweetalert/lib/sweet-alert.min.js') ?>"></script>
-
     <script src="<?= asset('node_modules/ngCart/dist/ngCart.js') ?>"></script>
-
     <script src="<?= asset('node_modules/underscore/underscore-min.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-bootstrap-multiselect/dist/angularjs-dropdown-multiselect.js') ?>"></script>
-
     <script src="<?= asset('vendors/jquery-steps/build/jquery.steps.min.js') ?>"></script>
 
+    <!-- angular core -->
     <script src="<?= asset('app/app.js') ?>"></script>
     <script src="<?= asset('app/services.js') ?>"></script>
     <script src="<?= asset('app/controllers/appController.js') ?>"></script>
 
+    <!-- angular module -->
     <script src="<?= asset('node_modules/moment/moment.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js') ?>"></script>
-
     <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js') ?>"></script>
     <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js') ?>"></script>
-
     <script src="<?= asset('node_modules/angular-utils-pagination/dirPagination.js') ?>"></script>
 
     @yield('footer')
 </body>
-
 </html>

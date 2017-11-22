@@ -213,7 +213,6 @@
         <table class="table table-hover text-right">
             <thead class="thead-default">
                 <tr>
-                    <th class="text-center">#</th>
                     <th class="text-center">รหัสสินค้า</th>
                     <th class="text-center">สินค้า</th>
                     <th class="text-center">จำนวน</th>
@@ -228,9 +227,13 @@
             </tfoot>
             <tbody ng-repeat="item in carts track by $index">
             <tr class="cart-product-{{ item.productId }}">
-                <td class="text-center">{{$index+1}}</td>
-                <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
-                <td class="text-left">{{ item.productNameTh }} | {{ bomRows(item.productCode)  }}</td>
+                <td class="text-center">
+                  <img class="img-product" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> 
+                  <strong>{{item.productCode}}</strong>
+                </td>
+                <td class="text-left">
+                  <strong>{{ item.productNameTh }} | {{ bomRows(item.productCode)  }}</strong>
+                </td>
                 <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span></td>
                 <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{item.unitNameTh}}</span></td>
                 <td><span ng-if="bomRows(item.productCode) == 0">{{ item.price | number:2}}</span></td>
@@ -239,7 +242,6 @@
 
             </tr>
             <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
-                <td class="text-center">{{$index+1}}</td>
                 <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                 <td class="text-left">{{ bom.productNameTh }}</td>
                 <td class="text-center">{{ item.qty }}</td>
