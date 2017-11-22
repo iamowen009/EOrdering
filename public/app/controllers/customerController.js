@@ -88,6 +88,7 @@ app.controller('CustomerController', function ($scope, $http, $filter, Customers
                 var cus = response.data.data.customerInfo;
                 $scope.cus = cus;
                 $scope.input = {
+                    customerCode: cus.customerCode,
                     customerName: cus.customerName,
                     address: cus.address,
                     street: cus.street,
