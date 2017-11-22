@@ -1,1 +1,6 @@
-/storage/
+/storage/fonts/*.ufm
+/storage/fonts/*
+!storage/fonts/THSarabunNew.ttf
+!storage/fonts/THSarabunNew Bold.ttf
+!storage/fonts/THSarabunNew BoldItalic.ttf
+!storage/fonts/THSarabunNew Italic.ttf
