@@ -15,10 +15,6 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>อีเมลล์:</label>
-                    <input type="text" class="form-control" name="email" id="email" value="example@mail.com" disabled>
-                  </div>
-                  <div class="form-group">
                     <label for="old_pwd">รหัสผ่านปัจจุบัน</label>
                     <input type="password" class="form-control" name="oldpassword" ng-model="input.oldpassword" ng-required="true">
                     <div ng-messages="form.oldpassword.$dirty && form.oldpassword.$error">

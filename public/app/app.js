@@ -34,6 +34,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             next: "ถัดไป"
         },
         onStepChanged: function (event, currentIndex, newIndex) {
+            console.log(currentIndex);
             if (currentIndex == 0) {
                 $('ul[role="tablist"] >li:nth-child(2)').removeClass('done').addClass('disabled');//('','#ddd');
                 $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');//('','#ddd');
@@ -50,7 +51,12 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
         },
 
         onInit: function (event, currentIndex) {
-            
+            if (currentIndex == 1) {
+                $('ul[role="menu"] a[href="#previous"]').hide();
+            } else if (currentIndex == 2) {
+                $('ul[role="menu"] a[href="#previous"]').show();
+            }
+
             if (currentIndex == 0 || currentIndex == 1) {
                 var btnPrint = $("<a>").attr({ "href": "#", "ng-click": "btnPrint" }).addClass("btn-print btn btn-primary").text("Print");
                 var btnClear = $("<a>").attr({ "href": "#", "ng-click": "removeAll()" }).addClass("btn-clear btn btn-danger").text("ลบรายการสินค้าทั้งหมด");

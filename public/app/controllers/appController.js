@@ -36,13 +36,13 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
     if ($scope.editedItem.qty < $scope.items[$index].altUnitAmount) {
       var $qty = $scope.items[$index].altUnitAmount;
 
-      swal('แจ้งเตือน', `กรุณาสั่งซื้ออย่างน้อย ${$scope.items[$index].altUnitAmount} ${$scope.items[$index].unitNameTh} ค่ะ`, 'info');
+      swal(`กรุณาสั่งซื้ออย่างน้อย ${$scope.items[$index].altUnitAmount} ${$scope.items[$index].unitNameTh} ค่ะ`,);
       $scope.loadingcart = false;
     } else if ($scope.editedItem.qty % $scope.items[$index].altUnitAmount) {
       var un = parseInt($scope.editedItem.qty) / parseInt($scope.items[$index].altUnitAmount);
       var $qty = $scope.items[$index].altUnitAmount * parseInt(un);
       
-      swal('แจ้งเตือน', `ผลิตภัณฑ์ต้องสั่งซื้อทีละ ${$scope.items[$index].altUnitAmount} ${$scope.items[$index]['unitNameTh']} ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ`, 'info');
+      swal(`ผลิตภัณฑ์ต้องสั่งซื้อทีละ ${$scope.items[$index].altUnitAmount} ${$scope.items[$index]['unitNameTh']} ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ`);
       $scope.loadingcart = false;
     } else {
       var $qty = $scope.editedItem.qty;
