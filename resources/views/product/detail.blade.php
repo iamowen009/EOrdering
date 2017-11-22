@@ -176,59 +176,8 @@
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="row">
-						<div class="panel-content panel panel-default" ng-if="promotions.length > 0">
-							<div class="panel-heading">
-								<h4>โปรโมชั่นที่เกี่ยวข้อง</h4>
-							</div>
-							<div class="panel-body">
-								<div class="cui-ecommerce--catalog">
-									<div class="row">
-										<div class="col-xl-2 col-lg-4 col-md-6 col-sm-12" dir-paginate="promotion in promotions | itemsPerPage: 6" pagination-id="promotion.id">
-											<div class="cui-ecommerce--catalog--item" ng-click="toProductDetail(13124)">
-												<div class="cui-ecommerce--catalog--item--img">
-													<div class="cui-ecommerce--catalog--item--status">
-														<span class="cui-ecommerce--catalog--item--status--title">New</span>
-													</div>
-
-													<div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected">
-														<i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked">
-															<!-- -->
-														</i>
-														<i class="icmn-heart4 cui-ecommerce--catalog--item--like--unliked">
-															<!-- -->
-														</i>
-													</div>
-													<span class="favorite-icon">
-														<i class="fa fa-star"></i>
-													</span>
-													<a href="javascript: void(0);">
-														<img ng-src="{{ asset('common/img/temp/ecommerce/001.jpg') }}" err-SRC="{{partImgProduct}}/Noimage.jpg">
-													</a>
-												</div>
-												<div class="text-center">
-													<h6 class="ng-binding">{{promotion.promotionName}}</h6>
-													<br>
-
-												</div>
-
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<dir-pagination-controls template-url="/template/dirPagination.tpl.html" pagination-id="promotion.id"></dir-pagination-controls>
-
-
-							</div>
-						</div>
-
-					</div>
-
-					<div class="row">
-
 						<div class="panel-content panel panel-default">
 							<div class="panel-heading text-center" style="background-color:#BFEBEE;padding: 2px 15px;">
 								<h4>สินค้าที่เกี่ยวข้อง</h4>
