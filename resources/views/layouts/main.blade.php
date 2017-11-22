@@ -23,15 +23,17 @@
     <link href="<?= asset('vendors/jquery-steps/demo/css/jquery.steps.css') ?>" rel="stylesheet">
 
     <link href="<?= asset('node_modules/smartwizard/dist/css/smart_wizard.css') ?>" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:200,200i,300,300i,600,600i">
     <link rel="stylesheet" href="<?= asset('node_modules/bootstrap/dist/css/bootstrap.css') ?>">
     <link rel="stylesheet" href="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css') ?>"/>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="<?= asset('css/layouts.css') ?>"/>
-
+    
     <!--<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>-->
     <style>
-
+    body {
+        font-family: 'Prompt', sans-serif !important;
+    }
     </style>
     @yield('head')
 </head>

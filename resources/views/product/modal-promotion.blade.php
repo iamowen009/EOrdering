@@ -38,6 +38,9 @@
                     </div>
                     <hr style="margin-bottom: 20px !important; margin-top: 10px;" ng-hide="promotions.length == $index + 1">
                 </div>
+                <div style="color:red">
+                    หมายเหตุ: บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงรายการ โดยมิต้องแจ้งให้ทราบล่วงหน้า ตลอดจนความผิดพลาดที่เกิดจากการพิมพ์
+                </div>
               <!-- <div class="row">
                   <div class="col-md-3"><strong>ชื่อโปรโมชั่น : </strong></div>
                   <div class="col-md-9"></div>
