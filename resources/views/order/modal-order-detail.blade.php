@@ -72,17 +72,17 @@
           </br>
 
           <div class="row">
-            <div class="col-sm-6 text-danger"> <strong>Note : </strong></div>
+            <div class="col-sm-6 text-danger"> <strong class="col-md-2">Note : </strong></div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">สั่งซื้อ   &nbsp;&nbsp;&nbsp;&nbsp;: จำนวนสินค้าที่สั่งซื้อ</div>
+						<div class="col-sm-6 text-danger"><strong class="col-md-2">สั่งซื้อ</strong>: จำนวนสินค้าที่สั่งซื้อ</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">ออกบิล &nbsp;: จำนวนสินค้าที่เปิดบิลแล้ว</div>
+						<div class="col-sm-6 text-danger"><strong class="col-md-2">ออกบิล</strong>: จำนวนสินค้าที่เปิดบิลแล้ว</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">การจอง : จำนวนสินค้าที่ได้รับการจองและรอการเปิดบิล</div>
+						<div class="col-sm-6 text-danger"><strong class="col-md-2">การจอง</strong>: จำนวนสินค้าที่ได้รับการจองและรอการเปิดบิล</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">คงค้าง  &nbsp;&nbsp;: จำนวนสินค้ารอดำเนินการ</div>
+						<div class="col-sm-6 text-danger"><strong class="col-md-2">คงค้าง</strong>: จำนวนสินค้ารอดำเนินการ</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">ยกเลิก &nbsp; : จำนวนสินค้าที่ทำการยกเลิก</div>
+						<div class="col-sm-6 text-danger"><strong class="col-md-2">ยกเลิก </strong>: จำนวนสินค้าที่ทำการยกเลิก</div>
             <div class="col-sm-6 text-right"></div>
 
           </div>
