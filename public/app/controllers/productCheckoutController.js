@@ -146,6 +146,8 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
                         $scope.transports0.push($scope.transportss[k]);
                 }
                 $scope.carts = response.data.data.cartProductList;
+                var asd = getTransport($scope.transports0, $scope.customer.cityCode);
+                //$scope.transports = asd[0].value;
                 $scope.transports = getTransport($scope.transports0, $scope.customer.cityCode);
     
                 $scope.ddlShipTo = '';//$scope.ships[0];

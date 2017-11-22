@@ -135,7 +135,7 @@
                     ng-model="ddlTransport"
                     ng-change="changeTransport(ddlTransport)"
                     ng-options="i.transportZone as i.transportZone +' ' + i.transportZoneDesc for i in transports">
-                    <option value=''></option>
+                    <option value="" selected hidden />
                   </select>
 
                 <select
@@ -145,7 +145,7 @@
                     ng-model="ddlTransport"
                     ng-change="changeTransport(ddlTransport)"
                     >
-                    <option value=''></option>
+                    <option value="" selected hidden />
                     <option value="{{ddlShipTo.transportZone}}">
                       {{ddlShipTo.transportZone +' ' + ddlShipTo.transportZoneDesc}}
                     </option>

@@ -67,8 +67,9 @@ app.controller('CustomerController', function ($scope, $http, $filter, Customers
                         swal('MSG : 101 ไม่สามารถสั่งซื้อสินค้าได้ กรุณาติดต่อผู้แทนขายที่ดูแลท่าน ขอบคุณค่ะ');
                         return false;
                     } else {
-                        Customers.setCustomer(id, cusInfo.customerName);
+                        Customers.setCustomer(id, cusInfo.customerName, cusInfo.customerCode);
                         window.location.href = url;
+                        
                     }
                 }
                 $scope.loading = false;
@@ -87,6 +88,7 @@ app.controller('CustomerController', function ($scope, $http, $filter, Customers
                 var cus = response.data.data.customerInfo;
                 $scope.cus = cus;
                 $scope.input = {
+                    customerCode: cus.customerCode,
                     customerName: cus.customerName,
                     address: cus.address,
                     street: cus.street,

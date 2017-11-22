@@ -30,9 +30,9 @@
 						@verbatim
 							<!-- <span>ยินดีต้อนรับ {{username}} 
 							<span ng-show="!hidemenu">[{{customerCode}} : {{customerName}}]</span></span> -->
-							ยินดีต้อนรับ {{username}} {{customerCode}}
+							ยินดีต้อนรับ {{ username }}
 							<span ng-show="!hidemenu">
-								[ {{username}} {{customerCode}} : {{customerName}}]
+								[ {{ (usertype == 'Multi') ? customerCode : username }} : {{customerName}}]
 							</span>
 						@endverbatim
 					</li>
@@ -43,9 +43,11 @@
 										บัญชีของฉัน <span class="caret"></span></button>
 										<ul class="dropdown-menu">
 												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลส่วนตัว</a></li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อเรา</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อทีโอเอ</a></li>
 												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a></li>
+												<li ng-hide="hidemenu" ng-if="usertype != 'Single'">
+													<a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a>
+												</li>
 												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')">เปลี่ยนรหัสผ่าน</a></li>
 												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('problem')  ?>')">ปัญหาที่พบ</a></li>
 												<li><a ng-click="$event.preventDefault(); logout()">ออกจากระบบ</a></li>
@@ -115,7 +117,7 @@
 </div>
 </nav>
 @verbatim
-<div class="cart-fab" ng-click="open('lg')">
+<div class="cart-fab" ng-click="open('lg')" ng-hide="hidemenu">
 <div class="cart-fab-content">
 <span class="item-count">
 {{carts.length}}

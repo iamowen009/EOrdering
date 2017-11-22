@@ -197,6 +197,10 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
   $scope.usertype = Auth.userTypeDesc();
   $scope.customerName = Customers.customerName();
 
+  if ($scope.usertype == 'Multi') {
+    $scope.customerCode = Customers.customerCode();
+  }
+
   Carts.fetchAll(Customers.customerId()).then(function (response) {
     if (response.data.result == 'SUCCESS') {
       response.data.data.cartList.forEach(function (i, x) {

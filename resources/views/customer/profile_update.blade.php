@@ -12,14 +12,13 @@
               </div>
               <div class="panel-body">
                 <div class="row">
-                  <div class="col-md-12 form-group">
+                  <div class="col-md-6 form-group">
+                    <label>รหัสร้านค้า:</label>
+                    <input type="text" class="form-control" name="customerCode" ng-model="input.customerCode" ng-disabled="true" ng-required="true">
+                  </div>
+                  <div class="col-md-6 form-group">
                     <label>ชื่อร้านค้า:</label>
-                    <input type="text" class="form-control" name="customerName" ng-model="input.customerName" ng-required="true">
-                    <div ng-messages="form.customerName.$dirty && form.customerName.$error">  
-                      <span class="text-danger" ng-message="required">
-                        กรุณากรอกชื่อร้านค้า
-                      </span>
-                    </div>
+                    <input type="text" class="form-control" name="customerName" ng-model="input.customerName" ng-disabled="true" ng-required="true">
                   </div>
                   <div class="col-md-6 form-group">
                     <label>ที่อยู่/เลขที่:</label>
@@ -76,7 +75,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>เบอร์โทรศัพท์:</label>
+                    <label>เบอร์โทรศัพท์, เบอร์มือถือ:</label>
                     <input type="text" class="form-control" name="telNo" ng-model="input.telNo" ng-required="true">
                     <div ng-messages="form.telNo.$dirty && form.telNo.$error">  
                       <span class="text-danger" ng-message="required">
@@ -90,12 +89,7 @@
                   </div>
                   <div class="col-md-12 form-group">
                     <label>จัดส่ง:</label>
-                    <input type="text" class="form-control" name="transportZoneDesc" ng-model="input.transportZoneDesc" ng-required="true">
-                    <div ng-messages="form.transportZoneDesc.$dirty && form.transportZoneDesc.$error">  
-                      <span class="text-danger" ng-message="required">
-                        กรุณากรอกจัดส่ง
-                      </span>
-                    </div>
+                    <input type="text" class="form-control" name="transportZoneDesc" ng-model="input.transportZoneDesc" ng-disabled="true" ng-required="true">
                   </div>
                   <div class="col-md-12 form-group">
                     <label>หมายเหตุ:</label>

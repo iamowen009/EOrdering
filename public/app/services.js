@@ -260,9 +260,13 @@ angular.module('app')
 
         	return deferred.promise;
 		},
-        setCustomer: function(customerId, customerName){
+        setCustomer: function(customerId, customerName, customerCode){
             window.localStorage.setItem('customerId',customerId);
             window.localStorage.setItem('customerName',customerName);
+            
+            if (customerCode != undefined) {
+                window.localStorage.setItem('customerCode', customerCode);
+            }
 
         },
         customerId: function(){
@@ -270,6 +274,9 @@ angular.module('app')
         },
         customerName: function(){
             return Auth.userTypeDesc() == 'Multi' ? window.localStorage.getItem('customerName') : Auth.customerName();
+        },
+        customerCode: function() {
+            return window.localStorage.getItem('customerCode');
         },
         customerUpdate: function(formData) {
             var deferred = $q.defer();

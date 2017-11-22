@@ -350,6 +350,7 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
     fetchOneProduct($scope.usersId, $scope.btfId);
     fetchAllPromotions($scope.usersId, [], [], []);
     fetchAllProducts($scope.usersId, [], [], [], true);
+
     $scope.promotionLink = function () {
         $('#modal-promotion').modal('show');
     }
@@ -387,12 +388,12 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
                         }
                     }
                 }
-                colorval();
-                console.log('scope size : ', $scope.sizes);
+                console.log('scope size : ', $scope.sizes[0]['sizeCode']);
                 console.log('scope colors : ', $scope.colors);
                 $scope.cartSize = $scope.sizes[0]['sizeCode'];
                 $scope.cartCode = $scope.sizes[0]['productCode'];
                 $scope.cartColor = $scope.colors[0] ? $scope.colors[0]['colorCode'] : {};
+                colorval();
                 //$scope.cartrgbColor = $scope.colors[0] ? $scope.colors[0]['rgbCode'] : {};
                 $scope.cartrgbColor = $scope.colors[0].cartrgbColor;
                 $scope.colorCodeName = $scope.colors[0] ? $scope.colors[0]['colorCode'] : '';
@@ -455,7 +456,13 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
         for (var kr in $scope.colors) {
             //console.log('size code : ', $scope.colors[kr].sizeCode, ' | ', $scope.cartSize, ' product colorval code : ', $scope.cartCode, ' | ', $scope.colors[kr].productCode);
             if ($scope.colors[kr].sizeCode == $scope.cartSize) {
-                $scope.listColors.push({ 'colorCode': $scope.colors[kr]['colorCode'], 'colorNameTh': $scope.colors[kr]['colorNameTh'], 'cartrgbColor': $scope.colors[kr]['rgbCode'], 'sizeCode': $scope.colors[kr]['sizeCode'], 'productCode': $scope.colors[kr]['productCode'] });
+                $scope.listColors.push({ 
+                    'colorCode': $scope.colors[kr]['colorCode'], 
+                    'colorNameTh': $scope.colors[kr]['colorNameTh'], 
+                    'cartrgbColor': $scope.colors[kr]['rgbCode'], 
+                    'sizeCode': $scope.colors[kr]['sizeCode'], 
+                    'productCode': $scope.colors[kr]['productCode'] 
+                });
             }
         }
         //console.log('$scope.listColors : ', $scope.listColors);
