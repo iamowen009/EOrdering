@@ -71,6 +71,9 @@
 		</div>
 	</div>
 </div>
+<footer>
+<strong style="color:red;">" *จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม Vat "</strong>
+</footer>
 
 @include('order.modal-invoice')
 @include('order.modal-order-detail')

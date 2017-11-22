@@ -71,7 +71,7 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-6">ขนาด</label>
 									<div class="col-md-3 col-sm-3 col-xs-6">
-										<select class="form-control" ng-model="cartSize" ng-change="getProduct()">
+										<select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()">
 											<option ng-repeat="p in sizes" value="{{ p.sizeCode}}">{{ p.sizeName }} </option>
 										</select>
 									</div>
