@@ -183,8 +183,6 @@
 								<h4>สินค้าที่เกี่ยวข้อง</h4>
 							</div>
 							<div class="panel-body">
-
-
 								<div class="cui-ecommerce--catalog">
 									<div class="row">
 										<div class="col-xl-2 col-lg-4 col-md-6 col-sm-12" dir-paginate="product in products | itemsPerPage: 6" pagination-id="product.id">

@@ -22,10 +22,15 @@
               		
               		<fieldset disabled>
                         
-                      <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-						<label for="name">ชื่อร้านค้า:</label>
-    					<input type="text" class="form-control" name="name" id="name" value="เจริญสิทธิภัณฑ์ฮาร์ดแวร์">
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<label for="name">รหัสร้านค้า:</label>
+    					<input type="text" class="form-control" name="name" id="name" value="รอดึงข้อมูล">
                       </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+              <label for="name">ชื่อร้านค้า:</label>
+                <input type="text" class="form-control" name="name" id="name" value="เจริญสิทธิภัณฑ์ฮาร์ดแวร์">
+                        </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                         <label for="address">ที่อยู่/เลขที่:</label>
@@ -58,7 +63,7 @@
                       </div>
 					
 					 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="tel">เบอร์โทรศัพท์:</label>
+                        <label for="tel">เบอร์โทรศัพท์, เบอร์มือถือ:</label>
     					<input type="text" class="form-control" name="tel" id="tel" value="084-557-1234">
                       </div>
 

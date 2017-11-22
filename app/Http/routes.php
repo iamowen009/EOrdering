@@ -52,6 +52,10 @@ Route::get('promotion/{id?}','PromotionController@index');
 
 Route::get('mail', 'HomeController@mail');
 
+Route::group(['prefix' => 'print'], function() {
+	Route::get('/invoice/{orderId}', 'PrintController@invoice');
+});
+
 /*Route::get('/sendmail', function() 
 {
 	$data = array('name' => 'Jordan');
