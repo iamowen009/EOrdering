@@ -248,7 +248,7 @@
                 </tr>
                 <tr>
                   <td class="text-bold">ที่อยู่</td>
-                  <td>@{{ inv.address }} &nbsp;@{{inv.street}}  &nbsp;@{{inv.subDistrictName}} &nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</td>
+                  <td>@{{ inv.address }} &nbsp;@{{inv.street}}  &nbsp;@{{inv.subDistrictName}} <br>&nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</td>
                 </tr>
                 <tr ng-hide="inv.customerEmail == '' || inv.customerEmail == null">
                   <td class="text-bold">อีเมล</td>
@@ -306,7 +306,7 @@
               <th width="30" class="text-center">#</th>
               <th width="638">ผลิตภัณฑ์</th>
               <th width="100">จำนวน</th>
-              <th width="100">
+              <th width="150">
                 <span style="color:red">*</span>
                 ราคาต่อหน่วย
               </th>
@@ -318,7 +318,7 @@
               <td width="30" class="text-center">@{{ $index+1 }}</td>
               <td width="638">@{{ item.productCode }} @{{ item.productNameTh }}</td>
               <td width="100">@{{ item.qty | number }}</td>
-              <td width="100">@{{ item.amount | number:2 }}</td>
+              <td width="150">@{{ item.amount | number:2 }}</td>
               <td width="100">@{{ item.amount | number:2 }}</td>
             </tr>
           </tbody>

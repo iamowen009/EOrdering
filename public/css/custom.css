@@ -211,7 +211,7 @@ h2 small, h3 .small{
     
     .modal .modal-body,
     .modal .modal-body {
-        padding: 15px 15px 80px;
+        padding: 15px 15px 15px;
     }
     /*Right*/
     .modal.fade .modal-dialog {

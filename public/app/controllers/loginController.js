@@ -23,7 +23,7 @@ app.controller('LoginController',
 
         $scope.logintime = 0;
         $scope.loginDescription = '';
-
+        $scope.passwordInputType = 'password';
         $scope.loading_config = true;
         $scope.response = null;
         $scope.widgetId = null;
@@ -68,6 +68,14 @@ app.controller('LoginController',
             //vcRecaptchaService.reload($scope.widgetId);
             $scope.response = null;
          };
+
+        $scope.showPassword = function() {
+            if ($scope.passwordInputType == 'password') {
+                $scope.passwordInputType = 'text'
+            } else {
+                $scope.passwordInputType = 'password';               
+            }
+        }
         /*fetchSlideshow();
 
         function fetchSlideshow(){

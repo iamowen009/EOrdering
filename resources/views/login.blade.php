@@ -18,9 +18,14 @@
     <link href="<?= asset('css/login.css') ?>" rel="stylesheet">
 
     <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:200,200i,300,300i,600,600i">
     <link href="<?= asset('node_modules/sweetalert/lib/sweet-alert.css') ?>" rel="stylesheet">
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <style>
+    body {
+        font-family: 'Prompt', sans-serif !important;
+    }
+    </style>
 </head>
 
 <body ng-app="app" ng-controller="AppController">
@@ -100,10 +105,15 @@
                             <input class="form-control has-feedback-left" id="username" placeholder="Username" type="text" ng-model="loginData.username" style="margin-top:6px;">
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true" style="padding-top:6px;"></span>
                           </div>
-
                           <div class="col-md-12 form-group has-feedback">
-                            <input type="password" class="form-control" id="password" placeholder="Password" type="text" ng-model="loginData.password" style="margin-top:6px;">
-                            <a href="#" class="fa fa-eye form-control-feedback right show-password"  ng-click="showPassword()" aria-hidden="true" style="padding-top:6px;" ></a>
+                            <small class="pull-right">
+                                <a style="cursor: pointer;" ng-click="showPassword()">
+                                    แสดงรหัสผ่าน
+                                </a>
+                            </small>
+                            <input type="{{ passwordInputType }}" class="form-control has-feedback-left" id="password" placeholder="Password" type="text" ng-model="loginData.password">
+                            <span class="fa fa-lock form-control-feedback left" aria-hidden="true" style="padding-top:18px;"></span>
+    
                           </div>
 
                           <div class="clearfix"></div>
