@@ -247,7 +247,7 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
       animation: $scope.animationsEnabled,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
-      templateUrl: '/template/modals/cart.modal.html',
+      templateUrl: _base + '/template/modals/cart.modal.html',
       controller: 'cartInstanceCtrl',
       controllerAs: '$scope',
       windowClass: 'modal-cart right fade',
