@@ -15,7 +15,7 @@
             <table>
               <tbody>
                 <tr>
-                  <td width="100" class="text-bold text-blue">ร้านค้า</td>
+                  <td width="110" class="text-bold text-blue">ร้านค้า</td>
                   <td class="text-bold text-blue" style="font-size:14px;">@{{ inv.customerCode }} : @{{ inv.customerName }}</td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@
             <table>
               <tbody>
                 <tr>
-                  <td width="100" class="text-bold text-blue">เลขที่ใบสั่งซื้อ</td>
+                  <td width="110" class="text-bold text-blue">เลขที่ใบสั่งซื้อ</td>
                   <td>@{{ inv.documentNumber }}</td>
                 </tr>
                 <tr>
