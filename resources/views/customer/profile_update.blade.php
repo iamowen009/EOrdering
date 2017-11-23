@@ -8,7 +8,7 @@
           <form name="form" ng-submit="updateProfile(form.$valid)" novalidate>
             <div class="panel">
               <div class="panel-heading text-center style-title">
-                แจ้งเรื่องเปลี่ยนแปลงข้อมูล 
+                แจ้งเปลี่ยนแปลงข้อมูล 
               </div>
               <div class="panel-body">
                 <div class="row">

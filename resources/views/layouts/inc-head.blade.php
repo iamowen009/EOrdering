@@ -44,7 +44,7 @@
 										<ul class="dropdown-menu">
 												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลส่วนตัว</a></li>
 												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อทีโอเอ</a></li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเปลี่ยนแปลงข้อมูล</a></li>
 												<li ng-hide="hidemenu" ng-if="usertype != 'Single'">
 													<a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a>
 												</li>
@@ -117,6 +117,7 @@
 </div>
 </nav>
 @verbatim
+<!-- ไอคอนตะกร้า ข้างจอ ซ่อนไว้ก่อน
 <div class="cart-fab" ng-click="open('lg')" ng-hide="hidemenu">
 <div class="cart-fab-content">
 <span class="item-count">
@@ -125,4 +126,5 @@
 <img src="<?= asset('images/Blue-Cart.png') ?>">
 </div>
 </div>
-@endverbatim
+-->
+@endverbatim -->
