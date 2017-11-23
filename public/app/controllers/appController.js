@@ -42,22 +42,12 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
       var un = parseInt($scope.editedItem.qty) / parseInt($scope.items[$index].altUnitAmount);
       var $qty = $scope.items[$index].altUnitAmount * parseInt(un);
       
-<<<<<<< HEAD
-<<<<<<< HEAD
-      swal(`ผลิตภัณฑ์ต้องสั่งซื้อทีละ ${$scope.items[$index].altUnitAmount} ${$scope.items[$index]['unitNameTh']} ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ`);
-=======
-      //swal('แจ้งเตือน', `ผลิตภัณฑ์ต้องสั่งซื้อทีละ ${$scope.items[$index].altUnitAmount} ${$scope.items[$index]['unitNameTh']} ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ`, 'info');
-
       swal({ 
         html:true , 
         title:'ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.items[$index].altUnitAmount + ' ' + $scope.items[$index]['unitNameTh'] + ' ค่ะ <br> ระบบจะปรับจำนวนให้อัตโนมัติ <br> กรุณาตรวจสอบจำนวนสินค้า <br> ก่อนกดเพิ่มสินค้าค่ะ' , 
         text:''
       });
 
->>>>>>> master
-=======
-      swal(`ผลิตภัณฑ์ต้องสั่งซื้อทีละ ${$scope.items[$index].altUnitAmount} ${$scope.items[$index]['unitNameTh']} ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ`);
->>>>>>> 55e87dfae195faaf608785c218b65487d13b2561
       $scope.loadingcart = false;
     } else {
       var $qty = $scope.editedItem.qty;
