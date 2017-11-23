@@ -5,7 +5,7 @@
       <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
         <button type="button" class="close" data-dismiss="modal" style="font-size:72px;color:red;">&times;</button>
     	 	<div class="col-sm-6 text-right">
-        	<h4 class="modal-title"><b>ใบสั่งซื้อ</b></h4>
+        	<h3 class="modal-title"><b>ใบสั่งซื้อ</b></h3>
         </div>
       </div>
 
@@ -26,9 +26,13 @@
                   <td class="text-bold">อีเมล</td>
                   <td>@{{ inv.customerEmail }}</td>
                 </tr>
-                <tr>
+                <tr ng-hide="inv.customerTelNo == '' || innv.customerTelNo == null">
                   <td class="text-bold">เบอร์โทรศัพท์</td>
                   <td>@{{ inv.customerTelNo }}</td>
+                </tr>
+                <tr nng-if="inv.customerTelNo == '' || innv.customerTelNo == null">
+                  <td class="text-bold">เบอร์โทรศัพท์</td>
+                  <td>-</td>
                 </tr>
                 <tr ng-hide="inv.shipName == '' || inv.shipName == null">
                   <td class="text-bold">สถานที่ส่ง</td>
@@ -37,6 +41,14 @@
                 <tr ng-hide="inv.shipName == '' || inv.shipName == null">
                   <td class="text-bold">ที่อยู่สถานที่ส่ง</td>
                   <td>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }} @{{ inv.shipPostCode }}</td>
+                </tr>
+                <tr ng-if="inv.shipName == '' || inv.shipName == null">
+                  <td class="text-bold">สถานที่ส่ง</td>
+                  <td >-</td>
+                </tr>
+                <tr nng-if="inv.shipName == '' || inv.shipName == null">
+                  <td class="text-bold">ที่อยู่สถานที่ส่ง</td>
+                  <td>-</td>
                 </tr>
                 
               </tbody>
