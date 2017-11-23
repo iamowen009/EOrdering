@@ -23,62 +23,62 @@
               		<fieldset disabled>
                         
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-						<label for="name">รหัสร้านค้า:</label>
+						<label for="name">รหัสร้านค้า</label>
     					<input type="text" class="form-control" name="name" id="name" value="รอดึงข้อมูล">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-              <label for="name">ชื่อร้านค้า:</label>
+              <label for="name">ชื่อร้านค้า</label>
                 <input type="text" class="form-control" name="name" id="name" value="เจริญสิทธิภัณฑ์ฮาร์ดแวร์">
                         </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="address">ที่อยู่/เลขที่:</label>
+                        <label for="address">ที่อยู่/เลขที่</label>
     					<input type="text" class="form-control" name="address" id="address" value="1589">
                       </div>
                         
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="road">ถนน:</label>
+                        <label for="road">ถนน</label>
     					<input type="text" class="form-control" name="road" id="road" value="กิ่งแก้ว">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="tambon">ตำบล/แขวง:</label>
+                        <label for="tambon">ตำบล/แขวง</label>
     					<input type="text" class="form-control" name="tambon" id="tambon" value="เจริญนคร">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="ampur">อำเภอ/เขต:</label>
+                        <label for="ampur">อำเภอ/เขต</label>
     					<input type="text" class="form-control" name="ampur" id="ampur" value="ลาดพร้าว">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="province">จังหวัด:</label>
+                        <label for="province">จังหวัด</label>
     					<input type="text" class="form-control" name="province" id="province" value="กรุงเทพมหานคร">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="zipcode">รหัสไปรษณีย์:</label>
+                        <label for="zipcode">รหัสไปรษณีย์</label>
     					<input type="text" class="form-control" name="zipcode" id="zipcode" value="10060">
                       </div>
 					
 					 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="tel">เบอร์โทรศัพท์, เบอร์มือถือ:</label>
+                        <label for="tel">เบอร์โทรศัพท์, เบอร์มือถือ</label>
     					<input type="text" class="form-control" name="tel" id="tel" value="084-557-1234">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="email">E-mail:</label>
+                        <label for="email">E-mail</label>
     					<input type="text" class="form-control" name="email" id="email" value="example@mail.com">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="delivery">จัดส่ง:</label>
+                        <label for="delivery">จัดส่ง</label>
     					<input type="text" class="form-control" name="delivery" id="delivery" value="กิจทองขนส่ง">
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="latlong">Latitude Longtitude:</label>
+                        <label for="latlong">Latitude Longtitude</label>
     					<input type="text" class="form-control" name="latlong" id="latlong" value="">
                       </div>
                        
