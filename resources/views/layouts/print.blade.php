@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css"  href="{{ asset('css/style.css') }}">
         <style type="text/css">
             @font-face {
@@ -38,6 +36,10 @@
             body {
                 font-size: 18px;
                 font-family: THSarabunNew;
+            }
+
+            .page-break {
+                page-break-after: always;
             }
         </style>
     </head>

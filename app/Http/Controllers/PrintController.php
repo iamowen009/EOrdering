@@ -17,7 +17,8 @@ class PrintController extends Controller
         if ($json['result'] == 'SUCCESS') {
             $data['info'] = $json['data']['order'];
             $data['products'] = $json['data']['orderDetailList'];
-            $pdf = PDF::loadView('print.invoice', $data);
+            $pdf = PDF::loadView('print.invoice', $data)
+                ->setPaper('a4');
             return @$pdf->stream();
             //return $pdf->download();
             //print_r($data);

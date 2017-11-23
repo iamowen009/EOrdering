@@ -263,13 +263,13 @@
   .print__content--block {
     width: 100%; }
   .print__content--left {
-    width: 380px;
+    width: 370px;
     height: 227px;
     float: left;
     border: 1px solid #000000; }
   .print__content--right {
     margin-left: 20px;
-    width: 380px;
+    width: 370px;
     height: 227px;
     float: left;
     border: 1px solid #000000; }

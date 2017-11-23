@@ -18,12 +18,12 @@
     <link href="<?= asset('css/login.css') ?>" rel="stylesheet">
 
     <link href="<?= asset('./css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt:200,200i,300,300i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maitree:200,200i,300,300i,600,600i">
     <link href="<?= asset('node_modules/sweetalert/lib/sweet-alert.css') ?>" rel="stylesheet">
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <style>
     body {
-        font-family: 'Prompt', sans-serif !important;
+        font-family: 'Maitree', sans-serif !important;
     }
     </style>
 </head>
