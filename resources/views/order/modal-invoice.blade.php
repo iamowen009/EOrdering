@@ -46,7 +46,7 @@
                   <td class="text-bold text-blue">สถานที่ส่ง</td>
                   <td >-</td>
                 </tr>
-                <tr nng-if="inv.shipName == '' || inv.shipName == null">
+                <tr ng-if="inv.shipName == '' || inv.shipName == null">
                   <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>
                   <td>-</td>
                 </tr>
