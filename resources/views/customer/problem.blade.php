@@ -7,11 +7,11 @@
         <form name="form" ng-submit="sendProblem(form.$valid)" novalidate>
           <div class="panel">
             <div class="panel-heading text-center style-title">
-              ปัญหาที่พบ 
+              แจ้งปัญหา 
             </div>
             <div class="panel-body">
               <div class="form-group">
-                <label>ปัญหาที่พบ</label>
+                <label>แจ้งปัญหา</label>
                 <textarea name="problemText" class="form-control" ng-model="input.problemText" rows="10" ng-required="true"></textarea>
               </div>
             </div>
