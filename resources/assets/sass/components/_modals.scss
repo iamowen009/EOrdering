@@ -1,0 +1,138 @@
+.modal {
+  .modal-dialog {
+    .modal-content {
+      .modal-header {
+        button {
+          font-size: 30px;
+          top: 15px;
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  &.modal-cart {
+    .modal-dialog {
+      overflow-y: initial !important;
+
+      .modal-content {
+        border-radius: 0px !important;
+
+        .modal-header {
+          background-color: #bfebee;
+
+          .modal-title {
+            margin: 0px;
+            font-weight: bold;
+          }
+        }
+
+        .modal-body {
+          max-height: calc(100vh - 175px);
+          overflow-y: auto;
+          .item {
+            width: 100%;
+            display: block;
+            padding-left: 43px;
+            position: relative;
+            
+            &__remove {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 30px;
+              height: 30px;
+              border: 2px solid red;
+              border-radius: 50%;
+              text-align: center;
+              cursor: pointer;
+              line-height: 30px;
+
+              i {
+                font-size: 19px;
+                color: red;
+              }
+            }
+
+            &__code {
+              width: 100%;
+              display: block;
+              font-size: 15px;
+            }
+
+            &__name {
+              width: 100%;
+              display: block;
+              font-size: 15px;
+              margin-bottom: 5px;
+            }
+
+            &__image {
+              width: 85px;
+              float: left;
+            }
+
+            &__detail {
+              width: 325px;
+              padding-left: 10px;
+              float: right;
+
+              ul {
+                font-size: 15px;
+              }
+            }
+
+            @include clearfix;            
+          }
+
+          .item {
+            &.bom {
+              padding-left: 50px;
+
+              .item {
+                &__code, &__name {
+                  font-size: 13px;
+                }
+
+                &__image {
+                  width: 70px;
+                }
+
+                &__detail {
+                  width: 333px;
+
+                  ul {
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .modal-total {
+          padding: 15px;
+          border-top: 1px solid #e5e5e5;
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  &.right {
+    &.fade {
+      .modal-dialog {
+        right: -320px;
+        @include transition(opacity 0.3s linear, right 0.3s ease-out);
+      }
+      &.in {
+        .modal-dialog {
+          right: 0;
+        }
+      }
+    }
+  }
+}

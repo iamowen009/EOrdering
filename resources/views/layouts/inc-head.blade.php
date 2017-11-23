@@ -66,7 +66,7 @@
 									@endverbatim
 							</li>
 							<li class="nav-item item-cart" ng-hide="hidemenu">
-									<a class="navbar-menu  text-center"  href="#" ng-click="open('lg')">
+									<a class="navbar-menu  text-center"  href="#" ng-click="openModalCart('lg')">
 											<span class="bell">
 													<img class="icon-in-home" src="<?= asset('images/cart.png') ?>">
 													@verbatim

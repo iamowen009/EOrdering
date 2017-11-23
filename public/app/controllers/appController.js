@@ -20,7 +20,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
   };
 
   $scope.toShop = function () {
-    window.location = _base + '/product/0';
+    window.location = _base + '/product/10';
   };
 
   $scope.cancel = function () {
@@ -238,20 +238,21 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
 
   $scope.animationsEnabled = true;
 
-  $scope.open = function (size, parentSelector) {
+  $scope.openModalCart = function (size, parentSelector) {
+    /*
     var parentElem = parentSelector ?
       angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
-
+    */
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
-      templateUrl: 'cartModalContent.html',
+      templateUrl: '/template/modals/cart.modal.html',
       controller: 'cartInstanceCtrl',
       controllerAs: '$scope',
-      windowClass: 'fade right',
+      windowClass: 'modal-cart right fade',
       size: size,
-      appendTo: parentElem,
+      //appendTo: parentElem,
     });
 
     modalInstance.result.then(function (selectedItem) {
