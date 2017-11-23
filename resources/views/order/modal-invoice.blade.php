@@ -16,7 +16,7 @@
               <tbody>
                 <tr>
                   <td width="120" class="text-bold text-blue">ร้านค้า</td>
-                  <td>@{{ inv.customerCode }} : @{{ inv.customerName }}</td>
+                  <td class="text-bold text-blue" style="font-size:14px;">@{{ inv.customerCode }} : @{{ inv.customerName }}</td>
                 </tr>
                 <tr>
                   <td class="text-bold text-blue">ที่อยู่</td>
