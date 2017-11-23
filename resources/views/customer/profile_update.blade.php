@@ -13,15 +13,15 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <label>รหัสร้านค้า:</label>
+                    <label>รหัสร้านค้า</label>
                     <input type="text" class="form-control" name="customerCode" ng-model="input.customerCode" ng-disabled="true" ng-required="true">
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>ชื่อร้านค้า:</label>
+                    <label>ชื่อร้านค้า</label>
                     <input type="text" class="form-control" name="customerName" ng-model="input.customerName" ng-disabled="true" ng-required="true">
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>ที่อยู่/เลขที่:</label>
+                    <label>ที่อยู่/เลขที่</label>
                     <input type="text" class="form-control" name="address" ng-model="input.address" ng-required="true">
                     <div ng-messages="form.address.$dirty && form.address.$error">  
                       <span class="text-danger" ng-message="required">
@@ -30,7 +30,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>ถนน:</label>
+                    <label>ถนน</label>
                     <input type="text" class="form-control" name="street" ng-model="input.street" ng-required="true">
                     <div ng-messages="form.street.$dirty && form.street.$error">  
                       <span class="text-danger" ng-message="required">
@@ -39,7 +39,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>ตำบล/แขวง:</label>
+                    <label>ตำบล/แขวง</label>
                     <input type="text" class="form-control" name="subDistrictName" ng-model="input.subDistrictName" ng-required="true">
                     <div ng-messages="form.subDistrictName.$dirty && form.subDistrictName.$error">  
                       <span class="text-danger" ng-message="required">
@@ -48,7 +48,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>อำเภอ/เขต:</label>
+                    <label>อำเภอ/เขต</label>
                     <input type="text" class="form-control" name="districtName" ng-model="input.districtName" ng-required="true">
                     <div ng-messages="form.districtName.$dirty && form.districtName.$error">  
                       <span class="text-danger" ng-message="required">
@@ -66,7 +66,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>รหัสไปรษณีย์:</label>
+                    <label>รหัสไปรษณีย์</label>
                     <input type="text" class="form-control" name="postCode" ng-model="input.postCode" ng-required="true">
                     <div ng-messages="form.postCode.$dirty && form.postCode.$error">  
                       <span class="text-danger" ng-message="required">
@@ -84,15 +84,15 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>E-mail:</label>
+                    <label>E-mail</label>
                     <input type="text" class="form-control" name="email" ng-model="input.email">
                   </div>
                   <div class="col-md-12 form-group">
-                    <label>จัดส่ง:</label>
+                    <label>จัดส่ง</label>
                     <input type="text" class="form-control" name="transportZoneDesc" ng-model="input.transportZoneDesc" ng-disabled="true" ng-required="true">
                   </div>
                   <div class="col-md-12 form-group">
-                    <label>หมายเหตุ:</label>
+                    <label>หมายเหตุ</label>
                     <textarea name="remark" ng-model="input.remark" class="form-control" rows="5"></textarea>
                   </div>
                 </div>
