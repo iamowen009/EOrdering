@@ -2,8 +2,9 @@
   <div class="modal-dialog-invoice modal-lg invoice">
     <div class="modal-content">
       <div class="modal-header invoice__header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-6 text-center">
+      <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
+        <button type="button" class="close" data-dismiss="modal" style="font-size:72px;color:red;">&times;</button>
+    	 	<div class="col-sm-6 text-right">
         	<h4 class="modal-title">ใบสั่งซื้อ</h4>
         </div>
       </div>
