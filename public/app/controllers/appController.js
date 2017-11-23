@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, Auth, Customers, Products, cartService, Config) {
+app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, Auth, Customers, Products, sharedService, cartService, Config) {
   init()
 
   function init() {
@@ -221,7 +221,12 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
     $scope.hidemenu = false;
 
   $scope.search = function () {
-    window.location = _base + '/product/search?q=' + $scope.searchstring;
+    //window.location = _base + '/product/search?q=' + $scope.searchstring;
+    if ($scope.hidemenu) {
+      sharedService.passData($scope.searchstring);
+    } else {
+      window.location = _base + '/home/' + Customers.customerId();      
+    }
   }
 
   $scope.toPage = function (page) {
