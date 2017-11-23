@@ -1,0 +1,244 @@
+.print {
+    &__container {
+        max-width: 815px;
+        padding: 15px;
+    }
+
+    &__header {
+        //position: relative;
+        &--issuer {
+            @include clearfix;
+
+            img {
+                width: 105px;
+                float: left;
+                margin-top: 16px;
+            }
+
+            ul {
+                float: left;
+                width: 498px;
+                list-style: none;
+                padding-left: 10px;
+                font-size: 18px;
+                margin-top: 2px;
+            }
+        }
+
+        &--option {
+            position: absolute;
+            width: 200px;
+            top: 0;
+            right: 0;
+
+            table {
+                margin-top: 15px;
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__title {
+        display: block;
+        text-align: center;
+
+        h2 {
+            margin-top: 0px;
+            font-size: 30px;
+        }
+    }
+
+    &__content {
+        display: block;
+        @include clearfix;
+
+        table {
+            font-size: 16px;
+
+            td {
+            }
+        }
+
+        &--block {
+            width: 100%;
+        }
+
+        &--left {
+            width: 380px;
+            height: 227px;
+            float: left;
+            border: 1px solid #000000;
+        }
+
+        &--right {
+            margin-left: 20px;
+            width: 380px;
+            height: 227px;
+            float: left;
+            border: 1px solid #000000;
+        }
+    }
+
+    &__product {
+        font-size: 16px;
+        margin-top: 20px;
+        display: block;
+
+        table {
+            width: 100%;
+            border: 1px solid #0a0a0a;
+            border-collapse: collapse;
+
+            thead {
+                background-color: #cccccc;
+            }
+
+            tfoot {
+                background-color: #cccccc;
+            }
+
+            th {
+                border: 1px solid #0a0a0a;
+                padding: 8px;
+                line-height: 10px;
+            }
+
+            td {
+                border: 1px solid #0a0a0a;
+                padding: 8px;
+                line-height: 8px;
+            }
+        }
+    }
+
+    &__note {
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+    }
+}
+/*
+@media print {
+    html, body {
+        height: 99%;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+.print {
+    &__container{
+        padding: 20px;
+    }
+
+    &__header {
+        position: relative;
+
+        &--issuer {
+            @include clearfix;
+
+            width: 593px;
+            //background: red;
+            img {
+                float: left;
+                width: 85px;
+                //margin-top: 17px;
+            }
+
+            ul {
+                float: right;
+                width: 498px;
+                list-style: none;
+                padding-left: 10px;
+                font-size: 19px;
+                margin-top: 2px;
+            }
+        }
+
+        &--option {
+            position: absolute;
+            width: 200px;
+            top: 0;
+            right: -15px;
+
+            table {
+                margin-top: 15px;
+                font-size: 19px;
+            }
+        }
+    }
+
+    &__title {
+        display: block;
+        text-align: center;
+
+        h2 {
+            font-size: 30px;
+        }
+    }
+
+    &__content {
+        @include clearfix;
+
+        table {
+            font-size: 18px;
+
+            td {
+                padding: 5px 0;
+            }
+        }
+
+        &--block {
+            width: 100%;
+        }
+
+        &--left {
+            width: 49%;
+            height: 237px;
+            float: left;
+            border: 1px solid #000000;
+        }
+
+        &--right {
+            width: 49%;
+            height: 237px;
+            float: right;
+            border: 1px solid #000000;
+        }
+    }
+
+    &__product {
+        width: 100%;
+        display: block;
+        margin-top: 20px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                background-color: #cccccc;
+            }
+
+            tfoot {
+                background-color: #cccccc;
+            }
+
+            th {
+                padding: 5px 10px;
+            }
+
+            td {
+                padding: 5px 10px;
+            }
+        }
+    }
+
+    &__note {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+    }
+}
+*/

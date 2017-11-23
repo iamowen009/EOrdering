@@ -148,6 +148,7 @@ app.controller('OrderController',
 		}
 
 		$scope.OrderPrint = function (orderId) {
+			/*
 			Orders.fetchOne(orderId).then(function (response) {
 				if (response.data.result == 'SUCCESS') {
 					var head = response.data.data.order,
@@ -168,6 +169,9 @@ app.controller('OrderController',
 				} else {
 				}
 			});
+			*/
+            var url =  _base + '/print/invoice/' + orderId;
+            window.open(url, '_blank');
 		}
 
 		$scope.OrderStatusModal = function (saleOrderNumber) {

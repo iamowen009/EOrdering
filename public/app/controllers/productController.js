@@ -353,11 +353,13 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 
     $scope.promotionLink = function () {
         $('#modal-promotion').modal('show');
-    }
+    };
+
 
     function fetchOneProduct(customerId, btf) {
         Products.fetchOne(customerId, btf).then(function (response) {
             if (response.data.result == 'SUCCESS') {
+                console.log(response);
                 $scope.btf = response.data.data.btfInfo;
                 $scope.product = response.data.data.productList;
                 $scope.boms = response.data.data.productInBOMList;
@@ -434,6 +436,10 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             if (response.data.result == 'SUCCESS') {
                 $scope.promotions = response.data.data.promotionHDList;
                 $scope.totalPromotion = $scope.promotions ? $scope.promotions.length : 0;
+
+                if (response.data.data.promotionHDList.length != 0) {
+                    //$('#modal-promotion').modal('show');
+                }
             }
             $scope.loading = false;
         });

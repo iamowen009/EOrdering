@@ -92,11 +92,8 @@
     </div>-->
 
     <br/>
-    <div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6></div>
-    <!-- <h6>รายละเอียดสินค้าที่สั่งซื้อ</h6> -->
+    <div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length + boms.length | number }} รายการ</h6></div>
 
-    <!--<ngcart-cart></ngcart-cart>-->
-    <!-- <h6>คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length | number }} รายการ</h6> -->
 
   <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
       Your cart is empty
@@ -108,7 +105,6 @@
         <table class="table table-hover text-right">
             <thead class="thead-default">
                 <tr>
-                    <th class="text-center">#</th>
                     <th class="text-center">รหัสสินค้า</th>
                     <th class="text-center">สินค้า</th>
                     <th class="text-center">จำนวน</th>
@@ -122,25 +118,28 @@
             </tfoot>
             <tbody ng-repeat="item in carts track by $index">
             <tr class="cart-product-{{ item.productId }}">
-                <td class="text-center">{{$index+1}}</td>
-                <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{item.productCode}}</td>
-                <td class="text-center">{{ item.productNameTh }}</td>
+                <td class="text-center">
+                    <img class="img-product" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+                    <strong>{{item.productCode}}</strong>
+                </td>
+                <td class="text-center">
+                    <strong>{{ item.productNameTh }}</strong>
+                </td>
                 <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span></td>
                 <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{item.unitNameTh}}</span></td>
                 <td><span ng-if="bomRows(item.productCode) == 0">{{ item.price | number:2}}</span></td>
                 <td><span ng-if="bomRows(item.productCode) == 0">{{ +item.price*+item.qty | number:2 }}</span></td>
+                <!--
                 <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
-
+                -->
             </tr>
             <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
-                <td class="text-center">{{$index+1}}</td>
                 <td class="text-center"><img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
                 <td class="text-center">{{ bom.productNameTh }}</td>
                 <td class="text-center">{{ item.qty }}</td>
                 <td class="text-center">{{item.unitNameTh}}</td>
                 <td>{{ bom.price | number:2}}</td>
                 <td>{{ +bom.price*+item.qty | number:2 }}</td>
-                <td></td>
             </tr>
 
             </tbody>

@@ -143,7 +143,9 @@
 
                   <tbody>
                   <tr ng-repeat="item in descountdetail">
-                      <td class="text-center">@{{item.type}}</td>
+                      <td class="text-center" ng-style="{'color': (item.type == 'เพิ่ม') ? '#0000FF' : '#FF0000' }">
+                          @{{ item.type }}
+                      </td>
                       <td class="text-left">@{{item.descp}}</td>
                       <td class="text-right">@{{item.kwert | number:2}}</td>
                   </tr>
