@@ -62,7 +62,7 @@
 											</div>
 										
 									</div>
-									<strong style="color:red;position: absolute;margin: -53px 0px 0px 145px;">* จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม Vat</strong>
+									<strong style="color:red;position: absolute;margin: -53px 0px 0px 145px;">* จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม VAT</strong>
 								</div>
 								
 	                        </div>
