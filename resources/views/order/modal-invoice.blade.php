@@ -58,7 +58,7 @@
             <table>
               <tbody>
                 <tr>
-                  <td width="130" class="text-bold text-blue">เลขที่ใบสั่งซื้อ</td>
+                  <td width="100" class="text-bold text-blue">เลขที่ใบสั่งซื้อ</td>
                   <td>@{{ inv.documentNumber }}</td>
                 </tr>
                 <tr>
