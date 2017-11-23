@@ -7,13 +7,11 @@
     <div class="x_panel">
     <div class="x_title">
       <h4>{{customer.customerCode}} : {{customer.customerName}}</h4>
-
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
       <br>
       <form class="form-horizontal form-label-left" name="formcart">
-
           <div class="col-md-12">
             <div class="form-group col-md-6">
               <label class="control-label col-md-3 col-sm-3 col-xs-12">เลขที่ใบสั่งซื้อ :</label>
@@ -196,7 +194,11 @@
     </div>-->
 
     <br/>
-<div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length + boms.length | number }} รายการ</h6></div>
+<div class="col-md-12">
+  <h6>
+    รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ cartNoBom.length + boms.length | number }} รายการ
+  </h6>
+</div>
 
 
 

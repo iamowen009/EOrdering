@@ -92,7 +92,11 @@
     </div>-->
 
     <br/>
-    <div class="col-md-12"><h6>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ carts.length + boms.length | number }} รายการ</h6></div>
+    <div class="col-md-12">
+      <h6>
+        รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน  {{ cartNoBom.length + boms.length | number }} รายการ
+      </h6>
+    </div>
 
 
   <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
@@ -122,7 +126,7 @@
                     <img class="img-product" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
                     <strong>{{item.productCode}}</strong>
                 </td>
-                <td class="text-center">
+                <td class="text-left">
                     <strong>{{ item.productNameTh }}</strong>
                 </td>
                 <td class="text-center"><span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span></td>
