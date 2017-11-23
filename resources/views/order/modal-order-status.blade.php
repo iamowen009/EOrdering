@@ -1,11 +1,11 @@
-<div id="OrderStatusModalx" class="modal" role="dialog" >
+<div id="OrderStatusModalx" class="modal" role="dialog">
   <div class="modal-dialog-invoice modal-lg">
     <!-- Modal content-->
     <div class="modal-content inv-content">
       <div class="modal-header info">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-12 text-center">
-        	<h4 class="modal-title">ใบสั่งซื้อ</h4>
+        <div class="col-sm-12 text-center">
+          <h4 class="modal-title">ใบสั่งซื้อ</h4>
         </div>
       </div>
       <div class="modal-body">
@@ -25,28 +25,33 @@
     <div class="modal-content inv-content">
       <div class="modal-header info">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-6 text-center">
-        	<h4 class="modal-title">รายละเอียดการสั่งซื้อ</h4>
+        <div class="col-sm-6 text-center">
+          <h4 class="modal-title">รายละเอียดการสั่งซื้อ</h4>
         </div>
       </div>
       <div class="modal-body" style="padding-bottom: 0px;">
         <div class="row inv-header">
           <div class="col-sm-8">
-              <p><strong>ร้านค้า :</strong>  @{{ inv.payerNo }} @{{ inv.payerName }}</p>
-              <p><strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
-              <p><strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}}  วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yyyy'}}</p>
+            <p>
+              <strong>ร้านค้า :</strong> @{{ inv.payerNo }} @{{ inv.payerName }}</p>
+            <p>
+              <strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
+            <p>
+              <strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}} วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yyyy'}}</p>
 
-              <!-- <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy'  }}</p>
+            <!-- <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy'  }}</p>
               <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
               <p><strong>ที่อยู่ :</strong> @{{ inv.address }}</p>
               <p><strong>อีเมล์ : </strong> @{{ customers.email }}</p>
               <p><strong>เบอร์โทรศัพท์ : </strong> @{{ inv.customerTelNo }}</p>  -->
           </div>
           <div class="col-sm-4">
-              <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
-              <p><strong>จัดส่ง : </strong>@{{ inv.transportZoneDesc }}</p>
+            <p>
+              <strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
+            <p>
+              <strong>จัดส่ง : </strong>@{{ inv.transportZoneDesc }}</p>
 
-              <!-- <p><strong>เลขที่ PO : </strong>@{{ inv.customerPO}}</p>
+            <!-- <p><strong>เลขที่ PO : </strong>@{{ inv.customerPO}}</p>
               <p><strong>วันที่ต้องการ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</p>
               <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
               <p><strong>ที่อยู่สถานที่ส่ง : </strong>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
@@ -55,47 +60,51 @@
           </div>
         </div>
         <div>
-          
+
           <div class="invoice-block row">
-              <table class="table table-hover table-bordered">
-                  <thead class="thead-default">
-                      <tr>
-                          <th class="text-center">รหัสสินค้า</th>
-                          <th class="text-center">สินค้า</th>
-                          <th class="text-center">จำนวน</th>
-                          <th class="text-center">หน่วย</th>
-                          <th class="text-center">ราคา/หน่วย</th>
-                          <th class="text-center" style="width:5px">ส่วนลด</th>
-                          <th class="text-center">ราคาหลังหักส่วนลด</th>
-                          <th class="text-center">ราคารวม</th>
-                      </tr>
-                  </thead>
+            <table class="table table-hover table-bordered">
+              <thead class="thead-default">
+                <tr>
+                  <th class="text-center">รหัสสินค้า</th>
+                  <th class="text-center">สินค้า</th>
+                  <th class="text-center">จำนวน</th>
+                  <th class="text-center">หน่วย</th>
+                  <th class="text-center">ราคา/หน่วย</th>
+                  <th class="text-center" style="width:5px">ส่วนลด</th>
+                  <th class="text-center">ราคาหลังหักส่วนลด</th>
+                  <th class="text-center">ราคารวม</th>
+                </tr>
+              </thead>
 
-                  <tbody>
-                  <tr ng-repeat="item in detail">
-                      <td>
-                          @{{item.material}}
-                      </td>
-                      <!-- <td class="text-left"> @{{ item.materialDes }}</td> -->
+              <tbody>
+                <tr ng-repeat="item in detail">
+                  <td>
+                    @{{item.material}}
+                  </td>
+                  <!-- <td class="text-left"> @{{ item.materialDes }}</td> -->
 
-                      <td class="text-left">
-                        <div class="row">
-                          @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''  &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
-                        </div>
-                      </td>
-                      
-                      <td class="text-center">@{{ item.targetQty | number }}</td>
-                      <td class="text-center">@{{item.salesUnit}}</td>
-                      <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
-                      <td class="text-right">@{{item.discount }}</td>
-                      <td class="text-right">@{{item.netwrPerUnit | number:2}}</td>
-                      <td class="text-right">@{{item.amount | number:2}}</td>
-                  </tr>
-                  </tbody>
-              </table>
+                  <td class="text-left">
+                    <div class="row">
+                      @{{ item.materialDes }}
+                      <div class="text-danger" ng-style="item.freeGoods == ''  &&  {'display': 'none'}">
+                      &nbsp;(ของแถม)</div>
+                    </div>
+                  </td>
+
+                  <td class="text-center">@{{ item.targetQty | number }}</td>
+                  <td class="text-center">@{{item.salesUnit}}</td>
+                  <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
+                  <td class="text-right">@{{item.discount }}</td>
+                  <td class="text-right">@{{item.netwrPerUnit | number:2}}</td>
+                  <td class="text-right">@{{item.amount | number:2}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          
-          <p align="right"><strong>@{{inv.sumAmount | number:2}}&nbsp;</strong></p>
+
+          <p align="right">
+            <strong>@{{inv.sumAmount | number:2}}&nbsp;</strong>
+          </p>
           </br>
 
 
@@ -105,8 +114,8 @@
           </div> -->
 
           <div class="invoice-block row">
-              <table class="table table-hover table-bordered">
-                  <!-- <thead class="thead-default">
+            <table class="table table-hover table-bordered">
+              <!-- <thead class="thead-default">
                       <tr>
                           <th class="text-center">ประเภท</th>
                           <th class="text-center">รายละเอียด</th>
@@ -114,15 +123,15 @@
                       </tr>
                   </thead> -->
 
-                  <tbody>
-                  <tr ng-repeat="item in discount">
-                      <!-- <td class="text-center">@{{item.type}}</td> -->
-                      <td class="text-center" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
-                      <td class="text-left">@{{item.description}}</td>
-                      <td class="text-right">@{{item.kwert | number:2}}</td>
-                  </tr>
-                  </tbody>
-              </table>
+              <tbody>
+                <tr ng-repeat="item in discount">
+                  <!-- <td class="text-center">@{{item.type}}</td> -->
+                  <td class="text-center" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
+                  <td class="text-left">@{{item.description}}</td>
+                  <td class="text-right">@{{item.kwert | number:2}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
 
@@ -161,7 +170,8 @@
               <strong>รวมมูลค่าสินค้า :</strong>
             </div>
             <div class="col-sm-2 text-right">
-                @{{ inv.netValue2 | number:2}} <strong> บาท</strong>
+              @{{ inv.netValue2 | number:2}}
+              <strong> บาท</strong>
             </div>
           </div>
 
@@ -172,7 +182,8 @@
             </div>
 
             <div class="col-sm-2 text-right">
-              @{{ inv.vatAmount | number}}<strong> บาท</strong>
+              @{{ inv.vatAmount | number}}
+              <strong> บาท</strong>
             </div>
           </div>
 
@@ -182,21 +193,22 @@
               <strong>ยอดรวม :</strong>
             </div>
             <div class="col-sm-2 text-right">
-            @{{ inv.netValue2 + inv.vatAmount | number}}<strong> บาท</strong>
+              @{{ inv.netValue2 + inv.vatAmount | number}}
+              <strong> บาท</strong>
             </div>
           </div>
 
+        </div>
+        <div class="modal-footer invoice__footer">
+          <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
+            พิมพ์
+          </button>
+          <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
+            ปิด
+          </button>
+        </div>
       </div>
-      <div class="modal-footer invoice__footer">
-        <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
-          พิมพ์
-        </button>
-        <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
-          ปิด
-        </button>
-      </div>
-    </div>
 
+    </div>
   </div>
-</div>
 </div>

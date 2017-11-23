@@ -111,10 +111,10 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = true;
-                swal('เพิ่ม รายการโปรด เรียบร้อยแล้ว');
+                swal('เพิ่มเข้ารายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('เพิ่ม รายการโปรด ไม่สำเร็จ');
+                swal('เพิ่มรายการโปรด ไม่สำเร็จ');
             }
         }, function (response) {
 
@@ -133,10 +133,10 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = false;
-                swal('ลบ รายการโปรด เรียบร้อยแล้ว');
+                swal('ลบออกจากรายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('ลบ รายการโปรด ไม่สำเร็จ');
+                swal('ลบรายการโปรด ไม่สำเร็จ');
             }
             console.log(response);
         }, function (response) {
@@ -636,10 +636,11 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = true;
-                swal('เพิ่ม รายการโปรด เรียบร้อยแล้ว');
+                
+                swal('เพิ่มเข้ารายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('เพิ่ม รายการโปรด ไม่สำเร็จ');
+                swal('เพิ่มรายการโปรด ไม่สำเร็จ');
             }
         }, function (response) {
 
@@ -661,10 +662,10 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
             $scope.loading = false;
             if (response.data.result == 'SUCCESS') {
                 product.isFavorite = false;
-                swal('ลบ รายการโปรด เรียบร้อยแล้ว');
+                swal('ลบออกจากรายการโปรด เรียบร้อยแล้ว');
                 //location.reload();
             } else {
-                swal('ลบ รายการโปรด ไม่สำเร็จ');
+                swal('ลบรายการโปรด ไม่สำเร็จ');
             }
             console.log(response);
         }, function (response) {

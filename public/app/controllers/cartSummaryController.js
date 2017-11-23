@@ -72,4 +72,4 @@ app.controller('CartSummaryController', function ($scope, $http, Customers, Cart
       return d['shipId'] == valueStartsWith;
     })
   }
-})ว
+});

@@ -113,10 +113,12 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 
 	$scope.OrderInfo = function (orderId) {
 		Orders.fetchOne(orderId).then(function (response) {
-			console.log(response);
+			
 			if (response.data.result == 'SUCCESS') {
 				var head = response.data.data.order,
 					detail = response.data.data.orderDetailList;
+				$scope.itemNoBom = $filter('filter')(response.data.data.orderDetailList, { isBOM: false });
+				$scope.boms = response.data.data.orderBOMItems;
 				$scope.inv = head;
 				$scope.inv.customerEmail = $scope.customer.email;
 				$scope.detail = detail;
