@@ -5,7 +5,7 @@
       <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
         <button type="button" class="close" data-dismiss="modal" style="font-size:72px;color:red;">&times;</button>
     	 	<div class="col-sm-6 text-right">
-        	<h4 class="modal-title">ใบสั่งซื้อ</h4>
+        	<h4 class="modal-title"><b>ใบสั่งซื้อ</b></h4>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
                 </tr>
                 <tr ng-if="inv.isReceive !== null">
                   <td class="text-bold">จัดส่งโดย</td>
-                  <td >รับสินค้าเอง</td>
+                  <td >ลูกค้ารับสินค้าเอง</td>
                 </tr>
               </tbody>
             </table>
@@ -95,11 +95,11 @@
               <!-- <td width="30" class="text-center">@{{ $index+1 }}</td> -->
               <td width="638">@{{ item.productCode }} @{{ item.productNameTh }}</td>
               <td width="100" class="text-center">@{{ item.qty | number }} @{{item.unitNameTh}}</td>
-              <td width="150" class="text-right">@{{ item.amount | number:2 }} บ.</td>
+              <td width="150" class="text-right">@{{ item.amount | number:2 }}</td>
               <td width="100" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr class="footer-table">
-              <td class="text-center"><b>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT) </b></td>
+              <td class="text-center"><b>ยอดรวมมูลค่าสินค้า (ไม่รวม VAT) </b></td>
               <td colspan="2" class="text-center"><b>3 รายการ</b></td>
               <td class="text-right"><b>@{{ totalAmount | number:2 }} บ.</b></td>
             </tr>
@@ -107,7 +107,7 @@
           <tfoot>
           <td>
             <div class="left" style="color:red;">
-                  * ราคาต่อหน่วยหลังหักส่วนลดมาตรฐานเท่านั้น
+                  * ราคาต่อหน่วย หลังหักส่วนลดมาตรฐานเท่านั้น
             </div>
           </td>
             
