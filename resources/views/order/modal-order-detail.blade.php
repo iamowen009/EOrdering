@@ -72,17 +72,24 @@
           </br>
 
           <div class="row">
+            <style>
+            .notetitle{
+              width: 10%;
+              display: block;
+              float: left;
+            }
+            </style>
             <div class="col-sm-6 text-danger"> <strong>Note : </strong></div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">สั่งซื้อ   &nbsp;&nbsp;&nbsp;&nbsp;: จำนวนสินค้าที่สั่งซื้อ</div>
+						<div class="col-sm-6 text-danger"><span class="notetitle">สั่งซื้อ</span>: จำนวนสินค้าที่สั่งซื้อ</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">ออกบิล &nbsp;: จำนวนสินค้าที่เปิดบิลแล้ว</div>
+						<div class="col-sm-6 text-danger"><span class="notetitle">ออกบิล</span>: จำนวนสินค้าที่เปิดบิลแล้ว</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">การจอง : จำนวนสินค้าที่ได้รับการจองและรอการเปิดบิล</div>
+						<div class="col-sm-6 text-danger"><span class="notetitle">การจอง</span>: จำนวนสินค้าที่ได้รับการจองและรอการเปิดบิล</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">คงค้าง  &nbsp;&nbsp;: จำนวนสินค้ารอดำเนินการ</div>
+						<div class="col-sm-6 text-danger"><span class="notetitle">คงค้าง</span>: จำนวนสินค้ารอดำเนินการ</div>
             <div class="col-sm-6 text-right"></div>
-						<div class="col-sm-6 text-danger">ยกเลิก &nbsp; : จำนวนสินค้าที่ทำการยกเลิก</div>
+						<div class="col-sm-6 text-danger"><span class="notetitle">ยกเลิก </span>: จำนวนสินค้าที่ทำการยกเลิก</div>
             <div class="col-sm-6 text-right"></div>
 
           </div>

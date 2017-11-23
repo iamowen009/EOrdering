@@ -23,7 +23,7 @@
         													<th class="text-center" style="width:120px;" >ผู้ดำเนินการ</th>
         													<th class="text-center" style="width:100px;">เลขที่ใบสั่งซื้อ</th>
         													<th class="text-center" style="width:100px;">เลขที่เอกสาร<br />(หลังหักส่วนลด)</th>
-        													<th class="text-center" style="width:120px;">จำนวนเงินสุทธิ* <br/>(ไม่รวม VAT)</th>
+        													<th class="text-center" style="width:120px;">จำนวนเงินสุทธิ <span style="color:red;">*</span> <br/>(ไม่รวม VAT)</th>
         													<th style="width:100px;" class="text-center">สถานะสั่งซื้อ</th>
         													<th style="width:200px;" class="text-center">Order / <br/>Bill Tracking</th>
         													</tr>

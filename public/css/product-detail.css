@@ -1,5 +1,5 @@
 select.form-control{
-	height:auto !important;
+	/* height:auto !important; */
 }
 .cui-ecommerce--product--controls .btn {
     padding: 4px 40px !important;
@@ -85,4 +85,7 @@ button.close{
     width: 1000px;
 		margin: 30px auto;
 		height: 350px;
+}
+.select-style{
+    height: 34px !important;
 }

@@ -70,15 +70,15 @@
 
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-6">ขนาด</label>
-									<div class="col-md-4 col-sm-4 col-xs-6">
-										<select class="form-control" ng-model="cartSize" ng-change="getProduct()">
+									<div class="col-md-3 col-sm-3 col-xs-6">
+										<select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()">
 											<option ng-repeat="p in sizes" value="{{ p.sizeCode}}">{{ p.sizeName }} </option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group" ng-if="listColors.length > 0 ">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">สี / เบอร์ / รุ่น</label>
-									<div class="col-md-4 col-sm-4 col-xs-6">
+									<div class="col-md-3 col-sm-3 col-xs-6">
 										<div class="dropdown color-element">
 											<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 												<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
@@ -121,7 +121,7 @@
 									<div class="col-md-4">
 										<div style="margin-top:10px; " ng-show="productSelect.productId">
 											<!--<strong>หน่วย : </strong>-->{{productSelect.unitNameTh}}
-											<span ng-if="productSelect.altUnit1Amount > 0">( 1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span>
+											<span ng-if="productSelect.altUnit1Amount > 0">(1 {{ productSelect.altUnit1NameTh }} : {{productSelect.altUnit1Amount }} {{ productSelect.unitNameTh }})</span>
 										</div>
 									</div>
 								</div>
@@ -155,7 +155,7 @@
 							</div>
 						</div>
 						<div class="col-lg-12 remarkpd">
-							<font color="red">หมายเหตุ: บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงรายการ โดยมิต้องแจ้งให้ทราบล่วงหน้า ตลอดจนความผิดพลาดที่เกิดจากการพิมพ์</font>
+							<font color="red">หมายเหตุ : บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนแปลงรายการ โดยมิต้องแจ้งให้ทราบล่วงหน้า ตลอดจนความผิดพลาดที่เกิดจากการพิมพ์</font>
 						</div>
 					</div>
 
