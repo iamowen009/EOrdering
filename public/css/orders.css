@@ -44,6 +44,10 @@ a.nav-link.tab1 {
 }
 .modal-title{
   margin:5px 0;
+  color: #0f258b;
+}
+.text-blue{
+  color: #0f258b;
 }
 .x_content{
   background: transparent !important;

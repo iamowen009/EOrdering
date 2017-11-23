@@ -74,7 +74,7 @@
           <div class="row">
             <style>
             .notetitle{
-              width: 10%;
+              width: 12%;
               display: block;
               float: left;
             }

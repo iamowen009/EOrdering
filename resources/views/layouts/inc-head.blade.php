@@ -42,15 +42,15 @@
 										<img class="icon-in-home" src="<?= asset('images/account.png') ?>">
 										บัญชีของฉัน <span class="caret"></span></button>
 										<ul class="dropdown-menu">
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลส่วนตัว</a></li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อทีโอเอ</a></li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')"><i class="fa fa-user"></i> ข้อมูลส่วนตัว</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')"><i class="fa fa-phone" ></i> ติดต่อ TOA</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')"><i class="fa fa-pencil"></i>  แจ้งเปลี่ยนแปลงข้อมูล</a></li>
 												<li ng-hide="hidemenu" ng-if="usertype != 'Single'">
-													<a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a>
+													<a href="#" ng-click="toPage('<?php echo url('customer')  ?>')"><i class="fa fa-home"></i> เปลี่ยนร้านค้า</a>
 												</li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')">เปลี่ยนรหัสผ่าน</a></li>
-												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('problem')  ?>')">ปัญหาที่พบ</a></li>
-												<li><a ng-click="$event.preventDefault(); logout()">ออกจากระบบ</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('password-update')  ?>')"><i class="fa fa-key"></i> เปลี่ยนรหัสผ่าน</a></li>
+												<li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('problem')  ?>')"><i class="fa fa-exclamation-circle"></i> แจ้งปัญหา</a></li>
+												<li><a ng-click="$event.preventDefault(); logout()"><i class="fa fa-sign-out"></i> ออกจากระบบ</a></li>
 										</ul>
 								</div>
 						</div>
@@ -117,6 +117,7 @@
 </div>
 </nav>
 @verbatim
+<!-- ไอคอนตะกร้า ข้างจอ ซ่อนไว้ก่อน
 <div class="cart-fab" ng-click="open('lg')" ng-hide="hidemenu">
 <div class="cart-fab-content">
 <span class="item-count">
@@ -125,4 +126,5 @@
 <img src="<?= asset('images/Blue-Cart.png') ?>">
 </div>
 </div>
+-->
 @endverbatim
