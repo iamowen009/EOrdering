@@ -33,6 +33,12 @@
         body {
             font-family: 'Prompt', sans-serif !important;
         }
+        @media (min-width: 992px){
+          .ul-search {
+              width: 30%;
+          }
+        }
+
         </style>
         @yield('head')
     </head>
