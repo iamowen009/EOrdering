@@ -226,10 +226,12 @@
 .page-break {
   page-break-after: always; }
 
-.modal .modal-dialog .modal-content .modal-header button {
+.modal .modal-dialog .modal-content .modal-header .close {
   font-size: 30px;
   top: 15px;
-  color: red; }
+  color: red;
+  position: absolute;
+  right: 15px; }
 
 .modal.modal-cart .modal-dialog {
   overflow-y: initial !important; }
@@ -275,7 +277,7 @@
           width: 85px;
           float: left; }
         .modal.modal-cart .modal-dialog .modal-content .modal-body .item__detail {
-          width: 325px;
+          width: 310px;
           padding-left: 10px;
           float: right; }
           .modal.modal-cart .modal-dialog .modal-content .modal-body .item__detail ul {
@@ -291,7 +293,7 @@
         .modal.modal-cart .modal-dialog .modal-content .modal-body .item.bom .item__image {
           width: 70px; }
         .modal.modal-cart .modal-dialog .modal-content .modal-body .item.bom .item__detail {
-          width: 333px; }
+          width: 310px; }
           .modal.modal-cart .modal-dialog .modal-content .modal-body .item.bom .item__detail ul {
             font-size: 13px; }
     .modal.modal-cart .modal-dialog .modal-content .modal-total {
