@@ -1,3 +1,4 @@
+/.idea
 /storage/fonts/*.ufm
 /storage/fonts/*
 !storage/fonts/THSarabunNew.ttf
