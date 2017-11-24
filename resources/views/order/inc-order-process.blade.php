@@ -67,7 +67,7 @@
                           </div>
                       <!--   <span style="color:green">Complete</span> -->
                         </a>
-                        <a ng-show="(list.percentComplete===0  && list.rejectHStatus==='c')"><span style="color:red">Cancel</span></a>
+                        <a ng-show="(list.percentComplete===0  && list.rejectHStatus==='c')"><span style="color:red">Cancelled</span></a>
                       </td>
                       <!-- <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td> -->
 
