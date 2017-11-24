@@ -621,3 +621,10 @@ button.confirm {
   margin-bottom: 15px;
   font-weight: 200 !important;
 }
+.carousel-control-next, .carousel-control-prev{
+  width: 7%;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 35px;
+    height: 50px;
+  }
