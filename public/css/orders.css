@@ -141,4 +141,8 @@ tfoot > tr > td{
 #TaxModal .table > thead > tr > th
 {
   background: #D2C9E2;
+  border-right: 1px solid #ffffff !important;
+}
+tr.info>th {
+    border-right: 1px solid #fff;
 }
