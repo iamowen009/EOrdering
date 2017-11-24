@@ -134,7 +134,7 @@
             
         </div>
         <!-- /.row -->
-        <div class="row"><div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div></div>
+        <div class="row"><div class="col-md-12 text-center">@ 2017 TOA Paint (Thailand) Public Company Limited. All Right Reserved.</div></div>
       </div>
         @endverbatim
     </div>

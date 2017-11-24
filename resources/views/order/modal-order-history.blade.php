@@ -3,9 +3,10 @@
 
     <div class="modal-content inv-content">
       <div class="modal-header info">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	 	<div class="col-sm-6 text-center">
-        	<h4 class="modal-title">Order / Billing Tracking</h4>
+        <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
+        <button type="button" class="close" data-dismiss="modal" style="font-size:42px;color:red;">&times;</button>
+        <div class="col-sm-6 text-right">
+          <h3 class="modal-title"><b>Order / Billing Tracking</b></h3>
         </div>
       </div>
 
