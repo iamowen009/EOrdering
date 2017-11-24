@@ -118,35 +118,6 @@
           </div>
           <br/>
         </div>
-        <!--
-        <div class="panel-body">
-          <p class="text-center" ng-show="loading">
-            <span class="fa fa-refresh fa-3x fa-spin"></span>
-          </p>
-          <div class="cui-ecommerce--catalog">
-            <div class="row">
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" dir-paginate="product in products | itemsPerPage: 12" pagination-id="product.id">
-                <div class="cui-ecommerce--catalog--item">
-                  <span class="favorite-icon" ng-click="(product.isFavorite) ? removeFav(product) : addFav(product)" ng-class="{'active': product.isFavorite}">
-                    <i class="fa fa-star"></i>
-                  </span>
-                  <div class="cui-ecommerce--catalog--item--img">
-                    <a href="javascript: void(0);" ng-click="toProductDetail(product.btf)">
-                      <img ng-src="{{partImgProductList}}/{{product.btf}}.jpg" err-src="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
-                    </a>
-                  </div>
-                  <div class="text-center product-desc">
-                    <h5 class="ng-binding">{{product.btfWebDescTh}}</h5>
-                    <br>
-                    <span class="price ng-binding">{{product.productPrice}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <dir-pagination-controls template-url="/template/dirPagination.tpl.html" pagination-id="product.id"></dir-pagination-controls>
-        </div>
-        -->
         <div class="w100">
           <div class="text-center" ng-show="loading">
             <span class="fa fa-refresh fa-3x fa-spin"></span>
