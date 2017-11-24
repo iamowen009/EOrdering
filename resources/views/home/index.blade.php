@@ -13,9 +13,6 @@
         <div class="category-home">
           <div class="mb-5">
             <strong style="padding:20px 0 15px 0;font-size:12pt;">กลุ่มผลิตภัณฑ์</strong>
-            <a ng-click="clearMarketingFilter()" style="cursor: pointer;float:right;color:blue;">
-              ล้างทั้งหมด
-            </a>
           </div>
           <ul class="list-unstyled mt-10" style="font-size:0.95em">
             <li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;">
@@ -23,23 +20,6 @@
                 <input type="checkbox" ng-checked="marketingCode.indexOf(marketing.marketingCode) > -1" ng-click="toProductList(marketing.marketingCode)"> 
                 {{ marketing.marketingDesc }}
               </label>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
-        <div class="category-home">
-          <ul class="list-unstyled user_data" style="font-size:0.95em">
-            <li>
-              <strong style="padding:20px 0 15px 0;font-size:12pt;">
-                กลุ่มผลิตภัณฑ์
-              </strong>
-              <br>
-            </li>
-            <li ng-repeat="marketing in marketings" value="{{marketing.marketingCode}}" style="padding-bottom:10px;">
-              <p class="title">
-                <input type="checkbox" ng-click="toProductList(marketing.marketingCode)"> {{ marketing.marketingDesc }}</p>
             </li>
           </ul>
         </div>
