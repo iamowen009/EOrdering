@@ -20,7 +20,7 @@
 
             <form class="form-inline">
               <div class="form-group col-md-3">
-                <label class="datelbl">วันที่ : &nbsp;</label>
+                <label class="datelbl">วันที่เริ่มต้น : &nbsp;</label>
                 <input type="text" class="form-control" ng-model="dateRangeStart" datepicker ng-change="filterOrder()" />
               </div>
               <div class="form-group col-md-3" style="margin-left: -60px;">

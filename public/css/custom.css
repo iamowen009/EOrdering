@@ -131,6 +131,7 @@ header {
 
 .panel-store .panel-body {
   min-height: 100px;
+  color: #000;
 }
 
 .navbar-menu {
