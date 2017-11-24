@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <h4 class="panel-title" style="font-size:18px;">ปี</h4>
     </div>
-    <div class="panel-body order-precess">
+    <div class=" order-precess">
           <ul class="bar-year">
             <li class="title-year"  ng-repeat="y in ordersYear">
               <a href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-@{{y}}"><i class="fa fa-plus"></i></a> <strong>@{{y}}</strong>
