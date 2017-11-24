@@ -1,4 +1,5 @@
 /.idea
+/__MACOSX
 /storage/fonts/*.ufm
 /storage/fonts/*
 !storage/fonts/THSarabunNew.ttf
