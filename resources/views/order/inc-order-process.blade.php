@@ -28,7 +28,7 @@
                 <table class="table table-striped">
                   <thead>
                     <tr class="info">
-                      <th class="text-center" style="width:120px;">วันที่-เวลา</th>
+                      <th class="text-center" style="width:100px;">วันที่ - เวลา</th>
                       <th class="text-center" style="width:120px;">ผู้ดำเนินการ</th>
                       <th class="text-center" style="width:100px;">เลขที่ใบสั่งซื้อ</th>
                       <th class="text-center" style="width:100px;">เลขที่เอกสาร
@@ -44,7 +44,7 @@
                   <tbody>
                     <!-- <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month && list.percentComplete < 100"> -->
                     <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month">
-                      <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy HH:mm'}}</td>
+                      <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy'}}&nbsp;&nbsp;@{{ list.createDate | date:'HH:mm'}}</td>
                       <td class="text-center">@{{ list.docName}}</td>
                       <td class="text-center">
                         <a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a>
