@@ -146,3 +146,6 @@ tfoot > tr > td{
 tr.info>th {
     border-right: 1px solid #fff;
 }
+ul.bar-year {
+    padding: 0px;
+}
