@@ -466,13 +466,15 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 		for (var kr in $scope.colors) {
 			//console.log('size code : ', $scope.colors[kr].sizeCode, ' | ', $scope.cartSize, ' product colorval code : ', $scope.cartCode, ' | ', $scope.colors[kr].productCode);
 			if ($scope.colors[kr].sizeCode == $scope.cartSize) {
-				$scope.listColors.push({
-					'colorCode': $scope.colors[kr]['colorCode'],
-					'colorNameTh': $scope.colors[kr]['colorNameTh'],
-					'cartrgbColor': $scope.colors[kr]['rgbCode'],
-					'sizeCode': $scope.colors[kr]['sizeCode'],
-					'productCode': $scope.colors[kr]['productCode']
-				});
+				// $scope.listColors.push({
+				// 	'colorCode': $scope.colors[kr]['colorCode'],
+				// 	'colorNameTh': $scope.colors[kr]['colorNameTh'],
+				// 	'cartrgbColor': $scope.colors[kr]['rgbCode'],
+				// 	'sizeCode': $scope.colors[kr]['sizeCode'],
+				// 	'productCode': $scope.colors[kr]['productCode']
+				// });
+
+				$scope.listColors.push($scope.colors[kr]);
 			}
 		}
 		//console.log('$scope.listColors : ', $scope.listColors);
