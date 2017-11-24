@@ -555,7 +555,8 @@ a:focus {
 
 li.nav-item:hover {
   background: #b4d8fc;
-  padding: 1px;
+ /* padding: 1px;*/
+ height: 38px;
   border-radius: 5px;
 }
 
