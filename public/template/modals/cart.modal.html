@@ -76,24 +76,12 @@
                 <div class="col-xs-3" style="line-height: 33px;">
                   จำนวน : 
                 </div>
-                <div class="col-xs-7">
-                  <div class="input-group">
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-default" ng-click="removeQty($index)" disabled>
-                        -
-                      </button>
-                    </span>
-                    <input type="text" class="form-control text-center" ng-model="item.qty" style="padding:5px;" value="{{ item.qty }}" disabled>
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-default" ng-click="addQty($index)" disabled>
-                        +
-                      </button>
-                    </span>
-                  </div>
+                <div class="col-xs-5">
+                  <input type="text" class="form-control text-center" ng-model="item.qty" style="padding:5px;" value="{{ item.qty }}" disabled>
                 </div>
               </div>
             </li>
-            <li>
+            <li class="mt-10">
               {{ bom.unitNameTh}}
               <span ng-if="item.altUnitAmount > 0">
                 (1 {{ bom.altUnitNameTh }} : {{ bom.altUnitAmount }} {{ bom.unitNameTh }})
