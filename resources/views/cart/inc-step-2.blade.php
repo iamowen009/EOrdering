@@ -206,10 +206,15 @@
           <tr class="cart-product-{{ item.productId }}">
             <td class="text-center">
               <img class="img-product" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
-              <strong>{{item.productCode}}</strong>
+              <span ng-if="item.isBOM != true">{{item.productCode}}</span>
+              <strong  ng-if="item.isBOM == true">{{item.productCode}}</strong>
             </td>
             <td class="text-left">
-              <strong>{{ item.productNameTh }}</strong>
+              <!-- <strong>{{ item.productNameTh }}</strong> -->
+
+              <span ng-if="item.isBOM != true">{{item.productNameTh}}</span>
+              <strong  ng-if="item.isBOM == true">{{item.productNameTh}}</strong>
+
             </td>
             <td class="text-center">
               <span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span>
