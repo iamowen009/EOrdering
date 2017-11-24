@@ -100,7 +100,6 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">จำนวนสินค้า</label>
 									<div class="col-md-3 col-sm-3 col-xs-12">

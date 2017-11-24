@@ -67,7 +67,7 @@
               </li>
               -->
               <li ng-repeat="type in typesFilter | unique: 'typeCode'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
-                <label>
+                <label style="cursor: pointer;">
                   <input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
                   {{type.typeCode}} {{ type.typeDesc }}
                 </label>
