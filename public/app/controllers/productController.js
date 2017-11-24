@@ -52,7 +52,30 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 				$scope.brandsFilter = getFilterMarketing($scope.brands, $scope.marketingCode);
 				$scope.typesFilter = getFilterMarketing($scope.types, $scope.marketingCode);
 
-				//console.log($scope.typesFilter);
+				var datatemp = getFilterMarketing($scope.types, $scope.marketingCode);
+				var datatemp2 =[];
+
+				for(var index in datatemp)
+				{
+					var isDuplicate = datatemp2.some(function(item, idx){ 
+						return valueArr.indexOf(item) != idx 
+					});
+
+					if(false){
+						datatemp2.push(datatemp[index]);
+					}
+				}
+
+			
+
+
+				//var valueArr = datatemp.map(function(item){ return item.typeCode });
+				// var valueArr = datatemp2.map(function(item){ return item.typeCode });
+				// console.log("valueArr-->",valueArr);
+				// var isDuplicate = valueArr.some(function(item, idx){ 
+				// 	return valueArr.indexOf(item) != idx 
+				// });
+				// console.log(isDuplicate);
 			}
 
 			$scope.loading = false;
@@ -493,11 +516,15 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 			bomPrice += $scope.boms[kx]['productPrice'];
 			//  }
 		}
-		if ($scope.boms.length > 0) {
-			$scope.productPrice = bomPrice;
-		} else {
-			$scope.productPrice = $scope.productSelect.productPrice;
-		}
+
+		// if ($scope.boms.length > 0) {
+		// 	$scope.productPrice = bomPrice;
+		// } else {
+		// 	$scope.productPrice = $scope.productSelect.productPrice;
+		// }
+
+		$scope.productPrice = $scope.productSelect.productPrice;
+
 		//console.log('bom price is ', bomPrice, ' boms ', $scope.boms, ' scope product select ', $scope.productSelect);
 
 		//$scope.setProduct( $scope.listColors[0]['colorCode'] );
