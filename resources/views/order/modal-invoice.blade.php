@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header invoice__header">
         <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
-        <button type="button" class="close" data-dismiss="modal" style="font-size:72px;color:red;">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" style="font-size:42px;color:red;">&times;</button>
         <div class="col-sm-6 text-right">
           <h3 class="modal-title">
             <b>ใบสั่งซื้อ</b>
