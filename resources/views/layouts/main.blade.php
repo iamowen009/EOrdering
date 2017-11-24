@@ -50,7 +50,7 @@
   <!-- Page Content -->
 
   <div class="wrapper container-fluid">
-    <div class="mt-20">
+    <div class="">
       @yield('content')
     </div>
     @verbatim

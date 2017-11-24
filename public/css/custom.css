@@ -605,6 +605,7 @@ button.confirm {
 }
 
 .style-title {
+  font-weight: bolder;
   background-color: #80d8d8;
   color: #ffffff;
   font-size: 14pt;
