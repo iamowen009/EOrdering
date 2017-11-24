@@ -137,7 +137,7 @@
                   <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
                   <td class="text-right">@{{item.discount }}</td>
                   <td class="text-right">@{{item.netwrPerUnit | number:2}}</td>
-                  <td class="text-right">@{{item.amount | number:2}}</td>
+                  <td class="text-right">@{{item.amount | number:2}} บ.</td>
                 </tr>
               </tbody>
             </table>
@@ -179,7 +179,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row footer-popup">
             <div class="col-sm-6 text-danger"> </div>
             <div class="col-sm-4 text-right">
               <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
@@ -191,7 +191,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row footer-popup">
             <div class="col-sm-6 text-danger"> </div>
             <div class="col-sm-4 text-right">
               <strong>ยอดรวม :</strong>

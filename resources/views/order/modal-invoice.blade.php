@@ -104,6 +104,7 @@
               <!-- <th width="30" class="text-center">#</th> -->
               <th width="638" class="text-center text-blue">ผลิตภัณฑ์</th>
               <th width="100" class="text-center text-blue">จำนวน</th>
+              <th width="100" class="text-center text-blue">หน่วย</th>
               <th width="150" class="text-center text-blue">
                 ราคาต่อหน่วย
                 <span style="color:red">*</span>
@@ -117,13 +118,15 @@
               <td width="638" style="font-weight: bold">
                 @{{ item.productCode }} @{{ item.productNameTh }}
               </td>
-              <td width="100" class="text-center">@{{ item.qty | number }} @{{ item.unitNameTh }}</td>
+              <td width="100" class="text-center">@{{item.qty | number }}</td>
+              <td width="100" class="text-center">@{{item.unitNameTh }}</td>
               <td width="150" class="text-right">@{{ item.amount | number:2 }}</td>
               <td width="150" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
               <td width="638">@{{ bom.productCode }} @{{ bom.productNameTh }}</td>
-              <td width="100" class="text-center">@{{ bom.qty | number }} @{{ bom.unitNameTh }}</td>
+              <td width="100" class="text-center">@{{ bom.qty | number }}</td>
+              <td width="100" class="text-center">@{{ bom.unitNameTh }}</td>
               <td width="150" class="text-right">@{{ bom.amount | number:2 }}</td>
               <td width="150" class="text-right">@{{ bom.amount | number:2 }} บ.</td>
             </tr>
@@ -131,7 +134,7 @@
               <td class="text-center text-blue">
                 <b>ยอดรวมมูลค่าสินค้า (ไม่รวม VAT) </b>
               </td>
-              <td colspan="2" class="text-center text-blue">
+              <td colspan="3" class="text-center text-blue">
                 <b>@{{ itemNoBom.length + boms.length }} รายการ</b>
               </td>
               <td class="text-right text-blue">
