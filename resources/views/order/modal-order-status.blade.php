@@ -8,37 +8,99 @@
           <h3 class="modal-title"><b>รายละเอียดการสั่งซื้อ</b></h3>
         </div>
       </div>
-      <div class="modal-body" style="padding-bottom: 0px;">
-        <div class="row inv-header">
-          <div class="col-sm-8">
-            <p>
-              <strong>ร้านค้า :</strong> @{{ inv.payerNo }} @{{ inv.payerName }}</p>
-            <p>
-              <strong>เลขที่ใบสั่งซื้อ :</strong> @{{ inv.woNumber }} / @{{ inv.poNumber}}</p>
-            <p>
-              <strong>เลขที่เอกสารอ้างอิง : </strong> @{{inv.salesDocument}} วันที่ : @{{inv.requestedDeliveryDate | date:'dd/MM/yyyy'}}</p>
-
-            <!-- <p><strong>วันทีสั่งซื่้อ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy'  }}</p>
-              <p><strong>การชำระเงิน :</strong> @{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' )  }}</p>
-              <p><strong>ที่อยู่ :</strong> @{{ inv.address }}</p>
-              <p><strong>อีเมล์ : </strong> @{{ customers.email }}</p>
-              <p><strong>เบอร์โทรศัพท์ : </strong> @{{ inv.customerTelNo }}</p>  -->
+      <div class="modal-body invoice__body">
+        <div class="invoice__body--infomation">
+          <div class="left">
+            <table>
+              <tbody>
+                <tr>
+                  <td width="110" class="text-bold text-blue">ร้านค้า</td>
+                  <td class="text-bold text-blue" style="font-size:14px;"> @{{ inv.payerNo }} @{{ inv.payerName }}</td>
+                </tr>
+                <tr>
+                  <td class="text-bold text-blue">ที่อยู่</td>
+                  <td>@{{ inv.address }} &nbsp;@{{inv.street}} &nbsp;@{{inv.subDistrictName}}
+                    <br>&nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}</td>
+                </tr>
+                <tr ng-hide="inv.customerEmail == '' || inv.customerEmail == null">
+                  <td class="text-bold text-blue">อีเมล</td>
+                  <td>@{{ inv.customerEmail }}</td>
+                </tr>
+                 <tr ng-if="inv.customerEmail == '' || inv.customerEmail == null">
+                  <td class="text-bold text-blue">อีเมล</td>
+                  <td>-</td>
+                </tr>
+                <tr ng-hide="inv.customerTelNo == '' || innv.customerTelNo == null">
+                  <td class="text-bold text-blue">โทรศัพท์</td>
+                  <td>@{{ inv.customerTelNo }}</td>
+                </tr>
+                <tr nng-if="inv.customerTelNo == '' || innv.customerTelNo == null">
+                  <td class="text-bold text-blue">โทรศัพท์</td>
+                  <td>-</td>
+                </tr>
+                <tr ng-hide="inv.shipName == '' || inv.shipName == null">
+                  <td class="text-bold text-blue">สถานที่ส่ง</td>
+                  <td> @{{inv.shipCode}} : @{{ inv.shipName }}</td>
+                </tr>
+                <tr ng-hide="inv.shipName == '' || inv.shipName == null">
+                  <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>
+                  <td>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }} @{{ inv.shipPostCode
+                    }}</td>
+                </tr>
+                <tr ng-if="inv.shipName == '' || inv.shipName == null">
+                  <td class="text-bold text-blue">สถานที่ส่ง</td>
+                  <td>-</td>
+                </tr>
+                <tr ng-if="inv.shipName == '' || inv.shipName == null">
+                  <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="col-sm-4">
-            <p>
-              <strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
-            <p>
-              <strong>จัดส่ง : </strong>@{{ inv.transportZoneDesc }}</p>
-
-            <!-- <p><strong>เลขที่ PO : </strong>@{{ inv.customerPO}}</p>
-              <p><strong>วันที่ต้องการ : </strong>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</p>
-              <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
-              <p><strong>ที่อยู่สถานที่ส่ง : </strong>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }}</p>
-               <p><strong>บริษัทขนส่ง : </strong>@{{ shipto(inv.transportZoneDesc) }}</p>
-              <p><strong>บริษัทขนส่ง : </strong>@{{ inv.transportZoneDesc }}</p> -->
+          <div class="right">
+            <table>
+              <tbody>
+                <tr>
+                  <td width="110" class="text-bold text-blue">เลขที่ใบสั่งซื้อ </td>
+                  <td>@{{ inv.woNumber }}
+                    <span class="text-bold text-blue"> / วันที่</span> @{{ inv.documentDate | date:'dd/MM/yyyy' }}
+                  </td>
+                </tr>
+                <tr ng-if="inv.poNumber == '' || inv.poNumber == null">
+                  <td class="text-bold text-blue">PO number</td>
+                  <td>-</td>
+                </tr>
+                <tr ng-hide="inv.poNumber == '' || inv.poNumber == null">
+                  <td class="text-bold text-blue">PO number</td>
+                  <td>@{{ inv.poNumber}}</td>
+                </tr>
+                <tr ng-hide="inv.poNumber == '' || inv.poNumber == null">
+                  <td class="text-bold text-blue">เลขที่เอกสาร</td>
+                  <td> @{{inv.salesDocument}} <span class="text-bold text-blue"> / วันที่</span>  @{{inv.requestedDeliveryDate | date:'dd/MM/yyyy'}}</td>
+                </tr>
+                <tr>
+                  <td class="text-bold text-blue">Request Date</td>
+                  <td>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</td>
+                </tr>
+                <tr>
+                  <td class="text-bold text-blue">การชำระเงิน</td>
+                  <td>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
+                </tr>
+                <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
+                  <td class="text-bold text-blue">จัดส่งโดย</td>
+                  <td>@{{ inv.transportZone }} : @{{ inv.transportZoneDesc }}</td>
+                </tr>
+                <tr ng-if="inv.shipCondition == '01' && inv.isReceive !== null">
+                  <td class="text-bold text-blue">จัดส่งโดย</td>
+                  <td>ลูกค้ารับสินค้าเอง</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div>
+        <br/>
 
           <div class="invoice-block row">
             <table class="table table-hover table-bordered">
@@ -87,24 +149,13 @@
           </br>
 
 
-          <!-- <div class="invoice-block row">
-            <div class="col-sm-6"> <strong>หัก </strong></div>
-            <div class="col-sm-6 text-right">
-          </div> -->
+
 
           <div class="invoice-block row">
-            <table class="table table-hover table-bordered">
-              <!-- <thead class="thead-default">
-                      <tr>
-                          <th class="text-center">ประเภท</th>
-                          <th class="text-center">รายละเอียด</th>
-                          <th class="text-center">ราคา</th>
-                      </tr>
-                  </thead> -->
+            <table class="table table-hover">
 
-              <tbody>
+              <tbody style="border-top: 2px solid #fff;">
                 <tr ng-repeat="item in discount">
-                  <!-- <td class="text-center">@{{item.type}}</td> -->
                   <td class="text-center" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
                   <td class="text-left">@{{item.description}}</td>
                   <td class="text-right">@{{item.kwert | number:2}}</td>
@@ -116,34 +167,8 @@
 
 
 
-          <!-- <div class="row">
-            <div class="col-sm-6 text-danger"> <strong>หัก </strong></div>
-            <div class="col-sm-6 text-right">
 
-            </div>
-            <div class="col-sm-6 text-danger"> Description หัก </div>
-            <div class="col-sm-6 text-right">
-                @{{ totalAmount | number:2 }}
-            </div>
-          </div> -->
-
-
-
-          <!-- </br>
-
-          <div class="row">
-            <div class="col-sm-6 text-danger"><strong>บวก </strong></div>
-            <div class="col-sm-6 text-right">
-
-            </div>
-            <div class="col-sm-6 text-danger"> Description บวก </div>
-            <div class="col-sm-6 text-right">
-                @{{ totalAmount | number:2 }}
-            </div>
-          </div>
-          </br> -->
-
-          <div class="row">
+          <div class="row footer-popup">
             <div class="col-sm-6 text-danger"></div>
             <div class="col-sm-4 text-right">
               <strong>รวมมูลค่าสินค้า :</strong>
@@ -187,7 +212,6 @@
           </button>
         </div>
       </div>
-
     </div>
   </div>
 </div>

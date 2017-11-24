@@ -29,12 +29,16 @@
                   <td class="text-bold text-blue">อีเมล</td>
                   <td>@{{ inv.customerEmail }}</td>
                 </tr>
+                 <tr ng-if="inv.customerEmail == '' || inv.customerEmail == null">
+                  <td class="text-bold text-blue">อีเมล</td>
+                  <td>-</td>
+                </tr>
                 <tr ng-hide="inv.customerTelNo == '' || innv.customerTelNo == null">
-                  <td class="text-bold text-blue">เบอร์โทรศัพท์</td>
+                  <td class="text-bold text-blue">โทรศัพท์</td>
                   <td>@{{ inv.customerTelNo }}</td>
                 </tr>
                 <tr nng-if="inv.customerTelNo == '' || innv.customerTelNo == null">
-                  <td class="text-bold text-blue">เบอร์โทรศัพท์</td>
+                  <td class="text-bold text-blue">โทรศัพท์</td>
                   <td>-</td>
                 </tr>
                 <tr ng-hide="inv.shipName == '' || inv.shipName == null">
@@ -61,15 +65,17 @@
             <table>
               <tbody>
                 <tr>
-                  <td width="110" class="text-bold text-blue">เลขที่ใบสั่งซื้อ</td>
-                  <td>@{{ inv.documentNumber }}</td>
+                  <td width="110" class="text-bold text-blue">เลขที่ใบสั่งซื้อ </td>
+                  <td>@{{ inv.documentNumber }} 
+                    <span class="text-bold text-blue"> / วันที่</span> @{{ inv.documentDate | date:'dd/MM/yyyy' }}
+                  </td>
                 </tr>
-                <tr>
-                  <td class="text-bold text-blue">วันที่สั่งซื้อ</td>
-                  <td>@{{ inv.documentDate | date:'dd/MM/yyyy' }}</td>
+                <tr ng-if="inv.customerPO == '' || inv.customerPO == null">
+                  <td class="text-bold text-blue">PO number</td>
+                  <td>-</td>
                 </tr>
                 <tr ng-hide="inv.customerPO == '' || inv.customerPO == null">
-                  <td class="text-bold text-blue">เลขที่ใบสั่งซื้อ / PO</td>
+                  <td class="text-bold text-blue">PO number</td>
                   <td>@{{ inv.customerPO }}</td>
                 </tr>
                 <tr>
