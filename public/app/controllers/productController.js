@@ -54,28 +54,24 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
 				var datatemp = getFilterMarketing($scope.types, $scope.marketingCode);
 				var datatemp2 =[];
-
+				var check=true;
 				for(var index in datatemp)
 				{
-					var isDuplicate = datatemp2.some(function(item, idx){ 
-						return valueArr.indexOf(item) != idx 
-					});
+					check=true;
+					for(var index2 in datatemp2)
+					{
+						if(datatemp[index]['typeCode'] == datatemp2[index2]['typeCode'])
+						{
+							check=false;
+						}
+					}
 
-					if(false){
+					if(check){
 						datatemp2.push(datatemp[index]);
 					}
 				}
-
-			
-
-
-				//var valueArr = datatemp.map(function(item){ return item.typeCode });
-				// var valueArr = datatemp2.map(function(item){ return item.typeCode });
-				// console.log("valueArr-->",valueArr);
-				// var isDuplicate = valueArr.some(function(item, idx){ 
-				// 	return valueArr.indexOf(item) != idx 
-				// });
-				// console.log(isDuplicate);
+				$scope.typesFilter = [];
+				$scope.typesFilter = datatemp2;
 			}
 
 			$scope.loading = false;

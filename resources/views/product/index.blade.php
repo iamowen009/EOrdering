@@ -59,7 +59,7 @@
           <div class="menu-body mt-10">
             <ul class="list-unstyled" style="font-size:0.95em">
               <!-- <li ng-repeat="type in typesFilter | unique:'typeDesc'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;"> -->
-              <li ng-repeat="type in typesFilter" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
+              <li ng-repeat="type in typesFilter | orderBy:'typeCode'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
                 <label>
                   <input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
                   {{type.typeCode}} {{ type.typeDesc }}
