@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, Auth, Customers, Products, cartService, Config) {
+app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, Auth, Customers, Products, sharedService, cartService, Config) {
   init()
 
   function init() {
@@ -44,7 +44,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
       
       swal({ 
         html:true , 
-        title:'ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.items[$index].altUnitAmount + ' ' + $scope.items[$index]['unitNameTh'] + ' ค่ะ <br> ระบบจะปรับจำนวนให้อัตโนมัติ <br> กรุณาตรวจสอบจำนวนสินค้า <br> ก่อนกดเพิ่มสินค้าค่ะ' , 
+        title:'ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.items[$index].altUnitAmount + ' ' + $scope.items[$index]['unitNameTh'] + '<br> ระบบจะปรับจำนวนให้อัตโนมัติ <br>กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ' , 
         text:''
       });
 
@@ -136,23 +136,38 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
   }
 
   $scope.removeAll = function() {
-    var cartList = [{
-      customerId: Customers.customerId(),
-      productId: 0,
-      userName: Auth.username()
-    }];
-    
-    Carts.removeCart(cartList).then(function(response) {
-      if (response.data.result == 'SUCCESS') {
-        cartService.getProducts().forEach(function(i, x) {
-          cartService.removeProduct(i);
-        });
-
-        fetchCart();
+    if ($scope.items.length > 0) {
+      swal({
+        title: 'คุณต้องการลบสินค้าทั้งหมดใช้ตระกร้าใช่หรือไม่',
+        showCancelButton: true,
+        confirmButtonText: 'ตกลง',
+        cancelButtonText: 'ยกเลิก',
+        closeOnConfirm: false
+      },
+      function(){
+        var cartList = [{
+          customerId: Customers.customerId(),
+          productId: 0,
+          userName: Auth.username()
+        }];
         
-        swal('สำเร็จ', 'ลบสินค้าเรียบร้อยแล้ว', 'success');
-      }
-    });
+        Carts.removeCart(cartList).then(function(response) {
+          if (response.data.result == 'SUCCESS') {
+            cartService.getProducts().forEach(function(i, x) {
+              cartService.removeProduct(i);
+            });
+    
+            fetchCart();
+            
+            swal('ลบสินค้าเรียบร้อยแล้ว');
+          } else {
+            return false;
+          }
+        });
+      });   
+    } else {
+      swal('ไม่มีสินค้าในตะกร้า');
+    }
   }
 
 
@@ -221,7 +236,12 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
     $scope.hidemenu = false;
 
   $scope.search = function () {
-    window.location = _base + '/product/search?q=' + $scope.searchstring;
+    //window.location = _base + '/product/search?q=' + $scope.searchstring;
+    if ($scope.hidemenu) {
+      sharedService.passData($scope.searchstring);
+    } else {
+      window.location = _base + '/product/search?q=' + $scope.searchstring;     
+    }
   }
 
   $scope.toPage = function (page) {
@@ -238,20 +258,21 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
 
   $scope.animationsEnabled = true;
 
-  $scope.open = function (size, parentSelector) {
+  $scope.openModalCart = function (size, parentSelector) {
+    /*
     var parentElem = parentSelector ?
       angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
-
+    */
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
-      templateUrl: 'cartModalContent.html',
+      templateUrl: _base + '/template/modals/cart.modal.html',
       controller: 'cartInstanceCtrl',
       controllerAs: '$scope',
-      windowClass: 'fade right',
+      windowClass: 'modal-cart right fade',
       size: size,
-      appendTo: parentElem,
+      //appendTo: parentElem,
     });
 
     modalInstance.result.then(function (selectedItem) {

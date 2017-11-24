@@ -18,7 +18,7 @@
             <div class="panel-footer text-center">
               <button type="submit" class="btn btn-info" ng-disabled="form.$invalid || btnLoading">
                 <span ng-if="!btnLoading">
-                  บันทึก
+                  ส่ง
                 </span>
                 <span ng-if="btnLoading">
                   <i class="fa fa-circle-o-notch fa-spin"></i>

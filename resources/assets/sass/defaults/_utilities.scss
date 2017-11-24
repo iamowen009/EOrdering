@@ -1,47 +1,46 @@
 @for $i from 0 through 7 {
-    $size: 5 * $i;
-    
-    .mt-#{$size} {
-        margin-top: 0px + $size !important;
-    }
-    
-    .mb-#{$size} {
-        margin-bottom: 0px + $size !important;
-    }
-    
-    .ml-#{$size} {
-        margin-left: 0px + $size !important;
-    }
-    
-    .mr-#{$size} {
-        margin-right: 0px + $size !important;
-    }
-    
-    .pt-#{$size} {
-        padding-top: 0px + $size !important;
-    }
-    
-    .pb-#{$size} {
-        padding-bottom: 0px + $size !important;
-    }
-    
-    .pl-#{$size} {
-        padding-left: 0px + $size !important;
-    }
-    
-    .pr-#{$size} {
-        padding-right: 0px + $size !important;
-    }
+	$size: 5 * $i;
+	.mt-#{$size} {
+		margin-top: 0px + $size !important;
+	}
+	.mb-#{$size} {
+		margin-bottom: 0px + $size !important;
+	}
+	.ml-#{$size} {
+		margin-left: 0px + $size !important;
+	}
+	.mr-#{$size} {
+		margin-right: 0px + $size !important;
+	}
+	.pt-#{$size} {
+		padding-top: 0px + $size !important;
+	}
+	.pb-#{$size} {
+		padding-bottom: 0px + $size !important;
+	}
+	.pl-#{$size} {
+		padding-left: 0px + $size !important;
+	}
+	.pr-#{$size} {
+		padding-right: 0px + $size !important;
+	}
+	.p-#{$size} {
+		padding: 0px + $size !important;
+	}
+}
 
-    .p-#{$size} {
-        padding: 0px + $size !important;
-    }
+.w100 {
+	width: 100% !important;
 }
 
 .text-red {
-    color: red;
+	color: red;
+}
+
+.text-bold {
+	font-weight: bold;
 }
 
 .page-break {
-    page-break-after: always;
+	page-break-after: always;
 }

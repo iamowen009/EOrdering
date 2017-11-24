@@ -28,11 +28,11 @@
 				<ul class="nav navbar-nav ul-member navbar-right">
 					<li>
 						@verbatim
-							<!-- <span>ยินดีต้อนรับ {{username}} 
+							<!-- <span>ยินดีต้อนรับ {{username}} ((customerCode.length == 10) ? customerCode | limitTo: -8 : customerCode)
 							<span ng-show="!hidemenu">[{{customerCode}} : {{customerName}}]</span></span> -->
 							ยินดีต้อนรับ {{ username }}
 							<span ng-show="!hidemenu">
-								[ {{ (usertype == 'Multi') ? customerCode : username }} : {{customerName}}]
+								[ {{ (usertype == 'Multi') ? ((customerCode.length == 10) ? (customerCode | limitTo: -8) : customerCode )  : username }} : {{customerName}}]
 							</span>
 						@endverbatim
 					</li>
@@ -66,7 +66,7 @@
 									@endverbatim
 							</li>
 							<li class="nav-item item-cart" ng-hide="hidemenu">
-									<a class="navbar-menu  text-center"  href="#" ng-click="open('lg')">
+									<a class="navbar-menu  text-center"  href="#" ng-click="openModalCart('lg')">
 											<span class="bell">
 													<img class="icon-in-home" src="<?= asset('images/cart.png') ?>">
 													@verbatim

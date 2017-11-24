@@ -34,7 +34,6 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             next: "ถัดไป"
         },
         onStepChanged: function (event, currentIndex, newIndex) {
-            console.log(currentIndex);
             if (currentIndex == 0) {
                 $('ul[role="tablist"] >li:nth-child(2)').removeClass('done').addClass('disabled');//('','#ddd');
                 $('ul[role="tablist"] >li:nth-child(3)').removeClass('done').addClass('disabled');//('','#ddd');
