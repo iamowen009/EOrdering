@@ -1,5 +1,8 @@
-@extends('layouts.main') @section('head')
-<link rel="stylesheet" href="{{ asset('css/product-detail.css') }}" /> @stop @section('content')
+@extends('layouts.main') 
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/product-detail.css') }}" /> 
+@stop 
+@section('content')
 <div class="content">
 	@verbatim
 	<!-- LOADING ICON =============================================== -->
@@ -84,10 +87,9 @@
 												<span class="frame-color" ng-show="cartrgbColor!=''" style="background-color: rgb({{cartrgbColor}});"></span>
 												<span class="frame-color" ng-show="cartrgbColor==''" style="background-color: #fff;"></span>
 												{{ colorCodeName }}
-
 											</button>
 											<ul class="dropdown-menu">
-												<li ng-repeat="p in colors">
+												<li ng-repeat="p in colors | unique: 'colorCode'">
 													<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}">
 														<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 														<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
@@ -176,7 +178,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="panel-content panel panel-default">
 							<div class="panel-heading text-center" style="background-color:#BFEBEE;padding: 2px 15px;">
@@ -244,9 +246,8 @@
 <div class="row">
 	<div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div>
 </div>
-
-
-@stop @section('footer')
-
+@stop 
+@section('footer')
+<script src="<?= asset('app/uniqueFilter.js') ?>"></script>
 <script src="<?= asset('app/controllers/productController.js') ?>"></script>
 @stop
