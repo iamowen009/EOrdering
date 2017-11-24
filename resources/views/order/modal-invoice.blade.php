@@ -81,7 +81,7 @@
                   <td class="text-bold text-blue">จัดส่งโดย</td>
                   <td >@{{ inv.transportZone }} : @{{ inv.transportZoneDesc }}</td>
                 </tr>
-                <tr ng-if="inv.isReceive !== null">
+                <tr ng-if="inv.shipCondition == '01' && inv.isReceive !== null">
                   <td class="text-bold text-blue">จัดส่งโดย</td>
                   <td >ลูกค้ารับสินค้าเอง</td>
                 </tr>
