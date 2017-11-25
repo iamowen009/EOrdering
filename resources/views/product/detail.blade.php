@@ -54,7 +54,9 @@
 									<i class="icmn-star-empty"></i>
 								</div>
 							</div>
-							<h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}
+							<h4 class="cui-ecommerce--product--main-title">
+								<strong>{{btf.btfWebDescTh}}</strong>
+								{{ btf.btfWeb }}
 								<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกเพื่อดูรายการโปรโมชั่น"</a>
 							</h4>
 							<div class="cui-ecommerce--product--price">
@@ -74,9 +76,13 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-6">ขนาด</label>
 									<div class="col-md-3 col-sm-3 col-xs-6">
-										<select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()">
+										<!-- <select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()">
 											<option ng-repeat="p in sizes" value="{{ p.sizeCode}}">{{ p.sizeName }} </option>
+										</select> -->
+
+										<select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()" ng-options="f.sizeCode as f.sizeName for f in sizes | orderBy:'sizeCode'">
 										</select>
+
 									</div>
 								</div>
 								<div class="form-group" ng-if="listColors.length > 0 ">
@@ -243,7 +249,7 @@
 </div>
 @include('product.modal-promotion')
 <div class="row">
-	<div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div>
+	<div class="col-md-12 text-center">@ 2017 TOA Paint (Thailand) Public Company Limited. All Right Reserved.</div>
 </div>
 @stop 
 @section('footer')

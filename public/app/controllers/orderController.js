@@ -73,6 +73,7 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 							'docName': $scope.orders[k].docName,
 							'docNumber': $scope.orders[k].docNumber,
 							'docType': $scope.orders[k].docType,
+							'rejectHStatus': $scope.orders[k].rejectHStatus,
 							'salesOrderNumber': $scope.orders[k].salesOrderNumber,
 							'netAmount': $scope.orders[k].netAmount,
 							'orderId': $scope.orders[k].orderId,

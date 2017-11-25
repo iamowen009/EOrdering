@@ -131,6 +131,7 @@ header {
 
 .panel-store .panel-body {
   min-height: 100px;
+  color: #000;
 }
 
 .navbar-menu {
@@ -301,7 +302,7 @@ h3 .small {
 }
 
 .navbar-expand-lg .navbar-nav {
-  padding-bottom: 15px;
+ /* padding-bottom: 15px;*/
 }
 
 .category-home {
@@ -555,7 +556,8 @@ a:focus {
 
 li.nav-item:hover {
   background: #b4d8fc;
-  padding: 1px;
+ /* padding: 1px;*/
+ height: 38px;
   border-radius: 5px;
 }
 
@@ -604,6 +606,7 @@ button.confirm {
 }
 
 .style-title {
+  font-weight: bolder;
   background-color: #80d8d8;
   color: #ffffff;
   font-size: 14pt;
@@ -618,3 +621,10 @@ button.confirm {
   margin-bottom: 15px;
   font-weight: 200 !important;
 }
+.carousel-control-next, .carousel-control-prev{
+  width: 7%;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 35px;
+    height: 50px;
+  }

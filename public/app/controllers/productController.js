@@ -52,7 +52,26 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 				$scope.brandsFilter = getFilterMarketing($scope.brands, $scope.marketingCode);
 				$scope.typesFilter = getFilterMarketing($scope.types, $scope.marketingCode);
 
-				//console.log($scope.typesFilter);
+				var datatemp = getFilterMarketing($scope.types, $scope.marketingCode);
+				var datatemp2 =[];
+				var check=true;
+				for(var index in datatemp)
+				{
+					check=true;
+					for(var index2 in datatemp2)
+					{
+						if(datatemp[index]['typeCode'] == datatemp2[index2]['typeCode'])
+						{
+							check=false;
+						}
+					}
+
+					if(check){
+						datatemp2.push(datatemp[index]);
+					}
+				}
+				$scope.typesFilter = [];
+				$scope.typesFilter = datatemp2;
 			}
 
 			$scope.loading = false;
@@ -177,7 +196,7 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 		fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
 		fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
 
-		$scope.marketingCode.push($scope.marketings[0].marketingCode);
+		//$scope.marketingCode.push($scope.marketings[0].marketingCode);
 	}
 
 	$scope.clearBrandFilter = function () {
@@ -190,7 +209,6 @@ app.controller('ProductController', function ($scope, $http, $filter, Marketings
 
 	$scope.clearTypeFilter = function () {
 		$scope.typeCode = [];
-		$scope.typesFilter = '';
 
 		fetchAllProducts($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode, true);
 		fetchAllPromotions($scope.usersId, $scope.marketingCode, $scope.brandCode, $scope.typeCode);
@@ -466,13 +484,15 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 		for (var kr in $scope.colors) {
 			//console.log('size code : ', $scope.colors[kr].sizeCode, ' | ', $scope.cartSize, ' product colorval code : ', $scope.cartCode, ' | ', $scope.colors[kr].productCode);
 			if ($scope.colors[kr].sizeCode == $scope.cartSize) {
-				$scope.listColors.push({
-					'colorCode': $scope.colors[kr]['colorCode'],
-					'colorNameTh': $scope.colors[kr]['colorNameTh'],
-					'cartrgbColor': $scope.colors[kr]['rgbCode'],
-					'sizeCode': $scope.colors[kr]['sizeCode'],
-					'productCode': $scope.colors[kr]['productCode']
-				});
+				// $scope.listColors.push({
+				// 	'colorCode': $scope.colors[kr]['colorCode'],
+				// 	'colorNameTh': $scope.colors[kr]['colorNameTh'],
+				// 	'cartrgbColor': $scope.colors[kr]['rgbCode'],
+				// 	'sizeCode': $scope.colors[kr]['sizeCode'],
+				// 	'productCode': $scope.colors[kr]['productCode']
+				// });
+
+				$scope.listColors.push($scope.colors[kr]);
 			}
 		}
 		//console.log('$scope.listColors : ', $scope.listColors);
@@ -491,11 +511,15 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 			bomPrice += $scope.boms[kx]['productPrice'];
 			//  }
 		}
-		if ($scope.boms.length > 0) {
-			$scope.productPrice = bomPrice;
-		} else {
-			$scope.productPrice = $scope.productSelect.productPrice;
-		}
+
+		// if ($scope.boms.length > 0) {
+		// 	$scope.productPrice = bomPrice;
+		// } else {
+		// 	$scope.productPrice = $scope.productSelect.productPrice;
+		// }
+
+		$scope.productPrice = $scope.productSelect.productPrice;
+
 		//console.log('bom price is ', bomPrice, ' boms ', $scope.boms, ' scope product select ', $scope.productSelect);
 
 		//$scope.setProduct( $scope.listColors[0]['colorCode'] );

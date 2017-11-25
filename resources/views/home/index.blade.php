@@ -9,7 +9,9 @@
   <div class="row " ng-controller="HomeController">
     <div class="col-md-3 sidedata">
       <div>
-        <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
+        <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">
+          <strong>รายการสินค้า</strong>
+        </div>
         <div class="category-home">
           <div class="mb-5">
             <strong style="padding:20px 0 15px 0;font-size:12pt;">กลุ่มผลิตภัณฑ์</strong>

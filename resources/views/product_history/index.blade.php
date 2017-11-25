@@ -21,7 +21,7 @@
             <!-- style="background-color:#000e85;color:#fff" -->
             <div class="panel-heading text-center style-title">สินค้าที่เคยสั่งซื้อ </div>
               <!--<div class="panel-heading text-center">สินค้าที่เคยสั่งซื้อ</div>-->
-              <div class="panel-body">
+              <div class="">
               	<br>
 				<div class="row">
 

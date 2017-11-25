@@ -50,7 +50,7 @@
   <!-- Page Content -->
 
   <div class="wrapper container-fluid">
-    <div class="mt-20">
+    <div class="">
       @yield('content')
     </div>
     @verbatim
@@ -61,9 +61,10 @@
           <h4 class="modal-title text-right" id="modal-title">ตะกร้าของฉัน</h4>
         </label>
         <label class="text-right col-sm-4">
-          <a href="#" ng-click="$event.preventDefault(); cancel()">
+        <button type="button" class="close" data-dismiss="modal" style="font-size:42px;color:red;">&times;</button>
+          <!-- <a href="#" ng-click="$event.preventDefault(); cancel()">
             <i class="fa fa-close"></i>
-          </a>
+          </a> -->
         </label>
       </div>
       <div class="modal-body" id="modal-body" style="padding:none;">

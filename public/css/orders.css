@@ -141,4 +141,21 @@ tfoot > tr > td{
 #TaxModal .table > thead > tr > th
 {
   background: #D2C9E2;
+  border-right: 1px solid #ffffff !important;
 }
+tr.info>th {
+    border-right: 1px solid #fff;
+}
+ul.bar-year {
+    padding: 0px;
+}
+ul.bar-list {
+    padding: 0;
+}
+.footer-popup{
+    background: #D2C9E2;
+}
+.progress-bar {
+
+    background-color: darkorange;
+  }
