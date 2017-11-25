@@ -14,7 +14,7 @@
   <!-- <div class="panel-heading" style="background-color:#FFF8AA">
     <h4 class="panel-title" style="font-size:18px;">ปี</h4>
   </div> -->
-  <div class="panel-body order-precess">
+  <div class=" order-precess">
     <ul class="bar-year">
       <li class="title-year" ng-repeat="y in ordersYear">
         <a class="accordion-toggle" href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-@{{y}}">
@@ -28,7 +28,7 @@
                 <table class="table table-striped">
                   <thead>
                     <tr class="info">
-                      <th class="text-center" style="width:120px;">วันที่-เวลา</th>
+                      <th class="text-center" style="width:100px;">วันที่ - เวลา</th>
                       <th class="text-center" style="width:120px;">ผู้ดำเนินการ</th>
                       <th class="text-center" style="width:100px;">เลขที่ใบสั่งซื้อ</th>
                       <th class="text-center" style="width:100px;">เลขที่เอกสาร
@@ -44,7 +44,7 @@
                   <tbody>
                     <!-- <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month && list.percentComplete < 100"> -->
                     <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month">
-                      <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy HH:mm'}}</td>
+                      <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy'}}&nbsp;&nbsp;@{{ list.createDate | date:'HH:mm'}}</td>
                       <td class="text-center">@{{ list.docName}}</td>
                       <td class="text-center">
                         <a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a>
@@ -54,15 +54,25 @@
                       </td>
                       <td class="text-right">@{{ list.netAmount |number:2}}</td>
                       <td class="text-center" style="width:100px;">
-                        <a ng-click="OrderDetailModal(list.salesOrderNumber)" href="javascript:void(0)" ng-show="list.percentComplete!==100">
+                        <a ng-click="OrderDetailModal(list.salesOrderNumber)" href="javascript:void(0)" ng-show="list.percentComplete!==100 && list.rejectHStatus!=='C'">
                           <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
                               @{{ list.percentComplete }}%
                             </div>
                           </div>
                         </a>
-                        <a href="javascript:void(0)" ng-show="list.percentComplete===100" class="text-center" ng-click="OrderDetailModal(list.salesOrderNumber)">Complete</a>
-                        <a ng-show="(list.percentComplete===0  && list.rejectHStatus==='c')">Cancel</a>
+                        <a href="javascript:void(0)" ng-show="list.percentComplete===100" class="text-center" ng-click="OrderDetailModal(list.salesOrderNumber)">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color:green; ">Completed</div>
+                          </div>
+                      <!--   <span style="color:green">Complete</span> -->
+                        </a>
+
+                        <a ng-show="(list.percentComplete===0 ) && (list.rejectHStatus==='C')"> 
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color:red; ">Cancelled</div>
+                          </div>
+                          </a>
                       </td>
                       <!-- <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td> -->
 

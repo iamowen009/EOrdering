@@ -14,16 +14,16 @@
         <div class="panel">
           <!-- background-color:#000e85;color:#fff -->
           <div class="panel-heading text-center style-title">สถานะคำสั่งซื้อ </div>
-          <div class="panel-body">
+          <div class="">
             <br>
 
 
             <form class="form-inline">
               <div class="form-group col-md-3">
-                <label class="datelbl">วันที่ : &nbsp;</label>
+                <label class="datelbl">วันที่เริ่มต้น : &nbsp;</label>
                 <input type="text" class="form-control" ng-model="dateRangeStart" datepicker ng-change="filterOrder()" />
               </div>
-              <div class="form-group col-md-3" style="margin-left: -60px;">
+              <div class="form-group col-md-3" style="margin-left: -50px;">
                 <label class="datelbl">ถึงวันที่ : &nbsp;</label>
                 <div class="col-md-9">
                   <input type="text" class="form-control" ng-model="dateRangeEnd" datepicker ng-change="filterOrder()">

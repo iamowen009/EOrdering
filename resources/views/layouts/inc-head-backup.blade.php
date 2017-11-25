@@ -116,9 +116,9 @@
                                 <img class="icon-in-home" src="<?= asset('images/account.png') ?>">
                                 <!-- <span class="fa fa-user fa-2x"></span> -->
                                 <br/>
-                                    บัญชีของฉัน <span class="caret"></span></button>
+                                    บัญชีร้านค้า <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลส่วนตัว</a></li>
+                                        <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile') ?>')">ข้อมูลร้านค้า</a></li>
                                         <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('contact')  ?>')">ติดต่อเรา</a></li>
                                         <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('profile-update')  ?>')">แจ้งเรื่องเปลี่ยนแปลงข้อมูล</a></li>
                                         <li ng-hide="hidemenu"><a href="#" ng-click="toPage('<?php echo url('customer')  ?>')">เปลี่ยนร้านค้า</a></li>

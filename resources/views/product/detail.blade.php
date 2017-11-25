@@ -74,9 +74,13 @@
 								<div class="form-group">
 									<label class="control-label col-md-3 col-sm-3 col-xs-6">ขนาด</label>
 									<div class="col-md-3 col-sm-3 col-xs-6">
-										<select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()">
+										<!-- <select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()">
 											<option ng-repeat="p in sizes" value="{{ p.sizeCode}}">{{ p.sizeName }} </option>
+										</select> -->
+
+										<select class="form-control select-style" ng-model="cartSize" ng-change="getProduct()" ng-options="f.sizeCode as f.sizeName for f in sizes | orderBy:'sizeCode'">
 										</select>
+
 									</div>
 								</div>
 								<div class="form-group" ng-if="listColors.length > 0 ">
@@ -89,7 +93,9 @@
 												{{ colorCodeName }}
 											</button>
 											<ul class="dropdown-menu">
-												<li ng-repeat="p in colors | unique: 'colorCode'">
+												<!-- <li ng-repeat="p in colors"> -->
+												<!-- <li ng-repeat="p in colors | orderBy:'colorCode'"> -->
+												<li ng-repeat="p in listColors | orderBy:'colorCode'">
 													<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}">
 														<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 														<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
@@ -243,7 +249,7 @@
 </div>
 @include('product.modal-promotion')
 <div class="row">
-	<div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div>
+	<div class="col-md-12 text-center">@ 2017 TOA Paint (Thailand) Public Company Limited. All Right Reserved.</div>
 </div>
 @stop 
 @section('footer')

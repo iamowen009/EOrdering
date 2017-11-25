@@ -58,14 +58,13 @@
           </div>
           <div class="menu-body mt-10">
             <ul class="list-unstyled" style="font-size:0.95em">
-              <!--
-              <li ng-repeat="type in typesFilter" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
+              <!-- <li ng-repeat="type in typesFilter | unique:'typeDesc'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;"> -->
+              <li ng-repeat="type in typesFilter | orderBy:'typeCode'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
                 <label>
                   <input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
                   {{type.typeCode}} {{ type.typeDesc }}
                 </label>
               </li>
-              -->
               <li ng-repeat="type in typesFilter | unique: 'typeCode'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
                 <label style="cursor: pointer;">
                   <input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
@@ -93,7 +92,8 @@
             <div class="col-md-10 col-sm-10 col-xs-12">
               <span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getFilter(marketingCode,m.marketingCode).length>0">
                 {{m.marketingDesc}}
-                <a ng-if="m.marketingCode != marketingCode[0]" ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;"
+                <!-- <a ng-if="m.marketingCode != marketingCode[0]" ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;" -->
+                <a ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;"
                   href="">
                   <i class="fa fa-times text-danger"></i>
                 </a>
@@ -160,7 +160,7 @@
   @endverbatim
 </div>
 <div class="row">
-  <div class="col-md-12 text-center">© 2017 TOA Print (Thailand).Co.,Ltd All Rights reserved</div>
+  <div class="col-md-12 text-center">@ 2017 TOA Paint (Thailand) Public Company Limited. All Right Reserved.</div>
 </div>
 @stop 
 @section('footer')

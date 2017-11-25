@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header invoice__header">
         <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
-        <button type="button" class="close" data-dismiss="modal" style="font-size:72px;color:red;">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" style="font-size:42px;color:red;">&times;</button>
         <div class="col-sm-6 text-right">
           <h3 class="modal-title">
             <b>ใบสั่งซื้อ</b>
@@ -29,12 +29,16 @@
                   <td class="text-bold text-blue">อีเมล</td>
                   <td>@{{ inv.customerEmail }}</td>
                 </tr>
+                 <tr ng-if="inv.customerEmail == '' || inv.customerEmail == null">
+                  <td class="text-bold text-blue">อีเมล</td>
+                  <td>-</td>
+                </tr>
                 <tr ng-hide="inv.customerTelNo == '' || innv.customerTelNo == null">
-                  <td class="text-bold text-blue">เบอร์โทรศัพท์</td>
+                  <td class="text-bold text-blue">โทรศัพท์</td>
                   <td>@{{ inv.customerTelNo }}</td>
                 </tr>
                 <tr nng-if="inv.customerTelNo == '' || innv.customerTelNo == null">
-                  <td class="text-bold text-blue">เบอร์โทรศัพท์</td>
+                  <td class="text-bold text-blue">โทรศัพท์</td>
                   <td>-</td>
                 </tr>
                 <tr ng-hide="inv.shipName == '' || inv.shipName == null">
@@ -61,15 +65,17 @@
             <table>
               <tbody>
                 <tr>
-                  <td width="110" class="text-bold text-blue">เลขที่ใบสั่งซื้อ</td>
-                  <td>@{{ inv.documentNumber }}</td>
+                  <td width="110" class="text-bold text-blue">เลขที่ใบสั่งซื้อ </td>
+                  <td>@{{ inv.documentNumber }} 
+                    <span class="text-bold text-blue"> / วันที่</span> @{{ inv.documentDate | date:'dd/MM/yyyy' }}
+                  </td>
                 </tr>
-                <tr>
-                  <td class="text-bold text-blue">วันที่สั่งซื้อ</td>
-                  <td>@{{ inv.documentDate | date:'dd/MM/yyyy' }}</td>
+                <tr ng-if="inv.customerPO == '' || inv.customerPO == null">
+                  <td class="text-bold text-blue">PO number</td>
+                  <td>-</td>
                 </tr>
                 <tr ng-hide="inv.customerPO == '' || inv.customerPO == null">
-                  <td class="text-bold text-blue">เลขที่ใบสั่งซื้อ / PO</td>
+                  <td class="text-bold text-blue">PO number</td>
                   <td>@{{ inv.customerPO }}</td>
                 </tr>
                 <tr>
@@ -84,7 +90,7 @@
                   <td class="text-bold text-blue">จัดส่งโดย</td>
                   <td>@{{ inv.transportZone }} : @{{ inv.transportZoneDesc }}</td>
                 </tr>
-                <tr ng-if="inv.isReceive !== null">
+                <tr ng-if="inv.shipCondition == '01' && inv.isReceive !== null">
                   <td class="text-bold text-blue">จัดส่งโดย</td>
                   <td>ลูกค้ารับสินค้าเอง</td>
                 </tr>
@@ -98,6 +104,7 @@
               <!-- <th width="30" class="text-center">#</th> -->
               <th width="638" class="text-center text-blue">ผลิตภัณฑ์</th>
               <th width="100" class="text-center text-blue">จำนวน</th>
+              <th width="100" class="text-center text-blue">หน่วย</th>
               <th width="150" class="text-center text-blue">
                 ราคาต่อหน่วย
                 <span style="color:red">*</span>
@@ -111,13 +118,15 @@
               <td width="638" style="font-weight: bold">
                 @{{ item.productCode }} @{{ item.productNameTh }}
               </td>
-              <td width="100" class="text-center">@{{ item.qty | number }} @{{ item.unitNameTh }}</td>
+              <td width="100" class="text-center">@{{item.qty | number }}</td>
+              <td width="100" class="text-center">@{{item.unitNameTh }}</td>
               <td width="150" class="text-right">@{{ item.amount | number:2 }}</td>
               <td width="150" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
               <td width="638">@{{ bom.productCode }} @{{ bom.productNameTh }}</td>
-              <td width="100" class="text-center">@{{ bom.qty | number }} @{{ bom.unitNameTh }}</td>
+              <td width="100" class="text-center">@{{ bom.qty | number }}</td>
+              <td width="100" class="text-center">@{{ bom.unitNameTh }}</td>
               <td width="150" class="text-right">@{{ bom.amount | number:2 }}</td>
               <td width="150" class="text-right">@{{ bom.amount | number:2 }} บ.</td>
             </tr>
@@ -125,7 +134,7 @@
               <td class="text-center text-blue">
                 <b>ยอดรวมมูลค่าสินค้า (ไม่รวม VAT) </b>
               </td>
-              <td colspan="2" class="text-center text-blue">
+              <td colspan="3" class="text-center text-blue">
                 <b>@{{ itemNoBom.length + boms.length }} รายการ</b>
               </td>
               <td class="text-right text-blue">

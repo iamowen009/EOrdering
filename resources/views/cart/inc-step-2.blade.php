@@ -34,7 +34,6 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date:</label>
             <div class="col-md-8 col-sm-8 col-xs-12">
               <select name="date_id" id="date_id" class="form-control" ng-model="ddlDate" ng-options="i as i.reqDate for i in requests track by i.reqDate | date:'dd/mm/yy'">
-                <option value=''></option>
               </select>
             </div>
           </div>
@@ -68,9 +67,13 @@
           <div class="form-group col-md-6" ng-show="shippingType=='show' " ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
             <div class="col-md-8 col-sm-8 col-xs-12">
-              <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
+              <!-- <select name="ship_id" id="ship_id" class="form-control"  ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
                 <option value=''></option>
+              </select> -->
+
+              <select name="ship_id" id="ship_id" class="form-control"  ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
               </select>
+
               <!--
                 <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)">
                   <option value="" disabled>
@@ -80,7 +83,7 @@
                     {{ i.shipCode + ' ' + i.shipName }}
                   </option>
                 </select>
-                -->
+                
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
               <!--<span ng-show="formcart.ship_id.$error.required"><font color="red" size="2px">Required Field</font></span>-->
@@ -203,10 +206,15 @@
           <tr class="cart-product-{{ item.productId }}">
             <td class="text-center">
               <img class="img-product" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
-              <strong>{{item.productCode}}</strong>
+              <span ng-if="item.isBOM != true">{{item.productCode}}</span>
+              <strong  ng-if="item.isBOM == true">{{item.productCode}}</strong>
             </td>
             <td class="text-left">
-              <strong>{{ item.productNameTh }} | {{ bomRows(item.productCode) }}</strong>
+              <!-- <strong>{{ item.productNameTh }}</strong> -->
+
+              <span ng-if="item.isBOM != true">{{item.productNameTh}}</span>
+              <strong  ng-if="item.isBOM == true">{{item.productNameTh}}</strong>
+
             </td>
             <td class="text-center">
               <span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span>

@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header info">
                 <h4 class="col-sm-12 text-center" style="margin: 0px;">
-                    โปรโมทชั่น
+                    โปรโมชั่น
                 </h4>
                 <button type="button" class="close pull-right" data-dismiss="modal" style="font-size: 40px;">
                     &times;

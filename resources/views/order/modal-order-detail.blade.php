@@ -1,12 +1,11 @@
 <div id="OrderDetailModal" class="modal" role="dialog" tabindex="-1">
   <div class="modal-dialog-invoice modal-lg">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header info">
-        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-        <div class="col-sm-6 text-center">
-        	<h4 class="modal-title">สถานะการสั่งซื้อ</h4>
+        <img src="<?= asset('images/logo-TOA.png') ?>" style="width:30%;margin-left: -95px;">
+        <button type="button" class="close" data-dismiss="modal" style="font-size:42px;color:red;">&times;</button>
+        <div class="col-sm-6 text-right">
+          <h3 class="modal-title"><b>สถานะการสั่งซื้อ</b></h3>
         </div>
       </div>
       <div class="modal-body">
