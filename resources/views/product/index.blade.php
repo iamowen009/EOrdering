@@ -8,7 +8,9 @@
 
     <div class="col-md-3 sidedata">
       <div>
-        <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">รายการสินค้า </div>
+        <div class="panel-heading text-center" style="background-color:#80d8d8;color:#fff;font-size:14pt;">
+          <strong>รายการสินค้า</strong>
+        </div>
         <div class="category-home">
           <div class="mb-5">
             <strong style="padding:20px 0 15px 0;font-size:12pt;">กลุ่มผลิตภัณฑ์</strong>
@@ -58,6 +60,7 @@
           </div>
           <div class="menu-body mt-10">
             <ul class="list-unstyled" style="font-size:0.95em">
+<<<<<<< HEAD
               <!-- <li ng-repeat="type in typesFilter | unique:'typeDesc'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;"> -->
               <li ng-repeat="type in typesFilter | orderBy:'typeCode'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
                 <label>
@@ -65,6 +68,8 @@
                   {{type.typeCode}} {{ type.typeDesc }}
                 </label>
               </li>
+=======
+>>>>>>> origin/CPTN3M0
               <li ng-repeat="type in typesFilter | unique: 'typeCode'" ng-if="type.typeDesc != ''" value="{{type.typeCode}}" style="padding-bottom:10px;">
                 <label style="cursor: pointer;">
                   <input type="checkbox" ng-checked="typeCode.length > 0 && typeCode.indexOf(type.typeCode) > -1" ng-click="typeSelection(type.typeCode)"> 
@@ -92,7 +97,6 @@
             <div class="col-md-10 col-sm-10 col-xs-12">
               <span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getFilter(marketingCode,m.marketingCode).length>0">
                 {{m.marketingDesc}}
-                <!-- <a ng-if="m.marketingCode != marketingCode[0]" ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;" -->
                 <a ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;"
                   href="">
                   <i class="fa fa-times text-danger"></i>
@@ -133,12 +137,14 @@
           <div class="cui-ecommerce--catalog">
             <div class="row">
               <div class="col-md-3" dir-paginate="product in products | itemsPerPage: 12" pagination-id="product.id">
-                <div class="cui-ecommerce--catalog--item">
-                  <span class="favorite-icon" ng-click="(product.isFavorite) ? removeFav(product) : addFav(product)" ng-class="{'active': product.isFavorite}">
+                <div class="cui-ecommerce--catalog--item" style="cursor: pointer;" ng-click="toProductDetail(product.btf)">
+                  <span class="favorite-icon" 
+                        ng-click="$event.stopPropagation(); (product.isFavorite) ? removeFav(product) : addFav(product)"
+                        ng-class="{'active': product.isFavorite}">
                     <i class="fa fa-star"></i>
                   </span>
                   <div class="cui-ecommerce--catalog--item--img">
-                    <a href="javascript: void(0);" ng-click="toProductDetail(product.btf)">
+                    <a href="javascript: void(0);">
                       <img ng-src="{{partImgProductList}}/{{product.btf}}.jpg" err-src="{{partImgProduct}}/Noimage.jpg" style="height:180px;" class="img-responsive img-product">
                     </a>
                   </div>

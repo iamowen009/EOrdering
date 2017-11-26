@@ -54,7 +54,9 @@
 									<i class="icmn-star-empty"></i>
 								</div>
 							</div>
-							<h4 class="cui-ecommerce--product--main-title">{{btf.btfWebDescTh}}
+							<h4 class="cui-ecommerce--product--main-title">
+								<strong>{{btf.btfWebDescTh}}</strong>
+								{{ btf.btfWeb }}
 								<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกเพื่อดูรายการโปรโมชั่น"</a>
 							</h4>
 							<div class="cui-ecommerce--product--price">
@@ -93,9 +95,13 @@
 												{{ colorCodeName }}
 											</button>
 											<ul class="dropdown-menu">
+<<<<<<< HEAD
 												<!-- <li ng-repeat="p in colors"> -->
 												<!-- <li ng-repeat="p in colors | orderBy:'colorCode'"> -->
 												<li ng-repeat="p in listColors | orderBy:'colorCode'">
+=======
+												<li ng-repeat="p in colors | unique: 'colorCode'">
+>>>>>>> origin/CPTN3M0
 													<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}">
 														<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 														<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
