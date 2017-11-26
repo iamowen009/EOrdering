@@ -108,29 +108,32 @@
         <table class="invoice__body--table scroll">
           <thead>
             <tr>
-              <th width="43%" class="text-center text-blue">ผลิตภัณฑ์</th>
-              <th width="100" class="text-center text-blue">จำนวน</th>
+              <th width="300" class="text-center text-blue">ผลิตภัณฑ์</th>
+              <th width="90" class="text-center text-blue">จำนวน</th>
               <th width="100" class="text-center text-blue">หน่วย</th>
-              <th width="150" class="text-center text-blue">
+              <th width="170" class="text-center text-blue">
                 ราคาต่อหน่วย
                 <span style="color:red">*</span>
               </th>
-              <th width="100" style="word-wrap:break-word;"  class="text-center text-blue">ส่วนลด</th>
-              <th width="150" class="text-center text-blue">ราคาหลังหักส่วนลด</th>
-              <th width="150" class="text-center text-blue">ราคารวม</th>
+              <th width="200" style="word-wrap:break-word;"  class="text-center text-blue">ส่วนลด</th>
+              <th width="100" class="text-center text-blue">ราคาหลังหักส่วนลด</th>
+              <th width="100" class="text-center text-blue">ราคารวม</th>
             </tr>
 
           </thead>
           <tbody >
+           <!-- width="40%;word-wrap:break-word;" -->
             <tr ng-repeat="item in detail">
-              <td width="43%">@{{ item.material }} @{{ item.materialDes }}</td>
-              <td width="100" class="text-center">@{{item.targetQty | number }}</td>
-              <td width="100" class="text-center">@{{item.salesUnit }}</td>
-              <td width="150" class="text-right">@{{ item.pricePerUnit | number:2 }}</td>
-              <!-- width="40%;word-wrap:break-word;" -->
-              <td width="100%" style="word-wrap:break-word;" class="text-right">@{{ item.discount}}</td>
-              <td width="150" class="text-right">@{{ item.netwrPerUnit | number:2 }} บ.</td>
-              <td width="150" class="text-right">@{{ item.amount | number:2 }} บ.</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="300">@{{ item.material }} @{{ item.materialDes }}</td>
+              <td ng-if="item.amount== 0 && item.freeGoods == 'X'" width="300"><strong>@{{ item.material }} @{{ item.materialDes }}</strong></td>
+              <!-- <td width="300">@{{ item.material }} @{{ item.materialDes }}</td> -->
+
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="90" class="text-center">@{{item.targetQty | number }}</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{item.salesUnit }}</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="170" class="text-right">@{{ item.pricePerUnit | number:2 }} บ.</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-right">@{{ item.discount}}</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.netwrPerUnit | number:2 }} บ.</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr>
               <td colspan="7" class="text-right"><b>@{{inv.sumAmount | number:2}} บ.</b></td>
@@ -177,14 +180,15 @@
      
           </tfoot>
         </table>
-        <div class="modal-footer invoice__footer">
+        <!-- <div class="modal-footer invoice__footer">
           <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
             พิมพ์
           </button>
           <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
             ปิด
           </button>
-        </div>
+        </div> -->
+        <br/>
       </div>
     </div>
   </div>

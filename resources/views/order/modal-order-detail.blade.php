@@ -119,13 +119,16 @@
         </thead>
         <tbody >
           <tr ng-repeat="item in detail">
-            <td width="50%">@{{ item.material }} @{{ item.materialDes }}</td>
-            <td width="100" class="text-center">@{{ item.targetQty | number }}</td>
-            <td width="100" class="text-center">@{{ item.billQty | number }}</td>
-            <td width="100" class="text-center">@{{ item.deliQty  | number }}</td>
-            <td width="100" class="text-center">@{{ item.balaQty | number}}</td>
-            <td width="100" class="text-center text-danger">@{{ item.rejeQty | number }}</td>
-            <td width="150" class="text-center">@{{item.unit}}</td>
+            <!-- <td width="50%">@{{ item.material }} @{{ item.materialDes }}</td> -->
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="50%">@{{ item.material }} @{{ item.materialDes }}</td>
+            <td ng-if="item.netwr2== 0 && item.freeGoods == 'X'" width="50%"><strong>@{{ item.material }} @{{ item.materialDes }}</strong></td>
+
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{ item.targetQty | number }}</td>
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{ item.billQty | number }}</td>
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{ item.deliQty  | number }}</td>
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{ item.balaQty | number}}</td>
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="100" class="text-center text-danger">@{{ item.rejeQty | number }}</td>
+            <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="150" class="text-center">@{{item.unit}}</td>
           </tr>
 
           <tr class="footer-table" ng-show="detail.length > 0">
@@ -179,14 +182,7 @@
 
           </div>
 
-      <div class="modal-footer invoice__footer">
-        <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
-          พิมพ์
-        </button>
-        <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
-          ปิด
-        </button>
-      </div>
+          <br/>
     </div>
   </div>
 </div>

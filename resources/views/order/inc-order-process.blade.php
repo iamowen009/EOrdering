@@ -51,11 +51,11 @@
                     <a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a>
                   </td>
                   <td class="text-center">
-                    <a ng-click="OrderStatusModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a>
+                    <a ng-click="OrderStatusModal(list.orderId,list.salesOrderNumber)" href="javascript:void(0)">@{{ list.salesOrderNumber }}</a>
                   </td>
                   <td class="text-right" style="padding-right: 20px;">@{{ list.netAmount | number:2}}</td>
                   <td class="text-center" style="width:100px;">
-                    <a ng-click="OrderDetailModal(list.salesOrderNumber)" href="javascript:void(0)" ng-show="list.percentComplete!==100 && list.rejectHStatus!=='C'">
+                    <a ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)" href="javascript:void(0)" ng-show="list.percentComplete!==100 && list.rejectHStatus!=='C'">
                       <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
                           @{{ list.percentComplete }}%

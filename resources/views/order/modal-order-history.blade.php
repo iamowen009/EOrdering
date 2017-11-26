@@ -157,11 +157,13 @@
           </thead>
           <tbody >
             <tr ng-repeat="item in haveNoBill">
-              <td width="40%;word-wrap:break-word;"> @{{ item.material }} @{{ item.materialDes }}</td>
-              <td width="10%" class="text-center">@{{item.targetQty | number}}</td>
-              <td width="10%" class="text-center">@{{ item.targetQty -  item.billQty | number}}</td>
-              <td width="10%" class="text-center"></td>
-              <td width="10%" class="text-right">@{{item.netwr2 | number}} บ.</td>
+              <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="40%;word-wrap:break-word;"> @{{ item.material }} @{{ item.materialDes }}</td>
+              <td ng-if="item.netwr2== 0 && item.freeGoods == 'X'" width="40%;word-wrap:break-word;"><strong> @{{ item.material }} @{{ item.materialDes }}</strong></td>
+
+              <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="10%" class="text-center">@{{item.targetQty | number}}</td>
+              <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="10%" class="text-center">@{{ item.targetQty -  item.billQty | number}}</td>
+              <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="10%" class="text-center"></td>
+              <td ng-hide="item.netwr2== 0 && item.freeGoods == 'X'" width="10%" class="text-right">@{{item.netwr2 | number}} บ.</td>
             </tr>
           </tbody>
           </table>         
@@ -170,12 +172,7 @@
         </tfoot>
       </table>
       <div class="modal-footer invoice__footer">
-        <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
-          พิมพ์
-        </button>
-        <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
-          ปิด
-        </button>
+        
       </div>
     </div>
   </div>

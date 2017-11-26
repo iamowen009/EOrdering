@@ -417,11 +417,19 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 			console.log(response.data.result);
 			if (response.data.result == 'SUCCESS') {
 				console.log(response);
-				//var head = response.data.data.orderHistoryHeaderList,
-				var	detail = response.data.data.orderHistoryDetailList,
+				var head = response.data.data.orderHistoryHeaderList,
+					detail = response.data.data.orderHistoryDetailList,
 					descountdetail = response.data.data.prderHistoryDiscountList;
 
 				//$scope.MBill = head[0];
+			
+				console.log(head[0]);
+				// $scope.inv.purchNoC = head[0]['purchNoC'];
+				// $scope.inv.pmnttrms = head[0]['pmnttrms'];
+				// $scope.inv.headNetwr2 = head[0]['headNetwr2'];
+				// $scope.inv.headVat = head[0]['headVat'];
+				
+				
 				$scope.totalsum_manual = 0.0;
 				$scope.totalQty;
 				for (var e in detail) {
