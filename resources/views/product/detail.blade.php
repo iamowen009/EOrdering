@@ -95,13 +95,7 @@
 												{{ colorCodeName }}
 											</button>
 											<ul class="dropdown-menu">
-<<<<<<< HEAD
-												<!-- <li ng-repeat="p in colors"> -->
-												<!-- <li ng-repeat="p in colors | orderBy:'colorCode'"> -->
-												<li ng-repeat="p in listColors | orderBy:'colorCode'">
-=======
 												<li ng-repeat="p in colors | unique: 'colorCode'">
->>>>>>> origin/CPTN3M0
 													<a ng-click="setProduct(p.colorCode)" ng-model="cartColor" value="{{ p.colorCode }}">
 														<span class="frame-color" ng-show="p.cartrgbColor!=''" style="background-color: rgb({{p.cartrgbColor}});"></span>
 														<span ng-show="p.cartrgbColor==''" class="frame-color" style="background-color: #fff;"></span>
