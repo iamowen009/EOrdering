@@ -77,7 +77,7 @@
                       <!-- <td><a ng-click="OrderTrackingModal(list.orderId)" href="javascript:void(0)"><i class="fa fa-newspaper-o"></a></td> -->
 
                       <td class="text-center">
-                        <a href="javascript:void(0);" class="text-success" ng-click="OrderHistoryModal(list.salesOrderNumber)" data-toggle="tooltip"
+                        <a href="javascript:void(0);" class="text-success" ng-click="OrderHistoryModal(list.orderId,list.salesOrderNumber)" data-toggle="tooltip"
                           title="Order">
                           <i class="fa fa-newspaper-o" style="font-size:24px;"></i>
                         </a>
@@ -100,7 +100,7 @@
                                 <tr ng-repeat="Bills in Bill">
                                   <td>@{{ Bills.billno}}</td>
                                   <td>
-                                    <a ng-click="OrderBillHistoryModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ Bills.taxNum}}</a>
+                                    <a ng-click="OrderBillHistoryModal(list.orderId,list.salesOrderNumber)" href="javascript:void(0)">@{{ Bills.taxNum}}</a>
                                   </td>
                                 </tr>
                               </tbody>
