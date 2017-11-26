@@ -57,7 +57,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             }
 
             if (currentIndex == 0 || currentIndex == 1) {
-                var btnPrint = $("<a>").attr({ "href": "#", "ng-click": "btnPrint" }).addClass("btn-print btn btn-primary").text("Print");
+                var btnPrint = $("<a>").attr({ "href": "#", "ng-click": "btnPrint" }).addClass("btn-print btn btn-primary").text("พิมพ์");
                 var btnClear = $("<a>").attr({ "href": "#", "ng-click": "removeAll()" }).addClass("btn-clear btn btn-danger").text("ลบรายการสินค้าทั้งหมด");
                 var printeBtn = $("<li>").attr("aria-disabled", false).addClass('li-btn pull-left').append(btnPrint);
                 var cleareBtn = $("<li>").attr("aria-disabled", false).addClass('li-btn pull-left').append(btnClear);

@@ -28,7 +28,7 @@
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">วันที่สั่งซื้อ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ cartDate }}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{ cartDate }}</span>
           </div>
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Request Date:</label>
@@ -61,8 +61,9 @@
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">ที่อยู่ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}</label>
-
+            <span class="col-md-9 col-sm-9 col-xs-12">
+              {{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}
+            </span>
           </div>
           <div class="form-group col-md-6" ng-show="shippingType=='show' " ng-class="{true: 'error'}[submitted && formcart.ddlTransport.$invalid]">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ส่ง :</label>
@@ -93,18 +94,23 @@
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">อีเมลล์ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{ customer.email}}</label>
-
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ customer.email}}
+            </span>
           </div>
           <div class="form-group col-md-6" ng-show="shippingType=='show'">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">ที่อยู่สถานที่ส่ง :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{shipaddress}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{shipaddress}}
+            </span>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">เบอร์โทรศัพท์ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{ customer.telNo }}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ customer.telNo }}
+            </span>
           </div>
 
           <!-- <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08' || customer.shipCondition == '03') && shippingType=='show'"> -->
