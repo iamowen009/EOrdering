@@ -74,15 +74,13 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
         $scope.totalAmount = 0;
         $scope.totalQty = 0;
         
-        console.log('cart');
-        console.log(response);
-        $scope.cartNoBom = $filter('filter')(response.data.data.cartList, {
+        $scope.totalQty = $filter('filter')($scope.carts, {
           isBOM: false
-        });
+        }).length + $scope.boms.length;
 
         for (var key in $scope.carts) {
           $scope.totalAmount += $scope.carts[key]['totalAmount'];
-          $scope.totalQty += $scope.carts[key]['qty'];
+          //$scope.totalQty += $scope.carts[key]['qty'];
           //$scope.itemQty = $scope.carts[key]['qty'];
           var list_date = $scope.carts[key]['cartDate'].split('T');
           var split_date = list_date[0].split('-');

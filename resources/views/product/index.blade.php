@@ -77,14 +77,15 @@
         <form class="form-horizontal form-label-left">
           <div class="form-group" style="margin-bottom:0px;margin-top:0px;">
             <label class="col-md-12 col-sm-12 col-xs-12">
-              <h4 class="mt-0 mb-0">{{marketingDesc}}
+              <h4 class="mt-0 mb-0">
+                {{marketingDesc}}
                 <small>พบสินค้าจำนวน {{totalProduct}} รายการ</small>
               </h4>
             </label>
           </div>
           <div class="form-group" style="margin-bottom:0px;margin-top:0px;">
-            <label class="col-md-1 col-sm-1 col-xs-12 mb-0">กรองจาก </label>
-            <div class="col-md-10 col-sm-10 col-xs-12">
+            <label class="pull-left" style="width: 100px; margin-left: 15px;">กรองจาก </label>
+            <div class="pull-left">
               <span style="margin-right:5px;" class="label label-info" ng-repeat="m in marketings" ng-show="getFilter(marketingCode,m.marketingCode).length>0">
                 {{m.marketingDesc}}
                 <a ng-click="marketingSelection(m.marketingCode)" calss="pull-right" style="color:white;"

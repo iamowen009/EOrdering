@@ -2,7 +2,6 @@
 
 @section('head')
 <link rel="stylesheet" href="<?= asset('css/cart-index.css') ?>"/>
-
 @stop
 
 @section('content')

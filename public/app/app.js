@@ -97,7 +97,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
             console.log('add order');
 
             swal({
-                title: "ยืนยัน?",
+                title: "ยืนยัน ?",
                 text: "ท่านต้องการยืนยันใบสั่งซื้อนี้หรือไม่",
                 //type: "warning",
                 showCancelButton: true,

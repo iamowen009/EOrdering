@@ -1,11 +1,13 @@
 "use strict";
-app.controller('CartSummaryController', function ($scope, $http, Customers, Carts, Orders, Config, Products) {
+app.controller('CartSummaryController', function ($scope, $http, $filter, Customers, Carts, Orders, Config, Products) {
 
   $scope.orderId = [window.location.href.split('/').pop()];
   $scope.loading = true;
   fetchOrder($scope.orderId);
-  $scope.partImgProduct = Config.partImgProduct();
   $scope.shipaddress = '-';
+  $scope.partImgProduct = Config.partImgProduct();
+  $scope.partImgProductOrder = Config.partImgProductOrder();
+  $scope.partImgProductList = Config.partImgProductList();
 
   function fetchOrder(orderId) {
     Orders.fetchOne(orderId).then(function (response) {
@@ -14,9 +16,19 @@ app.controller('CartSummaryController', function ($scope, $http, Customers, Cart
         $scope.carts = response.data.data.orderDetailList;
         $scope.totalAmount = 0;
         $scope.totalQty = 0;
+        $scope.boms = response.data.data.orderBOMItems;
+
+        $scope.totalQty = $filter('filter')($scope.carts, {
+          isBOM: false
+        }).length + $scope.boms.length;
+
         for (var key in $scope.carts) {
           $scope.totalAmount += $scope.carts[key]['totalAmount'];
-          $scope.totalQty += $scope.carts[key]['qty'];
+
+          for (var bm in $scope.boms) {
+            if ($scope.boms[bm]['productRefCode'] == $scope.carts[key]['productCode'])
+              $scope.totalAmount += ($scope.boms[bm]['price'] * $scope.carts[key]['qty']);
+          }
         }
         var list_date = $scope.order['documentDate'].split('T');
         var split_date = list_date[0].split('-');
@@ -71,5 +83,14 @@ app.controller('CartSummaryController', function ($scope, $http, Customers, Cart
     return _.filter(results, function (d) {
       return d['shipId'] == valueStartsWith;
     })
+  }
+
+  $scope.bomRows = function (productCode) {
+    var len = 0;
+    for (var bm in $scope.boms) {
+      if ($scope.boms[bm]['productRefCode'] == productCode)
+        len++;
+    }
+    return len;
   }
 });

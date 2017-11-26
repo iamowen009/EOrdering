@@ -4,187 +4,200 @@
   <span class="cui-wizard--steps--title">Confirmation</span>
 </h3>
 <section>
+  <div class="alert alert-warning text-bold" ng-show="carts.length === 0">
+    ไม่มีสินค้าในตะกร้า
+  </div>
   <div class="x_panel">
     <div class="x_title">
-      <h4 class="text-bold">{{customer.customerCode}} : {{customer.customerName}}</h4>
-      <div class="clearfix"></div>
+      <h4 class="text-bold mb-5 pl-10">{{customer.customerCode}} : {{customer.customerName}}</h4>
     </div>
     <div class="x_content">
-      <br>
-      <form class="form-horizontal">
-        <div class="col-md-12">
-          <div class="form-group col-md-6">
-            <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">เลขที่ใบสั่งซื้อ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12"></label>
+      <div class="form-horizontal pr-15 pt-30 pb-10">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                เลขที่ใบสั่งซื้อ : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                <!-- CODE HERE -->
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                วันที่สั่งซื้อ : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ cartDate }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                การชำระเงิน : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                <span ng-show="paymentTerm==='CASH' || paymentTerm ==='CA02'">เงินสด</span>
+                <span ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'">เครดิต</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                ที่อยู่ : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ customer.address }} {{ customer.street }} {{ customer.subDistrictName }} <br> 
+                {{ customer.districtName }} {{ customer.cityName }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                อีเมล์ : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ customer.email }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                โทรศัพท์ : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ customer.telNo }}
+              </div>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เลขที่ PO :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{customerPO}}
-            </span>
-
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                PO Number : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ customerPO }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                Request Date : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ ddlDate.reqDate }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                สถานที่ส่ง : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ ddlShipTo.shipName }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                ที่อยู่สถานที่ส่ง : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ shipaddress }}
+              </div>
+            </div>
+            <div class="form-group" ng-if="(ddlShipTo.shipCondition == '03'  || customer.shipCondition == '03') && shippingType=='show'">
+              <label class="control-label col-md-4 text-right">
+                จัดส่งโดย : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : objTransport.transportZone }}
+                {{ objTransport.transportZoneDesc }}
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="form-group col-md-6">
-            <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่สั่งซื้อ :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{ cartDate }}
-            </span>
-          </div>
-          <div class="form-group col-md-6" ng-show="shipCondition">
-            <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">ขนส่งโดย :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{shipCondition === true ? 'รับสินค้าเอง' : ''}}
-            </span>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group col-md-6">
-            <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">การชำระเงิน :</label>
-            <span ng-show="paymentTerm==='CASH' || paymentTerm ==='CA02'" class="col-md-9 col-sm-9 col-xs-12 form-control-static">เงินสด</span>
-            <span ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12 form-control-static">เครดิต</span>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">Request Date:</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{ddlDate.reqDate}}
-            </span>
-
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group col-md-6">
-            <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">ที่อยู่ :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12">
-              {{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}
-            </span>
-
-          </div>
-          <div class="form-group col-md-6" ng-show="shippingType=='show'">
-            <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">สถานที่ส่ง :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{ddlShipTo.shipName}}
-            </span>
-
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group col-md-6">
-            <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">อีเมลล์ :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{ customer.email}}
-            </span>
-
-          </div>
-          <div class="form-group col-md-6" ng-show="shippingType=='show'">
-            <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">ที่อยู่สถานที่ส่ง :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{shipaddress}}
-            </span>
-
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group col-md-6">
-            <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เบอร์โทรศัพท์ :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{ customer.telNo }}
-            </span>
-          </div>
-          <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03'  || customer.shipCondition == '03') && shippingType=='show'">
-            <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">จัดส่งโดย :</label>
-            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
-              {{ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : objTransport.transportZone}}
-              {{objTransport.transportZoneDesc}}
-            </span>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!--<div class="bg-gray">
-         <h4>{{customer.customerCode}} {{customer.customerName}}</h4>
-         <br>
-
-    </div>-->
-
-  <br/>
-  <div class="col-md-12">
-    <h6>
-      รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน {{ cartNoBom.length + boms.length | number }} รายการ
-    </h6>
-  </div>
-
-
-  <div class="alert alert-warning" role="alert" ng-show="carts.length === 0">
-    Your cart is empty
-  </div>
-
-
-  <div class="table-responsive col-lg-12" ng-show="carts.length > 0">
-    <div class="invoice-block">
-      <table class="table table-hover text-right">
-        <thead class="thead-default">
-          <tr>
-            <th class="text-center">รหัสสินค้า</th>
-            <th class="text-center">สินค้า</th>
-            <th class="text-center">จำนวน</th>
-            <th class="text-center">หน่วย</th>
-            <th class="text-center">ราคาต่อหน่วย</th>
-            <th class="text-center">ราคารวม</th>
-          </tr>
-        </thead>
-        <tfoot>
-
-        </tfoot>
-        <tbody ng-repeat="item in carts track by $index">
-          <tr class="cart-product-{{ item.productId }}">
-            <td class="text-center">
-              <img class="img-product" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
-              <strong>{{item.productCode}}</strong>
-            </td>
-            <td class="text-left">
-              <strong>{{ item.productNameTh }}</strong>
-            </td>
-            <td class="text-center">
-              <span ng-if="bomRows(item.productCode) == 0">{{ item.qty | number }}</span>
-            </td>
-            <td class="text-center">
-              <span ng-if="bomRows(item.productCode) == 0">{{item.unitNameTh}}</span>
-            </td>
-            <td>
-              <span ng-if="bomRows(item.productCode) == 0">{{ item.price | number:2}}</span>
-            </td>
-            <td>
-              <span ng-if="bomRows(item.productCode) == 0">{{ +item.price*+item.qty | number:2 }}</span>
-            </td>
-            <!--
-                <td><a href=""><span ng-click="$event.preventDefault(); removeCart(item.productId)" class="fa fa-trash fa-2x"></span></a></td>
-                -->
-          </tr>
-          <tr class="cart-product-{{ item.productId }}" ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
-            <td class="text-center">
-              <img class="img-product" src="{{partImgProductOrder}}/{{bom.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg"> {{bom.productCode}}</td>
-            <td class="text-center">{{ bom.productNameTh }}</td>
-            <td class="text-center">{{ item.qty }}</td>
-            <td class="text-center">{{item.unitNameTh}}</td>
-            <td>{{ bom.price | number:2}}</td>
-            <td>{{ +bom.price*+item.qty | number:2 }}</td>
-          </tr>
-
-        </tbody>
-      </table>
-
-    </div>
-    <div class="text-right clearfix">
-      <div class="pull-right">
-        <p class="page-invoice-amount">
-          <strong>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT):
-            <span class="total_price">{{ totalAmount | number:2 }}</span> บาท</strong>
-        </p>
-        <br>
       </div>
+    </div>
+  </div>
+  <div class="w100">
+    <h5>รายละเอียดสินค้าที่สั่งซื้อ &nbsp; คุณมีสินค้าในตระกร้าจำนวน
+      <strong>{{ totalQty }}</strong> รายการ</h5>
+  </div>
+  <table class="table mt-15" ng-show="carts.length != 0">
+    <thead class="thead-default">
+      <tr>
+        <th></th>
+        <th class="text-center">รหัสสินค้า</th>
+        <th class="text-center">สินค้า</th>
+        <th class="text-center">จำนวน</th>
+        <th class="text-center">หน่วย</th>
+        <th class="text-right">ราคาต่อหน่วย</th>
+        <th class="text-right">ราคารวม</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="item in carts track by $index">
+      <tr class="text-bold">
+        <td align="center">
+          <img width="50" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+        </td>
+        <td align="center" style="line-height: 50px;">
+          {{ item.productCode }}
+        </td>
+        <td style="line-height: 50px;">
+          {{ item.productNameTh }}
+        </td>
+        <td align="center" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0">
+            {{ item.qty | number }}
+          </span>
+        </td>
+        <td align="center" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0">
+            {{item.unitNameTh}}
+          </span>
+        </td>
+        <td align="right" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0" >
+            {{ item.price | number:2}}
+          </span>
+        </td>
+        <td align="right" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0">
+            {{ +item.price*+item.qty | number:2 }}
+          </span>
+        </td>
+      </tr>
+      <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
+        <td align="center">
+            <img width="50" ng-src="{{ partImgProductOrder }}/{{ bom.btfCode }}.jpg" err-src="{{ partImgProduct }}/Noimage.jpg">
+          </td>
+          <td align="center" style="line-height: 50px;">
+            {{ bom.productCode }}
+          </td>
+          <td style="line-height: 50px;">
+            {{ bom.productNameTh }}
+          </td>
+          <td align="center" style="line-height: 50px;">
+            {{ item.qty | number }}
+          </td>
+          <td align="center" style="line-height: 50px;">
+            <span ng-if="bomRows(bom.productCode) == 0">
+              {{ bom.unitNameTh }}
+            </span>
+          </td>
+          <td align="right" style="line-height: 50px;">
+            <span ng-if="bomRows(bom.productCode) == 0" >
+              {{ bom.price | number:2 }}
+            </span>
+          </td>
+          <td align="right" style="line-height: 50px;">
+            <span ng-if="bomRows(bom.productCode) == 0">
+              {{ +bom.price*+item.qty | number:2 }}
+            </span>
+          </td>
+        </tr>  
+      </tr>
+    </tbody>
+  </table>
+  <div class="w100 text-right">
+    <strong>
+      ยอดรวมมูลค่าสินค้า (ไม่รวม VAT) :
+      <span class="total_price">{{ totalAmount | number:2 }}</span> บาท
+    </strong>
+  </div>
 </section>
 @endverbatim
