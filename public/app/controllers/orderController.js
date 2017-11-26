@@ -343,20 +343,26 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 
 	$scope.OrderDetailModal = function (orderId,saleOrderNumber) {
 
-		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
-			var head = response.data.data.orderProcessInfo;
-			$scope.inv = head;
-		});
-
-		// Orders.fetchOne(orderId).then(function (response) {
-		// 	if (response.data.result == 'SUCCESS') {
-		// 		var head = response.data.data.order;
-		// 		$scope.inv = head;
-		// 	}
+		// OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
+		// 	var head = response.data.data.orderProcessInfo;
+		// 	$scope.inv = head;
 		// });
+
+		Orders.fetchOne(orderId).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+				var head = response.data.data.order;
+				$scope.inv = head;
+			}
+		});
 
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
+			$scope.TotaltargetQty = 0;
+			$scope.TotalbillQty = 0;
+			$scope.TotaldeliQty = 0;
+			$scope.TotalbalaQty = 0;
+			$scope.TotalrejeQty = 0;
+
 			if (response.data.result == 'SUCCESS') {
 				console.log(response);
 
@@ -367,6 +373,12 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 				for (var key in $scope.detail) {
 					$scope.totalAmount += $scope.detail[key]['totalAmount'];
 					$scope.totalQty += $scope.detail[key]['qty'];
+
+					$scope.TotaltargetQty += $scope.detail[key]['targetQty'];
+					$scope.TotalbillQty += $scope.detail[key]['billQty'];
+					$scope.TotaldeliQty += $scope.detail[key]['deliQty'];
+					$scope.TotalbalaQty += $scope.detail[key]['balaQty'];
+					$scope.TotalrejeQty += $scope.detail[key]['rejeQty'];
 				}
 				$('#OrderDetailModal').modal('show');
 			} else {

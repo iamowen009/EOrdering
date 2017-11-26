@@ -108,7 +108,7 @@
         <table class="invoice__body--table scroll">
           <thead>
             <tr>
-              <th width="638" class="text-center text-blue">ผลิตภัณฑ์</th>
+              <th width="43%" class="text-center text-blue">ผลิตภัณฑ์</th>
               <th width="100" class="text-center text-blue">จำนวน</th>
               <th width="100" class="text-center text-blue">หน่วย</th>
               <th width="150" class="text-center text-blue">
@@ -123,7 +123,7 @@
           </thead>
           <tbody >
             <tr ng-repeat="item in detail">
-              <td width="638">@{{ item.material }} @{{ item.materialDes }}</td>
+              <td width="43%">@{{ item.material }} @{{ item.materialDes }}</td>
               <td width="100" class="text-center">@{{item.targetQty | number }}</td>
               <td width="100" class="text-center">@{{item.salesUnit }}</td>
               <td width="150" class="text-right">@{{ item.pricePerUnit | number:2 }}</td>
