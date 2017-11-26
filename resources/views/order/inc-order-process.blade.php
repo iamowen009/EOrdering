@@ -17,22 +17,10 @@
 <div class="panel panel-default">
   <div class="order-precess">
     <div ng-repeat="y in ordersYear">
-      <a class="accordion-toggle" data-toggle="collapse" data-toggle="collapse" href="#year-@{{ y }}">
+      <a class="accordion-toggle" data-toggle="collapse" href="#year-@{{ y }}" aria-expanded="false" aria-controls="year-@{{ y }}">
         @{{ y }}
       </a>
       <div id="year-@{{ y }}">
-        <!--
-        <div ng-repeat="m in ordersYm | orderBy:'-month' " ng-if="m.year == y">
-          <a class="accordion-toggle" data-toggle="collapse" data-toggle="collapse" href="#month-@{{ m.month }}">
-            @{{ txtmonth(m.month) }}
-          </a>
-          <ul>
-            <li>
-              s
-            </li>
-          </ul>
-        </div>
-        -->
         <ul ng-repeat="m in ordersYm | orderBy:'-month' " ng-if="m.year == y">
           <li class="accordion-toggle" style="cursor: pointer;" data-toggle="collapse" data-toggle="collapse" href="#month-@{{ m.month }}">
             @{{ txtmonth(m.month) }}
@@ -57,8 +45,8 @@
               <tbody>
                 <!-- <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month && list.percentComplete < 100"> -->
                 <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month">
-                  <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy'}}&nbsp;&nbsp;@{{ list.createDate | date:'HH:mm'}}</td>
-                  <td class="text-center">@{{ list.docName}}</td>
+                  <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy' }}&nbsp;&nbsp;@{{ list.createDate | date:'HH:mm'}}</td>
+                  <td class="text-center">@{{ list.docName }}</td>
                   <td class="text-center">
                     <a ng-click="OrderInfo(list.orderId)" href="javascript:void(0)">@{{ list.docNumber }}</a>
                   </td>

@@ -19,66 +19,85 @@
           </div>
           <div class="form-group col-md-6">
             <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เลขที่ PO :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{customerPO}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{customerPO}}
+            </span>
 
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">วันที่สั่งซื้อ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ cartDate }}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ cartDate }}
+            </span>
           </div>
           <div class="form-group col-md-6" ng-show="shipCondition">
             <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">ขนส่งโดย :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{shipCondition === true ? 'รับสินค้าเอง' : ''}}</label>
-
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{shipCondition === true ? 'รับสินค้าเอง' : ''}}
+            </span>
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">การชำระเงิน :</label>
-            <label ng-show="paymentTerm==='CASH' || paymentTerm ==='CA02'" class="col-md-9 col-sm-9 col-xs-12">เงินสด</label>
-            <label ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12">เครดิต</label>
+            <span ng-show="paymentTerm==='CASH' || paymentTerm ==='CA02'" class="col-md-9 col-sm-9 col-xs-12 form-control-static">เงินสด</span>
+            <span ng-show="paymentTerm!=='CASH' && paymentTerm !=='CA02'" class="col-md-9 col-sm-9 col-xs-12 form-control-static">เครดิต</span>
           </div>
           <div class="form-group col-md-6">
             <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">Request Date:</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ddlDate.reqDate}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ddlDate.reqDate}}
+            </span>
 
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">ที่อยู่ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12">
+              {{customer.address}} {{customer.street}} {{customer.subDistrictName}} {{customer.districtName}} {{customer.cityName}}
+            </span>
 
           </div>
           <div class="form-group col-md-6" ng-show="shippingType=='show'">
             <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">สถานที่ส่ง :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ddlShipTo.shipName}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ddlShipTo.shipName}}
+            </span>
 
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">อีเมลล์ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.email}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ customer.email}}
+            </span>
 
           </div>
           <div class="form-group col-md-6" ng-show="shippingType=='show'">
             <label for="email" class="col-md-3 col-sm-3 col-xs-12 text-right">ที่อยู่สถานที่ส่ง :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{shipaddress}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{shipaddress}}
+            </span>
 
           </div>
         </div>
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">เบอร์โทรศัพท์ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ customer.telNo }}
+            </span>
           </div>
           <div class="form-group col-md-6" ng-if="(ddlShipTo.shipCondition == '03'  || customer.shipCondition == '03') && shippingType=='show'">
             <label for="pwd" class="col-md-3 col-sm-3 col-xs-12 text-right">จัดส่งโดย :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : objTransport.transportZone}}
-              {{objTransport.transportZoneDesc}}</label>
+            <span class="col-md-9 col-sm-9 col-xs-12 form-control-static">
+              {{ddlShipTo.shipCondition == '08' ? ddlShipTo.transportZone + ' ' + ddlShipTo.transportZoneDesc : objTransport.transportZone}}
+              {{objTransport.transportZoneDesc}}
+            </span>
           </div>
         </div>
       </form>
@@ -159,21 +178,13 @@
       </table>
 
     </div>
-
     <div class="text-right clearfix">
       <div class="pull-right">
-        <!--<p>
-                Sub - Total amount: <strong><span>$5,700.00</span></strong>
-            </p>
-            <p>
-                VAT: <strong><span>$57.00</span></strong>
-            </p>-->
         <p class="page-invoice-amount">
           <strong>ยอดรวมมูลค่าสินค้า(ไม่รวม VAT):
             <span class="total_price">{{ totalAmount | number:2 }}</span> บาท</strong>
         </p>
         <br>
       </div>
-
 </section>
 @endverbatim
