@@ -229,11 +229,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 		});
 	}
 
-	$scope.OrderHistoryModal = function (saleOrderNumber) {
-
-		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
-			var head = response.data.data.orderProcessInfo;
-			$scope.inv = head;
+	$scope.OrderHistoryModal = function (orderId,saleOrderNumber) {
+		Orders.fetchOne(orderId).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+				var head = response.data.data.order;
+				$scope.inv = head;
+				$scope.inv.customerEmail = $scope.customer.email;
+			}
 		});
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
