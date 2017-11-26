@@ -229,11 +229,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 		});
 	}
 
-	$scope.OrderHistoryModal = function (saleOrderNumber) {
-
-		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
-			var head = response.data.data.orderProcessInfo;
-			$scope.inv = head;
+	$scope.OrderHistoryModal = function (orderId,saleOrderNumber) {
+		Orders.fetchOne(orderId).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+				var head = response.data.data.order;
+				$scope.inv = head;
+				$scope.inv.customerEmail = $scope.customer.email;
+			}
 		});
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
@@ -342,19 +344,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 	}
 
 	$scope.OrderDetailModal = function (orderId,saleOrderNumber) {
-
-		// OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
-		// 	var head = response.data.data.orderProcessInfo;
-		// 	$scope.inv = head;
-		// });
-
 		Orders.fetchOne(orderId).then(function (response) {
 			if (response.data.result == 'SUCCESS') {
 				var head = response.data.data.order;
 				$scope.inv = head;
+				$scope.inv.customerEmail = $scope.customer.email;
 			}
 		});
-
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			$scope.TotaltargetQty = 0;
@@ -404,19 +400,28 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 		});
 	}
 
-	$scope.OrderBillHistoryModal = function (saleOrderNumber) {
+	$scope.OrderBillHistoryModal = function (orderId,saleOrderNumber) {
 		$scope.MBill = '';
 		$scope.detail = '';
 		$scope.descountdetail = '';
+
+		Orders.fetchOne(orderId).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+				var head = response.data.data.order;
+				$scope.inv = head;
+				$scope.inv.customerEmail = $scope.customer.email;
+			}
+		});
+
 		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
 			console.log(response.data.result);
 			if (response.data.result == 'SUCCESS') {
 				console.log(response);
-				var head = response.data.data.orderHistoryHeaderList,
-					detail = response.data.data.orderHistoryDetailList,
+				//var head = response.data.data.orderHistoryHeaderList,
+				var	detail = response.data.data.orderHistoryDetailList,
 					descountdetail = response.data.data.prderHistoryDiscountList;
 
-				$scope.MBill = head[0];
+				//$scope.MBill = head[0];
 				$scope.totalsum_manual = 0.0;
 				$scope.totalQty;
 				for (var e in detail) {

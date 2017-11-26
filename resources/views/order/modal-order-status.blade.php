@@ -115,7 +115,7 @@
                 ราคาต่อหน่วย
                 <span style="color:red">*</span>
               </th>
-              <th width="150" class="text-center text-blue">ส่วนลด</th>
+              <th width="100" style="word-wrap:break-word;"  class="text-center text-blue">ส่วนลด</th>
               <th width="150" class="text-center text-blue">ราคาหลังหักส่วนลด</th>
               <th width="150" class="text-center text-blue">ราคารวม</th>
             </tr>
@@ -127,13 +127,21 @@
               <td width="100" class="text-center">@{{item.targetQty | number }}</td>
               <td width="100" class="text-center">@{{item.salesUnit }}</td>
               <td width="150" class="text-right">@{{ item.pricePerUnit | number:2 }}</td>
-              <td width="150" class="text-right">@{{ item.discount}}</td>
+              <!-- width="40%;word-wrap:break-word;" -->
+              <td width="100%" style="word-wrap:break-word;" class="text-right">@{{ item.discount}}</td>
               <td width="150" class="text-right">@{{ item.netwrPerUnit | number:2 }} บ.</td>
               <td width="150" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr>
               <td colspan="7" class="text-right"><b>@{{inv.sumAmount | number:2}} บ.</b></td>
             </tr>
+            
+            <tr ng-repeat="item in discount">
+              <td class="text-center" colspan="1" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
+              <td class="" colspan="5">@{{item.description}}</td>
+              <td class="text-right" colspan="1">@{{item.kwert | number}} บ.</td>
+            </tr>       
+
 
             <tr class="footer-table">
               <td></td>
@@ -141,7 +149,7 @@
                 <b>รวมมูลค่าสินค้า : </b>
               </td>
               <td colspan="2" class="text-right text-blue">
-                <b>@{{ inv.netValue2 }} บ.</b>
+                <b>@{{ inv.netValue2 | number:2 }} บ.</b>
               </td>
             </tr>
             <tr class="footer-table">
@@ -169,114 +177,6 @@
      
           </tfoot>
         </table>
-        <!-- <p align="right">
-              <strong>@{{inv.sumAmount | number:2}}&nbsp;</strong>
-            </p> -->
-
-        <!-- <div>
-        <br/>
-          <div class="invoice-block row">
-            <table class="table table-hover table-bordered">
-              <thead class="thead-default">
-                <tr>
-                  <th class="text-center">รหัสสินค้า</th>
-                  <th class="text-center">สินค้า</th>
-                  <th class="text-center">จำนวน</th>
-                  <th class="text-center">หน่วย</th>
-                  <th class="text-center">ราคา/หน่วย</th>
-                  <th class="text-center" style="width:5px">ส่วนลด</th>
-                  <th class="text-center">ราคาหลังหักส่วนลด</th>
-                  <th class="text-center">ราคารวม</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr ng-repeat="item in detail">
-                  <td>
-                    @{{item.material}}
-                  </td>
-
-                  <td class="text-left">
-                    <div class="row">
-                      @{{ item.materialDes }}
-                      <div class="text-danger" ng-style="item.freeGoods == ''  &&  {'display': 'none'}">
-                      &nbsp;(ของแถม)</div>
-                    </div>
-                  </td>
-
-                  <td class="text-center">@{{ item.targetQty | number }}</td>
-                  <td class="text-center">@{{item.salesUnit}}</td>
-                  <td class="text-right">@{{ item.pricePerUnit | number:2}}</td>
-                  <td class="text-right">@{{item.discount }}</td>
-                  <td class="text-right">@{{item.netwrPerUnit | number:2}}</td>
-                  <td class="text-right">@{{item.amount | number:2}} บ.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p align="right">
-            <strong>@{{inv.sumAmount | number:2}}&nbsp;</strong>
-          </p>
-          </br>
-
-
-
-
-          <div class="invoice-block row">
-            <table class="table table-hover">
-
-              <tbody style="border-top: 2px solid #fff;">
-                <tr ng-repeat="item in discount">
-                  <td class="text-center" ng-style="item.type === 'หัก' &&  {'color': 'red'} ">@{{item.type}}</td>
-                  <td class="text-left">@{{item.description}}</td>
-                  <td class="text-right">@{{item.kwert | number:2}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-
-
-
-
-          <div class="row footer-popup">
-            <div class="col-sm-6 text-danger"></div>
-            <div class="col-sm-4 text-right">
-              <strong>รวมมูลค่าสินค้า :</strong>
-            </div>
-            <div class="col-sm-2 text-right">
-              @{{ inv.netValue2 | number:2}}
-              <strong> บาท</strong>
-            </div>
-          </div>
-
-          <div class="row footer-popup">
-            <div class="col-sm-6 text-danger"> </div>
-            <div class="col-sm-4 text-right">
-              <strong>ภาษีมูลค่าเพิ่มอัตรา 7% :</strong>
-            </div>
-
-            <div class="col-sm-2 text-right">
-              @{{ inv.vatAmount | number}}
-              <strong> บาท</strong>
-            </div>
-          </div>
-
-          <div class="row footer-popup">
-            <div class="col-sm-6 text-danger"> </div>
-            <div class="col-sm-4 text-right">
-              <strong>ยอดรวม :</strong>
-            </div>
-            <div class="col-sm-2 text-right">
-              @{{ inv.netValue2 + inv.vatAmount | number}}
-              <strong> บาท</strong>
-            </div>
-          </div>
-
-        </div> -->
-
-
         <div class="modal-footer invoice__footer">
           <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
             พิมพ์
