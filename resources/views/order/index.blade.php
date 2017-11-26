@@ -16,8 +16,6 @@
           <div class="panel-heading text-center style-title">สถานะคำสั่งซื้อ </div>
           <div class="">
             <br>
-
-
             <form class="form-inline">
               <div class="form-group col-md-3">
                 <label class="datelbl">วันที่เริ่มต้น : &nbsp;</label>
@@ -29,9 +27,7 @@
                   <input type="text" class="form-control" ng-model="dateRangeEnd" datepicker ng-change="filterOrder()">
                 </div>
               </div>
-
             </form>
-
             <div class="row">
               <div class="col-md-12">
                 <div class="cui-ecommerce--product--info">
@@ -62,11 +58,11 @@
                             <span class="fa fa-refresh fa-3x fa-spin"></span>
                           </p>
                           @include('order.inc-history-process')
-
                         </div>
-
                       </div>
-                      <span style="color:red;position: absolute;margin: -53px 0px 0px 145px;">* จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม VAT</span>
+                      <span style="color:red; position: absolute; margin-left: 47px;">
+                        * จำนวนเงินสุทธิ หลังหักส่วนลดทั้งหมด ไม่รวมค่าบริการคลังและไม่รวม VAT
+                      </span>
                     </div>
 
                   </div>

@@ -24,14 +24,11 @@
           <br>
           <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 ng-scope" ng-repeat="fav in favorites">
-              <div class="cui-ecommerce--catalog--item">
-                <span class="favorite-icon" ng-click="removeFav(fav, $index)" ng-class="{'active': fav.isFavorite}">
+              <div class="cui-ecommerce--catalog--item" style="cursor: pointer;" ng-click="toProductDetail(fav.btf)">
+                <span class="favorite-icon" ng-click="$event.stopPropagation(); removeFav(fav, $index)" ng-class="{'active': fav.isFavorite}">
                   <i class="fa fa-star"></i>
                 </span>
                 <div class="cui-ecommerce--catalog--item--img">
-                  <!--<div class="cui-ecommerce--catalog--item--status">
-                                    <span class="cui-ecommerce--catalog--item--status--title">New</span>
-                                </div>-->
                   <div class="cui-ecommerce--catalog--item--like cui-ecommerce--catalog--item--like__selected">
                     <i class="icmn-heart3 cui-ecommerce--catalog--item--like--liked">
                       <!-- -->
@@ -41,7 +38,7 @@
                     </i>
                   </div>
                   <a href="javascript: void(0);">
-                    <img class="img-prod" ng-src="{{partImgProductDetail}}/{{fav.btf}}.jpg" err-src="{{partImgProduct}}/Noimage.jpg" ng-click="toProductDetail(fav.btf)">
+                    <img class="img-prod" ng-src="{{partImgProductDetail}}/{{fav.btf}}.jpg" err-src="{{partImgProduct}}/Noimage.jpg">
                   </a>
                 </div>
                 <div class="text-center">

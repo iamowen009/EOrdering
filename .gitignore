@@ -6,3 +6,6 @@
 !storage/fonts/THSarabunNew Bold.ttf
 !storage/fonts/THSarabunNew BoldItalic.ttf
 !storage/fonts/THSarabunNew Italic.ttf
+docker-compose.yml
+dockerfile/app.dockerfile
+dockerfile/web.dockerfile

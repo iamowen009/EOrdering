@@ -20,7 +20,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
   };
 
   $scope.toShop = function () {
-    window.location = _base + '/product/0';
+    window.location = _base + '/product/10';
   };
 
   $scope.cancel = function () {
@@ -209,7 +209,7 @@ app.controller('AppController', function ($scope, $http, $filter, Customers, Aut
   $scope.username = Auth.username();
   $scope.usertype = Auth.userTypeDesc();
   $scope.customerName = Customers.customerName();
-
+ 
   if ($scope.usertype == 'Multi') {
     $scope.customerCode = Customers.customerCode();
   }

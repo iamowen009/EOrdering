@@ -93,7 +93,7 @@
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">อีเมลล์ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.email}}</label>
+            <label class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{ customer.email}}</label>
 
           </div>
           <div class="form-group col-md-6" ng-show="shippingType=='show'">
@@ -104,7 +104,7 @@
         <div class="col-md-12">
           <div class="form-group col-md-6">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">เบอร์โทรศัพท์ :</label>
-            <label class="col-md-9 col-sm-9 col-xs-12">{{ customer.telNo }}</label>
+            <label class="col-md-9 col-sm-9 col-xs-12 form-control-static">{{ customer.telNo }}</label>
           </div>
 
           <!-- <div class="form-group col-md-6"  ng-if="(ddlShipTo.shipCondition == '03' || ddlShipTo.shipCondition == '08' || customer.shipCondition == '03') && shippingType=='show'"> -->
