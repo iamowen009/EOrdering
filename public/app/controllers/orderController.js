@@ -175,21 +175,32 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 		window.open(url, '_blank');
 	}
 
-	$scope.OrderStatusModal = function (saleOrderNumber) {
+	$scope.OrderStatusModal = function (orderId,saleOrderNumber) {
 		$scope.discountSub = [];
 		$scope.discountAdd = [];
+
+		Orders.fetchOne(orderId).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+				var head = response.data.data.order;
+				$scope.inv = head;
+			}
+		});
 
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 			if (response.data.result == 'SUCCESS') {
 				console.log("OrderPrecessInfo");
 				console.log(response);
-				var head = response.data.data.orderProcessInfo,
-					detail = response.data.data.orderProcessItemList,
+				var	detail = response.data.data.orderProcessItemList,
 					discountList = response.data.data.orderProcessDiscountList;
-				$scope.inv = head;
+				var orderProcessInfo = response.data.data.orderProcessInfo; 
 				$scope.detail = detail;
 				$scope.discount = discountList;
-				console.log("discount-->>", $scope.discount);
+
+				$scope.inv.sumAmount = orderProcessInfo.sumAmount;
+				$scope.inv.vatAmount = orderProcessInfo.vatAmount;
+				$scope.inv.netValue2 = orderProcessInfo.netValue2;
+				$scope.inv.customerEmail = $scope.customer.email;
+
 
 				for (var k in $scope.discount) {
 					var arr_temp = {
@@ -330,19 +341,24 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 		});
 	}
 
-	$scope.OrderDetailModal = function (saleOrderNumber) {
+	$scope.OrderDetailModal = function (orderId,saleOrderNumber) {
 
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 			var head = response.data.data.orderProcessInfo;
 			$scope.inv = head;
-			console.log(head);
-			console.log("head");
 		});
+
+		// Orders.fetchOne(orderId).then(function (response) {
+		// 	if (response.data.result == 'SUCCESS') {
+		// 		var head = response.data.data.order;
+		// 		$scope.inv = head;
+		// 	}
+		// });
+
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			if (response.data.result == 'SUCCESS') {
 				console.log(response);
-				//var head = response.data.data.orderProcessHeaderList
 
 				var detail = response.data.data.orderProcessOrderItemList;
 				$scope.detail = detail;
