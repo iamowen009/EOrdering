@@ -22,7 +22,7 @@
       </a>
       <div id="year-@{{ y }}">
         <ul class="ordertoggle" ng-repeat="m in ordersYm | orderBy:'-month' " ng-if="m.year == y">
-          <li class="accordion-toggle" style="cursor: pointer;" data-toggle="collapse" data-toggle="collapse" href="#month-@{{ m.month }}">
+          <li class="accordion-toggle" style="cursor: pointer;font-weight: bold;" data-toggle="collapse" data-toggle="collapse" href="#month-@{{ m.month }}">
             @{{ txtmonth(m.month) }}
           </li>
           <li id="month-@{{ m.month }}">
