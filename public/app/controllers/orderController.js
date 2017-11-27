@@ -188,13 +188,61 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 			if (response.data.result == 'SUCCESS') {
-				console.log("OrderPrecessInfo");
-				console.log(response);
+				// console.log("OrderPrecessInfo");
+				// console.log(response);
 				var	detail = response.data.data.orderProcessItemList,
 					discountList = response.data.data.orderProcessDiscountList;
 				var orderProcessInfo = response.data.data.orderProcessInfo; 
-				$scope.detail = detail;
+				
 				$scope.discount = discountList;
+
+				// for(var index in detail){
+				// 	detail[index].discount = detail[index].discount.replace(/\//g," / <br/> ");
+				// }
+
+				var temp=[];
+				var stringTemp ="";
+				for(var index in detail){
+					temp = detail[index].discount.split('/');
+					
+					if(temp.length == 4)
+					{
+						stringTemp = temp[0] + ' / '+temp[1] + ' / ' + temp[2] 
+						 + '/ <br>'+ temp[3];
+					}else if(temp.length == 5){
+						stringTemp = temp[0] +' / '+temp[1] +' / ' + temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] ;
+					}else if(temp.length == 6){
+						stringTemp = temp[0] +' / ' + temp[1] +' / ' + temp[2] 
+						+ '/ <br>' + temp[3] + ' / '+ temp[4] + ' / '+ temp[5] ;
+					}else if(temp.length == 7){
+						stringTemp = temp[0]+' / '+temp[1] +' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6];
+					}else if(temp.length == 8){
+						stringTemp = temp[0]+' / '+temp[1] +' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6]+ ' / '+ temp[7];
+					}else if(temp.length == 9){
+						stringTemp = temp[0]+' / ' + temp[1] + ' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6] + ' / '+ temp[7] + ' / '+ temp[8];
+					}else if(temp.length == 10){
+						stringTemp = temp[0]+' / ' + temp[1] + ' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6] + ' / '+ temp[7] + ' / '+ temp[8] + ' / '+ temp[9];
+					}
+					
+					console.log(stringTemp);
+					detail[index].discount = stringTemp;
+				}
+				
+
+				$scope.detail = detail;
+
+
+
+
 
 				$scope.inv.sumAmount = orderProcessInfo.sumAmount;
 				$scope.inv.vatAmount = orderProcessInfo.vatAmount;
