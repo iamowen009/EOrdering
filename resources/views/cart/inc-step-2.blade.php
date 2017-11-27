@@ -148,7 +148,7 @@
       </tr>
     </thead>
     <tbody ng-repeat="item in carts track by $index">
-      <tr class="text-bold">
+      <tr ng-if="item.isBOM == true"  class="text-bold">
         <td align="center">
           <img width="50" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
         </td>
@@ -184,6 +184,47 @@
           </a>
         </td>
       </tr>
+
+
+      <tr ng-hide="item.isBOM == true">
+        <td align="center">
+          <img width="50" ng-src="{{partImgProductOrder}}/{{item.btfCode}}.jpg" err-SRC="{{partImgProduct}}/Noimage.jpg">
+        </td>
+        <td align="center" style="line-height: 50px;">
+          {{ item.productCode }}
+        </td>
+        <td style="line-height: 50px;">
+          {{ item.productNameTh }}
+        </td>
+        <td align="center" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0">
+            {{ item.qty | number }}
+          </span>
+        </td>
+        <td align="center" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0">
+            {{item.unitNameTh}}
+          </span>
+        </td>
+        <td align="right" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0" >
+            {{ item.price | number:2}}
+          </span>
+        </td>
+        <td align="right" style="line-height: 50px;">
+          <span ng-if="bomRows(item.productCode) == 0">
+            {{ +item.price*+item.qty | number:2 }}
+          </span>
+        </td>
+        <td align="center" style="line-height: 50px;">
+          <a ng-click="removeCart(item.productId)" style="cursor: pointer; color: red;">
+            <span class="fa fa-trash fa-2x mt-10"></span>
+          </a>
+        </td>
+      </tr>
+
+
+
       <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
         <td align="center">
             <img width="50" ng-src="{{ partImgProductOrder }}/{{ bom.btfCode }}.jpg" err-src="{{ partImgProduct }}/Noimage.jpg">

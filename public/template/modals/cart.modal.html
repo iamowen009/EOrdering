@@ -13,19 +13,50 @@
       <div class="item__remove" ng-click="removeCart(item)">
         <i class="fa fa-close"></i>
       </div>
-      <div class="item__code text-bold">
+      <div ng-if="item.isBOM == true"  class="item__code text-bold">
         {{item.productCode}}
       </div>
-      <div class="item__name text-bold">
+       <div ng-hide="item.isBOM == true"  class="item__code">
+        {{item.productCode}}
+      </div>
+      <div ng-if="item.isBOM == true"   class="item__name text-bold">
+        {{ item.productNameTh }}
+      </div>
+      <div ng-hide="item.isBOM == true"  class="item__name">
         {{ item.productNameTh }}
       </div>
       <img class="item__image"ng-src="{{ partImgProductCard }}/{{ item.btfCode }}.jpg" err-src="{{ partImgProduct }}/Noimage.jpg">
       <div class="item__detail">
         <ul class="list-unstyled">
-          <li class="text-bold mb-10">
+          <li ng-if="item.isBOM == true"  class="text-bold mb-10">
             ราคาต่อหน่วย (บาท) : {{ item.price | number:2 }}
           </li>
-          <li class="text-bold">
+          <li ng-hide="item.isBOM == true" class=" mb-10">
+            ราคาต่อหน่วย (บาท) : {{ item.price | number:2 }}
+          </li>
+          <li ng-if="item.isBOM == true"  class="text-bold">
+            <div class="row">
+              <div class="col-xs-3" style="line-height: 33px;">
+                จำนวน : 
+              </div>
+              <div class="col-xs-9">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="removeQty($index)">
+                      -
+                    </button>
+                  </span>
+                  <input type="text" class="form-control text-center" ng-model="item.qty" style="padding:5px;" ng-blur="updateCart($index)">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="addQty($index)">
+                      +
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+            <li ng-hide="item.isBOM == true">
             <div class="row">
               <div class="col-xs-3" style="line-height: 33px;">
                 จำนวน : 
