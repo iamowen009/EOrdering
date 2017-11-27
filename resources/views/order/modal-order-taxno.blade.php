@@ -119,21 +119,21 @@
       <table class="invoice__body--table scroll">
         <thead>
             <tr>
-                <th width="600" class="text-center" colspan="2">ใบสั่งซื้อ (P/O)</th>
-                <th width="200" class="text-center" rowspan="2">เอกสารอ้างอิง</th>
-                <th width="200" class="text-center" rowspan="2">กำหนดชำระ (วัน)</th>
+                <th width="400" style="border-bottom:1px solid #ffffff; " class="text-center" colspan="2">ใบสั่งซื้อ (P/O)</th>
+                <th width="400" class="text-center" rowspan="2">เอกสารอ้างอิง / TAX No.</th>
+                <th width="200" class="text-center" rowspan="2">กำหนดชำระ</th>
             </tr>
             <tr>
-                <th  width="300" class="text-center" rowspan="1">เลขที่</th>
-                <th  width="300" class="text-center" rowspan="1">วันที่</th>
+                <th  width="200" class="text-center" rowspan="1">เลขที่</th>
+                <th  width="200" class="text-center" rowspan="1">วันที่</th>
             </tr>
 
         </thead>
         <tbody >
             <tr>
-                <td class="text-center" width="300"> @{{inv.purchNoC}}</td>
-                <td class="text-center" width="300">@{{ detail[0].custRecDate | date:'dd/MM/yyyy' }} </td>
-                <td class="text-center" width="200">@{{ detail[0].billVbeln }}</td>
+                <td class="text-center" width="200"> @{{inv.purchNoC}}</td>
+                <td class="text-center" width="200"> @{{ detail[0].custRecDate | date:'dd/MM/yyyy' }} </td>
+                <td class="text-center" width="400">@{{ detail[0].billVbeln }} / @{{inv.taxNum}}</td>
                 <td class="text-center" width="200">@{{inv.pmnttrms}}</td>
             </tr>
         </tbody>
@@ -144,7 +144,7 @@
             <tr>
                 <th class="text-center" width="300">รายการสินค้า</th>
                 <th class="text-center" width="150">จำนวน</th>
-                <th class="text-center" width="150">ราคาส่งต่อหน่วย</th>
+                <th class="text-center" width="150">ราคาต่อหน่วย</th>
                 <th class="text-center" width="150">ส่วนลด</th>
                 <th class="text-center" width="150">ราคาสุทธิ/หน่วย</th>
                 <th class="text-center" width="150">จำนวนเงิน</th>
@@ -159,9 +159,9 @@
                     <strong>@{{ item.material }} @{{ item.materialDes }} </strong><div  class="text-danger" ng-style="item.freeGoods == true   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
                 </td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.targetQty | number }}</td>
-                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.netwrPerUnit | number}} บ.</td>
+                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150">@{{ item.netwrPerUnit | number}}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.discount }}</td>
-                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150"> @{{ item.pricePerUnit | number:2}} บ.</td>
+                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150"> @{{ item.pricePerUnit | number:2}}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150">@{{ item.amount | number }} บ.</td>
             </tr>
             
