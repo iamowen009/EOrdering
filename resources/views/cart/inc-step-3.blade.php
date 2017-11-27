@@ -51,7 +51,7 @@
             </div>
             <div class="form-group">
               <label class="control-label col-md-4 text-right">
-                อีเมล์ : 
+                อีเมล : 
               </label>
               <div class="col-md-8 form-control-static">
                 {{ customer.email }}

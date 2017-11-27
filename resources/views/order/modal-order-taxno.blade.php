@@ -44,7 +44,7 @@
             </tr>
             <tr ng-hide="inv.shipName == '' || inv.shipName == null">
               <td class="text-bold text-blue">สถานที่ส่ง</td>
-              <td> @{{inv.shipCode.substring(2, 10)}}} : @{{ inv.shipName }}</td>
+              <td> @{{inv.shipCode.substring(2, 10)}} : @{{ inv.shipName }}</td>
             </tr>
             <tr ng-hide="inv.shipName == '' || inv.shipName == null">
               <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>
@@ -143,7 +143,7 @@
         <thead>
             <tr>
                 <th class="text-center" width="300">รายการสินค้า</th>
-                <th class="text-center" width="150">จำนวน</th>
+                <th class="text-center" width="100">จำนวน</th>
                 <th class="text-center" width="150">ราคาต่อหน่วย</th>
                 <th class="text-center" width="150">ส่วนลด %</th>
                 <th class="text-center" width="150">ราคาสุทธิ/หน่วย</th>
@@ -158,7 +158,7 @@
                 <td ng-if="item.amount== 0 && item.freeGoods == 'X'" class="text-left" width="300">
                     <strong>@{{ item.material }} @{{ item.materialDes }} </strong><div  class="text-danger" ng-style="item.freeGoods == true   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
                 </td>
-                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.targetQty | number }}</td>
+                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="100">@{{ item.targetQty | number }}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150">@{{ item.netwrPerUnit | number}}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.discount }}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150"> @{{ item.pricePerUnit | number:2}}</td>
