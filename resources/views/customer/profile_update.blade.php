@@ -75,7 +75,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>เบอร์โทรศัพท์, เบอร์มือถือ:</label>
+                    <label>เบอร์โทรศัพท์, เบอร์มือถือ</label>
                     <input type="text" class="form-control" name="telNo" ng-model="input.telNo" ng-required="true">
                     <div ng-messages="form.telNo.$dirty && form.telNo.$error">  
                       <span class="text-danger" ng-message="required">

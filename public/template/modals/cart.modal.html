@@ -13,10 +13,16 @@
       <div class="item__remove" ng-click="removeCart(item)">
         <i class="fa fa-close"></i>
       </div>
-      <div class="item__code text-bold">
+      <div ng-if="item.isBOM == true"  class="item__code text-bold">
         {{item.productCode}}
       </div>
-      <div class="item__name text-bold">
+       <div ng-hide="item.isBOM == true"  class="item__code">
+        {{item.productCode}}
+      </div>
+      <div ng-if="item.isBOM == true"   class="item__name text-bold">
+        {{ item.productNameTh }}
+      </div>
+      <div ng-hide="item.isBOM == true"  class="item__name">
         {{ item.productNameTh }}
       </div>
       <img class="item__image"ng-src="{{ partImgProductCard }}/{{ item.btfCode }}.jpg" err-src="{{ partImgProduct }}/Noimage.jpg">
@@ -47,6 +53,7 @@
               </div>
             </div>
           </li>
+
           <li>
             {{ item.unitNameTh }}
             <span ng-if="item.altUnitAmount > 0">

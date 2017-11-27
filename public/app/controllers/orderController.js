@@ -188,13 +188,54 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 
 		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
 			if (response.data.result == 'SUCCESS') {
-				console.log("OrderPrecessInfo");
-				console.log(response);
+				// console.log("OrderPrecessInfo");
+				// console.log(response);
 				var	detail = response.data.data.orderProcessItemList,
 					discountList = response.data.data.orderProcessDiscountList;
 				var orderProcessInfo = response.data.data.orderProcessInfo; 
-				$scope.detail = detail;
+				
 				$scope.discount = discountList;
+
+				var temp=[];
+				var stringTemp ="";
+				for(var index in detail){
+					temp = detail[index].discount.split('/');
+					
+					if(temp.length == 4)
+					{
+						stringTemp = temp[0] + ' / '+temp[1] + ' / ' + temp[2] 
+						 + '/ <br>'+ temp[3];
+					}else if(temp.length == 5){
+						stringTemp = temp[0] +' / '+temp[1] +' / ' + temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] ;
+					}else if(temp.length == 6){
+						stringTemp = temp[0] +' / ' + temp[1] +' / ' + temp[2] 
+						+ '/ <br>' + temp[3] + ' / '+ temp[4] + ' / '+ temp[5] ;
+					}else if(temp.length == 7){
+						stringTemp = temp[0]+' / '+temp[1] +' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6];
+					}else if(temp.length == 8){
+						stringTemp = temp[0]+' / '+temp[1] +' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6]+ ' / '+ temp[7];
+					}else if(temp.length == 9){
+						stringTemp = temp[0]+' / ' + temp[1] + ' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6] + ' / '+ temp[7] + ' / '+ temp[8];
+					}else if(temp.length == 10){
+						stringTemp = temp[0]+' / ' + temp[1] + ' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6] + ' / '+ temp[7] + ' / '+ temp[8] + ' / '+ temp[9];
+					}
+				
+					detail[index].discount = stringTemp;
+				}
+				$scope.detail = detail;
+
+
+
+
 
 				$scope.inv.sumAmount = orderProcessInfo.sumAmount;
 				$scope.inv.vatAmount = orderProcessInfo.vatAmount;
@@ -442,14 +483,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 				var head = response.data.data.orderHistoryHeaderList,
 					detail = response.data.data.orderHistoryDetailList,
 					descountdetail = response.data.data.prderHistoryDiscountList;
-
-				//$scope.MBill = head[0];
 			
 				console.log(head[0]);
 				$scope.inv.purchNoC = head[0]['purchNoC'];
 				$scope.inv.pmnttrms = head[0]['pmnttrms'];
 				$scope.inv.headNetwr2 = head[0]['headNetwr2'];
 				$scope.inv.headVat = head[0]['headVat'];
+				$scope.inv.taxNum = head[0]['taxNum'];
 				
 				
 				$scope.totalsum_manual = 0.0;
@@ -458,6 +498,45 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 					detail[e].amount;
 					$scope.totalsum_manual += detail[e].amount;
 				}
+
+
+				var temp=[];
+				var stringTemp ="";
+				for(var index in detail){
+					temp = detail[index].discount.split('/');
+					
+					if(temp.length == 4)
+					{
+						stringTemp = temp[0] + ' / '+temp[1] + ' / ' + temp[2] 
+						 + '/ <br>'+ temp[3];
+					}else if(temp.length == 5){
+						stringTemp = temp[0] +' / '+temp[1] +' / ' + temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] ;
+					}else if(temp.length == 6){
+						stringTemp = temp[0] +' / ' + temp[1] +' / ' + temp[2] 
+						+ '/ <br>' + temp[3] + ' / '+ temp[4] + ' / '+ temp[5] ;
+					}else if(temp.length == 7){
+						stringTemp = temp[0]+' / '+temp[1] +' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6];
+					}else if(temp.length == 8){
+						stringTemp = temp[0]+' / '+temp[1] +' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6]+ ' / '+ temp[7];
+					}else if(temp.length == 9){
+						stringTemp = temp[0]+' / ' + temp[1] + ' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6] + ' / '+ temp[7] + ' / '+ temp[8];
+					}else if(temp.length == 10){
+						stringTemp = temp[0]+' / ' + temp[1] + ' / '+ temp[2] 
+						+ '/ <br>'+ temp[3] + ' / '+ temp[4] + ' / '+ temp[5] 
+						+ '/ <br>'+ temp[6] + ' / '+ temp[7] + ' / '+ temp[8] + ' / '+ temp[9];
+					}
+				
+					detail[index].discount = stringTemp;
+				}
+				$scope.detail = detail;
+
 
 				$scope.detail = detail;
 				$scope.descountdetail = descountdetail;

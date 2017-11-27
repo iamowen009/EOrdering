@@ -101,7 +101,7 @@
               </tr>
               <tr>
                 <td class="text-bold text-blue">การชำระเงิน</td>
-                <td>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
+                <td>@{{ inv.paymentTerm === 'CASH' || inv.paymentTerm === 'CA02' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
               </tr>
               <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
                 <td class="text-bold text-blue">จัดส่งโดย</td>
@@ -134,15 +134,16 @@
           <tbody >
            <!-- width="40%;word-wrap:break-word;" -->
             <tr ng-repeat="item in detail">
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="300">@{{ item.material }} @{{ item.materialDes }}</td>
-              <td ng-if="item.amount== 0 && item.freeGoods == 'X'" width="300"><strong>@{{ item.material }} @{{ item.materialDes }}</strong></td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="300">@{{ item.material }}<br/> @{{ item.materialDes }}</td>
+              <td ng-if="item.amount== 0 && item.freeGoods == 'X'" width="300"><strong>@{{ item.material }}<br/> @{{ item.materialDes }}</strong></td>
               <!-- <td width="300">@{{ item.material }} @{{ item.materialDes }}</td> -->
 
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="90" class="text-center">@{{item.targetQty | number }}</td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{item.salesUnit }}</td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="170" class="text-right">@{{ item.pricePerUnit | number:2 }} บ.</td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-right">@{{ item.discount}}</td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.netwrPerUnit | number:2 }} บ.</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="170" class="text-right">@{{ item.pricePerUnit | number:2 }} </td>
+              <!-- <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-right"> @{{ item.discount}}</td> -->
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-center" ng-bind-html="item.discount"></td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.netwrPerUnit | number:2 }} </td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr>
