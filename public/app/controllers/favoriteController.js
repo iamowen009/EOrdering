@@ -21,7 +21,7 @@ app.controller('FavoriteController', function ($scope, $http, Customers, Fav, Au
   }
 
   $scope.toProductDetail = function (productId) {
-    var url = '../../product-detail/' + productId;
+    var url = _base + '/product-detail/' + productId;
     window.location.href = url;
   }
 
