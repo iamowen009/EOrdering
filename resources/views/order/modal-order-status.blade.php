@@ -83,7 +83,9 @@
               </tr>
               <tr ng-hide="inv.salesDocument == '' || inv.salesDocument == null">
                 <td class="text-bold text-blue">เลขที่เอกสาร</td>
-              <td>@{{inv.salesDocument}}</td>
+              <td>@{{inv.salesDocument}} 
+              <span class="text-bold text-blue"> / วันที่</span> @{{ inv.requestDate | date:'dd/MM/yyyy' }}
+              </td>
               </tr>
               <tr ng-if="inv.salesDocument == '' || inv.salesDocument == null">
                 <td class="text-bold text-blue">เลขที่เอกสาร</td>
