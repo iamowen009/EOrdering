@@ -312,8 +312,6 @@
 @media print {
   body {
     -webkit-print-color-adjust: exact; } }
-.print table {
-  border-collapse: collapse; }
 .print__container {
   width: 100%; }
 .print__header {
@@ -362,16 +360,28 @@
 .print__client {
   width: 100%;
   display: block; }
+  .print__client__full {
+    width: 100%; }
+    .print__client__full__left {
+      width: 350px;
+      float: left; }
+    .print__client__full__right {
+      width: 350px;
+      float: right; }
+    .print__client__full:after {
+      content: '';
+      display: table;
+      clear: both; }
   .print__client__left {
     width: 350px;
     float: left; }
   .print__client__right {
     width: 350px;
     float: right; }
-  .print__client__left, .print__client__right {
+  .print__client__left, .print__client__right, .print__client__full {
     padding: 0px 10px 10px 10px;
     border: 1px solid #333333; }
-    .print__client__left table tr td, .print__client__right table tr td {
+    .print__client__left table tr td, .print__client__right table tr td, .print__client__full table tr td {
       line-height: 20px; }
   .print__client:after {
     content: '';
@@ -382,7 +392,8 @@
   display: block;
   margin-top: 20px; }
   .print__order table {
-    width: 100%; }
+    width: 100%;
+    border-collapse: collapse; }
     .print__order table thead, .print__order table tfoot {
       background-color: #dddddd; }
     .print__order table thead tr th, .print__order table tfoot tr th {
@@ -393,4 +404,20 @@
       line-height: 15px;
       padding: 0px 5px 5px 5px;
       border: 1px solid #333333; }
+.print__note {
+  width: 100%; }
+  .print__note table tr td {
+    line-height: 15px; }
+
+.landscape .print__header__issuer {
+  width: 977px; }
+.landscape .print__client__full__left {
+  width: 524px; }
+.landscape .print__client__full__right {
+  width: 524px; }
+.landscape .print__client__left {
+  width: 514px; }
+.landscape .print__client__right {
+  width: 514px; }
+
 /*# sourceMappingURL=style.css.map */

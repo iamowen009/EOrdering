@@ -54,6 +54,8 @@ Route::get('mail', 'HomeController@mail');
 
 Route::group(['prefix' => 'print'], function() {
 	Route::get('/invoice/{orderId}', 'PrintController@invoice');
+	Route::get('/order-detail/{orderId}', 'PrintController@orderDetail');
+	Route::get('/order-tracking/{orderId}', 'PrintController@orderTracking');
 });
 
 /*Route::get('/sendmail', function() 

@@ -1,4 +1,5 @@
-@extends('layouts.print') @section('content')
+@extends('layouts.print') 
+@section('content')
 <div class="print_container">
   <div class="print__header">
     <div class="print__header__logo">
@@ -32,7 +33,7 @@
     ใบสั่งซื้อ
   </div>
   <div class="print__client">
-    <div class="print__client__left" style="height: 188px">
+    <div class="print__client__left" style="height: 199px">
       <table>
         <tr>
           <td class="text-bold" width="60">
@@ -60,7 +61,7 @@
         </tr>
       </table>
     </div>
-    <div class="print__client__right" style="height: 188px">
+    <div class="print__client__right" style="height: 199px">
       <table>
         <tr>
           <td class="text-bold" width="60">
