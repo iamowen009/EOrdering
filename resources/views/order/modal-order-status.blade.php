@@ -140,10 +140,10 @@
 
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="90" class="text-center">@{{item.targetQty | number }}</td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{item.salesUnit }}</td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="170" class="text-right">@{{ item.pricePerUnit | number:2 }} บ.</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="170" class="text-right">@{{ item.pricePerUnit | number:2 }} </td>
               <!-- <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-right"> @{{ item.discount}}</td> -->
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-center" ng-bind-html="item.discount"></td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.netwrPerUnit | number:2 }} บ.</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.netwrPerUnit | number:2 }} </td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.amount | number:2 }} บ.</td>
             </tr>
             <tr>
