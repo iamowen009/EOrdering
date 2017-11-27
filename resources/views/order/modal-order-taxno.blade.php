@@ -153,10 +153,10 @@
         <tbody >
             <tr ng-repeat="item in detail">
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-left" width="300">
-                    @{{ item.material }} @{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                    @{{ item.material }}<br/>@{{ item.materialDes }} <div  class="text-danger" ng-style="item.freeGoods == ''   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
                 </td>
                 <td ng-if="item.amount== 0 && item.freeGoods == 'X'" class="text-left" width="300">
-                    <strong>@{{ item.material }} @{{ item.materialDes }} </strong><div  class="text-danger" ng-style="item.freeGoods == true   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
+                    <strong>@{{ item.material }}<br/>@{{ item.materialDes }} </strong><div  class="text-danger" ng-style="item.freeGoods == true   &&  {'display': 'none'}"> &nbsp;(ของแถม)</div>
                 </td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="100">@{{ item.targetQty | number }}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150">@{{ item.netwrPerUnit | number}}</td>
