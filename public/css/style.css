@@ -302,11 +302,96 @@
 
 .modal.right.fade .modal-dialog {
   right: -320px;
-  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
-  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
   -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
   transition: opacity 0.3s linear, right 0.3s ease-out; }
 .modal.right.fade.in .modal-dialog {
   right: 0; }
+
+@page {
+  margin: 20px !important; }
+@media print {
+  body {
+    -webkit-print-color-adjust: exact; } }
+.print table {
+  border-collapse: collapse; }
+.print__container {
+  width: 100%; }
+.print__header {
+  width: 100%; }
+  .print__header__logo {
+    width: 85px;
+    float: left;
+    padding-top: 0px; }
+    .print__header__logo img {
+      width: 85px; }
+  .print__header__issuer {
+    float: left;
+    width: 646px;
+    padding-left: 20px;
+    position: relative; }
+    .print__header__issuer p {
+      margin: 0;
+      padding: 0; }
+    .print__header__issuer p:nth-child(1) {
+      font-size: 22px;
+      position: relative;
+      margin-top: -10px; }
+    .print__header__issuer p:nth-child(2) {
+      position: relative;
+      top: -10px; }
+    .print__header__issuer p:nth-child(3) {
+      position: relative;
+      top: -20px; }
+  .print__header--option {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .print__header--option table tr td {
+      line-height: 16px; }
+  .print__header:after {
+    content: '';
+    display: table;
+    clear: both; }
+.print__title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 30px;
+  display: block; }
+.print__client {
+  width: 100%;
+  display: block; }
+  .print__client__left {
+    width: 350px;
+    float: left; }
+  .print__client__right {
+    width: 350px;
+    float: right; }
+  .print__client__left, .print__client__right {
+    padding: 0px 10px 10px 10px;
+    border: 1px solid #333333; }
+    .print__client__left table tr td, .print__client__right table tr td {
+      line-height: 20px; }
+  .print__client:after {
+    content: '';
+    display: table;
+    clear: both; }
+.print__order {
+  width: 100%;
+  display: block;
+  margin-top: 20px; }
+  .print__order table {
+    width: 100%; }
+    .print__order table thead, .print__order table tfoot {
+      background-color: #dddddd; }
+    .print__order table thead tr th, .print__order table tfoot tr th {
+      line-height: 18px;
+      padding: 0px 5px 6px 5px;
+      border: 1px solid #333333; }
+    .print__order table tbody tr td {
+      line-height: 15px;
+      padding: 0px 5px 5px 5px;
+      border: 1px solid #333333; }
 
 /*# sourceMappingURL=style.css.map */

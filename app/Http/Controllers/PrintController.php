@@ -11,6 +11,7 @@ class PrintController extends Controller
 {
     public function invoice($orderId)
     {
+        /*
         $content = file_get_contents('http://202.142.195.168:8010/API/OrderInfo?orderId=' . $orderId);
         $json = json_decode($content, true);
         
@@ -26,6 +27,10 @@ class PrintController extends Controller
         } else {
             return redirect('/home');
         }
+        */
+        $pdf = PDF::loadView('print.invoice')->setPaper('a4');
+        
+        return @$pdf->stream();
         /*
         $data = [];
         $pdf = PDF::loadView('print.invoice', $data);
