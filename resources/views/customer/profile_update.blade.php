@@ -84,7 +84,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>E-mail</label>
+                    <label>อีเมล</label>
                     <input type="text" class="form-control" name="email" ng-model="input.email">
                   </div>
                   <div class="col-md-12 form-group">

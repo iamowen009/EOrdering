@@ -68,7 +68,7 @@
                       </div>
 
                       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <label for="email">E-mail</label>
+                        <label for="email">อีเมล</label>
     					<input type="text" class="form-control" name="email" id="email" value="example@mail.com">
                       </div>
 
