@@ -160,7 +160,7 @@
             <tr>
               <th width="40%;word-wrap:break-word;" class="text-center text-blue">ผลิตภัณฑ์</th>
               <th width="10%" class="text-center text-blue">จำนวนสั่งซื้อ</th>
-              <th width="10%" class="text-center text-blue">จำนวนคงค้างชื่อคนขับรถ</th>
+              <th width="10%" class="text-center text-blue">จำนวนคงค้าง</th>
               <th width="10%" class="text-center text-blue">จำนวนยกเลิก</th>
               <th width="10%" class="text-center text-blue">จำนวนเงิน</th>
             </tr>
