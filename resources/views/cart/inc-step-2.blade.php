@@ -227,7 +227,7 @@
 
       <tr ng-repeat="bom in boms track by $index" ng-if="bom.productRefCode == item.productCode">
         <td align="center">
-            <img width="50" ng-src="{{ partImgProductOrder }}/{{ bom.btfCode }}.jpg" err-src="{{ partImgProduct }}/Noimage.jpg">
+            <!-- <img width="50" ng-src="{{ partImgProductOrder }}/{{ bom.btfCode }}.jpg" err-src="{{ partImgProduct }}/Noimage.jpg"> -->
           </td>
           <td align="center" style="line-height: 50px;">
             {{ bom.productCode }}
