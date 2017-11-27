@@ -102,7 +102,7 @@
             </tr>
             <tr>
               <td class="text-bold text-blue">การชำระเงิน</td>
-              <td>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
+              <td>@{{ inv.paymentTerm === 'CASH'|| inv.paymentTerm === 'CA02' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
             </tr>
             <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
               <td class="text-bold text-blue">จัดส่งโดย</td>

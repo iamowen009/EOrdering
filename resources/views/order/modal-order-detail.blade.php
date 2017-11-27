@@ -105,7 +105,7 @@
             </tr>
             <tr>
               <td class="text-bold text-blue">การชำระเงิน</td>
-              <td>@{{ inv.paymentTerm === 'CASH' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
+              <td>@{{ inv.paymentTerm === 'CASH' || inv.paymentTerm === 'CA02' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
             </tr>
             <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
               <td class="text-bold text-blue">จัดส่งโดย</td>
@@ -181,8 +181,7 @@
               float: left;
             }
             </style>
-            <div class="col-sm-6 text-danger"> <strong>Note  </strong></div>
-            <div class="col-sm-6 text-right"></div>
+
 						<div class="col-sm-6 text-danger"><span class="notetitle">สั่งซื้อ</span>: จำนวนสินค้าที่สั่งซื้อ</div>
             <div class="col-sm-6 text-right"></div>
 						<div class="col-sm-6 text-danger"><span class="notetitle">ออกบิล</span>: จำนวนสินค้าที่เปิดบิลแล้ว</div>
