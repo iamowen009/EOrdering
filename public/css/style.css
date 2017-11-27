@@ -302,6 +302,8 @@
 
 .modal.right.fade .modal-dialog {
   right: -320px;
+  -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, right 0.3s ease-out;
   -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
   transition: opacity 0.3s linear, right 0.3s ease-out; }
 .modal.right.fade.in .modal-dialog {
