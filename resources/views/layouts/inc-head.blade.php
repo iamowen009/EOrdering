@@ -39,7 +39,7 @@
 					</span>
 					@endverbatim
 				</li>
-				<li class="nav-item" style="top: -10px; padding-left: 15px; cursor: pointer;">
+				<li class="nav-item ml-10" style="top: -10px; cursor: pointer;">
 					<div class="dropdown">
 						<div class="navbar-menu" data-toggle="dropdown">
 							<img class="icon-in-home" src="<?= asset('images/account.png') ?>"> บัญชีร้านค้า

@@ -8,26 +8,31 @@
 @section('content')
 <section class="page-content" ng-controller="OrderController">
   <div class="content">
-
     <div class="row ">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel">
           <!-- background-color:#000e85;color:#fff -->
           <div class="panel-heading text-center style-title">สถานะคำสั่งซื้อ </div>
-          <div class="">
-            <br>
-            <form class="form-inline">
-              <div class="form-group col-md-3">
-                <label class="datelbl">วันที่เริ่มต้น : &nbsp;</label>
-                <input type="text" class="form-control" ng-model="dateRangeStart" datepicker ng-change="filterOrder()" />
-              </div>
-              <div class="form-group col-md-3" style="margin-left: -50px;">
-                <label class="datelbl">ถึงวันที่ : &nbsp;</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control" ng-model="dateRangeEnd" datepicker ng-change="filterOrder()">
+          <div class="mt-20">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-inline">
+                  <div class="form-group">
+                    <label class="datelbl" style="padding-top: 8px;">วันที่เริ่มต้น : &nbsp;</label>
+                    <input type="text" class="form-control" ng-model="dateRangeStart" datepicker ng-change="filterOrder()" />
+                  </div>
+                  <div class="form-group ml-10">
+                    <label class="datelbl" style="padding-top: 8px;">ถึงวันที่ : &nbsp;</label>
+                    <input type="text" class="form-control" ng-model="dateRangeEnd" datepicker ng-change="filterOrder()">                    
+                  </div>
                 </div>
               </div>
-            </form>
+              <div class="col-md-6">
+                <div class="form-group col-xs-5 pull-right">
+                  <input type="text" name="searchFilter" class="form-control" ng-model="searchFilter" placeholder="ค้นหา">
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="cui-ecommerce--product--info">
@@ -75,10 +80,6 @@
       </div>
     </div>
   </div>
-  <footer>
-
-  </footer>
-
   @include('order.modal-invoice') 
   @include('order.modal-order-detail') 
   @include('order.modal-order-history') 

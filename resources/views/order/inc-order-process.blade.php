@@ -26,7 +26,7 @@
             @{{ txtmonth(m.month) }}
           </li>
           <li id="month-@{{ m.month }}">
-            <table class="table table-striped" style="margin-left: 30px;">
+            <table class="table table-striped">
               <thead>
                 <tr class="info">
                   <th class="text-center" style="width:100px;">วันที่ - เวลา</th>
@@ -44,7 +44,7 @@
               </thead>
               <tbody>
                 <!-- <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month && list.percentComplete < 100"> -->
-                <tr ng-repeat="list in ordersList | orderBy:'-createDate'" ng-if="list.month === m.month">
+                <tr ng-repeat="list in ordersList | orderBy:'-createDate' | filter:searchFilter" ng-if="list.month === m.month">
                   <td class="text-center">@{{ list.createDate | date:'dd/MM/yyyy' }}&nbsp;&nbsp;@{{ list.createDate | date:'HH:mm'}}</td>
                   <td class="text-center">@{{ list.docName }}</td>
                   <td class="text-center">
