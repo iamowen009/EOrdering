@@ -93,12 +93,12 @@
                   <i class="fa fa-times text-danger"></i>
                 </a>
               </span>
-              <span style="margin-right:5px;" class="label label-info" ng-repeat="b in brandsFilter" ng-show="getFilter(brandCode,b.brandCode).length>0">{{b.brandDesc}}
+              <span style="margin-right:5px;" class="label label-info" ng-repeat="b in brandsFilter | unique:'brandDesc'" ng-show="getFilter(brandCode,b.brandCode).length>0">{{b.brandDesc}}
                 <a ng-click="brandSelection(b.brandCode)" calss="pull-right" style="color:white;" href="">
                   <i class="fa fa-times text-danger"></i>
                 </a>
               </span>
-              <span style="margin-right:5px;" class="label label-info" ng-repeat="t in typesFilter" ng-show="getFilter(typeCode,t.typeCode).length>0">{{t.typeDesc}}
+              <span style="margin-right:5px;" class="label label-info" ng-repeat="t in typesFilter | unique:'typeDesc'" ng-show="getFilter(typeCode,t.typeCode).length>0">{{t.typeDesc}}
                 <a ng-click="typeSelection(t.typeCode)" calss="pull-right" style="color:white;" href="">
                   <i class="fa fa-times text-danger"></i>
                 </a>
