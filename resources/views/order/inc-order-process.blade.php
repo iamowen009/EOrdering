@@ -21,12 +21,12 @@
         @{{ y }}
       </a>
       <div id="year-@{{ y }}">
-        <ul ng-repeat="m in ordersYm | orderBy:'-month' " ng-if="m.year == y">
+        <ul class="ordertoggle" ng-repeat="m in ordersYm | orderBy:'-month' " ng-if="m.year == y">
           <li class="accordion-toggle" style="cursor: pointer;" data-toggle="collapse" data-toggle="collapse" href="#month-@{{ m.month }}">
             @{{ txtmonth(m.month) }}
           </li>
           <li id="month-@{{ m.month }}">
-            <table class="table table-striped" style="margin-left: 30px;">
+            <table class="table table-striped">
               <thead>
                 <tr class="info">
                   <th class="text-center" style="width:100px;">วันที่ - เวลา</th>
@@ -55,11 +55,16 @@
                   </td>
                   <td class="text-right" style="padding-right: 20px;">@{{ list.netAmount | number:2}}</td>
                   <td class="text-center" style="width:100px;">
-                    <a ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)" href="javascript:void(0)" ng-show="list.percentComplete!==100 && list.rejectHStatus!=='C'">
+                    <a ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)" href="javascript:void(0)" ng-show="list.percentComplete > 0 && list.percentComplete !==100 && list.rejectHStatus!=='C'">
                       <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @{{ list.percentComplete }}%;">
                           @{{ list.percentComplete }}%
                         </div>
+                      </div>
+                    </a>
+                     <a href="javascript:void(0)" ng-show="list.percentComplete===0 && list.rejectHStatus!=='C'"" class="text-center" ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)">
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color:#cccccc;">0%</div>
                       </div>
                     </a>
                     <a href="javascript:void(0)" ng-show="list.percentComplete===100" class="text-center" ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)">
