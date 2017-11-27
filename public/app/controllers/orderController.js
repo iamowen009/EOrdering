@@ -450,6 +450,7 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 				$scope.inv.pmnttrms = head[0]['pmnttrms'];
 				$scope.inv.headNetwr2 = head[0]['headNetwr2'];
 				$scope.inv.headVat = head[0]['headVat'];
+				$scope.inv.taxNum = head[0]['taxNum'];
 				
 				
 				$scope.totalsum_manual = 0.0;
