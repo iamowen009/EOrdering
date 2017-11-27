@@ -1,5 +1,6 @@
 /* #nestable1 a{color:#00BFFF !important;} */
-#nestable1 a{color:#5500ff !important;}
+#nestable1 a{color:#5500ff !important;
+font-weight: bold;}
 .modal-lg {
     max-width: 1000px!important;
     margin: 0 auto;
@@ -159,3 +160,7 @@ ul.bar-list {
 
     background-color: darkorange;
   }
+.ordertoggle {
+  padding-left: 15px;
+  margin: 0 !important;
+}

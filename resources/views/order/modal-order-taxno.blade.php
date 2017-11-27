@@ -44,7 +44,7 @@
             </tr>
             <tr ng-hide="inv.shipName == '' || inv.shipName == null">
               <td class="text-bold text-blue">สถานที่ส่ง</td>
-              <td> @{{inv.shipCode}} : @{{ inv.shipName }}</td>
+              <td> @{{inv.shipCode.substring(2, 10)}}} : @{{ inv.shipName }}</td>
             </tr>
             <tr ng-hide="inv.shipName == '' || inv.shipName == null">
               <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>
@@ -121,7 +121,7 @@
             <tr>
                 <th width="400" style="border-bottom:1px solid #ffffff; " class="text-center" colspan="2">ใบสั่งซื้อ (P/O)</th>
                 <th width="400" class="text-center" rowspan="2">เอกสารอ้างอิง / TAX No.</th>
-                <th width="200" class="text-center" rowspan="2">กำหนดชำระ</th>
+                <th width="200" class="text-center" rowspan="2">กำหนดชำระ <br/> DUE DATE</th>
             </tr>
             <tr>
                 <th  width="200" class="text-center" rowspan="1">เลขที่</th>
@@ -145,7 +145,7 @@
                 <th class="text-center" width="300">รายการสินค้า</th>
                 <th class="text-center" width="150">จำนวน</th>
                 <th class="text-center" width="150">ราคาต่อหน่วย</th>
-                <th class="text-center" width="150">ส่วนลด</th>
+                <th class="text-center" width="150">ส่วนลด %</th>
                 <th class="text-center" width="150">ราคาสุทธิ/หน่วย</th>
                 <th class="text-center" width="150">จำนวนเงิน</th>
             </tr>

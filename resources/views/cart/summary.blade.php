@@ -35,6 +35,7 @@
           <div class="x_title">
             <h4 class="text-bold mb-5 pl-10">{{customer.customerCode}} : {{customer.customerName}}</h4>
           </div>
+<<<<<<< .merge_file_C3f1C3
           <div class="x_content">
             <div class="form-horizontal pr-15 pt-30 pb-10">
               <div class="row">
@@ -133,6 +134,48 @@
                     </div>
                   </div>
                 </div>
+=======
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                PO Number : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ order.customerPO }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                Request Date : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ order.requestDate }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                สถานที่ส่ง : 
+              </label>
+              <div class="col-md-8 form-control-static">
+              {{order.shipCode.substring(2, 10)}} {{ order.shipName }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-4 text-right">
+                ที่อยู่สถานที่ส่ง : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ shipaddress }}
+              </div>
+            </div>
+            <div class="form-group" ng-if="(order.shipCondition == '03'  || customer.shipCondition == '03') && order.shippingType=='show'">
+              <label class="control-label col-md-4 text-right">
+                จัดส่งโดย : 
+              </label>
+              <div class="col-md-8 form-control-static">
+                {{ order.shipCondition == '08' ? order.transportZone + ' ' + order.transportZoneDesc : objTransport.transportZone }}
+                {{ objTransport.transportZoneDesc }}
+>>>>>>> .merge_file_BlGhvl
               </div>
             </div>
           </div>
