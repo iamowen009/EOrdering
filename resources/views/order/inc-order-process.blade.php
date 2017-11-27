@@ -69,6 +69,12 @@
                       <!--   <span style="color:green">Complete</span> -->
                     </a>
 
+                    <a ng-show="(list.percentComplete===0 ) && (list.rejectHStatus==='C')"> 
+                      <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color:red; ">Cancelled</div>
+                      </div>
+                    </a>
+
                       <td class="text-center">
                         <a href="javascript:void(0);" class="text-success" ng-click="OrderHistoryModal(list.orderId,list.salesOrderNumber)" data-toggle="tooltip"
                           title="Order">
