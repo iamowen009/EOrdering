@@ -100,7 +100,7 @@
 
                     <a href="javascript:void(0);" ng-click="OrderBillHistory(list.salesOrderNumber)" class="text-success" data-toggle="collapse"
                       title="Bill Tracking" data-target="#collapse-@{{list.orderId}}" aria-expanded="false">
-                      <i class="fa fa-newspaper-o" style="color:orange;font-size:24px;"></i>
+                      <!-- <i class="fa fa-newspaper-o" style="color:orange;font-size:24px;"></i> -->
                     </a>
                     <!-- <div class="collapse" id="collapseExample"> -->
                     <ul id="collapse-@{{list.orderId}}" style="display:none">
@@ -108,17 +108,17 @@
                         <table class="table table-striped">
                           <thead>
                             <tr class="info">
-                              <th style="width:100px;" class="text-center">Billing No.</th>
-                              <th style="width:100px;" class="text-center">TAX No.</th>
+                              <!-- <th style="width:100px;" class="text-center">Billing No.</th>
+                              <th style="width:100px;" class="text-center">TAX No.</th> -->
                             </tr>
                           </thead>
                           <tbody>
-                            <tr ng-repeat="Bills in Bill">
+                            <!-- <tr ng-repeat="Bills in Bill">
                               <td>@{{ Bills.billno}}</td>
                               <td>
                                 <a ng-click="OrderBillHistoryModal(list.salesOrderNumber)" href="javascript:void(0)">@{{ Bills.taxNum}}</a>
                               </td>
-                            </tr>
+                            </tr> -->
                           </tbody>
 
                         </table>

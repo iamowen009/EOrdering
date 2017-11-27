@@ -121,7 +121,10 @@
           <tbody ng-repeat="item in detail">
             <tr>
               <!-- <td width="30" class="text-center">@{{ $index+1 }}</td> -->
-              <td width="638" style="font-weight: bold">
+              <td ng-if="item.isBOM == true"  width="638" style="font-weight: bold">
+                @{{ item.productCode }} @{{ item.productNameTh }}
+              </td>
+              <td ng-hide="item.isBOM == true"  width="638">
                 @{{ item.productCode }} @{{ item.productNameTh }}
               </td>
               <td width="100" class="text-center" ng-hide="item.isBOM == true">@{{item.qty | number }}</td>

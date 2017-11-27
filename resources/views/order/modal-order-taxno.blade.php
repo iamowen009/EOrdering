@@ -81,6 +81,14 @@
               <td class="text-bold text-blue">PO number</td>
               <td>@{{ inv.customerPO }}</td>
             </tr>
+            <tr ng-hide="inv.salesDocument == '' || inv.salesDocument == null">
+              <td class="text-bold text-blue">เลขที่เอกสาร</td>
+            <td>@{{inv.salesDocument}}</td>
+            </tr>
+            <tr ng-if="inv.salesDocument == '' || inv.salesDocument == null">
+              <td class="text-bold text-blue">เลขที่เอกสาร</td>
+              <td>-</td>
+            </tr>
             <tr ng-hide="inv.requestDate == '' | inv.requestDate == null">
               <td class="text-bold text-blue">Request Date</td>
               <td>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</td>

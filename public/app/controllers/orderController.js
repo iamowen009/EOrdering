@@ -200,6 +200,7 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 				$scope.inv.vatAmount = orderProcessInfo.vatAmount;
 				$scope.inv.netValue2 = orderProcessInfo.netValue2;
 				$scope.inv.customerEmail = $scope.customer.email;
+				$scope.inv.salesDocument = orderProcessInfo.salesDocument;
 
 
 				for (var k in $scope.discount) {
@@ -237,6 +238,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 				$scope.inv.customerEmail = $scope.customer.email;
 			}
 		});
+
+		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+			  var orderProcessInfo = response.data.data.orderProcessInfo; 
+			  $scope.inv.salesDocument = orderProcessInfo.salesDocument;
+			}
+		  });
 
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			if (response.data.result == 'SUCCESS') {
@@ -352,6 +360,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 			}
 		});
 
+		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+			  var orderProcessInfo = response.data.data.orderProcessInfo; 
+			  $scope.inv.salesDocument = orderProcessInfo.salesDocument;
+			}
+		});
+
 		OrderProcessTracking.fetchOne(saleOrderNumber).then(function (response) {
 			$scope.TotaltargetQty = 0;
 			$scope.TotalbillQty = 0;
@@ -413,6 +428,13 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 			}
 		});
 
+		OrderPrecessInfo.fetchOne(saleOrderNumber).then(function (response) {
+			if (response.data.result == 'SUCCESS') {
+			  var orderProcessInfo = response.data.data.orderProcessInfo; 
+			  $scope.inv.salesDocument = orderProcessInfo.salesDocument;
+			}
+		  });
+
 		OrderBillHistory.fetchOne(saleOrderNumber).then(function (response) {
 			console.log(response.data.result);
 			if (response.data.result == 'SUCCESS') {
@@ -424,10 +446,10 @@ app.controller('OrderController', function ($scope, $http, Config, $filter, $tim
 				//$scope.MBill = head[0];
 			
 				console.log(head[0]);
-				// $scope.inv.purchNoC = head[0]['purchNoC'];
-				// $scope.inv.pmnttrms = head[0]['pmnttrms'];
-				// $scope.inv.headNetwr2 = head[0]['headNetwr2'];
-				// $scope.inv.headVat = head[0]['headVat'];
+				$scope.inv.purchNoC = head[0]['purchNoC'];
+				$scope.inv.pmnttrms = head[0]['pmnttrms'];
+				$scope.inv.headNetwr2 = head[0]['headNetwr2'];
+				$scope.inv.headVat = head[0]['headVat'];
 				
 				
 				$scope.totalsum_manual = 0.0;
