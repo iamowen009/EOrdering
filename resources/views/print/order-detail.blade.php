@@ -154,9 +154,9 @@
     </table>
   </div>
   <div class="print__note">
-    <strong style="font-size: 20px;">
-      หมายเหตุ
-    </strong>
+    <span class="text-bold" style="font-size: 20px;">
+      ออกบิล
+    </span>
     <table>
       <tr>
         <td width="35">สั่งซื้อ</td>
