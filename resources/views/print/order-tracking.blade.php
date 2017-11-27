@@ -171,9 +171,9 @@
         <tr>
           <td>F01122010000</td>
           <td>asdajsdfasdfasd</td>
-          <td>6</td>
-          <td>2</td>
-          <td></td>
+          <td align="center">6</td>
+          <td align="center">2</td>
+          <td align="right"></td>
         </tr>
       </tbody>
     </table>
