@@ -56,7 +56,7 @@
 							</div>
 							<h4 class="cui-ecommerce--product--main-title">
 								<strong>{{btf.btfWebDescTh}}</strong>
-								{{ btf.btfWeb }}
+								<span style="font-size:12px; color:#777777;"> ({{ btf.btfWeb }})</span>
 								<a href="javascript:voice(0);" ng-click="promotionLink()" class="link-promotion">"คลิกเพื่อดูรายการโปรโมชั่น"</a>
 							</h4>
 							<div class="cui-ecommerce--product--price">

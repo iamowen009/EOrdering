@@ -43,9 +43,23 @@
 .invoice__body--infomation .left, .invoice__body--infomation .right {
   height: 230px;
 }
-
+.popinvoice{
+  background: #ffffcc;
+}
+.popstatus{
+  background: #cceecc;
+}
+.popdetail{
+  background: #ccbbff;
+}
+.popbilling{
+  background: #ffeecc;
+}
+.poptaxno{
+  background: #ffddee;
+}
 .invoice__body--infomation .left {
-  background: #FFF8AA;
+ /* background: #FFF8AA;*/
   width: 49%;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -56,7 +70,7 @@
 }
 
 .invoice__body--infomation .right {
-  background: #FFF8AA;
+ /* background: #FFF8AA;*/
   width: 49%;
   border: 1px solid #ccc;
   border-radius: 3px;

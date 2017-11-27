@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body invoice__body">
       <div class="invoice__body--infomation">
-        <div class="left">
+        <div class="left popstatus">
           <table>
             <tbody>
               <tr>
@@ -62,7 +62,7 @@
             </tbody>
           </table>
         </div>
-        <div class="right">
+        <div class="right popstatus">
           <table>
             <tbody>
               <tr ng-hide="inv.documentNumber == ''|| inv.documentNumber == null">
