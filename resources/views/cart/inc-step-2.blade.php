@@ -94,7 +94,8 @@
                 สถานที่ส่ง :
               </label>
               <div class="col-md-6">
-                <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode">
+                <!-- <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode"> -->
+                <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships | orderBy : 'shipCode'">
                 </select>
               </div>
             </div>
