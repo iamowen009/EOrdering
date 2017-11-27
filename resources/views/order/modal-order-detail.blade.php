@@ -147,7 +147,7 @@
 
           <tr class="footer-table" ng-show="detail.length > 0">
             <td class="text-center text-blue" >
-            <b>รวม : </b>
+            <b>รวม </b>
             </td>
             <td class="text-center text-blue" >
               @{{TotaltargetQty}}

@@ -39,7 +39,7 @@
           </div>
           <div class="menu-body mt-10">
             <ul class="list-unstyled" style="font-size:0.95em">
-              <li ng-repeat="brand in brandsFilter" ng-if="brand.brandDesc != ''" value="{{brand.brandCode}}" style="padding-bottom:10px;">
+              <li ng-repeat="brand in brandsFilter | unique: 'brandCode'" ng-if="brand.brandDesc != ''" value="{{brand.brandCode}}" style="padding-bottom:10px;">
                 <!-- <input type="checkbox" ng-checked="brandCode.length > 0 && brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)">  -->
                 <label style="cursor: pointer;">
                   <input type="checkbox" ng-checked="brandCode.indexOf(brand.brandCode) > -1" ng-click="brandSelection(brand.brandCode)"> {{ brand.brandDesc }}
