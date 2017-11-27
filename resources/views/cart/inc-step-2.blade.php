@@ -95,7 +95,7 @@
               </label>
               <div class="col-md-6">
                 <!-- <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode"> -->
-                <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships | orderBy : 'shipCode'">
+                <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode.substring(2, 10) +' ' + i.shipName for i in ships | orderBy : 'shipCode'">
                 </select>
               </div>
             </div>

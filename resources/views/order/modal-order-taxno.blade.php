@@ -44,7 +44,7 @@
             </tr>
             <tr ng-hide="inv.shipName == '' || inv.shipName == null">
               <td class="text-bold text-blue">สถานที่ส่ง</td>
-              <td> @{{inv.shipCode}} : @{{ inv.shipName }}</td>
+              <td> @{{inv.shipCode.substring(2, 10)}}} : @{{ inv.shipName }}</td>
             </tr>
             <tr ng-hide="inv.shipName == '' || inv.shipName == null">
               <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>

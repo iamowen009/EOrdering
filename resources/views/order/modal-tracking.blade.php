@@ -17,7 +17,7 @@
               <p><strong>เลขที่เอกสารอ้างอิง : </strong></p>
           </div>
           <div class="col-sm-4">
-              <p><strong>สถานที่ส่ง : </strong>@{{ inv.shipName }}</p>
+              <p><strong>สถานที่ส่ง : </strong>@{{inv.shipCode.substring(2, 10)}} @{{ inv.shipName }}</p>
               <p><strong>จัดส่ง : </strong>@{{ inv.transportZoneDesc }}</p>
           </div>
         </div>

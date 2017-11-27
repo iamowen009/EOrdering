@@ -88,7 +88,7 @@
                 สถานที่ส่ง : 
               </label>
               <div class="col-md-8 form-control-static">
-                {{ ddlShipTo.shipName }}
+                {{ddlShipTo.shipCode.substring(2, 10)}} {{ ddlShipTo.shipName }}
               </div>
             </div>
             <div class="form-group">
