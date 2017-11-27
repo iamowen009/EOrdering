@@ -160,7 +160,8 @@
                 </td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="100">@{{ item.targetQty | number }}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150">@{{ item.netwrPerUnit | number}}</td>
-                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.discount }}</td>
+                <!-- <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="150">@{{ item.discount }}</td> -->
+                <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-center" width="300" ng-bind-html="item.discount"></td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150"> @{{ item.pricePerUnit | number:2}}</td>
                 <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" class="text-right" width="150">@{{ item.amount | number }} บ.</td>
             </tr>
