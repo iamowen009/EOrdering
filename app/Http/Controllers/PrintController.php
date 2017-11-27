@@ -40,14 +40,14 @@ class PrintController extends Controller
 
     public function orderDetail($orderId) 
     {
-        $pdf = PDF::loadView('print.order-detail')->setPaper('a4');
+        $pdf = PDF::loadView('print.order-detail')->setPaper('a4', 'landscape');
         
         return @$pdf->stream();
     }
 
     public function orderTracking($orderId)
     {
-        $pdf = PDF::loadView('print.order-tracking')->setPaper('a4');
+        $pdf = PDF::loadView('print.order-tracking')->setPaper('a4', 'landscape');
         
         return @$pdf->stream();
     }
