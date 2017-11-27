@@ -134,8 +134,8 @@
           <tbody >
            <!-- width="40%;word-wrap:break-word;" -->
             <tr ng-repeat="item in detail">
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="300">@{{ item.material }} @{{ item.materialDes }}</td>
-              <td ng-if="item.amount== 0 && item.freeGoods == 'X'" width="300"><strong>@{{ item.material }} @{{ item.materialDes }}</strong></td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="300">@{{ item.material }}<br/> @{{ item.materialDes }}</td>
+              <td ng-if="item.amount== 0 && item.freeGoods == 'X'" width="300"><strong>@{{ item.material }}<br/> @{{ item.materialDes }}</strong></td>
               <!-- <td width="300">@{{ item.material }} @{{ item.materialDes }}</td> -->
 
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="90" class="text-center">@{{item.targetQty | number }}</td>
