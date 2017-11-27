@@ -121,7 +121,7 @@
             <tr>
                 <th width="400" style="border-bottom:1px solid #ffffff; " class="text-center" colspan="2">ใบสั่งซื้อ (P/O)</th>
                 <th width="400" class="text-center" rowspan="2">เอกสารอ้างอิง / TAX No.</th>
-                <th width="200" class="text-center" rowspan="2">กำหนดชำระ <br/> CR. TERM</th>
+                <th width="200" class="text-center" rowspan="2">กำหนดชำระ <br/> DUE DATE</th>
             </tr>
             <tr>
                 <th  width="200" class="text-center" rowspan="1">เลขที่</th>
