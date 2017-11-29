@@ -112,7 +112,7 @@
                       สถานที่ส่ง : 
                     </label>
                     <div class="col-md-8 form-control-static">
-                      {{ order.shipName }}
+                      {{order.shipCode.substring(2, 10)}} {{ order.shipName }}
                     </div>
                   </div>
                   <div class="form-group">

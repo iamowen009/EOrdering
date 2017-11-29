@@ -221,6 +221,9 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                         */
                         try {
                             var eqDate = appScope.ddlDate.reqDate;
+                            var reqDate = LocalDate(eqDate);
+                            console.log("try");
+
                         } catch(e) {
                             if (e) var reqDate = LocalDate(eqDate);
                         }

@@ -312,8 +312,8 @@ h3 .small {
 
 .img-icon {
   width: 100%;
-  margin-bottom: 15px;
-  border-radius: 10px;
+  margin-bottom: 5px;
+/*  border-radius: 10px;*/
 }
 
 .icon-left {
