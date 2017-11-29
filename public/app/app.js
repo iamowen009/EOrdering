@@ -7,15 +7,12 @@ var app = angular.module('app', [
     'ngCart',
     'ui.bootstrap.datetimepicker',
     'angularUtils.directives.dirPagination',
-    //'vcRecaptcha',
     'ngMessages',
     'validation.match',
     'ui.bootstrap',
     'ngSanitize',
     'angularjs-dropdown-multiselect',
-    'UserValidation',
-    'datatables',
-    'datatables.bootstrap'
+    'UserValidation'
 ]);
 
 app.constant('API_URL', 'http://202.142.195.168:8010/API/');
