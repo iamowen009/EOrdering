@@ -118,7 +118,7 @@
         <table class="invoice__body--table scroll">
           <thead>
             <tr>
-              <th width="300" class="text-center text-blue">ผลิตภัณฑ์</th>
+              <th width="300" class="text-center text-blue">รายการสินค้า</th>
               <th width="90" class="text-center text-blue">จำนวน</th>
               <th width="100" class="text-center text-blue">หน่วย</th>
               <th width="170" class="text-center text-blue">
