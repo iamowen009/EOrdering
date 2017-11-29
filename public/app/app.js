@@ -13,9 +13,9 @@ var app = angular.module('app', [
     'ui.bootstrap',
     'ngSanitize',
     'angularjs-dropdown-multiselect',
-    'UserValidation',
-    'datatables',
-    'datatables.bootstrap'
+    'UserValidation'
+    // 'datatables',
+    // 'datatables.bootstrap'
 ]);
 
 app.constant('API_URL', 'http://202.142.195.168:8010/API/');
