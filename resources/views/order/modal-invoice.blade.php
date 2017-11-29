@@ -152,11 +152,13 @@
             </tr>
           </tbody>
           <tfoot>
-            <td>
+          <tr>
+            <td colspan="2">
               <div class="left" style="color:red;">
                 * ราคาต่อหน่วย หลังหักส่วนลดมาตรฐานเท่านั้น
               </div>
             </td>
+            </tr>
           </tfoot>
         </table>
 
