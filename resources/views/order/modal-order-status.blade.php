@@ -189,16 +189,17 @@
      
           </tfoot>
         </table>
-        <!-- <div class="modal-footer invoice__footer">
+        
+        <br/>
+      </div>
+      <div class="modal-footer invoice__footer">
           <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
             พิมพ์
           </button>
           <button type="button" class="btn btn-default" style="width:63px;" data-dismiss="modal">
             ปิด
           </button>
-        </div> -->
-        <br/>
-      </div>
+        </div>
     </div>
   </div>
 </div>
