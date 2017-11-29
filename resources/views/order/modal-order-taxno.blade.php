@@ -213,7 +213,10 @@
    
         </tfoot>
       </table>
-      <div class="modal-footer invoice__footer" style="display:none">
+      
+    </div>
+   
+    <div class="modal-footer invoice__footer">
         <button type="button" class="btn btn-info" style="width:63px; margin-right: 5px;" ng-click="OrderPrint(inv.id)">
           พิมพ์
         </button>
@@ -221,7 +224,6 @@
           ปิด
         </button>
       </div>
-    </div>
   </div>
 </div>
 </div>
