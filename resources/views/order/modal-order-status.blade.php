@@ -119,9 +119,9 @@
           <thead>
             <tr>
               <th width="300" class="text-center text-blue">รายการสินค้า</th>
-              <th width="90" class="text-center text-blue">จำนวน</th>
-              <th width="100" class="text-center text-blue">หน่วย</th>
-              <th width="170" class="text-center text-blue">
+              <th width="80" class="text-center text-blue">จำนวน</th>
+              <th width="60" class="text-center text-blue">หน่วย</th>
+              <th width="110" class="text-center text-blue">
                 ราคาต่อหน่วย
                 <span style="color:red">*</span>
               </th>
@@ -136,12 +136,10 @@
             <tr ng-repeat="item in detail">
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="300">@{{ item.material }}<br/> @{{ item.materialDes }}</td>
               <td ng-if="item.amount== 0 && item.freeGoods == 'X'" width="300"><strong>@{{ item.material }}<br/> @{{ item.materialDes }}</strong></td>
-              <!-- <td width="300">@{{ item.material }} @{{ item.materialDes }}</td> -->
 
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="90" class="text-center">@{{item.targetQty | number }}</td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-center">@{{item.salesUnit }}</td>
-              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="170" class="text-right">@{{ item.pricePerUnit | number:2 }} </td>
-              <!-- <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-right"> @{{ item.discount}}</td> -->
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="80" class="text-center">@{{item.targetQty | number }}</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="60" class="text-center">@{{item.salesUnit }}</td>
+              <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="110" class="text-right">@{{ item.pricePerUnit | number:2 }} </td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="200" style="word-wrap:break-word;" class="text-center" ng-bind-html="item.discount"></td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.netwrPerUnit | number:2 }} </td>
               <td ng-hide="item.amount== 0 && item.freeGoods == 'X'" width="100" class="text-right">@{{ item.amount | number:2 }} บ.</td>

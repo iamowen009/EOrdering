@@ -91,7 +91,7 @@
 }
 
 .invoice__body--table.scroll thead, .invoice__body--table.scroll tbody {
-  display: block;
+  /* display: block; */
 }
 
 .invoice__body--table.scroll tbody {
