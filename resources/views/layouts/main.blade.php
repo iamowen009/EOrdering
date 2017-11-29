@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="<?= asset('node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css') ?>" />
   <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
   <link rel="stylesheet" href="<?= asset('css/layouts.css') ?>" />
+  <link rel="stylesheet" href="<?= asset('bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css') ?>" />
 
   <!--<script src='https://www.google.com/recaptcha/api.js?hl=th'></script>-->
   <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -191,11 +192,14 @@
   <script src="<?= asset('js/jquery.min.js') ?>"></script>
   <script src="<?= asset('js/popper.min.js') ?>"></script>
   <script src="<?= asset('js/bootstrap.min.js') ?>"></script>
+  <script src="<?= asset('bower_components/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
 
   <script src="<?= asset('bower_components/angular/angular.min.js') ?>"></script>
   <script src="<?= asset('bower_components/angular-messages/angular-messages.min.js') ?>"></script>
   <script src="<?= asset('bower_components/angular-validation-match/dist/angular-validation-match.js') ?>"></script>
   <script src="<?= asset('bower_components/purl/purl.js') ?>"></script>
+  <script src="<?= asset('bower_components/angular-datatables/dist/angular-datatables.min.js') ?>"></script>
+  <script src="<?= asset('bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js') ?>"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
   <script src="<?= asset('node_modules/angular-sweetalert/SweetAlert.min.js') ?>"></script>
@@ -217,7 +221,6 @@
   <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js') ?>"></script>
   <script src="<?= asset('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js') ?>"></script>
   <script src="<?= asset('node_modules/angular-utils-pagination/dirPagination.js') ?>"></script>
-
   @yield('footer')
 </body>
 

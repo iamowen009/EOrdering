@@ -198,6 +198,7 @@
     <script src="<?= asset('node_modules/angular/angular.min.js') ?>"></script>
     <script src="<?= asset('bower_components/angular-messages/angular-messages.min.js') ?>"></script>
     <script src="<?= asset('bower_components/angular-validation-match/dist/angular-validation-match.js') ?>"></script>
+    
     <script src="<?= asset('node_modules/angular-sanitize/angular-sanitize.min.js') ?>"></script>
 
     <script src="<?= asset('node_modules/angular-sweetalert/SweetAlert.min.js') ?>"></script>
@@ -224,7 +225,8 @@
     <script src="<?= asset('node_modules/angular-utils-pagination/dirPagination.js') ?>"></script>
 
     <script src="<?= asset('app/controllers/loginController.js') ?>"></script>
-
+    <script src="<?= asset('bower_components/angular-datatables/dist/angular-datatables.min.js'); ?>"></script>
+    <script src="<?= asset('bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js'); ?>"></script>
 
 
 </body>

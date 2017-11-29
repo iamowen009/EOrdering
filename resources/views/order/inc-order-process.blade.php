@@ -62,7 +62,7 @@
                         </div>
                       </div>
                     </a>
-                     <a href="javascript:void(0)" ng-show="list.percentComplete===0 && list.rejectHStatus!=='C'"" class="text-center" ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)">
+                     <a href="javascript:void(0)" ng-show="list.percentComplete===0 && list.rejectHStatus!=='C'" class="text-center" ng-click="OrderDetailModal(list.orderId,list.salesOrderNumber)">
                       <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color:#cccccc;">0%</div>
                       </div>

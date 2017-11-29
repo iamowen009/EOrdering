@@ -14,6 +14,8 @@ var app = angular.module('app', [
     'ngSanitize',
     'angularjs-dropdown-multiselect',
     'UserValidation',
+    'datatables',
+    'datatables.bootstrap'
 ]);
 
 app.constant('API_URL', 'http://202.142.195.168:8010/API/');
@@ -214,9 +216,17 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                                 return dx[2] + '-' + dx[1] + '-' + dx[0] + 'T00:00:00';
                             }
                         }
-                        var eqDate = appScope.ddlDate.reqDate;
-                        var reqDate = LocalDate(eqDate);//.replace('/','-') + ' 00:00:00T';
-                        // }
+                        /*
+                        if (appScope.ddlDate.reqDate != undefined || appScope.ddlDate.reqDate != null)
+                            var eqDate = appScope.ddlDate.reqDate;
+                        else 
+                            var reqDate = LocalDate(eqDate);//.replace('/','-') + ' 00:00:00T';
+                        */
+                        try {
+                            var eqDate = appScope.ddlDate.reqDate;
+                        } catch(e) {
+                            if (e) var reqDate = LocalDate(eqDate);
+                        }
 
                         console.log('reqDate ' + reqDate);
 
