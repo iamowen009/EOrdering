@@ -16,8 +16,8 @@ var app = angular.module('app', [
     'UserValidation',
 ]);
 
-// app.constant('API_URL', 'http://202.142.195.168:8010/API/');
-app.constant('API_URL', 'http://202.142.195.144:8010/API/');
+app.constant('API_URL', 'http://202.142.195.168:8010/API/');
+//app.constant('API_URL', 'http://202.142.195.144:8010/API/');
 
 
 app.run(function ($rootScope, Orders, Auth, Customers) {
