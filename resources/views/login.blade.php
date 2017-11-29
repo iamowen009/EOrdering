@@ -225,10 +225,6 @@
     <script src="<?= asset('node_modules/angular-utils-pagination/dirPagination.js') ?>"></script>
 
     <script src="<?= asset('app/controllers/loginController.js') ?>"></script>
-    <script src="<?= asset('bower_components/angular-datatables/dist/angular-datatables.min.js'); ?>"></script>
-    <script src="<?= asset('bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js'); ?>"></script>
-
-
 </body>
 
 </html>
