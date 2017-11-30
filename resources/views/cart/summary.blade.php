@@ -252,7 +252,8 @@
         <div class="w100 text-right">
           <strong>
             ยอดรวมมูลค่าสินค้า (ไม่รวม VAT) :
-            <span class="total_price">{{ totalAmount | number:2 }}</span> บาท
+            <!-- <span class="total_price">{{ totalAmount | number:2 }}</span> บาท -->
+            <span class="total_price">{{ order.totalAmount | number:2 }}</span> บาท
           </strong>
         </div>
         <div class="w100 text-center mt-30 mb-20">
