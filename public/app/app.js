@@ -240,7 +240,7 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                             //shipCondition   : checkedShip  === true ? '01' : ( checkedShip === false ? '' : appShipCondition ),
 
                             shipCondition: checkedShip === true ? '01' : (checkedShip === false ? '' : appScope.customer.shipCondition),
-                            shipId: (shipId === undefined || shipId == '' || checkedShip === true) ? Customers.customerId() : shipId,
+                            shipId: (shipId === undefined || shipId == '' || checkedShip === true) ? 0 : shipId,
                             shipCode: (shipCode === undefined || checkedShip === true) ? '' : shipCode,
                             shipName: (shipName === undefined || checkedShip === true) ? 'รับสินค้าเอง' : shipName,
                             requestDate: reqDate,
@@ -295,7 +295,8 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                         }, function (response) {
 
                             console.log(response);
-                        });
+                        }
+                    );
 
 
                     } else {

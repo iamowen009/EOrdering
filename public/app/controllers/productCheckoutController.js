@@ -119,22 +119,27 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
       if (response.data.result == 'SUCCESS') {
         $scope.customer = response.data.data.customerInfo;
         $scope.requests = response.data.data.requestDateList;
-
+        console.log($scope.requests);
         var ls = $scope.requests.length;
 
         for (var key in $scope.requests) {
           var list_date = $scope.requests[key]['reqDate'].split('T');
           var split_date = list_date[0].split('-');
           $scope.requests[key]['reqDate'] = split_date[2] + '/' + split_date[1] + '/' + split_date[0];
-
         }
+        
+        // $scope.requests.push({id:'',reqDate:""});
+        // $scope.ddlDate = "";
 
         $scope.shipss = response.data.data.shipToList;
-
         for (var k in $scope.shipss) {
           if ($scope.shipss[k]['shipCode'])
             $scope.ships.push($scope.shipss[k]);
         }
+        // $scope.ships.push("");
+        // $scope.ddlShipTo = "";
+        //nook
+
 
         $scope.transportss = response.data.data.transportList;
         for (var k in $scope.transportss) {
@@ -200,7 +205,46 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
       $scope.shipaddress = '-';
       $scope.ddlTransport = undefined;
     }
+
+
+
+    let check = true;
+    for (let index = 0; index < $scope.ships.length; index++) {
+      const element = $scope.ships[index];
+      if(element == '')
+        check = false;
+    }
+
+    var arrTemp = [];
+    if(check)
+    arrTemp.push(""); 
+    
+    for (let index = 0; index < $scope.ships.length; index++) {
+      const element = $scope.ships[index];
+      arrTemp.push(element);
+    }
+    $scope.ships = arrTemp;
   }
+  
+  $scope.changeRequestDate = function(){
+        let check = true;
+        for (let index = 0; index < $scope.requests.length; index++) {
+          const element = $scope.requests[index].id;
+          if(element == '')
+            check = false;
+        }
+
+        var arrTemp = [];
+        if(check)
+        arrTemp.push({id:'',reqDate:""});
+        for (let index = 0; index < $scope.requests.length; index++) {
+          const element = $scope.requests[index];
+          arrTemp.push(element);
+        }
+
+        $scope.requests = arrTemp;
+  }
+  
 
   $scope.changeTransport = function (ddlTransport) {
     $scope.objTransport = $filter('filter')($scope.transports, {
