@@ -77,6 +77,9 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
         $scope.totalQty = $filter('filter')($scope.carts, {
           isBOM: false
         }).length + $scope.boms.length;
+        
+        
+        $scope.totalQty =  $scope.carts.length;
 
         for (var key in $scope.carts) {
           $scope.totalAmount += $scope.carts[key]['totalAmount'];

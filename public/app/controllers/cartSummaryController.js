@@ -21,7 +21,7 @@ app.controller('CartSummaryController', function ($scope, $http, $filter, Custom
         $scope.totalQty = $filter('filter')($scope.carts, {
           isBOM: false
         }).length + $scope.boms.length;
-
+        $scope.totalQty = $scope.carts.length;
         for (var key in $scope.carts) {
           $scope.totalAmount += $scope.carts[key]['totalAmount'];
 
