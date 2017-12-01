@@ -127,18 +127,22 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
           var split_date = list_date[0].split('-');
           $scope.requests[key]['reqDate'] = split_date[2] + '/' + split_date[1] + '/' + split_date[0];
         }
-        
+      
+    
         // $scope.requests.push({id:'',reqDate:""});
-        // $scope.ddlDate = "";
+        // $scope.requests.id = ""; 
+  
+        
 
+
+        // ==============
+        $scope.ships.push("");
         $scope.shipss = response.data.data.shipToList;
         for (var k in $scope.shipss) {
           if ($scope.shipss[k]['shipCode'])
             $scope.ships.push($scope.shipss[k]);
         }
-        // $scope.ships.push("");
-        // $scope.ddlShipTo = "";
-        //nook
+        $scope.ddlShipTo = "";
 
 
         $scope.transportss = response.data.data.transportList;
@@ -186,6 +190,30 @@ app.controller('ProductCheckoutController', function ($scope, $http, $filter, $t
 
   $scope.removeNull = function (itm) {
     return itm.profiles;
+  }
+
+  $scope.changeDate = function (reqDate){
+    console.log(reqDate);
+    // $scope.objTransport = $filter('filter')($scope.transports, {
+    //   transportZone: $scope.ship[0].transportZone
+    // })[0];
+
+
+    // $scope.requests.push({id:'',reqDate:""});
+    // $scope.requests.id = ""; 
+
+    let check = true;
+    for (let index = 0; index < $scope.requests.length; index++) {
+      const element = $scope.requests[index].id;
+      console.log(element);
+      if(element == '')
+      check = false
+    }
+
+    if(check)
+    $scope.requests.push({id:'',reqDate:""});
+    
+
   }
 
   $scope.changeShip = function (sel) {

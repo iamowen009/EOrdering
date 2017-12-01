@@ -85,9 +85,12 @@
                 Request Date :
               </label>
               <div class="col-md-6">
-                <select name="date_id" id="date_id" class="form-control" ng-model="ddlDate" ng-options="i as i.reqDate for i in requests track by i.reqDate | date:'dd/mm/yy'">
-                  <option value=""></option>
-                </select>
+                <!-- <select name="date_id" id="date_id" class="form-control" ng-model="ddlDate" ng-options="i as i.reqDate for i in requests track by i.reqDate | orderBy:'id'| date:'dd/mm/yy'" >
+                </select> -->
+
+                <select class="form-control select-style" ng-model="ddlDate"  ng-change="changeDate(ddlDate.reqDate)">
+											<option ng-repeat="i in requests" ng-value="i" value="{{ i.reqDate }}" >{{ i.reqDate }} </option>
+							  </select>
               </div>
             </div>
             <div class="form-group">
@@ -97,7 +100,7 @@
               <div class="col-md-6">
                 <!-- <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode +' ' + i.shipName for i in ships track by i.shipCode"> -->
                 <select name="ship_id" id="ship_id" class="form-control" ng-model="ddlShipTo" ng-change="changeShip(ddlShipTo.shipId)" ng-options="i as i.shipCode.substring(2, 10) +' ' + i.shipName for i in ships | orderBy : 'shipCode'">
-                  <option value=""></option>
+                  <!-- <option value=""></option> -->
                 </select>
               </div>
             </div>
