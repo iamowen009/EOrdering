@@ -33,72 +33,99 @@
     ใบสั่งซื้อ
   </div>
   <div class="print__client">
-    <div class="print__client__left" style="height: 199px">
+    <div class="print__client__left" style="height: 350px"> <!--199-->
       <table>
         <tr>
           <td class="text-bold" width="60">
             ชื่อร้านค้า
           </td>
-          <td>บริษัท สีเพชรเกษม (1981) จำกัด</td>
+          <td>@{{ inv.customerCode }} : @{{ inv.customerName }}</td>
         </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            ที่อยู่
+        <tr ng-hide="inv.cityCode =='' || inv.cityCode == null">
+          <td class="text-bold text-blue">ที่อยู่</td>
+          <td>@{{ inv.address }} &nbsp;@{{inv.street}} &nbsp;@{{inv.subDistrictName}}
+            <br>&nbsp;@{{inv.districtName}} &nbsp;@{{inv.cityName}}
           </td>
-          <td>ถ.กิ่งแก้ว, เขตลาดกระบัง</td>
         </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            อีเมล์
-          </td>
-          <td>example@gmail.com</td>
+        <!-- <tr ng-if="inv.cityCode =='' || inv.cityCode == null">
+          <td class="text-bold text-blue">ที่อยู่</td>
+        <td>-</td>
+        </tr> -->
+        <tr ng-hide="inv.customerEmail == '' || inv.customerEmail == null">
+          <td class="text-bold text-blue">อีเมล</td>
+          <td>@{{ inv.customerEmail }}</td>
         </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            บริษัทขนส่ง
-          </td>
-          <td>กิจทองขนส่งโท4482936</td>
+        <!-- <tr ng-if="inv.customerEmail == '' || inv.customerEmail == null">
+          <td class="text-bold text-blue">อีเมล</td>
+          <td>-</td>
+        </tr> -->
+        <tr ng-hide="inv.customerTelNo == '' || inv.customerTelNo == null">
+          <td class="text-bold" width="60">โทรศัพท์</td>
+          <td>@{{ inv.customerTelNo }}</td>
         </tr>
+        <!-- <tr ng-if="inv.customerTelNo == '' || inv.customerTelNo == null">
+          <td class="text-bold" width="60">โทรศัพท์</td>
+          <td>-</td>
+        </tr> -->
+        <tr ng-hide="inv.shipName == '' || inv.shipName == null">
+          <td class="text-bold" width="60">สถานที่ส่ง</td>
+          <td> @{{inv.shipCode.substring(2, 10)}} : @{{ inv.shipName }}</td>
+        </tr>
+        <tr ng-hide="inv.shipName == '' || inv.shipName == null">
+          <td class="text-bold" width="60">ที่อยู่สถานที่ส่ง</td>
+          <td>@{{ inv.shipHouseNo }} @{{ inv.shipAddress }} @{{ inv.shipDistrictName }} @{{ inv.shipCityName }} @{{ inv.shipPostCode
+            }}</td>
+        </tr>
+        <!-- <tr ng-if="inv.shipName == '' || inv.shipName == null">
+          <td class="text-bold text-blue">สถานที่ส่ง</td>
+          <td>-</td>
+        </tr>
+        <tr ng-if="inv.shipName == '' || inv.shipName == null">
+          <td class="text-bold text-blue">ที่อยู่สถานที่ส่ง</td>
+          <td>-</td>
+        </tr> -->
       </table>
     </div>
     <div class="print__client__right" style="height: 199px">
       <table>
         <tr>
-          <td class="text-bold" width="60">
-            วันที่ต้องการ
+          <td class="text-bold" width="60"> 
+            เลขที่ใบสั่งซื้อ 
           </td>
-          <td>03/06/2560</td>
+          <td>@{{ inv.documentNumber }} 
+                    <span class="text-bold text-blue"> / วันที่</span> @{{ inv.documentDate | date:'dd/MM/yyyy' }}
+          </td>
         </tr>
+        <!-- <tr ng-if="inv.customerPO == '' || inv.customerPO == null">
+        <td class="text-bold" width="60">PO number</td>
+        <td>-</td>
+        </tr> -->
+        <tr ng-hide="inv.customerPO == '' || inv.customerPO == null">
+        <td class="text-bold" width="60">
+          PO number</td>
+          <td>@{{ inv.customerPO }}</td>
+        </tr>
+        <tr ng-hide="inv.requestDate == '' | inv.requestDate == null">
+          <td class="text-bold" width="60">Request Date</td>
+          <td>@{{ inv.requestDate | date:'dd/MM/yyyy' }}</td>
+        </tr>
+        <!-- <tr ng-if="inv.requestDate == '' || inv.requestDate == null">
+          <td class="text-bold" width="60">Request Date</td>
+          <td>-</td>
+        </tr> -->
+
         <tr>
-          <td class="text-bold" width="60">
-            PO Number
-          </td>
-          <td>PO6007001</td>
+          <td class="text-bold" width="60">การชำระเงิน</td>
+          <td>@{{ inv.paymentTerm === 'CASH' || inv.paymentTerm === 'CA02' ? 'เงินสด' :( inv.paymentTerm !== 'CASH' ? 'เครดิต' : '' ) }}</td>
         </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            การจัดส่ง
-          </td>
-          <td>มารับเอง</td>
+        <tr ng-hide="inv.transportZoneDesc == '' || inv.transportZoneDesc == null">
+          <td class="text-bold" width="60">จัดส่งโดย</td>
+          <td>@{{ inv.transportZone }} : @{{ inv.transportZoneDesc }}</td>
         </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            การชำระเงิน
-          </td>
-          <td>เงินสด</td>
-        </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            สถานที่ส่ง
-          </td>
-          <td>ออลมอเตอร์เวย์ k.ประเทือง</td>
-        </tr>
-        <tr>
-          <td class="text-bold" width="60">
-            ที่อยู่สถานที่ส่ง
-          </td>
-          <td>ถ.กิ่งแก้ว, เขตลาดกระบัง</td>
-        </tr>
+        <!-- <tr ng-if="inv.shipCondition == '01' && inv.isReceive !== null">
+          <td class="text-bold" width="60">จัดส่งโดย</td>
+          <td>ลูกค้ารับสินค้าเอง</td>
+        </tr> -->
       </table>
     </div>
   </div>
@@ -154,3 +181,8 @@
   </div>
 </div>
 @endsection
+@section('footer')
+<script src="<?= asset('app/controllers/orderController.js') ?>"></script>
+<script src="<?= asset('node_modules/ng-flat-datepicker/dist/ng-flat-datepicker.js') ?>"></script>
+<script src="<?= asset('vendors/nestable/jquery.nestable.js') ?>"></script>
+@stop
