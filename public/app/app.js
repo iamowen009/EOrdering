@@ -169,7 +169,8 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                             // if( appScope.ddlTransport.length > 0){
                             //transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
 
-                            transportId = appScope.ddlTransport.transportId;
+                            // transportId = appScope.ddlTransport.transportId;
+                            transportId = appScope.objTransport.transportId;
                             transportZone = appShipCondition == '08' ? appScope.ddlShipTo.transportZone : appScope.ddlTransport.transportZone;
                             transportZoneDesc = appShipCondition == '08' ? appScope.ddlShipTo.transportZoneDesc : appScope.ddlTransport.transportZoneDesc;
                         } else {
