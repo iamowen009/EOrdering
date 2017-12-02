@@ -549,28 +549,40 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 	onCart();
 
 	$scope.addCart = function () {
+		
 		for (var key in $scope.product) {
 			if ($scope.product[key]['sizeCode'] == $scope.cartSize && $scope.product[key]['colorCode'] == $scope.cartColor) {
 				$scope.productId = $scope.product[key]['productId'];
 			}
 		}
 		// console.log( $scope.cartProductQty ,'<', $scope.productSelect.altUnit1Amount);
-		var cqty = true;
-		if ($scope.cartProductQty < $scope.productSelect.altUnit1Amount) {
-			swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
-			cqty = false;
-		} else if ($scope.cartProductQty % $scope.productSelect.altUnit1Amount) {
-			//swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
-			swal({
-				html: true,
-				title: 'ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ <br> ระบบจะปรับจำนวนให้อัตโนมัติ <br>กรุณาตรวจสอบจำนวนสินค้า<br > ก่อนกดเพิ่มสินค้าค่ะ',
-				text: ''
-			});
 
-			var un = parseInt($scope.cartProductQty / $scope.productSelect.altUnit1Amount);
-			$scope.cartProductQty = $scope.productSelect.altUnit1Amount * un;
-			cqty = false;
+		console.log("$scope.product==>",$scope.product[0].isBox);
+		if($scope.product[0].isBox == true)
+		{
+			var cqty = true;
+			if ($scope.cartProductQty < $scope.productSelect.altUnit1Amount) {
+				swal('กรุณาสั่งซื้ออย่างน้อย ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ');
+				cqty = false;
+			} else if ($scope.cartProductQty % $scope.productSelect.altUnit1Amount) {
+				//swal('ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ ระบบจะปรับจำนวนให้อัตโนมัติ กรุณาตรวจสอบจำนวนสินค้า ก่อนกดเพิ่มสินค้าค่ะ');
+				swal({
+					html: true,
+					title: 'ผลิตภัณฑ์ต้องสั่งซื้อทีละ ' + $scope.productSelect.altUnit1Amount + ' ' + $scope.productSelect.unitNameTh + ' ค่ะ <br> ระบบจะปรับจำนวนให้อัตโนมัติ <br>กรุณาตรวจสอบจำนวนสินค้า<br > ก่อนกดเพิ่มสินค้าค่ะ',
+					text: ''
+				});
+
+				var un = parseInt($scope.cartProductQty / $scope.productSelect.altUnit1Amount);
+				$scope.cartProductQty = $scope.productSelect.altUnit1Amount * un;
+				cqty = false;
+			}
 		}
+		else{
+			cqty = true;
+			
+		}
+
+
 
 		if (cqty) {
 			var promotionList = [];
@@ -712,10 +724,24 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 	}
 
 	$scope.addQty = function () {
-		$scope.cartProductQty += 1;
+		console.log("add product");
+		console.log("isBox-->",$scope.product[0].isBox)
+		let productAddQty = 1;
+		if($scope.product[0].isBox == true)
+		{
+			productAddQty = $scope.product[0].qtyPerBox;
+		}
+		$scope.cartProductQty += productAddQty;
 	}
 	$scope.removeQty = function () {
-		if ($scope.cartProductQty > 1)
-			$scope.cartProductQty -= 1;
+		console.log("remove product");
+		let productAddQty = 1;
+		if($scope.product[0].isBox == true)
+		{
+			productAddQty = $scope.product[0].qtyPerBox;
+		}
+
+		if ($scope.cartProductQty > $scope.product[0].qtyPerBox)
+			$scope.cartProductQty -= productAddQty;
 	}
 });

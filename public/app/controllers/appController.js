@@ -72,7 +72,18 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
     $scope.loadingcart = true;
     angular.copy($scope.items[$index], $scope.editedItem);
 
-    var $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
+    console.log("isBox-->",$scope.items[$index].isBox);
+
+    var $mqty = 0;
+    if($scope.items[$index].isBox == false)
+    {
+      $mqty = 1;
+    }
+    else
+    {
+      $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
+    }
+
     var cartList = [{
       customerId: Customers.customerId(),
       productId: $scope.editedItem.productId,
@@ -93,7 +104,17 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
     $scope.loadingcart = true;
     angular.copy($scope.items[$index], $scope.editedItem);
 
-    var $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
+    var $mqty = 0;
+    if($scope.items[$index].isBox == false)
+    {
+      $mqty = 1;
+    }
+    else
+    {
+      $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
+    }
+
+    // var $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
 
     if ($scope.editedItem.qty > $mqty)
       var cartList = [{
