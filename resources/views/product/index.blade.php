@@ -78,7 +78,7 @@
           <div class="form-group" style="margin-bottom:0px;margin-top:0px;">
             <label class="col-md-12 col-sm-12 col-xs-12">
               <h4 class="mt-0 mb-0">
-                {{marketingDesc}}
+                <!-- {{marketingDesc}} -->
                 <small>พบสินค้าจำนวน {{totalProduct}} รายการ</small>
               </h4>
             </label>
