@@ -14,7 +14,7 @@
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <label>รหัสร้านค้า</label>
-                    <input type="text" class="form-control" name="customerCode" ng-model="input.customerCode" ng-disabled="true" ng-required="true">
+                    <input type="text" class="form-control" name="customerCode"  ng-disabled="true" ng-required="true">
                   </div>
                   <div class="col-md-6 form-group">
                     <label>ชื่อร้านค้า</label>
@@ -87,6 +87,16 @@
                     <label>อีเมล</label>
                     <input type="text" class="form-control" name="email" ng-model="input.email">
                   </div>
+                  
+                  <div class="col-md-6 form-group">
+                    <label>บัญชี BBL</label>
+                    <input type="text" class="form-control" name="bblNo" ng-model="input.bblNo"  ng-required="true">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>ชื่อ BBL (TH & EN)</label>
+                    <input type="text" class="form-control" name="bblName" ng-model="input.bblName" ng-required="true">
+                  </div>
+
                   <div class="col-md-12 form-group">
                     <label>จัดส่ง</label>
                     <input type="text" class="form-control" name="transportZoneDesc" ng-model="input.transportZoneDesc" ng-disabled="true" ng-required="true">

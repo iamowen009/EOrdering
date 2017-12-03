@@ -87,6 +87,7 @@ app.controller('CustomerController', function ($scope, $http, $filter, Customers
 
     $scope.fetchCustomer = function() {
         Customers.fetchOne(Customers.customerId()).then(function (response) {
+            console.log("nook");
             if (response.data.result == 'SUCCESS') {
                 var cus = response.data.data.customerInfo;
                 $scope.cus = cus;
@@ -101,7 +102,9 @@ app.controller('CustomerController', function ($scope, $http, $filter, Customers
                     postCode: cus.postCode,
                     telNo: cus.telNo,
                     email: cus.email,
-                    transportZoneDesc: cus.transportZoneDesc
+                    transportZoneDesc: cus.transportZoneDesc,
+                    bblNo:cus.bblNo,
+                    bblName: cus.bblName + ' & ' + cus.bblNameEng
                 };
             }
             $scope.loading = false;
@@ -176,7 +179,7 @@ app.controller('homeContactController',
         $scope.customers = {};
         $scope.loading = true;
 
-
+        
         fetchCustomer(Customers.customerId());
 
         function fetchCustomer(customerId) {
