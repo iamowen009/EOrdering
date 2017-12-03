@@ -123,14 +123,23 @@
                       {{ shipaddress }}
                     </div>
                   </div>
-                  <div class="form-group" ng-if="(order.shipCondition == '03'  || customer.shipCondition == '03') && order.shippingType=='show'">
+                  <!-- <div class="form-group" ng-if="(order.shipCondition == '03'  || customer.shipCondition == '03') && order.shippingType=='show'">
                     <label class="control-label col-md-4 text-right">
                       จัดส่งโดย : 
                     </label>
                     <div class="col-md-8 form-control-static">
                       {{ order.shipCondition == '08' ? order.transportZone + ' ' + order.transportZoneDesc : objTransport.transportZone }}
                       {{ objTransport.transportZoneDesc }}
+                    </div> -->
+
+                    <div class="form-group" ng-if="(order.shipCondition == '03'  || customer.shipCondition == '03')">
+                    <label class="control-label col-md-4 text-right">
+                      จัดส่งโดย : 
+                    </label>
+                    <div class="col-md-8 form-control-static">
+                      {{ order.transportZone + ' ' + order.transportZoneDesc }}
                     </div>
+
                   </div>
                 </div>
               </div>
