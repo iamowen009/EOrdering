@@ -157,3 +157,36 @@
 .footer-table{
    background-color: #D2C9E2;
 }
+
+
+.contact__body--infomation .left {
+  /* background: #FFF8AA;*/
+   width: 49%;
+   border: 1px solid rgb(246, 241, 241);
+   border-radius: 3px;
+   padding: 10px 15px !important;
+   font-size: 13px;
+   font-weight: 300;
+   padding-left: 0px;
+ }
+ 
+ .contact__body--infomation .right {
+  /* background: #FFF8AA;*/
+   width: 49%;
+   border: 1px solid #ddd;
+   border-radius: 3px;
+   padding: 10px 15px !important;
+   font-size: 13px;
+   font-weight: 300;
+   padding-right: 0px;
+   float: right;
+ }
+
+ .contact__content{
+  background: #ddd;
+}
+ .contact__content__child{
+  margin-top:10px;
+ }
+
+ 
