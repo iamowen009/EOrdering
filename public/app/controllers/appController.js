@@ -126,7 +126,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
 
       var qtyEdit = parseInt($scope.editedItem.qty) - parseInt($mqty);
       var qtyAltUnitAmount = $scope.items[$index].altUnitAmount;
-      if(qtyEdit < qtyAltUnitAmount){
+      if(qtyEdit < qtyAltUnitAmount && $scope.items[$index].isBox == true){
         swal(`กรุณาสั่งซื้ออย่างน้อย ${$scope.items[$index].altUnitAmount} ${$scope.items[$index].unitNameTh} ค่ะ`,);
         cartList[0].qty = qtyAltUnitAmount;
       }

@@ -16,7 +16,7 @@
     <div class="row ">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel">
-          <div class="panel-heading text-center style-title">ข้อมูลส่วนตัว </div>
+          <div class="panel-heading text-center style-title">ข้อมูลร้านค้า </div>
             <div class="panel-body">
               <fieldset disabled>
                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
