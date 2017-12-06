@@ -1,8 +1,8 @@
 @extends('layouts.main') 
 @section('head')
-<link href="<?= asset('vendors/nestable/nestable.css') ?>" rel="stylesheet">
+<!-- <link href="<?= asset('vendors/nestable/nestable.css') ?>" rel="stylesheet"> -->
 <link href="<?= asset('/css/document.css') ?>" rel="stylesheet">
-<link href="<?= asset('/css/orders.css') ?>" rel="stylesheet"> 
+
 @stop 
 @section('content')
 <div class="content" ng-controller="homeContactController">
@@ -10,9 +10,6 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-contact">
 				<div class="panel-heading text-center style-title">ติดต่อ TOA</div>
-				<!-- <div class="panel-heading style-title"><h3>ติดต่อ TOA</h3> </div> -->
-
-				<!--<div class="panel-heading text-center">ติดต่อเรา</div>-->
 				<div class="panel-body ">
 					<div class="row">
 						<div class="col-md-6 padding-left-0">
@@ -66,27 +63,10 @@
 									</tr>
 								</tbody>
 								</table>
-
-
-								<!-- <h4>CALL CENTER </h4>
-								<p>(สายตรงบริการลูกค้าสัมพันธ์) 02-335-5777</p>
-
-								<h4>AUTOTINT SERVICE CENTER</h4>
-								<p>(ฝ่ายบริการเครื่องผสมสีอัตโนมัติ) 02-335-5666</p> -->
-
 							</div>
 						</div>
 
 						<div class="col-md-6 padding-right-0">
-							<div>
-								<!-- <div>
-								<h4><strong>ผู้บริหารเขตขาย</strong></h4>
-								<p>เขตขาย : @{{customer.salesMgrName}}</p>
-								<p>เบอร์โทรศัพท์ : @{{customer.salesMgrTel}}</p>
-								<p>Email : @{{customer.salesMgrMail}}</p>
-								</div> -->
-
-								
 								<h4><strong >ผู้บริหารเขตขาย</strong></h4>
 								<div class="modal-body invoice__body">
 									<div class="contact__body--infomation">
@@ -109,7 +89,7 @@
 									</div>
 								</div>
 
-								<h4><strong class=">ผู้แทนขาย</strong></h4>
+								<h4><strong >ผู้แทนขาย</strong></h4>
 								<div class="modal-body invoice__body">
 									<div class="contact__body--infomation">
 										<div class="left ">
@@ -117,7 +97,7 @@
 											<p>เบอร์โทรศัพท์ : </p>
 											<p>Email : </p>
 										</div>
-										<div class="right contact__content">
+										<div class="right contact__content" ng-hide="customer.salesTAName == '' || customer.salesTAName == null">
 											<p>@{{customer.salesTAName}}</p>
 											<p ng-show="customer.salesTAName == null || customer.salesTAName == ''">-</p>
 
@@ -130,7 +110,7 @@
 									</div>
 
 									<div class="contact__body--infomation">
-										<div class="left contact__content__child">
+										<div class="left contact__content__child" ng-hide="customer.salesTBName == '' || customer.salesTBName == null">
 											<p>เขตขาย :</p>
 											<p>เบอร์โทรศัพท์ : </p>
 											<p>Email : </p>
@@ -147,7 +127,7 @@
 										</div>
 									</div>
 
-									<div class="contact__body--infomation">
+									<div class="contact__body--infomation" ng-hide="customer.salesTKName == '' || customer.salesTKName == null">
 										<div class="left contact__content__child">
 											<p>เขตขาย :</p>
 											<p>เบอร์โทรศัพท์ : </p>
@@ -182,7 +162,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
 						</div>
 					</div>
 				</div>
