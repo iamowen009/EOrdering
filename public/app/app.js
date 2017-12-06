@@ -165,12 +165,25 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                         //if (typeof appScope.ddlTransport !== 'undefined') {
                         console.log('ddlTransport =======>', appScope.ddlTransport);
                         console.log('ddlTransport =======>',(appScope.ddlTransport != 'undefined') ? '1' : '0');
+
+
+                        // if(appScope.objTransport == undefined){
+                        //     transportId = 0;
+                        // }
+                        // else{
+                        //     transportId = appScope.objTransport.transportId;
+                        // }
+
+
                         if (appScope.ddlTransport != undefined) {
                             // if( appScope.ddlTransport.length > 0){
                             //transportId = appShipCondition == '08' ? 0 : appScope.ddlTransport.transportId;
 
                             // transportId = appScope.ddlTransport.transportId;
+                            if(appScope.objTransport != undefined)
                             transportId = appScope.objTransport.transportId;
+                            else
+                            transportId = 0;
                             transportZone = appShipCondition == '08' ? appScope.ddlShipTo.transportZone : appScope.ddlTransport.transportZone;
                             transportZoneDesc = appShipCondition == '08' ? appScope.ddlShipTo.transportZoneDesc : appScope.ddlTransport.transportZoneDesc;
                         } else {
