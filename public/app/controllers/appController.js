@@ -114,8 +114,7 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
       $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
     }
 
-    // var $mqty = $scope.items[$index].altUnitAmount == 0 ? 1 : $scope.items[$index].altUnitAmount;
-
+    console.log("removeQty==> ",$mqty);
     if ($scope.editedItem.qty > $mqty)
       var cartList = [{
         customerId: Customers.customerId(),
@@ -123,6 +122,14 @@ app.controller('cartInstanceCtrl', function ($uibModalInstance, $scope, Carts, A
         qty: parseInt($scope.editedItem.qty) - parseInt($mqty),
         userName: Auth.username()
       }];
+
+
+      var qtyEdit = parseInt($scope.editedItem.qty) - parseInt($mqty);
+      var qtyAltUnitAmount = $scope.items[$index].altUnitAmount;
+      if(qtyEdit < qtyAltUnitAmount){
+        swal(`กรุณาสั่งซื้ออย่างน้อย ${$scope.items[$index].altUnitAmount} ${$scope.items[$index].unitNameTh} ค่ะ`,);
+        cartList[0].qty = qtyAltUnitAmount;
+      }
 
     var promotionList = [];
 

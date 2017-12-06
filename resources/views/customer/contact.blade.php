@@ -21,7 +21,7 @@
 								<h4>ฝ่ายบริการลูกค้า</h4>
 								<p>ท่านสามารถติดตามสินค้า</p>
 								<p>การสั่งซื้อ / การจัดส่ง ตามเขตพื้นที่</p>
-								<p>ในเวลาทำการ จันทร์ขเสาร์ เวลา 08:00 - 17:00 น.</p>
+								<p>ในเวลาทำการ จันทร์-เสาร์ เวลา 08:00 - 17:00 น.</p>
 
 								<br>
 								<table class="table table-hover text-right">
@@ -71,11 +71,15 @@
 								<div class="modal-body invoice__body">
 									<div class="contact__body--infomation">
 										<div class="left ">
+											<p>ชื่อ :</p>
 											<p>เขตขาย :</p>
 											<p>เบอร์โทรศัพท์ : </p>
 											<p>Email : </p>
 										</div>
 										<div class="right contact__content">
+											<p>@{{customer.salesGroupDesc}}</p>
+											<p ng-show="customer.salesGroupDesc == null || customer.salesGroupDesc == ''">-</p>
+
 											<p>@{{customer.salesMgrName}}</p>
 											<p ng-show="customer.salesMgrName == null || customer.salesMgrName == ''">-</p>
 											
@@ -93,11 +97,15 @@
 								<div class="modal-body invoice__body">
 									<div class="contact__body--infomation">
 										<div class="left ">
+											<p>ชื่อ :</p>
 											<p>เขตขาย :</p>
 											<p>เบอร์โทรศัพท์ : </p>
 											<p>Email : </p>
 										</div>
 										<div class="right contact__content" ng-hide="customer.salesTAName == '' || customer.salesTAName == null">
+											<p>@{{customer.custTADesc}}</p>
+											<p ng-show="customer.custTADesc == null || customer.custTADesc == ''">-</p>
+
 											<p>@{{customer.salesTAName}}</p>
 											<p ng-show="customer.salesTAName == null || customer.salesTAName == ''">-</p>
 
@@ -111,11 +119,15 @@
 
 									<div class="contact__body--infomation">
 										<div class="left contact__content__child" ng-hide="customer.salesTBName == '' || customer.salesTBName == null">
+											<p>ชื่อ :</p>
 											<p>เขตขาย :</p>
 											<p>เบอร์โทรศัพท์ : </p>
 											<p>Email : </p>
 										</div>
 										<div class="right contact__content contact__content__child">
+											<p>@{{customer.custTBDesc}}</p>
+											<p ng-show="customer.custTBDesc == null || customer.custTBDesc == ''">-</p>
+
 											<p>@{{customer.salesTBName}}</p>
 											<p ng-show="customer.salesTBName == null || customer.salesTBName == ''">-</p>
 
@@ -129,11 +141,15 @@
 
 									<div class="contact__body--infomation" ng-hide="customer.salesTKName == '' || customer.salesTKName == null">
 										<div class="left contact__content__child">
+											<p>ชื่อ :</p>
 											<p>เขตขาย :</p>
 											<p>เบอร์โทรศัพท์ : </p>
 											<p>Email : </p>
 										</div>
 										<div class="right contact__content contact__content__child">
+											<p>@{{customer.custTKDesc}}</p>
+											<p ng-show="customer.custTKDesc == null || customer.custTKDesc == ''">-</p>
+
 											<p>@{{customer.salesTKName}}</p>
 											<p ng-show="customer.salesTKName == null || customer.salesTKName == ''">-</p>
 

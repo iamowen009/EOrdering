@@ -725,7 +725,11 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 
 	$scope.addQty = function () {
 		console.log("add product");
-		console.log("isBox-->",$scope.product[0].isBox)
+		console.log("isBox-->",$scope.product[0].isBox);
+		console.log( $scope.product[0]);
+		console.log( $scope.product[1]);
+		console.log( $scope.product[2]);
+
 		let productAddQty = 1;
 		if($scope.product[0].isBox == true)
 		{
