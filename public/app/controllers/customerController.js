@@ -102,7 +102,7 @@ app.controller('CustomerController', function ($scope, $http, $filter, Customers
                     postCode: cus.postCode,
                     telNo: cus.telNo,
                     email: cus.email,
-                    transportZoneDesc: cus.transportZoneDesc,
+                    transportZoneDesc: cus.transportZoneCode + ' ' + cus.transportZoneDesc,
                     bblNo:cus.bblNo,
                     bblName: cus.bblName + ' & ' + cus.bblNameEng
                 };
