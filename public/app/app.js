@@ -290,7 +290,8 @@ app.run(function ($rootScope, Orders, Auth, Customers) {
                                     function (isConfirm) {
                                         if (isConfirm) {
                                             if (Auth.userTypeDesc() == 'Multi') {
-                                                window.location = _base + '/customer';
+                                                //window.location = _base + '/customer';
+                                                window.location = _base + '/home/' + Customers.customerId();
                                             } else {
                                                 window.location = _base + '/home/' + Customers.customerId();
                                             }
