@@ -724,28 +724,25 @@ app.controller('ProductDetailController', function ($scope, $http, $filter, Prod
 	}
 
 	$scope.addQty = function () {
-		console.log("add product");
-		console.log("isBox-->",$scope.product[0].isBox);
-		console.log( $scope.product[0]);
-		console.log( $scope.product[1]);
-		console.log( $scope.product[2]);
 
 		let productAddQty = 1;
-		if($scope.product[0].isBox == true)
+
+		//console.log($scope.productSelect);
+		if($scope.productSelect.isBox == true)
 		{
-			productAddQty = $scope.product[0].qtyPerBox;
+			productAddQty = $scope.productSelect.qtyPerBox;
 		}
 		$scope.cartProductQty += productAddQty;
 	}
 	$scope.removeQty = function () {
 		console.log("remove product");
 		let productAddQty = 1;
-		if($scope.product[0].isBox == true)
+		if($scope.productSelect.isBox == true)
 		{
-			productAddQty = $scope.product[0].qtyPerBox;
+			productAddQty = $scope.productSelect.qtyPerBox;
 		}
 
-		if ($scope.cartProductQty > $scope.product[0].qtyPerBox)
+		if ($scope.cartProductQty > $scope.productSelect.qtyPerBox)
 			$scope.cartProductQty -= productAddQty;
 	}
 });
